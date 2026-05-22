@@ -62,6 +62,14 @@ export function DefendableComputeHero(propsIn: Partial<ShowcaseProps> = {}) {
 
   const itemPlural = props.evidenceItemCount === 1 ? "item" : "items";
 
+  const plaque = {
+    deedReference: props.deedReference,
+    statusLine: props.isDraft
+      ? "DRAFT REVIEW RECORD · NOT ISSUED"
+      : "ISSUED · PUBLICLY VERIFIED",
+    recordHashShort: props.recordHash.slice(0, 12),
+  };
+
   return (
     <section className="relative px-6 py-16 lg:py-24">
       <div className="max-w-7xl mx-auto">
@@ -75,20 +83,11 @@ export function DefendableComputeHero(propsIn: Partial<ShowcaseProps> = {}) {
         >
           <div className="absolute inset-0">
             {webglOk ? (
-              <CanvasErrorBoundary fallback={<StaticGpuFallback />}>
-                <GpuModelScene
-                  pointer={pointer}
-                  plaque={{
-                    deedReference: props.deedReference,
-                    statusLine: props.isDraft
-                      ? "DRAFT REVIEW RECORD · NOT ISSUED"
-                      : "ISSUED · PUBLICLY VERIFIED",
-                    recordHashShort: props.recordHash.slice(0, 12),
-                  }}
-                />
+              <CanvasErrorBoundary fallback={<StaticGpuFallback plaque={plaque} />}>
+                <GpuModelScene pointer={pointer} plaque={plaque} />
               </CanvasErrorBoundary>
             ) : (
-              <StaticGpuFallback />
+              <StaticGpuFallback plaque={plaque} />
             )}
           </div>
 
