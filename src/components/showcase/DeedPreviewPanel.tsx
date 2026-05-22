@@ -30,6 +30,7 @@ type Props = Pick<
   | "operatorAskCurrency"
   | "operatorAskLabel"
   | "operatorAskDoctrineNote"
+  | "stnlTerms"
 >;
 
 export function DeedPreviewPanel({
@@ -50,6 +51,7 @@ export function DeedPreviewPanel({
   operatorAskCurrency,
   operatorAskLabel,
   operatorAskDoctrineNote,
+  stnlTerms,
 }: Props) {
   const hasAsk = typeof operatorAskPriceUsd === "number" && operatorAskPriceUsd > 0;
   const askDisplay = hasAsk
@@ -59,6 +61,10 @@ export function DeedPreviewPanel({
         maximumFractionDigits: 0,
       }).format(operatorAskPriceUsd)
     : null;
+
+  const fmtUsd = (n: number) =>
+    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
+  const fmtSf = (n: number) => `${n.toLocaleString("en-US")} SF`;
   return (
     <div className="relative">
       <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-honey-400/[0.07] to-transparent blur-3xl pointer-events-none" />
@@ -109,6 +115,33 @@ export function DeedPreviewPanel({
             </div>
             <p className="mt-3 text-[11px] text-stone-500 leading-relaxed max-w-3xl italic">
               {operatorAskDoctrineNote}
+            </p>
+          </div>
+        )}
+
+        {/* Operator-stated STNL terms · only when present · doctrine label visible */}
+        {stnlTerms && (
+          <div className="px-7 py-6 border-b border-stone-800 bg-gradient-to-br from-honey-500/[0.06] to-transparent">
+            <div className="flex items-baseline gap-3 flex-wrap mb-4">
+              <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-honey-400/80 font-semibold">
+                Operator-stated STNL terms
+              </div>
+              <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-stone-500">
+                OPERATOR CLAIM · NOT VALIDATED
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <StnlStat label="Tenant" value={stnlTerms.tenantName} sub={stnlTerms.tenantCreditNote} />
+              <StnlStat label="GLA" value={fmtSf(stnlTerms.glaSf)} sub={stnlTerms.propertyType.replace(/_/g, " ")} />
+              <StnlStat label="Market rent" value={`$${stnlTerms.marketRentPerSfNnnUsd.toFixed(2)} / SF`} sub={stnlTerms.leaseStructure} />
+              <StnlStat label="Term" value={`${stnlTerms.termYears} years`} sub={stnlTerms.optionsSummary} />
+              <StnlStat label="NOI" value={fmtUsd(stnlTerms.noiUsd)} sub="operator-stated · derived from rent roll" highlight />
+              <StnlStat label="Cap rate" value={`${stnlTerms.capRatePct.toFixed(2)}%`} sub="operator-stated" highlight />
+              <StnlStat label="Asking" value={fmtUsd(stnlTerms.askingPriceUsd)} sub="NOI / cap" highlight />
+              <StnlStat label="Currency" value={stnlTerms.currency} sub="" />
+            </div>
+            <p className="mt-4 text-[11px] text-stone-500 leading-relaxed max-w-3xl italic">
+              {stnlTerms.doctrineNote}
             </p>
           </div>
         )}
@@ -165,6 +198,28 @@ function Row({
       >
         {value}
       </span>
+    </div>
+  );
+}
+
+function StnlStat({
+  label, value, sub, highlight,
+}: { label: string; value: string; sub: string; highlight?: boolean }) {
+  return (
+    <div className={`rounded-lg border p-3 ${
+      highlight
+        ? "border-honey-400/30 bg-honey-400/[0.04]"
+        : "border-stone-800 bg-stone-950/40"
+    }`}>
+      <div className="text-[9px] uppercase tracking-[0.2em] text-stone-500 font-mono font-semibold">{label}</div>
+      <div className={`mt-1.5 text-sm font-semibold font-mono ${highlight ? "text-honey-200" : "text-stone-100"}`}>
+        {value}
+      </div>
+      {sub && (
+        <div className="mt-1 text-[9px] uppercase tracking-[0.16em] text-stone-500 font-mono">
+          {sub}
+        </div>
+      )}
     </div>
   );
 }

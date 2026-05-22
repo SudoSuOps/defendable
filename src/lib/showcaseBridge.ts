@@ -64,6 +64,22 @@ export interface PublicRecord {
         amount_usd?: number;
         doctrine_note?: string;
       };
+      operator_stated_stnl_terms?: {
+        label?: string;
+        tenant_name?: string;
+        tenant_credit_note?: string;
+        property_type?: string;
+        gla_sf?: number;
+        market_rent_per_sf_nnn_usd?: number;
+        lease_structure?: string;
+        term_years?: number;
+        options_summary?: string;
+        noi_usd?: number;
+        cap_rate_pct?: number;
+        asking_price_usd?: number;
+        currency?: string;
+        doctrine_note?: string;
+      };
     } | null;
     validator_review?: {
       protocol?: string;
@@ -138,6 +154,24 @@ export interface ShowcaseProps {
   operatorAskLabel: string;           // "Operator asking"
   operatorAskDoctrineNote: string;    // disclaimer that travels with the price
 
+  // Operator-stated STNL terms · doctrine: operator claim, not validated
+  // Null when the deed isn't an STNL · UI hides the entire block then.
+  stnlTerms: {
+    tenantName: string;
+    tenantCreditNote: string;
+    propertyType: string;
+    glaSf: number;
+    marketRentPerSfNnnUsd: number;
+    leaseStructure: string;
+    termYears: number;
+    optionsSummary: string;
+    noiUsd: number;
+    capRatePct: number;
+    askingPriceUsd: number;
+    currency: string;
+    doctrineNote: string;
+  } | null;
+
   // ENS
   ensIdentity: string;
   ensStatus: string;
@@ -193,6 +227,8 @@ export const COMPUTE_DEFAULT_PROPS: ShowcaseProps = {
   operatorAskLabel: "Operator asking",
   operatorAskDoctrineNote:
     "Operator's stated asking price. Operator claim only · not a validator-issued value, professional appraisal, or confirmed-sale comparable.",
+
+  stnlTerms: null,
 
   ensIdentity: "ddeed-dov-compute-000001.swarmbee.defendable.eth",
   ensStatus: "RESERVED_NOT_ISSUED",
@@ -332,6 +368,27 @@ export function mapPublicRecordToProps(record: PublicRecord): ShowcaseProps {
       d.aiov_analysis?.operator_ask?.label ?? COMPUTE_DEFAULT_PROPS.operatorAskLabel,
     operatorAskDoctrineNote:
       d.aiov_analysis?.operator_ask?.doctrine_note ?? COMPUTE_DEFAULT_PROPS.operatorAskDoctrineNote,
+
+    // STNL terms · only surfaced when value_display_status is OPERATOR_STATED_STNL_TERMS
+    stnlTerms: (() => {
+      const s = d.aiov_analysis?.operator_stated_stnl_terms;
+      if (!s) return null;
+      return {
+        tenantName: s.tenant_name ?? "",
+        tenantCreditNote: s.tenant_credit_note ?? "",
+        propertyType: s.property_type ?? "",
+        glaSf: s.gla_sf ?? 0,
+        marketRentPerSfNnnUsd: s.market_rent_per_sf_nnn_usd ?? 0,
+        leaseStructure: s.lease_structure ?? "",
+        termYears: s.term_years ?? 0,
+        optionsSummary: s.options_summary ?? "",
+        noiUsd: s.noi_usd ?? 0,
+        capRatePct: s.cap_rate_pct ?? 0,
+        askingPriceUsd: s.asking_price_usd ?? 0,
+        currency: s.currency ?? "USD",
+        doctrineNote: s.doctrine_note ?? "",
+      };
+    })(),
 
     ensIdentity: ens.name ?? COMPUTE_DEFAULT_PROPS.ensIdentity,
     ensStatus: ens.status ?? "RESERVED_NOT_ISSUED",
