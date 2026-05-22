@@ -62,6 +62,7 @@ function DefendableHeader() {
     { label: "Asset Classes", href: "#asset-classes" },
     { label: "Deeds", href: "#deeds" },
     { label: "Compute Demo", href: "/compute" },
+    { label: "Ledger", href: "/ledger" },
     { label: "Early Access", href: "#early-access" },
   ];
 

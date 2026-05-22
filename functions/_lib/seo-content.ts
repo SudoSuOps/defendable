@@ -25,7 +25,53 @@ export async function getRouteContent(
   if (pathname === "/compute") {
     return buildDefendableComputeContent();
   }
+  if (pathname === "/ledger") {
+    return buildLedgerContent();
+  }
   return null;
+}
+
+function buildLedgerContent(): RouteContent {
+  const url = "https://defendableos.com/ledger";
+  const bodyHtml = `
+<main>
+  <h1>Every Defendable hash resolves at the ledger.</h1>
+  <p>Paste any record hash, manifest hash, validator receipt, or deed reference and the ledger resolves it to the canonical public record on DefendableOS.</p>
+
+  <h2>What the ledger resolves</h2>
+  <ul>
+    <li><strong>RECORD_HASH</strong> · the SHA-256 of a Defendable Deed payload</li>
+    <li><strong>MANIFEST_HASH</strong> · the SHA-256 of an evidence manifest</li>
+    <li><strong>VALIDATOR_RECEIPT</strong> · the SHA-256 of a validator receipt</li>
+    <li><strong>DEED_REFERENCE</strong> · the human-readable deed reference (e.g. DDEED-DOV-COMPUTE-000001-v2)</li>
+  </ul>
+
+  <h2>What the ledger refuses to do</h2>
+  <ul>
+    <li>Surface records that have not been preview-published</li>
+    <li>Expose private evidence files or filenames</li>
+    <li>Treat a draft record as if it were issued</li>
+    <li>Claim certification, final valuation, or issuance the platform has not earned</li>
+  </ul>
+
+  <p><em>Hash integrity uses SHA-256 over DEFENDABLE_CANONICAL_JSON_V1 (sorted keys, compact separators).</em></p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Defendable Ledger · resolve any Defendable hash",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+      },
+    ],
+    title: "Defendable Ledger · resolve any Defendable hash",
+    description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
 }
 
 function buildDefendableComputeContent(): RouteContent {

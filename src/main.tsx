@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
+import Ledger from "./pages/Ledger";
 
 // Code-split · /compute pulls in three.js + R3F + drei (~900KB JS) so we
 // keep it out of the main landing bundle.
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             </Suspense>
           }
         />
+        <Route path="/ledger" element={<Ledger />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
