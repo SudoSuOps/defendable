@@ -21,8 +21,13 @@
  * Mobile collapses to stacked sections · static GPU still renders smoothly
  * but cards stack below instead of overlaying the canvas.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
+import {
+  CanvasErrorBoundary,
+  StaticGpuFallback,
+  hasWebGL,
+} from "./CanvasErrorBoundary";
 import { DeedPreviewPanel } from "./DeedPreviewPanel";
 import { FloatingEvidenceCard } from "./FloatingEvidenceCard";
 import { GpuModelScene } from "./GpuModelScene";
@@ -42,6 +47,8 @@ export function DefendableComputeHero() {
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [focused, setFocused] = useState<FocusedCard>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  // Probe WebGL once on mount · skip the Canvas entirely if unsupported.
+  const webglOk = useMemo(() => hasWebGL(), []);
 
   // Track pointer relative to the 3D stage so parallax stays subtle and
   // localised to where the GPU actually is.
@@ -76,9 +83,16 @@ export function DefendableComputeHero() {
           ref={stageRef}
           className="relative w-full h-[560px] lg:h-[640px] rounded-2xl border border-stone-800 bg-gradient-to-b from-stone-950 to-neutral-950 overflow-hidden"
         >
-          {/* The 3D canvas occupies the full stage */}
+          {/* The 3D canvas occupies the full stage · gracefully degrades to
+              a static fallback when WebGL is absent or three.js fails. */}
           <div className="absolute inset-0">
-            <GpuModelScene pointer={pointer} />
+            {webglOk ? (
+              <CanvasErrorBoundary fallback={<StaticGpuFallback />}>
+                <GpuModelScene pointer={pointer} />
+              </CanvasErrorBoundary>
+            ) : (
+              <StaticGpuFallback />
+            )}
           </div>
 
           {/* ── Floating glass cards · positioned around the GPU ──── */}
