@@ -22,7 +22,70 @@ export async function getRouteContent(
   if (pathname === "/" && (host === "defendableos.com" || host === "www.defendableos.com" || host.endsWith(".pages.dev"))) {
     return buildDefendableOSContent();
   }
+  if (pathname === "/compute") {
+    return buildDefendableComputeContent();
+  }
   return null;
+}
+
+function buildDefendableComputeContent(): RouteContent {
+  const url = "https://defendableos.com/compute";
+  const bodyHtml = `
+<main>
+  <h1>Proof of Value for AI Hardware.</h1>
+  <p><strong>DefendableOS</strong> transforms GPUs, servers, and AI infrastructure into evidence-backed, market-ready asset records · with validator receipts, manifest integrity, and draft deed packaging designed to travel with the asset.</p>
+  <p><em>AIOV gives the opinion. DefendableOS proves the value.</em></p>
+
+  <h2>Featured draft record</h2>
+  <p><strong>NVIDIA RTX PRO 6000 Blackwell Workstation GPU</strong> · Asset reference <code>DOV-COMPUTE-000001</code>.</p>
+  <ul>
+    <li>Record status · DRAFT_REVIEW_RECORD</li>
+    <li>Validator status · PASSED_FOR_DRAFT_PACKAGING</li>
+    <li>Value status · WITHHELD_PENDING_VALIDATOR_REVIEW</li>
+    <li>ENS status · RESERVED_NOT_ISSUED</li>
+    <li>Publication · NOT_PUBLISHED (preview only · human approval required)</li>
+  </ul>
+
+  <h2>What this page shows</h2>
+  <ul>
+    <li><strong>Asset Identity</strong> · class, category, public reference</li>
+    <li><strong>Evidence Packet</strong> · manifest attached, items indexed, private evidence referenced by hash only</li>
+    <li><strong>Benchmark Receipt</strong> · performance evidence on file, withheld until human approval</li>
+    <li><strong>Validator</strong> · source review, input review, claim review, draft packaging, human approval required</li>
+    <li><strong>Defendable Deed</strong> · draft record preview with integrity block (SHA-256, DEFENDABLE_CANONICAL_JSON_V1)</li>
+  </ul>
+
+  <h2>Disclosures</h2>
+  <p>Draft evidence and analysis record prepared for review. No final valuation, professional appraisal, certification, authentication guarantee, deed issuance, or ENS publication has occurred.</p>
+</main>
+  `.trim();
+
+  const jsonLdBlocks: object[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "NVIDIA RTX PRO 6000 Blackwell Workstation GPU",
+      brand: { "@type": "Brand", name: "NVIDIA" },
+      category: "Compute Hardware · GPU Accelerator",
+      productID: "DOV-COMPUTE-000001",
+      description: "Draft evidence-backed Proof of Value record · validator-reviewed for draft packaging · human approval required before any issuance.",
+      url,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url,
+      name: "Defendable Compute · Proof of Value for AI Hardware",
+      isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+    },
+  ];
+
+  return {
+    bodyHtml,
+    jsonLdBlocks,
+    title: "Defendable Compute · Proof of Value for AI Hardware",
+    description: "Premium evidence-backed records for GPUs, servers, and AI infrastructure · validator receipts, manifest integrity, draft deed packaging. By DefendableOS.",
+  };
 }
 
 function buildDefendableOSContent(): RouteContent {

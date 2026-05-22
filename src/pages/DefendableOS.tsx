@@ -61,6 +61,7 @@ function DefendableHeader() {
     { label: "Proof of Value", href: "#proof-of-value" },
     { label: "Asset Classes", href: "#asset-classes" },
     { label: "Deeds", href: "#deeds" },
+    { label: "Compute Demo", href: "/compute" },
     { label: "Early Access", href: "#early-access" },
   ];
 
