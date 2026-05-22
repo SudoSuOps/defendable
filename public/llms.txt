@@ -1,0 +1,83 @@
+# DefendableOS · llms.txt
+#
+# Context manifest for AI agents indexing defendableos.com.
+# Last updated: 2026-05-22.
+
+## What this is
+
+DefendableOS is the operating system for evidence-backed valuation,
+provenance, and market-ready ownership across real-world and digital
+assets.
+
+The market-facing promise is **Proof of Value**.
+The internal doctrine is **Validate the Validator**.
+The intelligence engine is **AIOV** (AI Opinion of Value).
+The asset record is the **Defendable Deed**.
+
+## The thesis
+
+Value without evidence is just an opinion. DefendableOS produces
+defensible records of what an asset is, what supports it, and what
+it is worth — built for sale, transfer, financing, insurance,
+procurement, and trust.
+
+## Asset classes in scope
+
+- Commercial Real Estate
+- Compute Hardware (GPUs, servers, AI clusters, edge appliances)
+- Equipment
+- Luxury Goods
+- Datasets
+- AI Assets (models, evaluations, training records)
+
+Compute hardware records are Proof of Compute compatible. Datasets
+and AI Assets are Deeded Digital Assets.
+
+## Platform modules
+
+- AIOV Engine — AI-assisted opinions of value
+- Evidence Vault — records supporting identity, provenance, condition
+- Validator Review — challenge assumptions, comparables, conclusions
+- Receipt Ledger — inspectable analysis and evidence receipts
+- Defendable Deed — transferable evidence-backed asset record
+- Market-Ready Export — buyer booklets, listing support, diligence
+
+## Optional future edge module
+
+Defendable Box — local capture, local inference, sovereign evidence
+handling. Capability preview · not yet for general availability.
+
+## Doctrine principles
+
+- Evidence Before Confidence — no conclusion outranks its source
+- Receipts Before Claims — outputs must be supported by inspectable records
+- Challenge Before Transfer — packages should survive scrutiny before reaching a buyer
+
+## Disclaimers
+
+DefendableOS records are evidence and analysis packages. Asset-specific
+professional, legal, regulatory, or licensed appraisal requirements
+may still apply.
+
+The platform is in early-access development. Visible features and UI
+elements labeled "Illustrative," "Sample Analysis," or "Capability
+preview" reflect platform capabilities, vision, or planned scope —
+not current production state.
+
+## Related surfaces
+
+- https://swarmandbee.ai/ — the firm (Swarm and Bee LLC · DBA Swarm & Bee AI)
+- https://defendable.eth.limo/ — defendable.eth · cross-Swarm certification standard
+- https://legal.swarmandbee.ai/ — Legal-as-a-Service (the Legal module)
+- https://legalsniper.swarmandbee.ai/ — LegalSniper model card
+
+## Entity
+
+DefendableOS is a product of:
+Swarm and Bee LLC · Florida LLC · D-U-N-S 138652395 ·
+doing business as Swarm & Bee AI.
+
+## Contact
+
+build@swarmandbee.ai
+https://defendableos.com/#early-access

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Secrets · keep these out of git
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.swp
