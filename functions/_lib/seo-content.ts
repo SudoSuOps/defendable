@@ -28,7 +28,39 @@ export async function getRouteContent(
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
+  if (pathname.startsWith("/showcase/")) {
+    const slug = pathname.slice("/showcase/".length).split("/")[0];
+    if (slug) return buildShowcaseContent(slug);
+  }
   return null;
+}
+
+function buildShowcaseContent(slug: string): RouteContent {
+  const url = `https://defendableos.com/showcase/${slug}`;
+  const bodyHtml = `
+<main>
+  <h1>Defendable Showcase · ${slug}</h1>
+  <p>Live per-asset showcase rendered against a public Defendable record. The cinematic surface complements the institutional <code>/verify/${slug}</code> view · same canonical evidence, two skins.</p>
+  <p>Draft records render with full lifecycle decomposition: <strong>DRAFT_REVIEW_RECORD · PASSED_FOR_DRAFT_PACKAGING · NOT_PUBLISHED · WITHHELD_PENDING_VALIDATOR_REVIEW · RESERVED_NOT_ISSUED</strong>.</p>
+  <p>No final valuation, professional appraisal, certification, authentication guarantee, deed issuance, or ENS publication has occurred unless the deed has cleared all four blocker conditions.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: `Defendable Showcase · ${slug}`,
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+      },
+    ],
+    title: `Defendable Showcase · ${slug}`,
+    description:
+      "Per-asset cinematic preview of an evidence-backed Defendable Deed. Draft records render with full lifecycle decomposition · no overclaiming.",
+  };
 }
 
 function buildLedgerContent(): RouteContent {

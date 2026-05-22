@@ -1,28 +1,17 @@
 /**
- * DefendableComputeHero — flagship hero composition for /compute.
+ * DefendableComputeHero — flagship showcase composition.
  *
- * Layout (desktop):
- *   ┌────────────────────────────────────────────────────────┐
- *   │  PROOF OF VALUE                                         │
- *   │  Proof of Value for AI Hardware                         │
- *   │  ...supporting copy + CTAs                              │
- *   └────────────────────────────────────────────────────────┘
- *       [Asset Identity]              [Validator]
- *                  ┌──────────────────────┐
- *                  │   3D GPU SCENE       │
- *                  └──────────────────────┘
- *       [Evidence Packet]             [Benchmark Receipt]
+ * Data-driven via the ShowcaseProps interface. /compute uses safe
+ * compute-hardware defaults · /showcase/{slug} fetches a real deed and
+ * passes its props in (see lib/showcaseBridge.ts:mapPublicRecordToProps).
  *
- *                  [Proof of Value strip]
- *
- *   ┌────── DEFENDABLE DEED PREVIEW (full-width) ───────────┐
- *   └────────────────────────────────────────────────────────┘
- *
- * Mobile collapses to stacked sections · static GPU still renders smoothly
- * but cards stack below instead of overlaying the canvas.
+ * The 3D scene currently always renders the procedural GPU. Future asset
+ * classes (CRE, equipment, luxury, datasets) will swap in their own scene
+ * keyed off props.sceneKind.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { COMPUTE_DEFAULT_PROPS, type ShowcaseProps } from "../../lib/showcaseBridge";
 import {
   CanvasErrorBoundary,
   StaticGpuFallback,
@@ -41,17 +30,14 @@ type FocusedCard =
   | "deed"
   | null;
 
-export function DefendableComputeHero() {
-  // Pointer state in normalised [-1, 1] coords · feeds both the 3D scene
-  // (subtle GPU tilt) and the floating cards (parallax shift).
+export function DefendableComputeHero(propsIn: Partial<ShowcaseProps> = {}) {
+  const props: ShowcaseProps = { ...COMPUTE_DEFAULT_PROPS, ...propsIn };
+
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [focused, setFocused] = useState<FocusedCard>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  // Probe WebGL once on mount · skip the Canvas entirely if unsupported.
   const webglOk = useMemo(() => hasWebGL(), []);
 
-  // Track pointer relative to the 3D stage so parallax stays subtle and
-  // localised to where the GPU actually is.
   useEffect(() => {
     const el = stageRef.current;
     if (!el) return;
@@ -70,21 +56,23 @@ export function DefendableComputeHero() {
     };
   }, []);
 
+  const badgeText = props.isDraft
+    ? "DRAFT · NOT ISSUED · NOT PUBLISHED"
+    : "ISSUED · PUBLISHED";
+
+  const itemPlural = props.evidenceItemCount === 1 ? "item" : "items";
+
   return (
     <section className="relative px-6 py-16 lg:py-24">
-      {/* Top header block · centred on a max-width container */}
       <div className="max-w-7xl mx-auto">
-        <ProofHeader />
+        <ProofHeader {...props} />
       </div>
 
-      {/* ─── 3D stage with floating cards · desktop only overlay ──────── */}
       <div className="mt-14 max-w-7xl mx-auto">
         <div
           ref={stageRef}
           className="relative w-full h-[560px] lg:h-[640px] rounded-2xl border border-stone-800 bg-gradient-to-b from-stone-950 to-neutral-950 overflow-hidden"
         >
-          {/* The 3D canvas occupies the full stage · gracefully degrades to
-              a static fallback when WebGL is absent or three.js fails. */}
           <div className="absolute inset-0">
             {webglOk ? (
               <CanvasErrorBoundary fallback={<StaticGpuFallback />}>
@@ -95,16 +83,15 @@ export function DefendableComputeHero() {
             )}
           </div>
 
-          {/* ── Floating glass cards · positioned around the GPU ──── */}
-          {/* Hidden on small screens · grid below handles mobile.    */}
+          {/* Desktop floating cards */}
           <div className="hidden lg:block">
             <FloatingEvidenceCard
               eyebrow="Asset Identity"
-              title="NVIDIA RTX PRO 6000 Blackwell"
+              title={props.assetName}
               lines={[
-                { label: "Class", value: "COMPUTE_HARDWARE" },
-                { label: "Category", value: "GPU_ACCELERATOR" },
-                { label: "Ref", value: "DOV-COMPUTE-000001" },
+                { label: "Class", value: props.assetClass },
+                { label: "Category", value: props.category },
+                { label: "Ref", value: props.assetReference },
               ]}
               style={{ top: "5%", left: "4%", width: 260 }}
               parallax={{ x: pointer.x, y: pointer.y, strength: 0.025 }}
@@ -119,8 +106,16 @@ export function DefendableComputeHero() {
                 { label: "Source", value: "REVIEWED", tone: "ok" },
                 { label: "Input", value: "REVIEWED", tone: "ok" },
                 { label: "Claim", value: "REVIEWED", tone: "ok" },
-                { label: "Packaging", value: "DRAFT", tone: "pending" },
-                { label: "Human", value: "REQUIRED", tone: "pending" },
+                {
+                  label: "Packaging",
+                  value: props.isDraft ? "DRAFT" : "ISSUED",
+                  tone: props.isDraft ? "pending" : "ok",
+                },
+                {
+                  label: "Human",
+                  value: props.isDraft ? "REQUIRED" : "GRANTED",
+                  tone: props.isDraft ? "pending" : "ok",
+                },
               ]}
               style={{ top: "5%", right: "4%", width: 270 }}
               parallax={{ x: pointer.x, y: pointer.y, strength: 0.03 }}
@@ -130,10 +125,10 @@ export function DefendableComputeHero() {
 
             <FloatingEvidenceCard
               eyebrow="Evidence Packet"
-              title="Manifest attached · 3 items"
+              title={`Manifest attached · ${props.evidenceItemCount} ${itemPlural}`}
               lines={[
                 { label: "Manifest", value: "ATTACHED", tone: "ok" },
-                { label: "Items", value: "3 INDEXED" },
+                { label: "Items", value: `${props.evidenceItemCount} INDEXED` },
                 { label: "Privacy", value: "HASH-ONLY", tone: "pending" },
                 { label: "Algorithm", value: "SHA-256" },
               ]}
@@ -144,45 +139,56 @@ export function DefendableComputeHero() {
             />
 
             <FloatingEvidenceCard
-              eyebrow="Benchmark Receipt"
-              title="Performance evidence on file"
-              body="Benchmark receipt indexed. Validator review pending. Performance figures withheld until human approval."
+              eyebrow={props.performanceCardEyebrow}
+              title={props.performanceCardTitle}
+              body={props.performanceCardBody}
               style={{ bottom: "8%", right: "4%", width: 270 }}
               parallax={{ x: pointer.x, y: pointer.y, strength: 0.028 }}
               onClick={() => setFocused(focused === "benchmark" ? null : "benchmark")}
               active={focused === "benchmark"}
             />
 
-            {/* Centre-top deed status chip (small) */}
+            {/* Centre-top status chip */}
             <div
               className="absolute left-1/2 top-4 -translate-x-1/2 pointer-events-none"
-              style={{ transform: `translate(-50%, 0) translate3d(${(pointer.x * 12).toFixed(2)}px, ${(pointer.y * 6).toFixed(2)}px, 0)` }}
+              style={{
+                transform: `translate(-50%, 0) translate3d(${(pointer.x * 12).toFixed(2)}px, ${(pointer.y * 6).toFixed(2)}px, 0)`,
+              }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/[0.08] backdrop-blur-md">
-                <span className="text-[9px] font-mono uppercase tracking-[0.22em] text-amber-300 font-semibold">
-                  DRAFT · NOT ISSUED · NOT PUBLISHED
+              <div
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border backdrop-blur-md ${
+                  props.isDraft
+                    ? "border-amber-500/40 bg-amber-500/[0.08]"
+                    : "border-emerald-500/40 bg-emerald-500/[0.08]"
+                }`}
+              >
+                <span
+                  className={`text-[9px] font-mono uppercase tracking-[0.22em] font-semibold ${
+                    props.isDraft ? "text-amber-300" : "text-emerald-300"
+                  }`}
+                >
+                  {badgeText}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Small caption at the bottom · subtle, premium */}
           <div className="absolute bottom-3 left-0 right-0 flex justify-center pointer-events-none">
             <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-stone-500">
-              RTX PRO 6000 Blackwell · stylized product preview
+              {props.assetName} · stylized product preview
             </div>
           </div>
         </div>
 
-        {/* ─── Mobile/tablet · stacked card grid below the canvas ────── */}
+        {/* Mobile · stacked card grid */}
         <div className="mt-6 grid sm:grid-cols-2 gap-4 lg:hidden">
           <FloatingEvidenceCard
             eyebrow="Asset Identity"
-            title="NVIDIA RTX PRO 6000 Blackwell"
+            title={props.assetName}
             lines={[
-              { label: "Class", value: "COMPUTE_HARDWARE" },
-              { label: "Category", value: "GPU_ACCELERATOR" },
-              { label: "Ref", value: "DOV-COMPUTE-000001" },
+              { label: "Class", value: props.assetClass },
+              { label: "Category", value: props.category },
+              { label: "Ref", value: props.assetReference },
             ]}
             style={{ position: "static" }}
           />
@@ -193,32 +199,31 @@ export function DefendableComputeHero() {
               { label: "Source", value: "REVIEWED", tone: "ok" },
               { label: "Input", value: "REVIEWED", tone: "ok" },
               { label: "Claim", value: "REVIEWED", tone: "ok" },
-              { label: "Packaging", value: "DRAFT", tone: "pending" },
-              { label: "Human", value: "REQUIRED", tone: "pending" },
+              { label: "Packaging", value: props.isDraft ? "DRAFT" : "ISSUED", tone: props.isDraft ? "pending" : "ok" },
+              { label: "Human", value: props.isDraft ? "REQUIRED" : "GRANTED", tone: props.isDraft ? "pending" : "ok" },
             ]}
             style={{ position: "static" }}
           />
           <FloatingEvidenceCard
             eyebrow="Evidence Packet"
-            title="Manifest attached · 3 items"
+            title={`Manifest attached · ${props.evidenceItemCount} ${itemPlural}`}
             lines={[
               { label: "Manifest", value: "ATTACHED", tone: "ok" },
-              { label: "Items", value: "3 INDEXED" },
+              { label: "Items", value: `${props.evidenceItemCount} INDEXED` },
               { label: "Privacy", value: "HASH-ONLY", tone: "pending" },
               { label: "Algorithm", value: "SHA-256" },
             ]}
             style={{ position: "static" }}
           />
           <FloatingEvidenceCard
-            eyebrow="Benchmark Receipt"
-            title="Performance evidence on file"
-            body="Benchmark receipt indexed. Validator review pending. Performance figures withheld until human approval."
+            eyebrow={props.performanceCardEyebrow}
+            title={props.performanceCardTitle}
+            body={props.performanceCardBody}
             style={{ position: "static" }}
           />
         </div>
       </div>
 
-      {/* ─── Proof of Value strip · between scene and deed ────────────── */}
       <div className="max-w-5xl mx-auto mt-10 text-center">
         <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-honey-400/80 font-semibold">
           Proof of Value
@@ -229,18 +234,15 @@ export function DefendableComputeHero() {
         </p>
       </div>
 
-      {/* ─── Deed Preview Panel · full-width below the scene ──────────── */}
       <div className="max-w-7xl mx-auto mt-14">
-        <DeedPreviewPanel />
+        <DeedPreviewPanel {...props} />
       </div>
 
-      {/* ─── Final disclosure footer ──────────────────────────────────── */}
       <div className="max-w-3xl mx-auto mt-14 text-center">
         <p className="text-xs text-stone-500 italic leading-relaxed">
-          Public preview only. The deed record above is a draft prepared for
-          review. No final valuation, professional appraisal, certification,
-          authentication guarantee, issued Defendable Deed, public verification
-          publication, or ENS issuance has occurred.
+          {props.isDraft
+            ? "Public preview only. The deed record above is a draft prepared for review. No final valuation, professional appraisal, certification, authentication guarantee, issued Defendable Deed, public verification publication, or ENS issuance has occurred."
+            : "Public verification record. This deed has cleared all draft conditions and is publicly anchored."}
         </p>
       </div>
     </section>

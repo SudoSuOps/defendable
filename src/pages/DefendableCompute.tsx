@@ -43,6 +43,9 @@ export default function DefendableCompute() {
           <Link to="/" className="text-stone-400 hover:text-stone-200">
             Home
           </Link>
+          <Link to="/ledger" className="text-stone-400 hover:text-stone-200">
+            Ledger
+          </Link>
           <a
             href="https://github.com/SudoSuOps/defendableos"
             className="text-stone-400 hover:text-stone-200"

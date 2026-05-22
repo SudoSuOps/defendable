@@ -6,9 +6,10 @@ import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
 import Ledger from "./pages/Ledger";
 
-// Code-split · /compute pulls in three.js + R3F + drei (~900KB JS) so we
-// keep it out of the main landing bundle.
+// Code-split · /compute and /showcase/:slug pull in three.js + R3F + drei
+// (~900KB JS) so we keep them out of the main landing bundle.
 const DefendableCompute = lazy(() => import("./pages/DefendableCompute"));
+const DefendableShowcase = lazy(() => import("./pages/DefendableShowcase"));
 
 function ComputeFallback() {
   return (
@@ -28,6 +29,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           element={
             <Suspense fallback={<ComputeFallback />}>
               <DefendableCompute />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/showcase/:slug"
+          element={
+            <Suspense fallback={<ComputeFallback />}>
+              <DefendableShowcase />
             </Suspense>
           }
         />
