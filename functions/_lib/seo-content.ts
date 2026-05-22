@@ -28,11 +28,83 @@ export async function getRouteContent(
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
+  // Defendable CRE MarketReady · Palm Grove Marketplace · 5 routes.
+  // Match BEFORE the generic /showcase/:slug branch so CRE sub-routes
+  // don't fall through to generic showcase content.
+  if (pathname.startsWith("/showcase/cre/palm-grove-marketplace")) {
+    return buildCrePalmGroveContent(pathname);
+  }
   if (pathname.startsWith("/showcase/")) {
     const slug = pathname.slice("/showcase/".length).split("/")[0];
     if (slug) return buildShowcaseContent(slug);
   }
   return null;
+}
+
+function buildCrePalmGroveContent(pathname: string): RouteContent {
+  const sub = pathname.replace("/showcase/cre/palm-grove-marketplace", "").replace(/^\//, "");
+  const url = `https://defendableos.com${pathname}`;
+  const disclosure =
+    "ILLUSTRATIVE PROPERTY PREVIEW · NOT AN ACTIVE OFFERING · NO FINAL VALUATION REPRESENTED";
+
+  let surfaceTitle = "Palm Grove Marketplace";
+  let surfaceDescription =
+    "An illustrative Defendable CRE MarketReady demo · grocery-anchored neighborhood retail center concept in South Florida · draft proof record, validator review and buyer-ready offering materials.";
+
+  if (sub === "teaser") {
+    surfaceTitle = "Palm Grove Marketplace · Teaser Sheet";
+    surfaceDescription =
+      "Print-ready teaser preview · 82,400 SF GLA · 94.2% occupancy · grocery-anchored retail concept · all metrics illustrative demo data.";
+  } else if (sub === "om") {
+    surfaceTitle = "Palm Grove Marketplace · Offering Memorandum Preview";
+    surfaceDescription =
+      "Multi-section illustrative Offering Memorandum preview · financial-analysis module is a placeholder pending approved engagement · no underwriting conclusion represented.";
+  } else if (sub === "buyer-room") {
+    surfaceTitle = "Palm Grove Marketplace · Buyer Room Preview";
+    surfaceDescription =
+      "Defendable Room · controlled diligence preview · access-request required · demo only · no real transaction materials granted.";
+  } else if (sub === "proof-record") {
+    surfaceTitle = "Palm Grove Marketplace · Draft Proof Record";
+    surfaceDescription =
+      "Draft Defendable Property Record · DDEED-DOV-CRE-DEMO-000001-v1 · DRAFT_MARKETING_PREVIEW · ledger-resolvable · doctrine-locked.";
+  }
+
+  const bodyHtml = `
+<main>
+  <p><strong>${disclosure}</strong></p>
+  <h1>${surfaceTitle}</h1>
+  <p>${surfaceDescription}</p>
+  <h2>Defendable CRE · MarketReady Demo</h2>
+  <p>DefendableOS does not merely create a beautiful property website or Offering Memorandum. It creates the reviewable proof infrastructure behind the presentation. No evidence, no claim. No validator pass, no deed. No private records exposed publicly. No active offering represented in an illustrative demo.</p>
+  <p>Asset reference: <code>DOV-CRE-DEMO-000001</code>. Asset class: Commercial Real Estate. Property type concept: Grocery-Anchored Neighborhood Retail Center. Market: South Florida. ENS identity: <code>palm-grove-marketplace.cre.demo.defendable.eth</code> · RESERVED_NOT_ISSUED.</p>
+  <p>Illustrative property facts: 82,400 SF Gross Leasable Area · 94.2% occupancy · 14 tenant spaces · 9.8 acres · year built 2016, renovated 2024 · parking ratio 4.7 / 1,000 SF. All metrics are illustrative demo data created to demonstrate Defendable CRE workflow functionality. Not derived from any real property, real owner, real broker, real rent roll, or real appraisal.</p>
+  <p>Lifecycle: <strong>DRAFT_MARKETING_PREVIEW · PASSED_FOR_DRAFT_MARKETING_DISPLAY · NOT_PUBLISHED · NO_FINAL_VALUATION_REPRESENTED · RESERVED_NOT_ISSUED · ILLUSTRATIVE_DEMO_PACKET</strong>.</p>
+  <p>This is not an active offering, not an appraisal, not a certification, not a valuation opinion, and not a solicitation to acquire an interest in real property.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: surfaceTitle,
+        description: surfaceDescription,
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: {
+          "@type": "Product",
+          name: "Defendable CRE MarketReady",
+          description:
+            "Evidence-backed property marketing infrastructure for commercial real estate · property website + teaser sheet + offering memorandum + buyer room + draft proof record.",
+          brand: { "@type": "Brand", name: "DefendableOS" },
+        },
+      },
+    ],
+    title: `${surfaceTitle} · DefendableOS`,
+    description: surfaceDescription,
+  };
 }
 
 function buildShowcaseContent(slug: string): RouteContent {
