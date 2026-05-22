@@ -457,89 +457,256 @@ function DefendableDeedSection() {
     <section id="deeds" className="border-b border-stone-900/80">
       <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
         <Eyebrow>THE ARTIFACT</Eyebrow>
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start mt-6">
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-              The asset record that travels with the{" "}
-              <span className="font-serif italic font-normal text-amber-300">value</span>.
-            </h2>
-            <p className="mt-8 text-lg text-stone-300 leading-relaxed">
-              A <span className="font-serif italic text-amber-200">Defendable Deed</span> is an evidence-backed record designed to preserve the identity, provenance, condition, supporting analysis, and Proof of Value package associated with an asset.
-            </p>
-
-            <ul className="mt-10 space-y-4">
-              {principles.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-stone-200">
-                  <span className="mt-1 inline-block w-5 h-5 rounded border border-amber-500/40 flex items-center justify-center text-amber-300 flex-shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M1.5 5l2 2 5-5" />
-                    </svg>
-                  </span>
-                  <span className="text-base leading-relaxed">{p}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-10 text-xs text-stone-500 leading-relaxed max-w-md italic">
-              DefendableOS records are evidence and analysis packages. Asset-specific professional, legal, regulatory, or licensed appraisal requirements may still apply.
-            </p>
-          </div>
-
-          <DeedMockup />
+        <div className="mt-6 max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
+            The asset record that travels with the{" "}
+            <span className="font-serif italic font-normal text-amber-300">value</span>.
+          </h2>
+          <p className="mt-8 text-lg text-stone-300 leading-relaxed">
+            A <span className="font-serif italic text-amber-200">Defendable Deed</span> is an evidence-backed record designed to preserve the identity, provenance, condition, supporting analysis, and Proof of Value package associated with an asset. Each record ships with a structured JSON receipt — inspectable, verifiable, and built to travel.
+          </p>
         </div>
+
+        {/* Two-column centerpiece · deed card (left) · JSON receipt (right) */}
+        <div className="mt-14 grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+          <DeedCard />
+          <DeedJsonReceipt />
+        </div>
+
+        {/* 4 principles · row below the centerpiece */}
+        <div className="mt-14 pt-10 border-t border-stone-900">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {principles.map((p) => (
+              <div key={p} className="flex items-start gap-3">
+                <span className="mt-1 inline-flex w-6 h-6 rounded border border-amber-500/40 items-center justify-center text-amber-300 flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M1.5 5l2 2 5-5" />
+                  </svg>
+                </span>
+                <span className="text-sm text-stone-200 leading-relaxed">{p}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="mt-10 text-xs text-stone-500 leading-relaxed max-w-2xl italic">
+          DefendableOS records are evidence and analysis packages. Asset-specific professional, legal, regulatory, or licensed appraisal requirements may still apply. The preview above is illustrative — no certification, authentication, or completed market valuation is represented.
+        </p>
       </div>
     </section>
   );
 }
 
-function DeedMockup() {
-  const rows: Array<[string, string, "ok" | "neutral" | "pending"]> = [
-    ["Record Type", "Proof of Value", "neutral"],
-    ["Asset Class", "Compute Hardware", "neutral"],
-    ["Asset", "RTX PRO 6000 Blackwell Workstation GPU", "neutral"],
-    ["Evidence Packet", "Attached", "ok"],
-    ["Comparable Analysis", "Attached", "ok"],
-    ["Benchmark Receipt", "Attached", "ok"],
-    ["AIOV Analysis", "Attached", "ok"],
-    ["Validator Review", "Passed for Packaging", "ok"],
-    ["Transfer Status", "Ready for Review", "pending"],
-    ["Record Hash", "0x8F2D…B91A", "neutral"],
-    ["Issued By", "DefendableOS", "neutral"],
-    ["Status", "Illustrative Record", "pending"],
+// ── Deed Card · institutional ledger feel ────────────────────────────────────
+function DeedCard() {
+  const rows: Array<[string, string]> = [
+    ["Asset Class", "Compute Hardware"],
+    ["Asset", "RTX PRO 6000 Blackwell"],
+    ["Evidence Items", "14 Indexed"],
+    ["Comparable Records", "8 Reviewed"],
+    ["AIOV Analysis", "Generated for Review"],
+    ["Validator Review", "Passed for Packaging"],
+    ["Record Status", "Illustrative Preview"],
+  ];
+  const chips = [
+    { label: "EVIDENCE ATTACHED", tone: "ok" as const },
+    { label: "VALIDATOR REVIEW", tone: "ok" as const },
+    { label: "MARKET-READY PACKAGE", tone: "pending" as const },
   ];
 
   return (
     <div className="relative">
-      <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-amber-500/8 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-amber-500/[0.08] to-transparent blur-3xl pointer-events-none" />
       <div className="relative rounded-xl border border-stone-700/70 bg-gradient-to-br from-stone-900/90 to-neutral-950 shadow-2xl overflow-hidden">
-        {/* Deed header band */}
+        {/* Header band · brand mark + title */}
         <div className="px-7 py-5 border-b border-stone-800 bg-neutral-950/70">
-          <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-amber-400/80 font-semibold mb-1">
-            Defendable Deed
+          <div className="flex items-center gap-3 mb-2">
+            <span className="inline-flex w-7 h-7 rounded border border-amber-500/40 items-center justify-center text-amber-400/90">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4">
+                <path d="M3 2h6l3 3v8H3z" />
+                <path d="M5 6h5M5 8h5M5 10h3" strokeWidth="1" opacity="0.7" />
+              </svg>
+            </span>
+            <div>
+              <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-amber-400/80 font-semibold leading-none">
+                Defendable Deed
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.22em] text-stone-400 font-semibold mt-1.5">
+                Proof of Value Record
+              </div>
+            </div>
+            <span className="ml-auto text-[9px] uppercase tracking-[0.18em] text-stone-500 font-semibold border border-stone-700 rounded-full px-2.5 py-1">
+              Illustrative Product Preview
+            </span>
           </div>
-          <div className="text-stone-100 text-xl font-semibold tracking-tight">Evidence-backed asset record</div>
         </div>
+
         {/* Field rows · ledger style */}
-        <div className="px-7 py-5 divide-y divide-stone-800/70">
-          {rows.map(([k, v, s]) => (
-            <div key={k} className="grid grid-cols-[180px_1fr_auto] gap-4 items-baseline py-3 text-sm">
-              <span className="text-[11px] uppercase tracking-[0.14em] text-stone-500 font-semibold">{k}</span>
-              <span className={`text-stone-100 ${k === "Record Hash" ? "font-mono text-stone-300" : ""}`}>{v}</span>
-              <StatusPill state={s} />
+        <div className="px-7 py-4 divide-y divide-stone-800/70">
+          {rows.map(([k, v]) => (
+            <div key={k} className="grid grid-cols-[170px_1fr] gap-4 items-baseline py-3 text-sm">
+              <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{k}</span>
+              <span className="text-stone-100">{v}</span>
             </div>
           ))}
-        </div>
-        <div className="px-7 py-4 border-t border-stone-800 bg-neutral-950/70 flex items-center justify-between">
-          <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold">
-            Illustrative Product Preview
+          <div className="grid grid-cols-[170px_1fr] gap-4 items-baseline py-3 text-sm">
+            <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Record Hash</span>
+            <span className="font-mono text-stone-300 text-[12px] tracking-tight break-all">
+              0x8F2D73B8B91A…D04C
+            </span>
           </div>
-          <a href="#early-access" className="text-xs text-amber-300 hover:text-amber-200 font-semibold">
-            Request a preview →
+        </div>
+
+        {/* Status chips */}
+        <div className="px-7 py-5 border-t border-stone-800 bg-neutral-950/70 flex flex-wrap gap-2">
+          {chips.map((c) => (
+            <span
+              key={c.label}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[9px] uppercase tracking-[0.16em] font-semibold ${
+                c.tone === "ok"
+                  ? "border-emerald-500/30 bg-emerald-500/[0.06] text-emerald-300"
+                  : "border-amber-500/30 bg-amber-500/[0.06] text-amber-300"
+              }`}
+            >
+              <span className={`inline-block w-1.5 h-1.5 rounded-full ${
+                c.tone === "ok" ? "bg-emerald-400/80" : "bg-amber-400/80"
+              }`} />
+              {c.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── JSON Receipt panel · monospace · syntax-highlighted with subtle line numbers
+function DeedJsonReceipt() {
+  // Each row · (lineNo, jsxContent). Indentation handled by leading spaces in
+  // the content spans. Subtle line numbers in the gutter · honey-gold keys ·
+  // emerald strings · stone punctuation · amber-warning on illustrative tokens.
+  const lines: React.ReactNode[] = [
+    <Punct>{"{"}</Punct>,
+    <Line><K>"deed_type"</K><Punct>: </Punct><S>"DEFENDABLE_DEED"</S><Punct>,</Punct></Line>,
+    <Line><K>"record_status"</K><Punct>: </Punct><W>"ILLUSTRATIVE_PRODUCT_PREVIEW"</W><Punct>,</Punct></Line>,
+    <Line><K>"asset"</K><Punct>: {"{"}</Punct></Line>,
+    <Line indent={2}><K>"asset_class"</K><Punct>: </Punct><S>"COMPUTE_HARDWARE"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"model"</K><Punct>: </Punct><S>"RTX PRO 6000 Blackwell"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"asset_id"</K><Punct>: </Punct><S>"DOV-COMPUTE-000001"</S></Line>,
+    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
+    <Line><K>"proof_of_value"</K><Punct>: {"{"}</Punct></Line>,
+    <Line indent={2}><K>"engine"</K><Punct>: </Punct><S>"AIOV"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"doctrine"</K><Punct>: </Punct><S>"VALIDATE_THE_VALIDATOR"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"evidence_items"</K><Punct>: </Punct><N>14</N><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"comparable_records"</K><Punct>: </Punct><N>8</N></Line>,
+    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
+    <Line><K>"validator_review"</K><Punct>: {"{"}</Punct></Line>,
+    <Line indent={2}><K>"status"</K><Punct>: </Punct><S>"PASSED_FOR_PACKAGING"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><K>"flags"</K><Punct>: [</Punct></Line>,
+    <Line indent={4}><F>"LISTING_PRICE_NOT_CONFIRMED_SALE_PRICE"</F></Line>,
+    <Line indent={2}><Punct>]</Punct></Line>,
+    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
+    <Line><K>"artifacts"</K><Punct>: [</Punct></Line>,
+    <Line indent={2}><S>"EVIDENCE_MANIFEST"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><S>"BENCHMARK_RECEIPT"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><S>"COMPARABLE_ANALYSIS"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><S>"AIOV_REPORT"</S><Punct>,</Punct></Line>,
+    <Line indent={2}><S>"DEFENDABLE_DEED"</S></Line>,
+    <Line><Punct>]</Punct><Punct>,</Punct></Line>,
+    <Line><K>"record_hash"</K><Punct>: </Punct><H>"0x8F2D…D04C"</H><Punct>,</Punct></Line>,
+    <Line><K>"disclosure"</K><Punct>: </Punct><W>"ILLUSTRATIVE_RECORD_ONLY"</W></Line>,
+    <Punct>{"}"}</Punct>,
+  ];
+
+  return (
+    <div className="relative">
+      <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-amber-500/[0.06] to-transparent blur-3xl pointer-events-none" />
+      <div className="relative rounded-xl border border-stone-700/70 bg-neutral-950 shadow-2xl overflow-hidden">
+        {/* Filename header · IDE-style */}
+        <div className="flex items-center gap-2.5 px-5 py-3 border-b border-stone-800 bg-neutral-950/95">
+          <div className="flex items-center gap-1.5">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-stone-700" />
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-stone-700" />
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+          </div>
+          <div className="ml-2 text-xs font-mono text-stone-300 tracking-tight">deed.record.json</div>
+          <div className="ml-auto flex items-center gap-2 text-[9px] uppercase tracking-[0.18em] text-stone-500 font-semibold font-mono">
+            <span className="inline-flex items-center gap-1">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
+              SHA-256 manifest
+            </span>
+            <span className="text-stone-700">·</span>
+            <span className="inline-flex items-center gap-1">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
+              Validator receipt
+            </span>
+          </div>
+        </div>
+
+        {/* Code body */}
+        <div className="overflow-x-auto">
+          <pre className="m-0 px-5 py-5 text-[12.5px] leading-[1.6] font-mono text-stone-100">
+            {lines.map((node, i) => (
+              <div key={i} className="grid grid-cols-[2.25rem_1fr] gap-3 -mx-2 px-2 hover:bg-stone-900/30 transition-colors">
+                <span className="text-stone-700 text-right select-none tabular-nums">{i + 1}</span>
+                <span className="whitespace-pre">{node}</span>
+              </div>
+            ))}
+          </pre>
+        </div>
+
+        {/* Footer · evidence + status indicators */}
+        <div className="px-5 py-3 border-t border-stone-800 bg-neutral-950/95 flex items-center justify-between text-[10px] font-mono">
+          <div className="flex items-center gap-3 text-stone-500">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
+              <span className="uppercase tracking-[0.16em] font-semibold">Evidence indexed</span>
+            </span>
+            <span className="text-stone-700">·</span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400/80" />
+              <span className="uppercase tracking-[0.16em] font-semibold">Pending market review</span>
+            </span>
+          </div>
+          <a href="#early-access" className="text-amber-300 hover:text-amber-200 font-semibold no-underline">
+            request preview →
           </a>
         </div>
       </div>
     </div>
   );
+}
+
+// JSON syntax token components — used inside DeedJsonReceipt for clean color tokens
+function Line({ children, indent = 0 }: { children: React.ReactNode; indent?: number }) {
+  return <span>{"  ".repeat(indent + 1)}{children}</span>;
+}
+function K({ children }: { children: React.ReactNode }) {
+  // key
+  return <span className="text-amber-300/90">{children}</span>;
+}
+function S({ children }: { children: React.ReactNode }) {
+  // string value
+  return <span className="text-emerald-300/90">{children}</span>;
+}
+function N({ children }: { children: React.ReactNode }) {
+  // numeric value
+  return <span className="text-rose-300/90">{children}</span>;
+}
+function H({ children }: { children: React.ReactNode }) {
+  // hash value · stone tint
+  return <span className="text-stone-300">{children}</span>;
+}
+function W({ children }: { children: React.ReactNode }) {
+  // warning · illustrative / preview tokens
+  return <span className="text-amber-200 font-semibold">{children}</span>;
+}
+function F({ children }: { children: React.ReactNode }) {
+  // flagged · validator-surfaced concern
+  return <span className="text-amber-300/80">{children}</span>;
+}
+function Punct({ children }: { children: React.ReactNode }) {
+  return <span className="text-stone-500">{children}</span>;
 }
 
 // ─── validate the validator · doctrine section · darker band ───────────────
@@ -1126,19 +1293,6 @@ function FieldTextarea({
   );
 }
 
-function StatusPill({ state }: { state: "ok" | "neutral" | "pending" }) {
-  const map: Record<typeof state, { c: string; l: string }> = {
-    ok: { c: "border-emerald-500/40 text-emerald-300 bg-emerald-500/[0.06]", l: "Ready" },
-    neutral: { c: "border-stone-700 text-stone-400 bg-neutral-900/50", l: "Field" },
-    pending: { c: "border-amber-500/40 text-amber-300 bg-amber-500/[0.06]", l: "Pending" },
-  };
-  const s = map[state];
-  return (
-    <span className={`text-[10px] uppercase tracking-[0.16em] font-semibold px-2 py-1 rounded border ${s.c}`}>
-      {s.l}
-    </span>
-  );
-}
 
 // ─── inline icons (no dep · matches existing page pattern) ─────────────────
 
