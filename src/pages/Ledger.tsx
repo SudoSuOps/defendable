@@ -8,7 +8,7 @@
  * Brand line:
  *   Every Defendable hash resolves at ledger.defendableos.com.
  */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -50,6 +50,19 @@ export default function Ledger() {
       setState({ kind: "result", data: out });
     }
   }
+
+  // Auto-lookup when the URL carries ?q=<hash> · this is how
+  //   ledger.defendableos.com/<hash>
+  // resolves (the middleware rewrites the path to /ledger?q=<hash>).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q && q.trim()) {
+      setQuery(q.trim());
+      go(q.trim());
+    }
+  }, []);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();

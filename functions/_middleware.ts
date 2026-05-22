@@ -23,10 +23,60 @@ function escAttr(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
+/**
+ * Subdomain routing · single-purpose subdomains rewrite to their canonical
+ * apex route before the SPA boots. The HTML response is identical to the
+ * apex route's HTML; a tiny inline `<script>` swaps the browser URL via
+ * history.replaceState BEFORE the main bundle loads so React Router reads
+ * the canonical path and there is no flash of the landing page.
+ *
+ *   ledger.defendableos.com/        → /ledger
+ *   ledger.defendableos.com/<hash>  → /ledger?q=<hash>
+ *   ledger.defendableos.com/compute → /compute (transparent passthrough)
+ *
+ * Returns { rewrittenPath, replaceTarget } when a rewrite applies.
+ * `rewrittenPath` is used to fetch the static shell + run SSR meta;
+ * `replaceTarget` is the URL string the inline script will history-replace
+ * to so the browser sees the canonical subdomain URL (or the apex URL with
+ * the query attached).
+ */
+function resolveSubdomain(
+  host: string,
+  path: string,
+  search: string,
+): { rewrittenPath: string; replaceTarget: string } | null {
+  if (host === "ledger.defendableos.com") {
+    if (path === "/") {
+      return { rewrittenPath: "/ledger", replaceTarget: "/ledger" };
+    }
+    // Already on /ledger or another whitelisted route · pass through.
+    if (
+      path === "/ledger" ||
+      path.startsWith("/ledger/") ||
+      path.startsWith("/compute") ||
+      path.startsWith("/showcase/") ||
+      path.startsWith("/verify/")
+    ) {
+      return { rewrittenPath: path, replaceTarget: `${path}${search}` };
+    }
+    // Anything else under ledger.* is treated as a hash/deed-ref shortcut.
+    const candidate = path.replace(/^\//, "").split("/")[0];
+    if (candidate) {
+      const q = encodeURIComponent(candidate);
+      return {
+        rewrittenPath: `/ledger`,
+        replaceTarget: `/ledger?q=${q}`,
+      };
+    }
+  }
+  return null;
+}
+
 export const onRequest: PagesFunction<Env> = async (ctx) => {
   const url = new URL(ctx.request.url);
   const path = url.pathname;
   const host = url.hostname;
+  const search = url.search;
 
   // Pass-through: API routes, static assets, anything not the React shell
   if (
@@ -37,6 +87,11 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
     return ctx.next();
   }
 
+  // Subdomain canonical rewrite · runs BEFORE we fetch the static shell,
+  // so the SSR meta + content match the canonical apex route.
+  const subdomainRewrite = resolveSubdomain(host, path, search);
+  const effectivePath = subdomainRewrite?.rewrittenPath ?? path;
+
   // Get the underlying response from the static asset handler (React shell)
   const response = await ctx.next();
   const contentType = response.headers.get("Content-Type") || "";
@@ -44,17 +99,21 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
     return response;
   }
 
-  // Compute the route-specific SSR content
+  // Compute the route-specific SSR content · use the rewritten path so the
+  // ledger subdomain root gets ledger meta + body fallback (not landing).
   let pathContent: Awaited<ReturnType<typeof getRouteContent>> = null;
   try {
-    pathContent = await getRouteContent(ctx.request.url, host, path);
+    pathContent = await getRouteContent(ctx.request.url, host, effectivePath);
   } catch (err) {
     console.error("[middleware] getRouteContent failed:", err);
   }
 
   const title = pathContent?.title ?? "DefendableOS · Proof of Value";
   const description = pathContent?.description ?? "The operating system for evidence-backed valuation, provenance, and market-ready ownership.";
-  const canonical = `${SITE}${path}`;
+  // Canonical URL is the apex form of the route · subdomains don't get
+  // their own canonical so Google doesn't index ledger.* and apex/ledger
+  // as duplicates.
+  const canonical = `${SITE}${effectivePath}${search}`;
   const ogImage = `${SITE}/og-image.png`;
 
   // Build JSON-LD script tags
@@ -104,6 +163,16 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
   // Inject the crawler bodyHtml right before #root so it's part of initial response
   if (bodyInject) {
     html = html.replace(/<div id="root"><\/div>/i, `${bodyInject}\n<div id="root"></div>`);
+  }
+
+  // Subdomain URL rewrite · runs BEFORE the SPA bundle, so React Router
+  // reads the canonical path on first render. The browser address bar
+  // stays on the subdomain · the URL inside React is the apex path.
+  if (subdomainRewrite) {
+    const targetUrl = JSON.stringify(subdomainRewrite.replaceTarget);
+    const rewriteScript = `<script>(function(){try{var t=${targetUrl};if(t&&typeof history!=="undefined"&&typeof history.replaceState==="function"){var cur=location.pathname+location.search;if(cur!==t){history.replaceState(null,"",t);}}}catch(e){}})();</script>`;
+    // Insert just before the main module script so it executes first.
+    html = html.replace(/<script type="module"/i, `${rewriteScript}\n<script type="module"`);
   }
 
   return new Response(html, {
