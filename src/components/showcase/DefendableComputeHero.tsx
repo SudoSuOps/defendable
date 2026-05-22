@@ -76,12 +76,43 @@ export function DefendableComputeHero(propsIn: Partial<ShowcaseProps> = {}) {
           <div className="absolute inset-0">
             {webglOk ? (
               <CanvasErrorBoundary fallback={<StaticGpuFallback />}>
-                <GpuModelScene pointer={pointer} />
+                <GpuModelScene
+                  pointer={pointer}
+                  plaque={{
+                    deedReference: props.deedReference,
+                    statusLine: props.isDraft
+                      ? "DRAFT REVIEW RECORD · NOT ISSUED"
+                      : "ISSUED · PUBLICLY VERIFIED",
+                    recordHashShort: props.recordHash.slice(0, 12),
+                  }}
+                />
               </CanvasErrorBoundary>
             ) : (
               <StaticGpuFallback />
             )}
           </div>
+
+          {/* Cinematic stage grading · vignette + film grain · CSS overlay so
+              it never touches the WebGL context */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%)",
+              mixBlendMode: "multiply",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "3px 3px",
+              mixBlendMode: "overlay",
+            }}
+          />
 
           {/* Desktop floating cards */}
           <div className="hidden lg:block">

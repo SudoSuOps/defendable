@@ -124,6 +124,7 @@ export interface ShowcaseProps {
   // Deed
   deedReference: string;
   draftGeneratedAt: string;
+  recordHash: string;        // full SHA-256 · plaque slices the first 12
 
   // ENS
   ensIdentity: string;
@@ -171,8 +172,10 @@ export const COMPUTE_DEFAULT_PROPS: ShowcaseProps = {
   validatorReceiptSha256:
     "f71cc446abe480dcb0e046bb90ddede4a48b46aa411b793171e4932e8f57fd14",
 
-  deedReference: "DDEED-DOV-COMPUTE-000001-v2",
+  deedReference: "DDEED-DOV-COMPUTE-000001-v1",
   draftGeneratedAt: "2026-05-22T16:29:45Z",
+  recordHash:
+    "fde18aeaa87cc94d10bc01766ffbbd205fb019660c354816ba2949f46608db24",
 
   ensIdentity: "ddeed-dov-compute-000001.swarmbee.defendable.eth",
   ensStatus: "RESERVED_NOT_ISSUED",
@@ -299,6 +302,7 @@ export function mapPublicRecordToProps(record: PublicRecord): ShowcaseProps {
 
     deedReference: record.deed_reference,
     draftGeneratedAt: record.created_at,
+    recordHash: integrity.record_hash ?? COMPUTE_DEFAULT_PROPS.recordHash,
 
     ensIdentity: ens.name ?? COMPUTE_DEFAULT_PROPS.ensIdentity,
     ensStatus: ens.status ?? "RESERVED_NOT_ISSUED",
@@ -308,10 +312,7 @@ export function mapPublicRecordToProps(record: PublicRecord): ShowcaseProps {
     publicationStatus: record.lifecycle?.publication_status ?? "NOT_PUBLISHED",
     valueStatus: record.lifecycle?.value_status ?? "WITHHELD_PENDING_VALIDATOR_REVIEW",
 
-    // Integrity hash is referenced by the deed panel
-    // (it falls back to the record_hash field if integrity block isn't populated)
   };
-  void integrity; // keep for future per-asset surfacing
 }
 
 const API_BASE =
