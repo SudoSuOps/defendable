@@ -62,12 +62,22 @@ export function DefendableComputeHero(propsIn: Partial<ShowcaseProps> = {}) {
 
   const itemPlural = props.evidenceItemCount === 1 ? "item" : "items";
 
+  const operatorAskDisplay =
+    typeof props.operatorAskPriceUsd === "number" && props.operatorAskPriceUsd > 0
+      ? new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: props.operatorAskCurrency || "USD",
+          maximumFractionDigits: 0,
+        }).format(props.operatorAskPriceUsd)
+      : null;
+
   const plaque = {
     deedReference: props.deedReference,
     statusLine: props.isDraft
       ? "DRAFT REVIEW RECORD · NOT ISSUED"
       : "ISSUED · PUBLICLY VERIFIED",
     recordHashShort: props.recordHash.slice(0, 12),
+    operatorAskDisplay,
   };
 
   return (

@@ -58,6 +58,12 @@ export interface PublicRecord {
       status?: string;
       value_display_status?: string;
       valuation_issued?: boolean;
+      operator_ask?: {
+        label?: string;
+        currency?: string;
+        amount_usd?: number;
+        doctrine_note?: string;
+      };
     } | null;
     validator_review?: {
       protocol?: string;
@@ -126,6 +132,12 @@ export interface ShowcaseProps {
   draftGeneratedAt: string;
   recordHash: string;        // full SHA-256 · plaque slices the first 12
 
+  // Operator-attested asking price · doctrine: claim only, not validation
+  operatorAskPriceUsd: number | null;
+  operatorAskCurrency: string;        // "USD" by default
+  operatorAskLabel: string;           // "Operator asking"
+  operatorAskDoctrineNote: string;    // disclaimer that travels with the price
+
   // ENS
   ensIdentity: string;
   ensStatus: string;
@@ -155,7 +167,7 @@ export const COMPUTE_DEFAULT_PROPS: ShowcaseProps = {
     "evidence-backed, market-ready asset records — with validator receipts, " +
     "manifest integrity, and draft deed packaging designed to travel with " +
     "the asset.",
-  exploreRecordHref: "/verify/ddeed-dov-compute-000001-v2",
+  exploreRecordHref: "/verify/ddeed-dov-compute-000001-v3",
   pilotMailtoSubject: "Defendable%20Compute%20pilot",
 
   assetClass: "COMPUTE_HARDWARE",
@@ -172,10 +184,15 @@ export const COMPUTE_DEFAULT_PROPS: ShowcaseProps = {
   validatorReceiptSha256:
     "f71cc446abe480dcb0e046bb90ddede4a48b46aa411b793171e4932e8f57fd14",
 
-  deedReference: "DDEED-DOV-COMPUTE-000001-v1",
-  draftGeneratedAt: "2026-05-22T16:29:45Z",
-  recordHash:
-    "fde18aeaa87cc94d10bc01766ffbbd205fb019660c354816ba2949f46608db24",
+  deedReference: "DDEED-DOV-COMPUTE-000001-v3",
+  draftGeneratedAt: "2026-05-22T17:30:00Z",
+  recordHash: "",  // mapPublicRecordToProps populates · /compute default is empty
+
+  operatorAskPriceUsd: 9850,
+  operatorAskCurrency: "USD",
+  operatorAskLabel: "Operator asking",
+  operatorAskDoctrineNote:
+    "Operator's stated asking price. Operator claim only · not a validator-issued value, professional appraisal, or confirmed-sale comparable.",
 
   ensIdentity: "ddeed-dov-compute-000001.swarmbee.defendable.eth",
   ensStatus: "RESERVED_NOT_ISSUED",
@@ -303,6 +320,18 @@ export function mapPublicRecordToProps(record: PublicRecord): ShowcaseProps {
     deedReference: record.deed_reference,
     draftGeneratedAt: record.created_at,
     recordHash: integrity.record_hash ?? COMPUTE_DEFAULT_PROPS.recordHash,
+
+    // Operator-attested ask · only surfaced when deed has it
+    operatorAskPriceUsd:
+      typeof (d.aiov_analysis?.operator_ask?.amount_usd) === "number"
+        ? d.aiov_analysis!.operator_ask!.amount_usd!
+        : null,
+    operatorAskCurrency:
+      d.aiov_analysis?.operator_ask?.currency ?? COMPUTE_DEFAULT_PROPS.operatorAskCurrency,
+    operatorAskLabel:
+      d.aiov_analysis?.operator_ask?.label ?? COMPUTE_DEFAULT_PROPS.operatorAskLabel,
+    operatorAskDoctrineNote:
+      d.aiov_analysis?.operator_ask?.doctrine_note ?? COMPUTE_DEFAULT_PROPS.operatorAskDoctrineNote,
 
     ensIdentity: ens.name ?? COMPUTE_DEFAULT_PROPS.ensIdentity,
     ensStatus: ens.status ?? "RESERVED_NOT_ISSUED",

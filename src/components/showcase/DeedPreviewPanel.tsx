@@ -26,6 +26,10 @@ type Props = Pick<
   | "isDraft"
   | "assetName"
   | "assetClass"
+  | "operatorAskPriceUsd"
+  | "operatorAskCurrency"
+  | "operatorAskLabel"
+  | "operatorAskDoctrineNote"
 >;
 
 export function DeedPreviewPanel({
@@ -42,7 +46,19 @@ export function DeedPreviewPanel({
   isDraft,
   assetName,
   assetClass,
+  operatorAskPriceUsd,
+  operatorAskCurrency,
+  operatorAskLabel,
+  operatorAskDoctrineNote,
 }: Props) {
+  const hasAsk = typeof operatorAskPriceUsd === "number" && operatorAskPriceUsd > 0;
+  const askDisplay = hasAsk
+    ? new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: operatorAskCurrency || "USD",
+        maximumFractionDigits: 0,
+      }).format(operatorAskPriceUsd)
+    : null;
   return (
     <div className="relative">
       <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-honey-400/[0.07] to-transparent blur-3xl pointer-events-none" />
@@ -76,6 +92,26 @@ export function DeedPreviewPanel({
             </span>
           </div>
         </div>
+
+        {/* Operator asking · only when set · doctrine label always visible */}
+        {hasAsk && (
+          <div className="px-7 py-5 border-b border-stone-800 bg-gradient-to-br from-honey-500/[0.06] to-transparent">
+            <div className="flex items-baseline gap-4 flex-wrap">
+              <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-honey-400/80 font-semibold">
+                {operatorAskLabel || "Operator asking"}
+              </div>
+              <div className="font-serif text-3xl md:text-4xl text-honey-200 tracking-tight leading-none">
+                {askDisplay}
+              </div>
+              <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-stone-500">
+                {operatorAskCurrency} · operator claim only
+              </div>
+            </div>
+            <p className="mt-3 text-[11px] text-stone-500 leading-relaxed max-w-3xl italic">
+              {operatorAskDoctrineNote}
+            </p>
+          </div>
+        )}
 
         {/* Two-column body */}
         <div className="grid lg:grid-cols-[1.1fr_1fr]">

@@ -57,6 +57,7 @@ interface StaticGpuFallbackProps {
     deedReference: string;
     statusLine: string;
     recordHashShort: string;
+    operatorAskDisplay?: string | null;
   };
 }
 
@@ -66,9 +67,10 @@ interface StaticGpuFallbackProps {
  * same 560-640px canvas frame as the 3D scene so layout stays identical.
  */
 export function StaticGpuFallback({ plaque }: StaticGpuFallbackProps = {}) {
-  const deedReference = plaque?.deedReference ?? "DDEED-DOV-COMPUTE-000001-v1";
+  const deedReference = plaque?.deedReference ?? "DDEED-DOV-COMPUTE-000001-v3";
   const statusLine = plaque?.statusLine ?? "DRAFT REVIEW RECORD · NOT ISSUED";
-  const recordHashShort = plaque?.recordHashShort ?? "fde18aeaa87c";
+  const recordHashShort = plaque?.recordHashShort ?? "";
+  const operatorAskDisplay = plaque?.operatorAskDisplay ?? null;
 
   return (
     <div
@@ -119,6 +121,7 @@ export function StaticGpuFallback({ plaque }: StaticGpuFallbackProps = {}) {
           deedReference={deedReference}
           statusLine={statusLine}
           recordHashShort={recordHashShort}
+          operatorAskDisplay={operatorAskDisplay}
         />
       </div>
 
@@ -433,10 +436,12 @@ function BrassPlaqueCss({
   deedReference,
   statusLine,
   recordHashShort,
+  operatorAskDisplay,
 }: {
   deedReference: string;
   statusLine: string;
   recordHashShort: string;
+  operatorAskDisplay: string | null;
 }) {
   return (
     <div
@@ -506,6 +511,33 @@ function BrassPlaqueCss({
       >
         SHA-256 · {recordHashShort}…
       </div>
+
+      {operatorAskDisplay && (
+        <>
+          <div
+            className="text-center font-mono mt-3"
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              color: "#1d1610",
+              textShadow: "0 1px 0 rgba(255,235,180,0.35)",
+            }}
+          >
+            OPERATOR ASKING · {operatorAskDisplay}
+          </div>
+          <div
+            className="text-center font-mono mt-0.5"
+            style={{
+              fontSize: 8,
+              letterSpacing: "0.22em",
+              color: "#5a4520",
+            }}
+          >
+            OPERATOR CLAIM ONLY · NOT VALIDATED
+          </div>
+        </>
+      )}
     </div>
   );
 }

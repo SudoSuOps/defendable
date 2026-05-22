@@ -29,6 +29,7 @@ interface GpuModelSceneProps {
     deedReference: string;
     statusLine: string;
     recordHashShort: string;
+    operatorAskDisplay?: string | null;
   };
 }
 
@@ -88,9 +89,10 @@ export function GpuModelScene({ pointer, plaque }: GpuModelSceneProps) {
       <Suspense fallback={null}>
         <ProceduralGpu pointer={pointer} />
         <BrassPlaque
-          deedReference={plaque?.deedReference ?? "DDEED-DOV-COMPUTE-000001-v1"}
+          deedReference={plaque?.deedReference ?? "DDEED-DOV-COMPUTE-000001-v3"}
           statusLine={plaque?.statusLine ?? "DRAFT REVIEW RECORD · NOT ISSUED"}
-          recordHashShort={plaque?.recordHashShort ?? "fde18aeaa87c"}
+          recordHashShort={plaque?.recordHashShort ?? ""}
+          operatorAskDisplay={plaque?.operatorAskDisplay ?? null}
         />
       </Suspense>
 
@@ -136,16 +138,21 @@ function BrassPlaque({
   deedReference,
   statusLine,
   recordHashShort,
+  operatorAskDisplay,
 }: {
   deedReference: string;
   statusLine: string;
   recordHashShort: string;
+  operatorAskDisplay: string | null;
 }) {
+  // Slightly taller plinth when there's an asking-price line, so the
+  // text never crowds the bottom edge.
+  const plinthDepth = operatorAskDisplay ? 1.3 : 1.05;
   return (
     <group position={[0, -1.305, 1.85]} rotation={[-Math.PI / 2.4, 0, 0]}>
       {/* Plinth — brushed brass base */}
       <mesh castShadow receiveShadow>
-        <boxGeometry args={[3.0, 0.04, 1.05]} />
+        <boxGeometry args={[3.0, 0.04, plinthDepth]} />
         <meshPhysicalMaterial
           color={"#7d6429"}
           metalness={0.95}
@@ -157,7 +164,7 @@ function BrassPlaque({
       </mesh>
       {/* Bevel rim · slightly darker */}
       <mesh position={[0, 0.005, 0]}>
-        <boxGeometry args={[3.04, 0.005, 1.09]} />
+        <boxGeometry args={[3.04, 0.005, plinthDepth + 0.04]} />
         <meshStandardMaterial color={"#5e4b1d"} metalness={0.85} roughness={0.4} />
       </mesh>
 
@@ -222,6 +229,34 @@ function BrassPlaque({
       >
         SHA-256 · {recordHashShort}…
       </Text>
+
+      {/* Operator asking price · only when set */}
+      {operatorAskDisplay && (
+        <>
+          <Text
+            position={[0, 0.025, 0.54]}
+            fontSize={0.072}
+            color={"#1d1610"}
+            letterSpacing={0.12}
+            anchorX="center"
+            anchorY="middle"
+            outlineColor={"#3a2a10"}
+            outlineWidth={0.002}
+          >
+            {`OPERATOR ASKING · ${operatorAskDisplay}`}
+          </Text>
+          <Text
+            position={[0, 0.025, 0.62]}
+            fontSize={0.04}
+            color={"#5a4520"}
+            letterSpacing={0.18}
+            anchorX="center"
+            anchorY="middle"
+          >
+            OPERATOR CLAIM ONLY · NOT VALIDATED
+          </Text>
+        </>
+      )}
     </group>
   );
 }
