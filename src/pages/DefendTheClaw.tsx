@@ -444,9 +444,19 @@ export default function DefendTheClaw() {
           </div>
         </section>
 
+        {/* Live Intake Agent · talks to Kimi K2.6 via the platform API */}
+        <section id="live-intake" className="scroll-mt-20">
+          <SectionHeader
+            kicker="03 · LIVE Defendable Intake Agent"
+            title="Talk to it · the Claw Swarm is on prod"
+            sub={`The Intake Agent is live on api.defendableos.com via Kimi K2.6 with a typed record_intake_findings tool. Type how you'd describe your agent in plain English · the Agent extracts the 5 dimensions · platform code computes Risk Tier. NEVER calls external systems · NEVER accesses your files · refuses anything outside Intake scope.`}
+          />
+          <LiveIntakeChat />
+        </section>
+
         {/* What Defendable inspects */}
         <Section
-          kicker="03 · What Defendable inspects"
+          kicker="04 · What Defendable inspects"
           title="Six layers of evidence · before the agent gets the keys"
           sub="Every layer becomes part of the Defendable Agent Deed. Missing layers are labeled openly. Validators challenge before anything is issued."
         >
@@ -479,7 +489,7 @@ export default function DefendTheClaw() {
 
         {/* Doctrine reminders · keeps it tight */}
         <Section
-          kicker="04 · What this is NOT"
+          kicker="05 · What this is NOT"
           title="Defendable will never autonomously act on your behalf"
           sub="The agent on this page is a disciplined evidence-intake interface. It collects your selections, computes a snapshot from documented rules, and shows you what would be required for a real Defendable inspection. It does not call APIs · move money · send messages · or write to your systems."
         >
@@ -588,6 +598,215 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
         <div className="text-stone-100 font-semibold text-base tracking-tight pt-1">{title}</div>
       </div>
       {children}
+    </div>
+  );
+}
+
+// ─── LIVE intake chat · talks to /api/v1/agent-swarm/clawcheck/intake ─────
+
+const CLAW_API_BASE = "https://api.defendableos.com";
+
+type AgentTurn = {
+  role: "user" | "agent" | "system";
+  content: string;
+};
+
+type IntakeResponse = {
+  agent_message: string;
+  findings: Record<string, unknown>;
+  intake_complete: boolean;
+  refusal_reason: string | null;
+  snapshot: {
+    captured: Record<string, unknown>;
+    risk: { tier: string; reasons: string[]; access_breadth?: number };
+    recommended: { product: string; required_review: string[] };
+  } | null;
+  judge_provider: { provider: string; model: string | null; configured: boolean };
+  raw_status: string;
+};
+
+function LiveIntakeChat() {
+  const [conversation, setConversation] = useState<AgentTurn[]>([
+    {
+      role: "agent",
+      content:
+        "I'm the Defendable Intake Agent · live on api.defendableos.com via Kimi K2.6. Tell me about the AI agent you're deploying · I'll collect the five ClawCheck dimensions and the platform computes your Risk Tier. Free-form natural language is fine.",
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const [findings, setFindings] = useState<Record<string, unknown>>({});
+  const [snapshot, setSnapshot] = useState<IntakeResponse["snapshot"]>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [provider, setProvider] = useState<IntakeResponse["judge_provider"] | null>(null);
+
+  async function send() {
+    const msg = input.trim();
+    if (!msg || busy) return;
+    setError(null);
+    setBusy(true);
+    setConversation((c) => [...c, { role: "user", content: msg }]);
+    setInput("");
+
+    try {
+      const resp = await fetch(`${CLAW_API_BASE}/api/v1/agent-swarm/clawcheck/intake`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_message: msg, prior_findings: findings }),
+      });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status} · ${await resp.text().catch(() => "")}`);
+      const data: IntakeResponse = await resp.json();
+      setFindings(data.findings || {});
+      setProvider(data.judge_provider);
+      const refusalLine = data.refusal_reason ? `\n\n[REFUSAL · ${data.refusal_reason}]` : "";
+      setConversation((c) => [...c, { role: "agent", content: data.agent_message + refusalLine }]);
+      if (data.intake_complete && data.snapshot) setSnapshot(data.snapshot);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setError(msg);
+      setConversation((c) => [
+        ...c,
+        {
+          role: "system",
+          content: `Intake call failed (${msg}). Falling back to the deterministic intake above.`,
+        },
+      ]);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function reset() {
+    setConversation([
+      {
+        role: "agent",
+        content: "Reset · tell me about the agent you're deploying.",
+      },
+    ]);
+    setFindings({});
+    setSnapshot(null);
+    setError(null);
+  }
+
+  return (
+    <div className="rounded-lg border-2 border-honey-300/30 bg-gradient-to-br from-honey-300/[0.04] to-transparent p-5 md:p-6">
+      <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
+        <div className="flex items-center gap-2">
+          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
+          <span className="text-[10px] uppercase tracking-[0.22em] text-emerald-300 font-semibold">
+            LIVE · {provider?.model || "kimi-k2.6"} via {provider?.provider || "kimi"}
+          </span>
+        </div>
+        <button
+          onClick={reset}
+          className="text-xs text-stone-500 hover:text-stone-300 underline"
+          type="button"
+        >
+          reset conversation
+        </button>
+      </div>
+
+      {/* Conversation */}
+      <div className="space-y-3 mb-4 max-h-[420px] overflow-y-auto pr-2 font-mono text-xs md:text-sm">
+        {conversation.map((t, i) => (
+          <div
+            key={i}
+            className={`rounded p-3 ${
+              t.role === "user"
+                ? "bg-neutral-900/60 border border-stone-800 text-stone-300"
+                : t.role === "system"
+                  ? "bg-red-500/10 border border-red-500/30 text-red-300"
+                  : "bg-honey-300/10 border border-honey-300/30 text-stone-200"
+            }`}
+          >
+            <div className="text-[10px] uppercase tracking-wider opacity-60 mb-1">
+              {t.role === "user" ? "you" : t.role === "system" ? "system" : "intake agent"}
+            </div>
+            <div className="whitespace-pre-wrap leading-snug">{t.content}</div>
+          </div>
+        ))}
+        {busy && (
+          <div className="rounded p-3 bg-honey-300/5 border border-honey-300/20 text-honey-300/70 italic text-xs">
+            Intake agent is thinking · Kimi K2.6 thinking mode can take 30-120s · please hold…
+          </div>
+        )}
+      </div>
+
+      {/* Input + send */}
+      <div className="flex gap-2">
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+              e.preventDefault();
+              send();
+            }
+          }}
+          rows={2}
+          placeholder="Describe your agent in plain English · e.g., 'coding agent on my laptop · shell + files · Kimi K2.6 · memory enabled'"
+          disabled={busy}
+          className="flex-1 px-3 py-2 rounded border border-stone-700 bg-neutral-950 text-stone-100 placeholder:text-stone-600 text-sm font-mono focus:border-honey-300/50 focus:outline-none disabled:opacity-60 resize-none"
+        />
+        <button
+          onClick={send}
+          disabled={busy || !input.trim()}
+          className="px-5 py-2 rounded border border-honey-300/40 bg-honey-300/15 text-honey-200 hover:bg-honey-300/25 hover:border-honey-300/70 transition-colors text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed self-stretch"
+        >
+          {busy ? "…" : "Send"}
+        </button>
+      </div>
+      <div className="text-[10px] text-stone-500 mt-1">⌘+Enter / Ctrl+Enter to send · POST to api.defendableos.com/api/v1/agent-swarm/clawcheck/intake</div>
+
+      {error && (
+        <div className="mt-3 text-xs text-red-400 italic">
+          Live endpoint unavailable · {error.slice(0, 200)} · use the deterministic intake above as fallback.
+        </div>
+      )}
+
+      {/* Findings tracker */}
+      {Object.keys(findings).length > 0 && (
+        <div className="mt-5 rounded border border-stone-800 bg-neutral-950/60 p-3">
+          <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-2">
+            Findings captured this conversation
+          </div>
+          <pre className="text-xs text-stone-300 font-mono whitespace-pre overflow-x-auto">
+{JSON.stringify(findings, null, 2)}
+          </pre>
+        </div>
+      )}
+
+      {/* Snapshot (when intake_complete=true) */}
+      {snapshot && (
+        <div className="mt-5 rounded-lg border-2 border-honey-300/40 bg-honey-300/[0.06] p-4">
+          <div className="text-[10px] uppercase tracking-[0.22em] text-honey-400 font-semibold mb-2">
+            Claw Exposure Snapshot · computed by platform code
+          </div>
+          <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+            <div className="text-stone-100 font-semibold tracking-tight">
+              {String(snapshot.captured.worker_kind || "")} · {String(snapshot.captured.deployment_target || "")}
+            </div>
+            <span className="inline-flex items-center px-3 py-1 rounded border border-amber-400/50 bg-amber-400/10 text-amber-300 text-xs font-bold tracking-wider">
+              RISK TIER · {snapshot.risk.tier}
+            </span>
+          </div>
+          <div className="text-stone-300 text-xs space-y-1 mb-3">
+            {snapshot.risk.reasons.map((r) => (
+              <div key={r}>· {r}</div>
+            ))}
+          </div>
+          <div className="text-stone-100 text-sm">
+            <strong className="text-honey-300">Recommended:</strong> {snapshot.recommended.product}
+          </div>
+          {snapshot.recommended.required_review.length > 0 && (
+            <ul className="mt-2 text-stone-400 text-xs space-y-0.5">
+              {snapshot.recommended.required_review.map((r) => (
+                <li key={r}>· {r}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   );
 }
