@@ -85,3 +85,18 @@
   X-Robots-Tag: index, follow
   X-AI-Context: defendableos
   X-Defendable-Doctrine: validate-the-validator
+
+# ─────────────────────────────────────────────────────────────────
+# Defendable Reports · index + individual report pages
+# ─────────────────────────────────────────────────────────────────
+/reports
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+
+/reports/*
+  Cache-Control: public, max-age=600, s-maxage=600, stale-while-revalidate=7200
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator

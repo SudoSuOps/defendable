@@ -120,6 +120,21 @@ general availability.
 - /open — Defendable Open Infrastructure · every AI model, every
   connector, every doctrine guardrail, every storage bucket · named
   and statused · the receipts behind the receipts
+- /reports — Defendable Reports · long-form, source-classified,
+  evidence-anchored research notes. The same restraint that gates a
+  Defendable Deed gates a Defendable Report. Live today: The Vast.ai
+  Utilization Signal Rail (operator-captured 21-card market snapshot
+  · 2026-05-23 · source: vast.ai market explorer · OBSERVATION class
+  only · NOT paid yield).
+- /reports/vast-ai-utilization-signal-rail — First full Defendable
+  Report. Seven Vast.ai signal classes (PUBLIC_LISTING_RATE,
+  PUBLIC_SUPPLY_OBSERVATION, FOUNDER_MACHINE_LISTING, FOUNDER_RENTAL_RECEIPT,
+  FOUNDER_OCCUPANCY_HISTORY, WORKLOAD_TEST_RECEIPT, DERIVED_YIELD_ANALYSIS).
+  Only FOUNDER_RENTAL_RECEIPT + FOUNDER_OCCUPANCY_HISTORY count as
+  first-party operating evidence. RTX 3090 workhorse thesis. Yield
+  analysis input contract. 21-card market snapshot with confirmed
+  column attribution (Listed · Verified · Online % · Rented % · Peak
+  DLPerf · Median DLPerf · Asking $/hr · DLPerf/$).
 - /pair-factory — Educational doctrine page explaining how source-
   classified evidence, validator challenges and corrected outcomes
   become reusable intelligence supporting AIOV analysis and Defendable

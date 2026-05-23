@@ -6,6 +6,8 @@ import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
 import DefendableOpen from "./pages/DefendableOpen";
 import DefendablePairFactory from "./pages/DefendablePairFactory";
+import DefendableReports from "./pages/DefendableReports";
+import VastAiUtilizationSignalRail from "./pages/reports/VastAiUtilizationSignalRail";
 import Ledger from "./pages/Ledger";
 
 // Code-split · /compute and /showcase/:slug pull in three.js + R3F + drei
@@ -44,6 +46,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<DefendableOS />} />
         <Route path="/open" element={<DefendableOpen />} />
         <Route path="/pair-factory" element={<DefendablePairFactory />} />
+        <Route path="/reports" element={<DefendableReports />} />
+        <Route path="/reports/vast-ai-utilization-signal-rail" element={<VastAiUtilizationSignalRail />} />
         <Route
           path="/compute"
           element={

@@ -1144,8 +1144,8 @@ function DefendableFooter() {
             links={[
               ["Pair Factory", "/pair-factory"],
               ["Open Infrastructure", "/open"],
+              ["Defendable Reports", "/reports"],
               ["Ledger", "/ledger"],
-              ["Validate the Validator", "/open"],
             ]}
           />
           <FooterColumn

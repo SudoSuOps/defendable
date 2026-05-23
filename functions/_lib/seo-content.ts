@@ -31,6 +31,12 @@ export async function getRouteContent(
   if (pathname === "/pair-factory") {
     return buildPairFactoryContent();
   }
+  if (pathname === "/reports") {
+    return buildReportsIndexContent();
+  }
+  if (pathname === "/reports/vast-ai-utilization-signal-rail") {
+    return buildVastAiReportContent();
+  }
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
@@ -221,6 +227,116 @@ function buildLedgerContent(): RouteContent {
     ],
     title: "Defendable Ledger · resolve any Defendable hash",
     description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
+}
+
+function buildReportsIndexContent(): RouteContent {
+  const url = "https://defendableos.com/reports";
+  const bodyHtml = `
+<main>
+  <h1>Defendable Reports · source-classified analysis on what the platform sees.</h1>
+  <p>Long-form, evidence-anchored notes on the asset classes, utilization signals, decision frameworks, and infrastructure doctrine that DefendableOS reports on every day. Each report names its sources, labels its limitations, and refuses to overclaim.</p>
+  <p><em>Reports are not marketing · reports are the analysis underneath the asset records. The same restraint that gates a Defendable Deed gates a Defendable Report.</em></p>
+
+  <h2>Live reports</h2>
+  <ul>
+    <li><a href="/reports/vast-ai-utilization-signal-rail"><strong>The Defendable Vast.ai Utilization Signal Rail</strong></a> · seven signal classes · the RTX 3090 workhorse thesis · the yield-analysis standard · operator-captured 21-card market snapshot (2026-05-23 · source: vast.ai market explorer).</li>
+  </ul>
+
+  <h2>Proposed and drafting reports</h2>
+  <ul>
+    <li><strong>The RTX 3090 Workhorse Thesis</strong> · Second-Life Compute lens · why prior-gen 24GB still earns.</li>
+    <li><strong>Edge-to-Rack · E0-E7 Compute Asset Taxonomy</strong> · the canonical ladder from CPU-only utility nodes to rack-scale clusters.</li>
+    <li><strong>The Four-Bucket Privacy Vault</strong> · service-boundary guard for evidence storage.</li>
+    <li><strong>The Defendable Compute Bench · Phase A→C Case Study</strong> · DRAFT · the first benchmark-attested deed chain.</li>
+    <li><strong>Best Next Use Decision · First Three Cases</strong> · how four orthogonal grades translate into one defendable next action.</li>
+    <li><strong>ITAD Partner Pilot · Findings from the First 90 Days</strong> · partner-feed data grading and graduation paths.</li>
+  </ul>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        url,
+        name: "Defendable Reports",
+        description:
+          "Long-form, source-classified, evidence-anchored research notes from DefendableOS on compute utilization, asset taxonomies, decision frameworks, and infrastructure doctrine.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+      },
+    ],
+    title: "Defendable Reports · source-classified analysis | DefendableOS",
+    description:
+      "Long-form research from DefendableOS · the Vast.ai Utilization Signal Rail (live) plus proposed reports on the E0-E7 compute taxonomy, the 4-bucket privacy vault, the Compute Bench case study, and ITAD partner pilot findings.",
+  };
+}
+
+function buildVastAiReportContent(): RouteContent {
+  const url = "https://defendableos.com/reports/vast-ai-utilization-signal-rail";
+  const bodyHtml = `
+<main>
+  <h1>The Defendable Vast.ai Utilization Signal Rail</h1>
+  <p><em>Seven signal classes · the workhorse thesis · the yield-analysis standard.</em></p>
+
+  <p><strong>Vast.ai is a core compute utilization intelligence rail.</strong> DefendableOS treats it carefully · honestly · with strict claim discipline. Listing rates are NOT resale value. Availability is NOT occupancy. Public visibility is NOT booked revenue. First-party rental receipts ARE operating evidence the platform can issue claims from.</p>
+
+  <h2>The seven signal classes</h2>
+  <ul>
+    <li><strong>VAST_PUBLIC_LISTING_RATE</strong> · observed market hourly asking rate · proves current public observation · does NOT prove actual paid rental.</li>
+    <li><strong>VAST_PUBLIC_SUPPLY_OBSERVATION</strong> · number/category of visible offerings · proves apparent supply · does NOT prove demand.</li>
+    <li><strong>VAST_FOUNDER_MACHINE_LISTING</strong> · founder's listed machine + advertised rate · proves asset listed · does NOT prove paid revenue.</li>
+    <li><strong>VAST_FOUNDER_RENTAL_RECEIPT</strong> · completed rental or payout record · proves actual paid utility evidence · does NOT prove resale market value.</li>
+    <li><strong>VAST_FOUNDER_OCCUPANCY_HISTORY</strong> · rental duration / booked time · proves actual utilization history · does NOT prove future guaranteed utilization.</li>
+    <li><strong>VAST_WORKLOAD_TEST_RECEIPT</strong> · self-test, benchmark or validation receipt · proves operational/rental readiness · does NOT prove market demand.</li>
+    <li><strong>VAST_DERIVED_YIELD_ANALYSIS</strong> · modeled gross/net annualized yield from captured receipts · proves analysis based on disclosed inputs · does NOT prove guaranteed future earnings.</li>
+  </ul>
+  <p>Of these seven, only <strong>VAST_FOUNDER_RENTAL_RECEIPT</strong> and <strong>VAST_FOUNDER_OCCUPANCY_HISTORY</strong> count as first-party operating evidence. All others are signal-only.</p>
+
+  <h2>Operator-captured market snapshot · 2026-05-23 · source: vast.ai market explorer</h2>
+  <p><strong>CAPTURED 2026-05-23 · OBSERVATION ONLY · NOT PAID YIELD.</strong> A 21-card snapshot across mid-tier and pro-workstation classes. 472 listed machines, 70 vast.ai-verified hosts. Columns include Listed/Verified counts, Online %, Rented % (occupancy), Peak/Median DLPerf (vast.ai's normalized deep-learning performance score), Asking $/hr, and DLPerf/$ (performance per dollar).</p>
+  <p>Highest observed occupancy in this snapshot: RTX 5880 Ada 87.7% · RTX 4080 81.8% · RTX 5060 78.6% · RTX PRO 4500 78.2%. Highest observed performance per dollar: RTX PRO 4500 (494.9) · RTX 5060 (353.8) · RTX 4000 Ada (327.9). All values are instantaneous observations · not guarantees of sustained demand, future yield, or paid earnings.</p>
+  <p>Doctrine: Listed is not sold. Offered is not rented. Rented is not future yield. A snapshot is what survived at one moment · not what will be true tomorrow.</p>
+
+  <h2>The RTX 3090 workhorse thesis</h2>
+  <p>A prior-generation 24GB card can remain a productive AI compute asset. The thesis does NOT state rental rate, occupancy, or expected earnings as permanent truth · the platform captures Vast.ai public-rate snapshots with timestamp + source URL, collects founder-owned rental receipts when available, compares purchase/resale basis against actual paid yield when both inputs exist, and uses the record to determine whether HOLD/RENT, SELL, REDEPLOY, or REVIEW is the most defensible next action.</p>
+
+  <h2>The yield analysis standard</h2>
+  <p>Every VAST_DERIVED_YIELD_ANALYSIS carries the same input contract. If a field is missing (purchase cost, listed rate, actual paid rate, utilization period, gross earnings, electricity assumption), the analysis returns EVIDENCE_INCOMPLETE with a list of what to capture next. The platform refuses to model yield from observation data alone.</p>
+
+  <h2>Closing doctrine</h2>
+  <p>A listing rate is what was asked at a moment. An occupancy percentage is what was observed at a moment. A rental receipt is what was paid for time used. A yield analysis is what receipts and electricity together support. A deed publishes only what survives proof.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Report",
+        url,
+        name: "The Defendable Vast.ai Utilization Signal Rail",
+        description:
+          "Seven signal classes governing how DefendableOS treats Vast.ai compute rental data · the RTX 3090 workhorse thesis · the yield-analysis input standard · plus an operator-captured 21-card market snapshot from the vast.ai market explorer on 2026-05-23.",
+        datePublished: "2026-05-23",
+        author: { "@type": "Organization", name: "Swarm and Bee LLC", url: "https://defendableos.com" },
+        publisher: { "@type": "Organization", name: "DefendableOS", url: "https://defendableos.com" },
+        isPartOf: { "@type": "CollectionPage", url: "https://defendableos.com/reports" },
+        about: [
+          { "@type": "DefinedTerm", name: "VAST_PUBLIC_LISTING_RATE" },
+          { "@type": "DefinedTerm", name: "VAST_FOUNDER_RENTAL_RECEIPT" },
+          { "@type": "DefinedTerm", name: "VAST_DERIVED_YIELD_ANALYSIS" },
+          { "@type": "Thing", name: "RTX 3090 Workhorse Thesis" },
+          { "@type": "Thing", name: "Vast.ai market explorer" },
+        ],
+      },
+    ],
+    title: "The Defendable Vast.ai Utilization Signal Rail | DefendableOS Report",
+    description:
+      "Seven signal classes · the RTX 3090 workhorse thesis · the yield-analysis standard · 21-card operator-captured market snapshot. Why listing rate is not paid yield, and what evidence does cross the threshold.",
   };
 }
 

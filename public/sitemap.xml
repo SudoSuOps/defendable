@@ -41,6 +41,22 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- ─── Defendable Reports · index ───────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/reports</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Report · Vast.ai Utilization Signal Rail ─────────────── -->
+  <url>
+    <loc>https://defendableos.com/reports/vast-ai-utilization-signal-rail</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- ─── Defendable CRE MarketReady · Palm Grove Marketplace ──── -->
   <url>
     <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace</loc>
