@@ -666,10 +666,91 @@ export default function DefendablePairFactory() {
           </div>
         </Section>
 
-        {/* Section 10 · CTA · tied to Compute */}
+        {/* Section 10 · Defendable Compute Bench · the live-test layer */}
+        <Section
+          kicker="09 · Defendable Compute Bench"
+          title="Test the asset before you trust the opinion"
+          sub="A hardware record should not begin with a price guess. Defendable Compute Bench captures the asset configuration, runs an appropriate health and utility test, hashes the receipt bundle and records what the system actually demonstrated at inspection time. AIOV may then form an opinion from measured utility and source-classified market evidence. DefendableOS validates the record before any public-safe deed may be issued."
+        >
+          {/* Bench pipeline */}
+          <div className="mb-8 flex flex-wrap gap-2">
+            {["CAPTURE", "DIAGNOSE", "BENCHMARK", "HASH", "CLASSIFY", "ANALYZE", "VALIDATE", "DEED"].map((stage, i, arr) => (
+              <span key={stage} className="inline-flex items-center">
+                <span className="inline-flex items-center px-3 py-1.5 rounded border border-honey-300/30 bg-honey-300/[0.04] text-honey-300 text-[10px] tracking-[0.22em] font-semibold uppercase">
+                  {stage}
+                </span>
+                {i < arr.length - 1 ? <span aria-hidden className="text-stone-700 mx-1">→</span> : null}
+              </span>
+            ))}
+          </div>
+
+          {/* The four grades · the differentiator */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {[
+              { name: "Identity Confidence Grade", what: "Whether the asset was accurately captured · raw serial / device UUID / PCI bus ID hashed into the bundle (Grade A) · model-self-reported only (Grade C) · cannot advance without at least Grade C" },
+              { name: "Health Grade", what: "Operational diagnostic at capture time · thermals · power · ECC · throttling · with disclosed method, runtime, and limits · PASS / PASS_WITH_OBSERVATIONS / CONDITIONAL / FAIL / NOT_TESTED" },
+              { name: "Utility Grade", what: "Workload fitness within the asset's tier · names the workload class measured (E1_EDGE_VISION · E4_WORKHORSE_AI_RENTAL · E6_INSTITUTIONAL_ACCELERATOR · etc.) · never an abstract score" },
+              { name: "Evidence Grade", what: "How strongly surrounding claims are supported · A (first-party + validator-reviewed) · B (first-party only) · C (public observation only) · BLOCKED (material evidence missing)" },
+            ].map((g) => (
+              <div key={g.name} className="rounded-lg border border-stone-800 bg-neutral-900/30 p-5">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-1">four-grade output</div>
+                <div className="text-stone-100 font-semibold mb-2">{g.name}</div>
+                <div className="text-stone-400 text-sm leading-relaxed">{g.what}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* The receipt bundle · honest framing */}
+          <div className="rounded-lg border border-stone-800 bg-neutral-900/30 p-6 mb-8">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-2">the receipt bundle</div>
+            <p className="text-stone-300 text-sm leading-relaxed mb-3">
+              Every run produces a self-contained directory of structured JSON: asset
+              identity (public-safe) · private identity reference (PRIVATE_EVIDENCE) ·
+              system manifest · runtime environment · health diagnostic · benchmark plan ·
+              benchmark results · workload compatibility · validator flags · best-next-use
+              inputs · evidence classification · plus a SHA-256 manifest covering the bundle
+              and a redacted public-safe attestation.
+            </p>
+            <p className="text-stone-400 text-xs leading-relaxed italic">
+              The public-safe attestation is derived through the same{" "}
+              <code className="text-honey-300/90">public_export_or_refuse()</code> guard the
+              rest of the platform uses · private identity fields are never copied into
+              the public output.
+            </p>
+          </div>
+
+          {/* What the bench proves / does not prove */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/[0.03] p-6">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-emerald-400 font-semibold mb-3">The bench proves</div>
+              <ul className="space-y-1.5 text-sm text-stone-300">
+                <li className="leading-snug">· What this machine did during the test</li>
+                <li className="leading-snug">· What workload class fits this hardware today</li>
+                <li className="leading-snug">· That identity was captured and hashed</li>
+                <li className="leading-snug">· That health was within X envelope at capture</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-stone-800 bg-neutral-900/30 p-6">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-3">The bench does NOT prove</div>
+              <ul className="space-y-1.5 text-sm text-stone-300">
+                <li className="leading-snug">· What buyers will pay</li>
+                <li className="leading-snug">· What this card will earn rented over a year</li>
+                <li className="leading-snug">· That the hardware will never be substituted</li>
+                <li className="leading-snug">· That performance repeats in another rig</li>
+              </ul>
+            </div>
+          </div>
+
+          <DoctrineBlock>
+            <p>Test the asset. Hash the receipt. Grade the utility.</p>
+            <p>The opinion comes after the proof.</p>
+          </DoctrineBlock>
+        </Section>
+
+        {/* Section 11 · CTA · tied to Compute */}
         <section className="rounded-lg border border-honey-300/20 bg-gradient-to-br from-honey-300/[0.05] to-transparent p-6 md:p-10">
           <div className="text-[10px] tracking-[0.28em] uppercase text-honey-400 font-semibold mb-3">
-            09 · From doctrine to deed
+            10 · From doctrine to deed
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-stone-100">
             Start with an asset. Leave with proof.

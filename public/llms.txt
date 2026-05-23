@@ -132,6 +132,31 @@ general availability.
   Export) and the CAPTURE → STORE → HASH → CLASSIFY → CHALLENGE →
   APPROVE → PUBLISH evidence flow.
 
+## Defendable Compute Bench
+
+Defendable Compute Bench is the live-test layer that turns a real
+piece of hardware into structured, hashed, evidence-classified
+benchmark receipts. It runs BEFORE any Compute Proof of Value
+record may move toward validator approval or public-safe deed
+issuance. The bench produces four orthogonal grades (Identity
+Confidence · Health · Utility · Evidence) · never a single
+composite score. Pipeline: CAPTURE → DIAGNOSE → BENCHMARK → HASH
+→ CLASSIFY → ANALYZE → VALIDATE → DEED. Per-tier profiles
+(E0-E7) keep workload tests appropriate to the asset class · a
+Jetson is not benched as a workstation GPU is not benched as an
+H100. Phase A (read-only identity + system + runtime + idle-health
+capture) is implemented as `defendable-compute inspect`. Hard
+operational rule: no benchmark may run on a GPU currently rented
+or serving a production workload · the CLI uses
+`nvidia-smi --query-compute-apps` as the pre-flight refusal gate.
+Full doctrine in DEFENDABLE_COMPUTE_BENCH.md + receipt schema in
+COMPUTE_BENCH_RECEIPT_SCHEMA.md + grading in
+COMPUTE_ATTESTATION_GRADING_STANDARD.md + per-tier profiles in
+COMPUTE_BENCH_PROFILE_MATRIX.md + CLI spec in
+DEFENDABLE_COMPUTE_BENCH_CLI_SPEC.md + tool eval in
+COMPUTE_BENCH_TOOLING_AUDIT.md + decision schema in
+BEST_NEXT_USE_DECISION_SCHEMA.md (all in the platform repo).
+
 ## Evidence Vault doctrine
 
 The Evidence Vault is the controlled storage architecture behind
