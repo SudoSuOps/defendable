@@ -1142,6 +1142,7 @@ function DefendableFooter() {
           <FooterColumn
             heading="Doctrine"
             links={[
+              ["Defend The Claw™", "/defend-the-claw"],
               ["AgentGrade™", "/agent-grade"],
               ["Pair Factory", "/pair-factory"],
               ["Open Infrastructure", "/open"],

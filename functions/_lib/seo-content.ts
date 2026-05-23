@@ -40,6 +40,9 @@ export async function getRouteContent(
   if (pathname === "/agent-grade") {
     return buildAgentGradeContent();
   }
+  if (pathname === "/defend-the-claw") {
+    return buildDefendTheClawContent();
+  }
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
@@ -230,6 +233,80 @@ function buildLedgerContent(): RouteContent {
     ],
     title: "Defendable Ledger · resolve any Defendable hash",
     description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
+}
+
+function buildDefendTheClawContent(): RouteContent {
+  const url = "https://defendableos.com/defend-the-claw";
+  const bodyHtml = `
+<main>
+  <h1>DEFEND THE CLAW™ · Your AI assistant has hands now. Inspect it before you trust it.</h1>
+  <p>AI agents can read files · remember instructions · connect to messaging apps · use tools · interact with customers · and operate continuously across your computer, cloud server, or edge device. <strong>DefendableOS</strong> verifies what your agent can access · what it can do · what it costs · and whether its work can be trusted — then issues a deeded inspection report backed by receipts.</p>
+  <p><em>OpenClaw gives AI hands. Defendable makes sure those hands can be trusted.</em></p>
+
+  <h2>The brand stack</h2>
+  <ul>
+    <li><strong>DefendableOS™</strong> · Platform · Proof of Value and trust operating system</li>
+    <li><strong>Defend The Claw™</strong> · Movement · Public-facing AI agent safety campaign</li>
+    <li><strong>ClawCheck™</strong> · Product · Deployment and permission inspection</li>
+    <li><strong>AgentGrade™</strong> · Benchmark · Real-work performance and safety grade</li>
+    <li><strong>Defendable Agent Deed™</strong> · Record · Hashed inspection and performance receipt</li>
+    <li><strong>AI Work Unit Deed™</strong> · Package · Agent + compute + economics bundled as one issuable asset</li>
+  </ul>
+
+  <h2>ClawCheck free intake · 5 selections produce a Claw Exposure Snapshot</h2>
+  <p>This page hosts a deterministic intake interface — NOT a chatbot, NOT autonomous, NO LLM call on user inputs. Operators select agent kind (Personal Assistant · Business Agent · Coding Agent · Sales/Support · Local File Agent · Custom Workflow), deployment target (My Computer · Cloud Server · Edge Box · Android Device), access surfaces (Files · Messages · Email · Calendar · Browser · Shell · APIs · Payments), model provider (Kimi K2.6 · OpenAI · Claude · Local · Custom), and memory persistence. The page computes a Risk Tier (LOW / MODERATE / ELEVATED / HIGH / INSUFFICIENT_DATA) from documented rules and surfaces the recommended Defendable product.</p>
+
+  <h2>What Defendable inspects</h2>
+  <ul>
+    <li><strong>Identity</strong> · model · runtime · deployment · skills · agent version · weights hash</li>
+    <li><strong>Access</strong> · files · messaging · tools · APIs · secrets · scope per tool</li>
+    <li><strong>Capability</strong> · real-work benchmark tasks across the agent's workflow lane</li>
+    <li><strong>Safety</strong> · prompt-injection · overreach · leakage · permission discipline · escalation</li>
+    <li><strong>Economics</strong> · runtime · tokens · compute · cost per task · quality per dollar</li>
+    <li><strong>Proof</strong> · hashed receipts · manifest · deed package · ENS attestation</li>
+  </ul>
+
+  <h2>What this page is NOT</h2>
+  <p>The ClawCheck intake on this page does NOT call any LLM, does NOT access your files, does NOT issue a deed (only Validator review can do that), and does NOT promise any tier is "safe" in the abstract — deployment tiers always name a defined workflow lane per AgentGrade doctrine.</p>
+
+  <h2>Closing</h2>
+  <p>Deploying an AI agent is easy. Trusting one is expensive. Model. Memory. Skills. Permissions. Compute. Receipts. Before your agent touches your world, make its work defendable.</p>
+</main>
+  `.trim();
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Defend The Claw · DefendableOS",
+        description:
+          "AI agent inspection campaign and ClawCheck free intake. Inspect what your agent can access, what it can do, what it costs, and whether its work can be trusted before deployment.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: [
+          { "@type": "DefinedTerm", name: "Defend The Claw", description: "DefendableOS public-facing AI agent safety movement · OpenClaw gives AI hands, Defendable makes sure those hands can be trusted." },
+          { "@type": "DefinedTerm", name: "ClawCheck", description: "Deployment and permission inspection product for AI agents · free intake on /defend-the-claw · paid review and deed ladder behind it." },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: "ClawCheck Free Snapshot",
+        description: "Free deterministic intake interface for AI agent deployment risk classification · five selections produce a Claw Exposure Snapshot with documented Risk Tier and recommended Defendable product ladder.",
+        brand: { "@type": "Brand", name: "DefendableOS" },
+        category: "AI Agent Inspection",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+      },
+    ],
+    title: "Defend The Claw™ · Inspect Your AI Agent Before You Trust It | DefendableOS",
+    description:
+      "Your AI assistant has hands now. ClawCheck free intake · Risk Tier · recommended deed path. OpenClaw gives AI hands. Defendable makes sure those hands can be trusted.",
   };
 }
 

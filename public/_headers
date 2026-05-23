@@ -96,6 +96,17 @@
   X-Defendable-Doctrine: validate-the-validator
 
 # ─────────────────────────────────────────────────────────────────
+# DEFEND THE CLAW™ · public campaign + ClawCheck free intake
+# Higher priority crawl + canonical signal · the front-door page
+# ─────────────────────────────────────────────────────────────────
+/defend-the-claw
+  Cache-Control: public, max-age=180, s-maxage=180, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+  X-Defendable-Campaign: defend-the-claw
+
+# ─────────────────────────────────────────────────────────────────
 # Defendable Reports · index + individual report pages
 # ─────────────────────────────────────────────────────────────────
 /reports

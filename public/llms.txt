@@ -120,6 +120,48 @@ general availability.
 - /open — Defendable Open Infrastructure · every AI model, every
   connector, every doctrine guardrail, every storage bucket · named
   and statused · the receipts behind the receipts
+- /defend-the-claw — Defend The Claw™ public AI agent safety
+  campaign + ClawCheck™ free intake. Deterministic 5-step intake
+  (Worker kind · Deployment target · Access surfaces · Model
+  provider · Memory persistence) produces a Claw Exposure Snapshot
+  with documented Risk Tier (LOW / MODERATE / ELEVATED / HIGH) +
+  recommended Defendable product. NOT a chatbot · NOT autonomous ·
+  NO LLM call on user inputs · NO file access · purely
+  rule-based intake interface. Routes to AgentGrade benchmark +
+  Defendable Agent Deed + AI Work Unit Deed paid review ladder.
+  Tagline: "Your AI assistant has hands now. Inspect it before
+  you trust it." Hook: "OpenClaw gives AI hands · Defendable
+  makes sure those hands can be trusted."
+
+## DefendableOS distribution paths into OpenClaw / Kimi Code
+
+DefendableOS is designed to ship into the emerging always-on
+agent runtime ecosystem (OpenClaw · Kimi Code · Claude Desktop ·
+Cursor · etc) via three complementary distribution surfaces · all
+forthcoming:
+
+- **Defendable MCP server** · exposes clawcheck_inspect_agent ·
+  agentgrade_run_pack · evidence_vault_public_export · operator_
+  ask_price_capture · etc as Model Context Protocol tools that
+  any MCP-compatible host can invoke natively
+- **Defendable Kimi Code plugin** · packaged like LegalSniper
+  plugin (Apache 2.0 · github.com/SudoSuOps/legalsniper-plugin)
+  with closed-schema HANDOFF_INTENTS · 3-tier subagent isolation
+  · operator confirmation on dispatch
+- **Defendable Kimi Code skill** · lightweight skill that
+  surfaces ClawCheck intake + Defendable AgentGrade benchmark
+  inside an active OpenClaw session
+- **Defendable Kimi Code hooks** · the most powerful surface ·
+  pre-tool-call + post-tool-call + pre-message-send hooks that
+  run ClawCheck permission discipline + AgentGrade cost capture
+  + injection-test in real time during agent operation · turns
+  inspection from a one-time intake into a continuous evidence
+  capture loop
+
+OpenClaw deployment options (My Computer · Cloud Server · Android
+Phone · Edge Box) map 1:1 to Defendable's deployment risk
+classification on /defend-the-claw.
+
 - /agent-grade — Defendable AgentGrade™ · verified performance
   testing for AI agents before they are trusted, deployed,
   licensed, rented, or acquired. Five orthogonal grades (Capability
