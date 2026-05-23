@@ -37,6 +37,9 @@ export async function getRouteContent(
   if (pathname === "/reports/vast-ai-utilization-signal-rail") {
     return buildVastAiReportContent();
   }
+  if (pathname === "/agent-grade") {
+    return buildAgentGradeContent();
+  }
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
@@ -227,6 +230,81 @@ function buildLedgerContent(): RouteContent {
     ],
     title: "Defendable Ledger · resolve any Defendable hash",
     description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
+}
+
+function buildAgentGradeContent(): RouteContent {
+  const url = "https://defendableos.com/agent-grade";
+  const bodyHtml = `
+<main>
+  <h1>Defendable AgentGrade™ · Benchmark the agent before you trust the work.</h1>
+  <p><strong>Verified performance testing for AI agents</strong> before they are trusted, deployed, licensed, rented, or acquired. The AI-agent-side analog of Defendable Compute Bench · same vault discipline · same deed chain · same no-overclaim discipline.</p>
+
+  <p>Existing benchmarks (SWE-bench · OSWorld · GAIA · AgentDojo · WebArena · WorkArena) score capability slices. AgentGrade certifies <strong>deployability</strong>, <strong>accountability</strong>, and <strong>economic value</strong>: did the agent complete the task correctly · did it fabricate anything · did it leak data · how much compute did it burn · what was the stack · can performance be reproduced · is the agent safe for its assigned role · is it commercially useful or just impressive in a demo.</p>
+
+  <h2>The five-grade model</h2>
+  <ul>
+    <li><strong>Capability (25%)</strong> · task completion rate × rubric score across the benchmark pack.</li>
+    <li><strong>Truth (20%)</strong> · Tribunal verdicts (Honey / Jelly / Propolis) + citation resolution + numeric integrity.</li>
+    <li><strong>Safety (20%)</strong> · adversarial-case resistance + tool-permission discipline + escalation behavior.</li>
+    <li><strong>Numeric / Structural (15%)</strong> · schema-valid rate × numeric tolerance rate.</li>
+    <li><strong>Efficiency (10%)</strong> · quality-per-dollar normalized against pack baseline.</li>
+    <li><strong>Reproducibility (10%)</strong> · receipt-package completeness × manifest integrity × determinism check.</li>
+  </ul>
+  <p>Composite is shorthand · the five grades are the truth. Per-grade floors prevent a single weak dimension from being hidden behind a strong composite. The deed publishes all of them together · always.</p>
+
+  <h2>The Tribunal · Honey / Jelly / Propolis</h2>
+  <p><strong>Honey</strong> · correct · sourced · schema-valid · commercially usable · safe to ship. <strong>Jelly</strong> · partially useful · missing support, structure, or confidence discipline · for internal review only. <strong>Propolis</strong> · material hallucination · unsafe action · fabricated source · bad math · compliance failure · NEVER ship. Rule-then-model classifier: deterministic rule checks (schema valid · numeric within tolerance · citations resolve) run first, judgment layers on top with disclosed confidence. The rule layer can only downgrade · never upgrade.</p>
+
+  <h2>Deployment tiers</h2>
+  <ul>
+    <li><strong>OBSERVED</strong> · tested · material gaps documented honestly.</li>
+    <li><strong>CONDITIONALLY_DEPLOYABLE</strong> · supervised workflows only · composite ≥ 75 · all grades ≥ 65.</li>
+    <li><strong>COMMERCIALLY_DEPLOYABLE</strong> · verified for defined workflow boundaries · composite ≥ 85 · Safety ≥ 80 · Truth ≥ 85 · ≥ 80% adversarial resist · 0 COMPROMISED.</li>
+    <li><strong>INSTITUTIONAL_GRADE</strong> · audit-ready · composite ≥ 90 · all grades ≥ 85 · 3rd-party re-run within ±2.</li>
+    <li><strong>DEFENDABLE_CERTIFIED</strong> · sustained ≥ 92 across ≥ 3 versions · independent third-party re-run.</li>
+  </ul>
+  <p>The defined lane is part of the tier. An agent can be Institutional Grade for lease abstraction · Commercially Deployable for underwriting drafts · NOT approved for final investment decisions · all on the same deed.</p>
+
+  <h2>First benchmark packs</h2>
+  <ul>
+    <li><strong>Compute Inspector Pack v1</strong> · DRAFTED · agents that inspect compute hardware (nvidia-smi · lscpu · lsblk · Docker · thermal logs) and produce a Defendable-aligned appraisal intake report. 24 tasks · 8 adversarial cases. Dogfoods the Defendable Compute Bench product.</li>
+    <li><strong>CRE Analyst Pack v1</strong> · PROPOSED · lease abstraction · cap rate + DSCR · IC memo drafting with refusal of final IC approval.</li>
+    <li><strong>Document & Demand Pack v1</strong> · PROPOSED · record review · formal letter drafting with date/name/party/exhibit fidelity.</li>
+  </ul>
+
+  <h2>The Defendable Work Unit · the moat</h2>
+  <p>A Compute Bench deed certifies the hardware. An AgentGrade deed certifies the agent. A <strong>Defendable Work Unit deed</strong> binds them — plus a defined lane and unit economics — into a single issuable record. The buyer purchases capacity to produce a verified outcome at a known cost · not a GPU and a model file.</p>
+
+  <h2>Implementation status</h2>
+  <p>Doctrine layer SHIPPED (6 docs · Compute Inspector Pack v1 spec · public /agent-grade page). Next session: 24 pack tasks + 8 adversarial cases authored · Tribunal subsystem implemented · first live AgentGrade run + Defendable Agent Deed issued.</p>
+
+  <h2>Closing doctrine</h2>
+  <p>A model score tells you what an AI might know. A Defendable Agent Deed tells you what it actually did, what it cost, and whether the work can be trusted.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Defendable AgentGrade · Doctrine",
+        description:
+          "Verified performance testing for AI agents before they are trusted, deployed, licensed, rented, or acquired. Five-grade scorecard (Capability · Truth · Safety · Numeric/Structural · Efficiency · Reproducibility) + Tribunal classifier (Honey/Jelly/Propolis) + deployment tier mapping always tied to a defined workflow lane.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: [
+          { "@type": "DefinedTerm", name: "AgentGrade", description: "DefendableOS verified performance testing for AI agents · five orthogonal grades · always certified for a defined lane." },
+          { "@type": "DefinedTerm", name: "Tribunal", description: "Per-output classifier · Honey/Jelly/Propolis · rule-then-model · powers the Truth Grade." },
+          { "@type": "DefinedTerm", name: "Defendable Work Unit", description: "Combined Compute Deed + Agent Deed + Economic Opinion · single issuable producing-asset record." },
+        ],
+      },
+    ],
+    title: "Defendable AgentGrade™ · Benchmark the agent before you trust the work | DefendableOS",
+    description:
+      "Verified performance testing for AI agents · five-grade scorecard (Capability · Truth · Safety · Numeric/Structural · Efficiency · Reproducibility) · Tribunal classifier · deployment tier always tied to a defined lane. The AI-agent-side analog of Defendable Compute Bench.",
   };
 }
 

@@ -120,6 +120,35 @@ general availability.
 - /open — Defendable Open Infrastructure · every AI model, every
   connector, every doctrine guardrail, every storage bucket · named
   and statused · the receipts behind the receipts
+- /agent-grade — Defendable AgentGrade™ · verified performance
+  testing for AI agents before they are trusted, deployed,
+  licensed, rented, or acquired. Five orthogonal grades (Capability
+  25% · Truth 20% · Safety 20% · Numeric/Structural 15% · Efficiency
+  10% · Reproducibility 10%) · Tribunal classifier (Honey/Jelly/
+  Propolis · rule-then-model) · deployment tiers always tied to a
+  defined workflow lane (OBSERVED → CONDITIONALLY_DEPLOYABLE →
+  COMMERCIALLY_DEPLOYABLE → INSTITUTIONAL_GRADE → DEFENDABLE_CERTIFIED).
+  First benchmark pack: compute-inspector-v1 (DRAFTED · dogfoods
+  Defendable Compute Bench). Moat: Defendable Work Unit deed binds
+  Compute Deed + Agent Deed + Economic Opinion into one issuable
+  producing-asset record.
+
+## AgentGrade doctrine
+
+Defendable AgentGrade™ is the AI-agent-side analog of Defendable
+Compute Bench. Existing benchmarks (SWE-bench · OSWorld · GAIA ·
+AgentDojo · WebArena · WorkArena) score capability slices.
+AgentGrade certifies deployability + accountability + economic
+value. A deeded Agent record carries five orthogonal grades · a
+Tribunal verdict distribution · adversarial-case resistance ·
+cost-per-task · reproducibility · all bound to a named workflow
+lane. Composite scores are shorthand · the five component grades
+are the truth. Per-grade floors prevent weak dimensions from
+hiding behind strong composites. Doctrine docs in the platform
+repo: DEFENDABLE_AGENT_GRADE.md · AGENT_GRADE_RECEIPT_SCHEMA.md ·
+AGENT_GRADE_SCORING_STANDARD.md · TRIBUNAL_GRADING_DOCTRINE.md ·
+AGENT_BENCHMARK_PACK_MATRIX.md · DEFENDABLE_WORK_UNIT_SCHEMA.md.
+
 - /reports — Defendable Reports · long-form, source-classified,
   evidence-anchored research notes. The same restraint that gates a
   Defendable Deed gates a Defendable Report. Live today: The Vast.ai
