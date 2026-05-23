@@ -1,57 +1,122 @@
 # DefendableOS · llms.txt
 #
 # Context manifest for AI agents indexing defendableos.com.
-# Last updated: 2026-05-22.
+# Last updated: 2026-05-22 (evening · post-ProductRadar + Semrush rail).
 
 ## What this is
 
 DefendableOS is the operating system for evidence-backed valuation,
 provenance, and market-ready ownership across real-world and digital
-assets.
+assets — AND a demand-intelligence platform for choosing what to
+sell next.
 
 The market-facing promise is **Proof of Value**.
 The internal doctrine is **Validate the Validator**.
 The intelligence engine is **AIOV** (AI Opinion of Value).
 The asset record is the **Defendable Deed**.
 
+## The two halves
+
+DefendableOS is two intelligence products under one operating system:
+
+1. **Asset side** (Goods Vault + Comp Foundry + Defendable Deeds)
+   Bring us something valuable. We prove what it is and what it is worth.
+
+2. **Demand side** (ProductRadar)
+   Bring us a store idea. We find what may sell, package the brand,
+   build the proof, and connect to your store to learn what actually
+   converted.
+
 ## The thesis
 
-Value without evidence is just an opinion. DefendableOS produces
-defensible records of what an asset is, what supports it, and what
-it is worth — built for sale, transfer, financing, insurance,
-procurement, and trust.
+Value without evidence is just an opinion. Demand without proof is
+just a guess. DefendableOS produces defensible records of both
+— built for sale, transfer, financing, insurance, procurement, and
+trust.
 
 ## Asset classes in scope
 
-- Commercial Real Estate
-- Compute Hardware (GPUs, servers, AI clusters, edge appliances)
+- Commercial Real Estate (CRE · STNL retail · STNL industrial · multi-tenant)
+- Compute Hardware (GPUs · workstation accelerators · DGX/HGX · servers · edge appliances)
 - Equipment
 - Luxury Goods
 - Datasets
-- AI Assets (models, evaluations, training records)
+- AI Assets (models · evaluations · training records)
 
-Compute hardware records are Proof of Compute compatible. Datasets
-and AI Assets are Deeded Digital Assets.
+## Live catalog (as of 2026-05-22)
+
+**Defendable Compute · 3 operator-asking deeds:**
+- NVIDIA RTX PRO 6000 Blackwell · $9,850 · DDEED-DOV-COMPUTE-000001-v3
+- NVIDIA RTX 5090 ROG ASTRAL · $3,900 · DDEED-DOV-COMPUTE-000002-v3
+- NVIDIA RTX 3090 Founders Edition · $950 · DDEED-DOV-COMPUTE-000003-v3
+
+**Defendable CRE STNL · 2 operator-stated deeds (NOI / cap / asking):**
+- Wawa Convenience-and-Fuel · $6,653,900 · 5.0% cap · NOI $332,695
+- Amazon Last-Mile DC · $170,000,000 · 5.0% cap · NOI $8,500,000
+
+**Defendable CRE MarketReady · illustrative demo:**
+- Palm Grove Marketplace · grocery-anchored neighborhood retail · S Florida
+
+Each deed is resolvable by deed reference, manifest hash, validator
+receipt, or full SHA-256 record hash at https://ledger.defendableos.com.
 
 ## Platform modules
 
-- AIOV Engine — AI-assisted opinions of value
-- Evidence Vault — records supporting identity, provenance, condition
-- Validator Review — challenge assumptions, comparables, conclusions
-- Receipt Ledger — inspectable analysis and evidence receipts
-- Defendable Deed — transferable evidence-backed asset record
-- Market-Ready Export — buyer booklets, listing support, diligence
+- **AIOV Engine** — AI-assisted opinions of value (Kimi K2.6 · GPT-4o · live)
+- **Evidence Vault** — 4-bucket privacy-classed object storage
+- **Comp Foundry** — A–E comp grading with 7 doctrine rules
+- **Validator Review** — deterministic 12-check protocol
+- **Defendable Deed** — versioned, SHA-256-anchored asset record
+- **MarketReady** — premium go-to-market packaging
+- **ProductRadar** — 8-component demand-intelligence scoring
+- **Brand Outlet Signal** — eBay merchandising-placement watchlist
+- **ITAD Partner Feed** — 8 verified ITAD targets for enterprise compute comps
+- **Source Rights Ledger** — per-artifact permissioned use controls
 
-## Optional future edge module
+## Signal class doctrine (LOCKED)
+
+DefendableOS distinguishes 9 epistemic classes of demand/value signal:
+
+| Signal class | Provider example | Confirmed sale? |
+|---|---|---|
+| TREND_SIGNAL | Brave research context | NO |
+| BRANDED_COMMERCE_PLACEMENT | eBay Brand Outlet | NO |
+| SEARCH_DEMAND_SIGNAL | Ahrefs / Semrush | NO |
+| SOCIAL_COMMERCE_TREND_SIGNAL | TikTok Creative Center | NO |
+| GOOGLE_SHOPPING_POPULARITY | Google Merchant Center | NO |
+| COMPETITOR_VISIBILITY_SIGNAL | Semrush Domain Research | NO |
+| RETAIL_INTELLIGENCE_ESTIMATE | Similarweb / Semrush Trends | NO |
+| ECOMMERCE_PRODUCT_CLICK_SIGNAL | Semrush Retail Keywords | NO |
+| MARKETPLACE_SOLD_RESEARCH | eBay Product Research (analyst-reviewed) | NO |
+| PERMISSIONED_CONNECTED_SALE | Client Shopify/eBay store | **YES** |
+| FIRST_PARTY_DEFENDABLE_SALE | Defendable-managed sale | **YES** |
+
+Only the bottom two count as confirmed-sale evidence. Every output
+declares its signal class · the platform refuses to derive a
+confirmed-sale claim from non-confirmed-class signals.
+
+## Defendable Box (edge module)
 
 Defendable Box — local capture, local inference, sovereign evidence
-handling. Capability preview · not yet for general availability.
+handling on Jetson Orin Nano Super. Capability preview · not yet for
+general availability.
 
 ## Doctrine principles
 
-- Evidence Before Confidence — no conclusion outranks its source
-- Receipts Before Claims — outputs must be supported by inspectable records
-- Challenge Before Transfer — packages should survive scrutiny before reaching a buyer
+- **Evidence Before Confidence** — no conclusion outranks its source
+- **Receipts Before Claims** — outputs must be supported by inspectable records
+- **Challenge Before Transfer** — packages should survive scrutiny before reaching a buyer
+- **Brand Placement ≠ Supplier Authorization** — Brand Outlet appearance is research context, never reseller approval
+- **Listing Price ≠ Confirmed Sale** — asking-market context never becomes value support
+- **No Evidence, No Claim**
+
+## Public verification surfaces
+
+- /verify/{slug} — canonical doctrine-correct proof page for any deed
+- /showcase/{slug} — cinematic marketing surface
+- /ledger — paste a deed reference, record hash, manifest hash, or
+  validator receipt to resolve any of the above
+- ledger.defendableos.com — subdomain shortcut to the lookup form
 
 ## Disclaimers
 
@@ -59,10 +124,12 @@ DefendableOS records are evidence and analysis packages. Asset-specific
 professional, legal, regulatory, or licensed appraisal requirements
 may still apply.
 
-The platform is in early-access development. Visible features and UI
-elements labeled "Illustrative," "Sample Analysis," or "Capability
-preview" reflect platform capabilities, vision, or planned scope —
-not current production state.
+Operator-stated asking prices and operator-stated STNL terms are
+operator claims — not validator-issued conclusions or confirmed-sale
+comparables. The deed JSON declares this on every record.
+
+The Palm Grove Marketplace and any property described as "illustrative"
+are demonstration assets and not active offerings.
 
 ## Related surfaces
 
@@ -70,6 +137,8 @@ not current production state.
 - https://defendable.eth.limo/ — defendable.eth · cross-Swarm certification standard
 - https://legal.swarmandbee.ai/ — Legal-as-a-Service (the Legal module)
 - https://legalsniper.swarmandbee.ai/ — LegalSniper model card
+- https://api.defendableos.com/ — platform API (read-only public endpoints
+  at /api/v1/public/verify/{slug} and /api/v1/public/lookup?hash=...)
 
 ## Entity
 
@@ -80,4 +149,5 @@ doing business as Swarm & Bee AI.
 ## Contact
 
 build@swarmandbee.ai
+hello@swarmandbee.ai
 https://defendableos.com/#early-access

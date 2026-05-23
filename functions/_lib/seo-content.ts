@@ -38,7 +38,47 @@ export async function getRouteContent(
     const slug = pathname.slice("/showcase/".length).split("/")[0];
     if (slug) return buildShowcaseContent(slug);
   }
+  // Canonical doctrine-correct proof page · same per-slug content
+  // shape as /showcase/{slug} but framed as the public verify rail.
+  if (pathname.startsWith("/verify/")) {
+    const slug = pathname.slice("/verify/".length).split("/")[0];
+    if (slug) return buildVerifyContent(slug);
+  }
   return null;
+}
+
+function buildVerifyContent(slug: string): RouteContent {
+  const url = `https://defendableos.com/verify/${slug}`;
+  const bodyHtml = `
+<main>
+  <h1>Defendable Verify · ${slug}</h1>
+  <p>Public verification page for a Defendable record. Renders the doctrine-correct lifecycle: <strong>record_status</strong>, <strong>validator_status</strong>, <strong>publication_status</strong>, <strong>value_status</strong>, <strong>ens_status</strong>. Issued at is <em>null</em> until a draft clears every issuance prerequisite.</p>
+  <p>Draft records show <strong>DRAFT_REVIEW_RECORD · PASSED_FOR_DRAFT_PACKAGING · NOT_PUBLISHED · WITHHELD_PENDING_VALIDATOR_REVIEW · RESERVED_NOT_ISSUED</strong>. The record_hash is SHA-256 over DEFENDABLE_CANONICAL_JSON_V1.</p>
+  <p>The same canonical evidence backs the cinematic <code>/showcase/${slug}</code> surface. Lookup by deed reference, manifest hash, validator receipt, or full record hash at <code>/ledger</code>.</p>
+  <p>No final valuation, professional appraisal, certification, authentication guarantee, deed issuance, or ENS publication has occurred unless the deed has cleared all four blocker conditions.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: `Defendable Verify · ${slug}`,
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: {
+          "@type": "DefinedTerm",
+          name: "Defendable Deed",
+          description:
+            "Versioned, SHA-256-anchored asset record produced by the Validate the Validator doctrine. Issued only after evidence, AIOV draft, and validator review clear every issuance prerequisite.",
+        },
+      },
+    ],
+    title: `Defendable Verify · ${slug} · DefendableOS`,
+    description: `Public verification record for Defendable Deed ${slug}. Doctrine-correct draft lifecycle · SHA-256 anchored · resolvable via ledger.`,
+  };
 }
 
 function buildCrePalmGroveContent(pathname: string): RouteContent {

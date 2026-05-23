@@ -1,0 +1,68 @@
+# Cloudflare Pages headers · defendableos.com
+#
+# Cache + AI-crawler + security headers per path. The middleware
+# already injects per-route <title>/<meta>/<JSON-LD> for crawlers ·
+# this file controls the surrounding HTTP layer.
+
+# ─────────────────────────────────────────────────────────────────
+# Default · everything else
+# ─────────────────────────────────────────────────────────────────
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN
+  X-Robots-Tag: index, follow
+
+# ─────────────────────────────────────────────────────────────────
+# Apex HTML · short cache · always revalidate
+# ─────────────────────────────────────────────────────────────────
+/
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=86400
+  Link: </llms.txt>; rel="alternate"; type="text/plain"; title="AI context manifest"
+
+# ─────────────────────────────────────────────────────────────────
+# AI context manifests · long cache · CDN-friendly
+# ─────────────────────────────────────────────────────────────────
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+  Access-Control-Allow-Origin: *
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=3600
+  Access-Control-Allow-Origin: *
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=3600
+  Access-Control-Allow-Origin: *
+
+# ─────────────────────────────────────────────────────────────────
+# Build assets · long-lived because filenames are content-hashed
+# ─────────────────────────────────────────────────────────────────
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ─────────────────────────────────────────────────────────────────
+# Per-deed proof pages · canonical proof rail · short cache
+# ─────────────────────────────────────────────────────────────────
+/verify/*
+  Cache-Control: public, max-age=120, s-maxage=120, stale-while-revalidate=600
+  X-Robots-Tag: index, follow
+  X-Defendable-Doctrine: validate-the-validator
+
+/showcase/*
+  Cache-Control: public, max-age=120, s-maxage=120, stale-while-revalidate=600
+  X-Robots-Tag: index, follow
+  X-Defendable-Doctrine: validate-the-validator
+
+# ─────────────────────────────────────────────────────────────────
+# Ledger · paste-a-hash lookup · short cache so new deeds resolve fast
+# ─────────────────────────────────────────────────────────────────
+/ledger
+  Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=600
+  X-Robots-Tag: index, follow
