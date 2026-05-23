@@ -14,7 +14,7 @@
  *   - Record   · Defendable Agent Deed™
  *   - Package  · AI Work Unit Deed™
  */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SALES_EMAIL = "build@swarmandbee.ai";
@@ -639,6 +639,18 @@ function LiveIntakeChat() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [provider, setProvider] = useState<IntakeResponse["judge_provider"] | null>(null);
+  const snapshotRef = useRef<HTMLDivElement | null>(null);
+
+  // Auto-scroll the Snapshot into view when it arrives · operators kept
+  // missing it because the conversation log pushed it below the fold.
+  useEffect(() => {
+    if (snapshot && snapshotRef.current) {
+      const t = setTimeout(() => {
+        snapshotRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 200);
+      return () => clearTimeout(t);
+    }
+  }, [snapshot]);
 
   async function send() {
     const msg = input.trim();
@@ -660,7 +672,10 @@ function LiveIntakeChat() {
       setProvider(data.judge_provider);
       const refusalLine = data.refusal_reason ? `\n\n[REFUSAL · ${data.refusal_reason}]` : "";
       setConversation((c) => [...c, { role: "agent", content: data.agent_message + refusalLine }]);
-      if (data.intake_complete && data.snapshot) setSnapshot(data.snapshot);
+      // Render snapshot whenever the server returns one · do NOT double-gate
+      // on intake_complete (Kimi sometimes returns a complete snapshot without
+      // setting the flag · code-side completeness is what matters).
+      if (data.snapshot) setSnapshot(data.snapshot);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
       setError(msg);
@@ -776,9 +791,12 @@ function LiveIntakeChat() {
         </div>
       )}
 
-      {/* Snapshot (when intake_complete=true) */}
+      {/* Snapshot · auto-scrolled into view when it arrives */}
       {snapshot && (
-        <div className="mt-5 rounded-lg border-2 border-honey-300/40 bg-honey-300/[0.06] p-4">
+        <div
+          ref={snapshotRef}
+          className="mt-5 rounded-lg border-2 border-honey-300/40 bg-honey-300/[0.06] p-4 shadow-lg shadow-honey-300/10"
+        >
           <div className="text-[10px] uppercase tracking-[0.22em] text-honey-400 font-semibold mb-2">
             Claw Exposure Snapshot · computed by platform code
           </div>
