@@ -28,6 +28,9 @@ export async function getRouteContent(
   if (pathname === "/open") {
     return buildDefendableOpenContent();
   }
+  if (pathname === "/pair-factory") {
+    return buildPairFactoryContent();
+  }
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
@@ -218,6 +221,114 @@ function buildLedgerContent(): RouteContent {
     ],
     title: "Defendable Ledger · resolve any Defendable hash",
     description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
+}
+
+function buildPairFactoryContent(): RouteContent {
+  const url = "https://defendableos.com/pair-factory";
+  const bodyHtml = `
+<main>
+  <h1>Pair Factory · where raw evidence becomes trusted intelligence.</h1>
+  <p><strong>DefendableOS</strong> does not treat every observation as truth. A marketplace listing, a rental signal, an operating receipt, a validator correction and a verified transaction each carry different evidentiary weight. <strong>Pair Factory</strong> converts those distinctions into structured learning pairs that help AIOV reason better and help DefendableOS issue stronger records.</p>
+  <p>The system does not learn from confidence. It learns from proof, correction and receipts.</p>
+
+  <h2>What is a pair?</h2>
+  <p>A pair is a structured learning example built from an Evidence Input, a Draft Claim, a Validator Challenge, a Corrected Output, and a Receipt / Source Class. Pair Factory does not manufacture truth · it records the difference between what was observed, what was claimed, what was challenged and what survived validation.</p>
+
+  <h2>Compute example · one GPU, many evidence types (EDUCATIONAL · NOT A LIVE VALUATION)</h2>
+  <ul>
+    <li>Marketplace listing shows an asking price · correct class: <em>Active listing observation only</em>.</li>
+    <li>Vast.ai shows a visible hourly listing rate · correct class: <em>Rental market signal only</em>.</li>
+    <li>Founder captures an actual paid rental receipt · correct class: <em>First-party rental evidence</em>.</li>
+    <li>nvidia-smi capture verifies memory and operational state · correct class: <em>First-party operating evidence</em>.</li>
+    <li>Verified paid sale receipt exists · correct class: <em>Verified transaction evidence subject to comparability review</em>.</li>
+  </ul>
+  <p>Doctrine: Listed is not sold. Offered is not rented. Rented is not future yield. Operational is not valuable without context. Proof is what survives review.</p>
+
+  <h2>Edge example · small hardware, real utility (EDUCATIONAL · CAPABILITY REQUIRES CAPTURED EVIDENCE)</h2>
+  <p>An affordable Jetson Orin Nano-class device may carry real utility through low power, local privacy, sensor integration, offline execution or persistent deployment. Its utility must be established by evidence appropriate to its role · a small device is not lesser evidence, it is a different compute role requiring the right proof.</p>
+
+  <h2>The Pair Factory pipeline</h2>
+  <ol>
+    <li>Capture · sources enter the system (asset specifications · receipts · operating captures · rental history · benchmarks · observations · partner records · validator notes).</li>
+    <li>Classify · evidence receives a truth class (first-party operating evidence · rental receipt · active listing observation · partner transaction · verified sold comp · unsupported assertion · private-only).</li>
+    <li>Challenge · is the claim supported · is evidence stale · is a listing being misrepresented as a sale · is private information about to be exposed · is a capability claim untested · does the comp match the asset and deployment context.</li>
+    <li>Correct · unsupported or overbroad conclusions are revised with proper scope and disclosures.</li>
+    <li>Pair · evidence + failed claim + validator finding + corrected output become a structured learning pair.</li>
+    <li>Improve · approved pairs improve AIOV analysis quality · source grading · comp selection · disclosure discipline · validator consistency · future asset records.</li>
+    <li>Deed · only approved, public-safe conclusions may move toward a Defendable Deed.</li>
+  </ol>
+  <p>Doctrine: The failure is not discarded. The correction becomes the training asset.</p>
+
+  <h2>Eight pair types</h2>
+  <ul>
+    <li><strong>Identity Pair</strong> · correct asset identification from incomplete or conflicting evidence.</li>
+    <li><strong>Comp Pair</strong> · difference between relevant comps, weak references and non-comparable observations.</li>
+    <li><strong>Rental Pair</strong> · difference between listed rental rates, completed rentals and receipt-backed yield analysis.</li>
+    <li><strong>Utility Pair</strong> · what workload an asset can actually support when tested.</li>
+    <li><strong>Disclosure Pair</strong> · what can be safely shown publicly versus kept private.</li>
+    <li><strong>Contradiction Pair</strong> · how conflicting inputs are surfaced and resolved.</li>
+    <li><strong>Lifecycle Pair</strong> · difference between draft, review, issued, transferred and retired records.</li>
+    <li><strong>Failure Pair</strong> · what the model or analyst got wrong and how it was corrected.</li>
+  </ul>
+
+  <h2>Where Pair Factory sits in DefendableOS</h2>
+  <p>ProductRadar discovers observable signal and candidate assets. Pair Factory converts evidence, conflicts and corrections into trusted learning pairs. AIOV uses classified evidence and learned discipline to form draft opinions. The Validator Workflow challenges claims, checks evidence and controls disclosure. DefendableOS governs records, lifecycle, provenance and public/private boundaries. The Defendable Deed ships the approved public-safe trust record.</p>
+
+  <h2>Privacy discipline</h2>
+  <p>Pair Factory never exposes raw serial numbers, private invoices, customer documents, partner-confidential transaction records, rental payout receipts unless approved for disclosure, personal identifying information, unreleased asset records, private validator commentary, or proprietary training corpora. The public page may show educational examples, evidence classes, redacted sample workflows, public-safe issued records, doctrine language, generic correction examples, and hashes or lifecycle states where already public-safe. <em>Private evidence can teach the system under controlled rights and disclosure rules without becoming public evidence.</em></p>
+
+  <h2>Closing doctrine</h2>
+  <p>Signal begins the inquiry. Evidence grounds the claim. Challenge exposes the weakness. Correction creates the pair. Validation earns the trust. The Deed ships only what survives proof.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Pair Factory · DefendableOS",
+        description:
+          "Educational doctrine page explaining how source-classified evidence, validator challenges and corrected outcomes become reusable intelligence supporting AIOV analysis and Defendable Deeds.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: [
+          {
+            "@type": "DefinedTerm",
+            name: "Pair Factory",
+            description:
+              "DefendableOS doctrine surface that converts observations, conflicts, validator corrections and verified outcomes into structured learning pairs · default state CANDIDATE_ONLY with a four-condition gate before any pair becomes training-eligible.",
+          },
+          {
+            "@type": "DefinedTerm",
+            name: "Validate the Validator",
+            description:
+              "DefendableOS internal doctrine requiring AI output to pass a validator chain that gates record advancement.",
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        headline: "Pair Factory · where raw evidence becomes trusted intelligence",
+        url,
+        author: {
+          "@type": "Organization",
+          name: "Swarm and Bee LLC",
+          url: "https://defendableos.com",
+        },
+        about: [
+          { "@type": "Thing", name: "Defendable Compute" },
+          { "@type": "Thing", name: "AIOV" },
+          { "@type": "Thing", name: "Defendable Deed" },
+        ],
+      },
+    ],
+    title: "Pair Factory | DefendableOS — From Evidence to Trusted Intelligence",
+    description:
+      "Learn how DefendableOS classifies evidence, captures validator corrections, and turns proven outcomes into trusted intelligence for Compute Proof of Value records and Defendable Deeds.",
   };
 }
 

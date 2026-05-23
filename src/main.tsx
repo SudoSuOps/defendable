@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
 import DefendableOpen from "./pages/DefendableOpen";
+import DefendablePairFactory from "./pages/DefendablePairFactory";
 import Ledger from "./pages/Ledger";
 
 // Code-split · /compute and /showcase/:slug pull in three.js + R3F + drei
@@ -42,6 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<DefendableOS />} />
         <Route path="/open" element={<DefendableOpen />} />
+        <Route path="/pair-factory" element={<DefendablePairFactory />} />
         <Route
           path="/compute"
           element={

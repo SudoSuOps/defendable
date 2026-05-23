@@ -76,3 +76,12 @@
   X-Robots-Tag: index, follow
   X-AI-Context: defendableos
   X-Defendable-Doctrine: validate-the-validator
+
+# ─────────────────────────────────────────────────────────────────
+# Pair Factory · educational doctrine · evidence → pairs → deeds
+# ─────────────────────────────────────────────────────────────────
+/pair-factory
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator

@@ -1115,7 +1115,7 @@ function DefendableFooter() {
   return (
     <footer className="bg-neutral-950">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <EmblemMark />
@@ -1137,6 +1137,15 @@ function DefendableFooter() {
               ["AIOV", "#proof-of-value"],
               ["Defendable Deeds", "#deeds"],
               ["Validator Review", "#proof-of-value"],
+            ]}
+          />
+          <FooterColumn
+            heading="Doctrine"
+            links={[
+              ["Pair Factory", "/pair-factory"],
+              ["Open Infrastructure", "/open"],
+              ["Ledger", "/ledger"],
+              ["Validate the Validator", "/open"],
             ]}
           />
           <FooterColumn

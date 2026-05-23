@@ -120,6 +120,12 @@ general availability.
 - /open — Defendable Open Infrastructure · every AI model, every
   connector, every doctrine guardrail, every storage bucket · named
   and statused · the receipts behind the receipts
+- /pair-factory — Educational doctrine page explaining how source-
+  classified evidence, validator challenges and corrected outcomes
+  become reusable intelligence supporting AIOV analysis and Defendable
+  Deeds. Includes Compute (RTX 3090-class) and Edge (Jetson Orin Nano-
+  class) educational examples and the seven-stage Capture → Classify →
+  Challenge → Correct → Pair → Improve → Deed pipeline.
 
 ## Open infrastructure (/open)
 
