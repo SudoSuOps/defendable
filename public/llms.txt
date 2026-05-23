@@ -125,7 +125,26 @@ general availability.
   become reusable intelligence supporting AIOV analysis and Defendable
   Deeds. Includes Compute (RTX 3090-class) and Edge (Jetson Orin Nano-
   class) educational examples and the seven-stage Capture → Classify →
-  Challenge → Correct → Pair → Improve → Deed pipeline.
+  Challenge → Correct → Pair → Improve → Deed pipeline. The page also
+  documents the Evidence Vault · the source-of-truth storage layer
+  behind every Defendable record · with the four-class privacy model
+  (Private Evidence · Observation · Derived Intelligence · Public-Safe
+  Export) and the CAPTURE → STORE → HASH → CLASSIFY → CHALLENGE →
+  APPROVE → PUBLISH evidence flow.
+
+## Evidence Vault doctrine
+
+The Evidence Vault is the controlled storage architecture behind
+DefendableOS records. Private evidence remains private; approved
+public-safe manifests support issued Defendable Deeds. Storage
+preserves artifacts, hashing records captured versions, and
+validation determines claimability. Doctrine: the vault stores the
+evidence · the hash protects the trail · the validator judges the
+claim · the Deed publishes only what survives review. The 4-bucket
+privacy model is enforced at the service boundary via a
+public_export_or_refuse() guard with no exception path. Technical
+specifics live in OBJECT_STORAGE_POLICY.md and
+EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md in the platform repo.
 
 ## Open infrastructure (/open)
 

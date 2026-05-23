@@ -182,6 +182,70 @@ const CLOSING_DOCTRINE = [
   "The Deed ships only what survives proof.",
 ];
 
+// ─── Evidence Vault content ────────────────────────────────────────────────
+
+const VAULT_CLASSES = [
+  {
+    name: "Private Evidence Vault",
+    contains: "Invoices · serials · raw receipts · confidential partner/customer material · unredacted captures",
+    publicStatus: "Never public by default",
+  },
+  {
+    name: "Observation Vault",
+    contains: "Timestamped marketplace/rental/reference observations and specification sources",
+    publicStatus: "Source-classified · may support analysis",
+  },
+  {
+    name: "Derived Intelligence Vault",
+    contains: "Normalized comps · utility analyses · AIOV drafts · Pair Factory pairs · validator corrections",
+    publicStatus: "Internal unless approved",
+  },
+  {
+    name: "Public-Safe Export Vault",
+    contains: "Issued deed manifests · approved summaries · lifecycle status · approved hash references",
+    publicStatus: "Public only after validation",
+  },
+];
+
+const EVIDENCE_FLOW_BADGES = [
+  { stage: "CAPTURE", meaning: "The source artifact enters the system" },
+  { stage: "STORE", meaning: "Evidence is preserved in the appropriate vault class" },
+  { stage: "HASH", meaning: "A receipt identifies the captured artifact/version" },
+  { stage: "CLASSIFY", meaning: "The system records what the evidence can and cannot prove" },
+  { stage: "CHALLENGE", meaning: "Unsupported claims, conflicts and privacy risks are flagged" },
+  { stage: "APPROVE", meaning: "Validator determines what may support the record" },
+  { stage: "PUBLISH", meaning: "Only public-safe output becomes part of an issued deed" },
+];
+
+const VAULT_3090 = [
+  { artifact: "Purchase receipt / ownership proof", vault: "Private Evidence Vault", supports: "Ownership / acquisition evidence", disclosure: "Private unless expressly approved" },
+  { artifact: "Serial-number photograph", vault: "Private Evidence Vault", supports: "Identity matching", disclosure: "Raw serial never public by default" },
+  { artifact: "nvidia-smi snapshot", vault: "Private or Derived Vault", supports: "Operating state at time captured", disclosure: "Redacted summary only if approved" },
+  { artifact: "Vast.ai public listed-rate snapshot", vault: "Observation Vault", supports: "Rental market signal at timestamp", disclosure: "May show as observation, not paid yield" },
+  { artifact: "Completed rental payout receipt", vault: "Private Evidence Vault", supports: "Actual paid utilization evidence", disclosure: "Approved derived summary only" },
+  { artifact: "AIOV hold/rent/sell analysis", vault: "Derived Intelligence Vault", supports: "Draft recommendation", disclosure: "Internal until reviewed" },
+  { artifact: "Validator-approved deed manifest", vault: "Public-Safe Export Vault", supports: "Approved trust record", disclosure: "Public if issued" },
+];
+
+const VAULT_JETSON = [
+  { artifact: "Device identity and reference specification", vault: "Observation / Reference Vault", why: "Establishes expected hardware capability" },
+  { artifact: "Captured runtime and power-mode snapshot", vault: "Private Evidence Vault", why: "Shows configuration at capture time" },
+  { artifact: "Captured local workload test", vault: "Private / Derived Vault", why: "May prove demonstrated utility when reviewed" },
+  { artifact: "Deployment purpose statement", vault: "Derived Intelligence Vault", why: "Documents intended role · not proven performance" },
+  { artifact: "Validator-approved Edge Utility Record", vault: "Public-Safe Export Vault", why: "Communicates approved demonstrated utility" },
+];
+
+const VAULT_COMPOUNDS = [
+  "Classified observation history",
+  "Asset condition patterns",
+  "Useful-workload evidence",
+  "Rental utility receipts",
+  "Verified paid comps",
+  "Validator corrections",
+  "Lifecycle events",
+  "Public-safe deed histories",
+];
+
 export default function DefendablePairFactory() {
   return (
     <div className="min-h-screen bg-neutral-950 text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-100">
@@ -465,10 +529,147 @@ export default function DefendablePairFactory() {
           </div>
         </Section>
 
-        {/* Section 9 · CTA · tied to Compute */}
+        {/* Section 9 · Evidence Vault · the source-of-truth storage layer */}
+        <Section
+          kicker="08 · The Evidence Vault"
+          title="Where proof lives"
+          sub="The model can form an opinion. The vault must preserve the proof. Every useful pair begins with source-classified artifacts · receipts · operating snapshots · benchmarks · market observations · validator findings · corrected outputs · public-safe deed manifests."
+        >
+          {/* Evidence flow badges */}
+          <div className="mb-8 flex flex-wrap gap-2">
+            {EVIDENCE_FLOW_BADGES.map((b, i) => (
+              <span key={b.stage} className="inline-flex items-center" title={b.meaning}>
+                <span className="inline-flex items-center px-3 py-1.5 rounded border border-honey-300/30 bg-honey-300/[0.04] text-honey-300 text-[10px] tracking-[0.22em] font-semibold uppercase">
+                  {b.stage}
+                </span>
+                {i < EVIDENCE_FLOW_BADGES.length - 1 ? (
+                  <span aria-hidden className="text-stone-700 mx-1">→</span>
+                ) : null}
+              </span>
+            ))}
+          </div>
+
+          {/* 4 Vault Classes */}
+          <div className="rounded-lg border border-stone-800 overflow-hidden mb-8">
+            <table className="w-full text-sm">
+              <thead className="bg-neutral-900/60 text-[10px] uppercase tracking-[0.18em] text-stone-500">
+                <tr>
+                  <th className="text-left px-5 py-3 font-semibold">Vault Class</th>
+                  <th className="text-left px-5 py-3 font-semibold">What It Contains</th>
+                  <th className="text-left px-5 py-3 font-semibold">Public Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VAULT_CLASSES.map((v, i) => (
+                  <tr key={v.name} className={i % 2 === 0 ? "bg-neutral-950/40" : "bg-neutral-900/20"}>
+                    <td className="px-5 py-4 align-top text-honey-300 font-semibold text-sm leading-snug">{v.name}</td>
+                    <td className="px-5 py-4 align-top text-stone-300 text-sm leading-snug">{v.contains}</td>
+                    <td className="px-5 py-4 align-top text-stone-400 text-xs font-semibold tracking-wider uppercase leading-snug">{v.publicStatus}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Stored is not proven callout */}
+          <DoctrineBlock>
+            <p>A stored file is not automatically a proven claim. Evidence must still be classified, challenged and approved before it supports a public record.</p>
+          </DoctrineBlock>
+
+          {/* RTX 3090 worked example */}
+          <div className="mt-12">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-2">Compute example · RTX 3090-class 24GB workhorse</div>
+            <div className="mb-4">
+              <DisclosurePill>EDUCATIONAL EXAMPLE · NOT A LIVE VALUATION · NOT AN ISSUED DEED</DisclosurePill>
+            </div>
+            <div className="rounded-lg border border-stone-800 overflow-hidden">
+              <table className="w-full text-sm">
+                <thead className="bg-neutral-900/60 text-[10px] uppercase tracking-[0.18em] text-stone-500">
+                  <tr>
+                    <th className="text-left px-5 py-3 font-semibold">Artifact</th>
+                    <th className="text-left px-5 py-3 font-semibold">Vault Class</th>
+                    <th className="text-left px-5 py-3 font-semibold">What It Can Support</th>
+                    <th className="text-left px-5 py-3 font-semibold">Public Disclosure</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {VAULT_3090.map((row, i) => (
+                    <tr key={row.artifact} className={i % 2 === 0 ? "bg-neutral-950/40" : "bg-neutral-900/20"}>
+                      <td className="px-5 py-3 align-top text-stone-200 text-sm leading-snug">{row.artifact}</td>
+                      <td className="px-5 py-3 align-top text-honey-300 text-xs font-semibold leading-snug">{row.vault}</td>
+                      <td className="px-5 py-3 align-top text-stone-300 text-xs leading-snug">{row.supports}</td>
+                      <td className="px-5 py-3 align-top text-stone-400 text-xs leading-snug">{row.disclosure}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <DoctrineBlock>
+              <p>Listed is not rented.</p>
+              <p>Rented is not guaranteed future yield.</p>
+              <p>Stored is not automatically proven.</p>
+              <p>Public is only what survived validation.</p>
+            </DoctrineBlock>
+          </div>
+
+          {/* Jetson worked example */}
+          <div className="mt-12">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-2">Edge example · Jetson Orin Nano-class device</div>
+            <div className="mb-4">
+              <DisclosurePill>EDUCATIONAL EXAMPLE · UTILITY REQUIRES CAPTURED WORKLOAD EVIDENCE</DisclosurePill>
+            </div>
+            <div className="rounded-lg border border-stone-800 overflow-hidden">
+              <table className="w-full text-sm">
+                <thead className="bg-neutral-900/60 text-[10px] uppercase tracking-[0.18em] text-stone-500">
+                  <tr>
+                    <th className="text-left px-5 py-3 font-semibold">Artifact</th>
+                    <th className="text-left px-5 py-3 font-semibold">Vault Class</th>
+                    <th className="text-left px-5 py-3 font-semibold">Why It Matters</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {VAULT_JETSON.map((row, i) => (
+                    <tr key={row.artifact} className={i % 2 === 0 ? "bg-neutral-950/40" : "bg-neutral-900/20"}>
+                      <td className="px-5 py-3 align-top text-stone-200 text-sm leading-snug">{row.artifact}</td>
+                      <td className="px-5 py-3 align-top text-honey-300 text-xs font-semibold leading-snug">{row.vault}</td>
+                      <td className="px-5 py-3 align-top text-stone-300 text-sm leading-snug">{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <DoctrineBlock>
+              <p>Affordable compute becomes defendable compute when its actual role and tested utility are preserved as evidence.</p>
+            </DoctrineBlock>
+          </div>
+
+          {/* Why the Vault Compounds */}
+          <div className="mt-12 rounded-lg border border-honey-300/20 bg-gradient-to-br from-honey-300/[0.04] to-transparent p-6 md:p-8">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-honey-400 font-semibold mb-3">Why the vault compounds</div>
+            <h3 className="text-xl md:text-2xl font-semibold text-stone-100 tracking-tight mb-3">
+              Every preserved trail expands the next defendable opinion.
+            </h3>
+            <p className="text-stone-400 leading-relaxed mb-5 max-w-3xl">
+              Subject to rights and disclosure controls, the platform may accumulate · over
+              time · across deeds ·
+            </p>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-stone-300 mb-5">
+              {VAULT_COMPOUNDS.map((item) => (
+                <li key={item} className="leading-snug">· {item}</li>
+              ))}
+            </ul>
+            <p className="text-stone-400 text-sm leading-relaxed italic max-w-3xl">
+              Where evidence rights and disclosure controls permit, validated outcomes and
+              corrections can become reusable intelligence for improving future analysis and
+              record quality.
+            </p>
+          </div>
+        </Section>
+
+        {/* Section 10 · CTA · tied to Compute */}
         <section className="rounded-lg border border-honey-300/20 bg-gradient-to-br from-honey-300/[0.05] to-transparent p-6 md:p-10">
           <div className="text-[10px] tracking-[0.28em] uppercase text-honey-400 font-semibold mb-3">
-            08 · From doctrine to deed
+            09 · From doctrine to deed
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-stone-100">
             Start with an asset. Leave with proof.

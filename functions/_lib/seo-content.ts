@@ -278,6 +278,12 @@ function buildPairFactoryContent(): RouteContent {
   <h2>Privacy discipline</h2>
   <p>Pair Factory never exposes raw serial numbers, private invoices, customer documents, partner-confidential transaction records, rental payout receipts unless approved for disclosure, personal identifying information, unreleased asset records, private validator commentary, or proprietary training corpora. The public page may show educational examples, evidence classes, redacted sample workflows, public-safe issued records, doctrine language, generic correction examples, and hashes or lifecycle states where already public-safe. <em>Private evidence can teach the system under controlled rights and disclosure rules without becoming public evidence.</em></p>
 
+  <h2>The Evidence Vault · where proof lives</h2>
+  <p>The model can form an opinion. The vault must preserve the proof. DefendableOS routes every artifact into one of four logically separated vault classes: <strong>Private Evidence Vault</strong> (client uploads · serials · invoices · raw captures · never public by default), <strong>Observation Vault</strong> (timestamped marketplace/rental/reference observations · source-classified · internal), <strong>Derived Intelligence Vault</strong> (normalized comps · AIOV drafts · Pair Factory pairs · validator corrections · internal unless approved), and <strong>Public-Safe Export Vault</strong> (issued deed manifests · approved summaries · public only after validation).</p>
+  <p>Evidence flows · CAPTURE → STORE → HASH → CLASSIFY → CHALLENGE → APPROVE → PUBLISH. A stored file is not automatically a proven claim. Evidence must still be classified, challenged and approved before it supports a public record.</p>
+  <p>Doctrine: The vault stores the evidence. The hash protects the trail. The validator judges the claim. The Deed publishes only what survives review.</p>
+  <p>Implementation status: 4-bucket privacy model implemented at the service boundary with a public_export_or_refuse() guard that has no exception path · SHA-256 manifest pipeline implemented end-to-end · object-storage live-mirror gated by per-environment kill switch · MinIO local + Tigris/S3 production support · technical specifics in OBJECT_STORAGE_POLICY.md in the platform repo.</p>
+
   <h2>Closing doctrine</h2>
   <p>Signal begins the inquiry. Evidence grounds the claim. Challenge exposes the weakness. Correction creates the pair. Validation earns the trust. The Deed ships only what survives proof.</p>
 </main>
