@@ -25,6 +25,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- ─── Defendable Open · models + connectors + guardrails ───── -->
+  <url>
+    <loc>https://defendableos.com/open</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- ─── Defendable CRE MarketReady · Palm Grove Marketplace ──── -->
   <url>
     <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace</loc>

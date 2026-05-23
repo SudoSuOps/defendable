@@ -66,3 +66,13 @@
 /ledger
   Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=600
   X-Robots-Tag: index, follow
+
+# ─────────────────────────────────────────────────────────────────
+# Open infrastructure · models, connectors, guardrails, vault, repos
+# Educational + AI-discoverable · medium cache · friendly to crawlers
+# ─────────────────────────────────────────────────────────────────
+/open
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator

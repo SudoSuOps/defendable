@@ -63,6 +63,7 @@ function DefendableHeader() {
     { label: "Deeds", href: "#deeds" },
     { label: "Compute Demo", href: "/compute" },
     { label: "CRE Demo", href: "/showcase/cre/palm-grove-marketplace" },
+    { label: "Open Infra", href: "/open" },
     { label: "Ledger", href: "/ledger" },
     { label: "Early Access", href: "#early-access" },
   ];

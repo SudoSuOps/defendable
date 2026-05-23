@@ -117,6 +117,36 @@ general availability.
 - /ledger — paste a deed reference, record hash, manifest hash, or
   validator receipt to resolve any of the above
 - ledger.defendableos.com — subdomain shortcut to the lookup form
+- /open — Defendable Open Infrastructure · every AI model, every
+  connector, every doctrine guardrail, every storage bucket · named
+  and statused · the receipts behind the receipts
+
+## Open infrastructure (/open)
+
+DefendableOS publishes its full operational substrate so claims are
+auditable, not asserted. The /open page documents:
+
+- Models in production:
+  - Kimi K2.6 (Moonshot) — primary AIOV narrative under typed contracts
+    VALIDATOR_FLAG_TOOL + RESEARCH_CLASSIFY_TOOL
+  - OpenAI gpt-4o — secondary classification under RESEARCH_CLASSIFY_TOOL
+  - Brave LLM Context — live web grounding · feeds Validator Check 5
+- Doctrine guardrails enforced in code:
+  - Server-side AI downgrade guard (CONFIRMED_SALE_PRICE auto-downgrades
+    to MARKET_COMMENTARY without confirmed-sale signal in rationale)
+  - Affirmative-claim scan (Validator Check 10)
+  - Verbatim-disclaimer integrity (Validator Check 11)
+  - 11-class signal-class doctrine (only PERMISSIONED_CONNECTED_SALE +
+    FIRST_PARTY_DEFENDABLE_SALE count as confirmed)
+- Object storage · 4-bucket privacy vault:
+  - PRIVATE_EVIDENCE, MARKET_OBSERVATIONS, DERIVED_DATASETS, PUBLIC_ASSETS
+  - public_export_or_refuse() guard raises CompFoundryError on any
+    non-public bucket export
+- Connector honesty matrix · 19 connectors with real status
+- Open source repos:
+  - github.com/SudoSuOps/defendableos (platform · public source)
+  - github.com/SudoSuOps/defendable (landing · public source)
+  - github.com/SudoSuOps/legalsniper-plugin (Apache 2.0)
 
 ## Disclaimers
 

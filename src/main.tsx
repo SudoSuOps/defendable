@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
+import DefendableOpen from "./pages/DefendableOpen";
 import Ledger from "./pages/Ledger";
 
 // Code-split · /compute and /showcase/:slug pull in three.js + R3F + drei
@@ -40,6 +41,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DefendableOS />} />
+        <Route path="/open" element={<DefendableOpen />} />
         <Route
           path="/compute"
           element={

@@ -25,6 +25,9 @@ export async function getRouteContent(
   if (pathname === "/compute") {
     return buildDefendableComputeContent();
   }
+  if (pathname === "/open") {
+    return buildDefendableOpenContent();
+  }
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
@@ -215,6 +218,82 @@ function buildLedgerContent(): RouteContent {
     ],
     title: "Defendable Ledger · resolve any Defendable hash",
     description: "Paste a record hash, manifest hash, validator receipt, or deed reference. The Defendable ledger resolves any public hash to its canonical Proof of Value record.",
+  };
+}
+
+function buildDefendableOpenContent(): RouteContent {
+  const url = "https://defendableos.com/open";
+  const bodyHtml = `
+<main>
+  <h1>Defendable Open Infrastructure · the receipts behind the receipts.</h1>
+  <p><strong>The actual models. The actual sources. The actual guardrails.</strong> Most "AI valuation" platforms won't tell you which model wrote the words, which sources grounded the analysis, or where the data is stored. <strong>DefendableOS</strong> does.</p>
+  <p>Validate the Validator™ doesn't stop at validating the AI. It validates the infrastructure under the AI, the storage under the infrastructure, and the doctrine under the storage. This page is that audit.</p>
+
+  <h2>Models in production</h2>
+  <ul>
+    <li><strong>Kimi K2.6 (Moonshot)</strong> · primary AIOV narrative · typed contracts VALIDATOR_FLAG_TOOL + RESEARCH_CLASSIFY_TOOL · rejects temperature ≠ 1 · self-disciplines under closed-schema tool use.</li>
+    <li><strong>OpenAI gpt-4o</strong> · secondary completion · independent classification under RESEARCH_CLASSIFY_TOOL · cross-validator second opinion.</li>
+    <li><strong>Brave LLM Context</strong> · live web grounding · returns grounding.generic[] as canonical source list · feeds Validator Check 5 (market-evidence grounding).</li>
+  </ul>
+
+  <h2>Doctrine guardrails enforced in code</h2>
+  <ul>
+    <li>Server-side AI downgrade guard · CONFIRMED_SALE_PRICE auto-downgraded to MARKET_COMMENTARY without a confirmed-sale signal in the rationale.</li>
+    <li>Affirmative-claim scan (not denial-substring) · Validator Check 10 scans for "this is a licensed appraisal" not "not a licensed appraisal".</li>
+    <li>Doctrine-disclaimer integrity · Validator Check 11 requires verbatim disclaimers · paraphrase fails.</li>
+    <li>Confirmed-sale signal-class doctrine · only PERMISSIONED_CONNECTED_SALE and FIRST_PARTY_DEFENDABLE_SALE count as confirmed across 11 signal classes.</li>
+    <li>ITAD partner-feed Grade B ceiling before validator review · OPERATOR_STATED labels everywhere operator claims appear.</li>
+  </ul>
+
+  <h2>Object storage · the 4-bucket privacy vault</h2>
+  <ul>
+    <li><strong>PRIVATE_EVIDENCE</strong> · operator uploads · never publicly exposed.</li>
+    <li><strong>MARKET_OBSERVATIONS</strong> · Brave snapshots · eBay listing observations · internal analysis only.</li>
+    <li><strong>DERIVED_DATASETS</strong> · comp sets · scores · validator receipts · linked to deeds at publication.</li>
+    <li><strong>PUBLIC_ASSETS</strong> · the published deed and verify-page payload · the only bucket public_export_or_refuse() allows.</li>
+  </ul>
+
+  <h2>Connector honesty matrix</h2>
+  <p>19 connectors documented across AI, asset-side, and demand-side lanes · each with real status (READY · CONFIGURED_DISABLED · NOT_CONFIGURED · FUTURE_DISABLED · PLAN_VERIFICATION_REQUIRED · AGREEMENT_REQUIRED). No NOT_CONFIGURED connector silently fakes a result.</p>
+
+  <h2>Open source</h2>
+  <ul>
+    <li><strong>defendableos</strong> · platform · github.com/SudoSuOps/defendableos · 33+ models · 10 migrations · 141/141 tests.</li>
+    <li><strong>defendable</strong> · landing · github.com/SudoSuOps/defendable · 9 pages · SSR-lite middleware · sitemap + llms.txt + _headers.</li>
+    <li><strong>legalsniper-plugin</strong> · Apache 2.0 · github.com/SudoSuOps/legalsniper-plugin · v0.1.0 tagged · closed-schema HANDOFF_INTENTS.</li>
+  </ul>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Defendable Open Infrastructure",
+        description:
+          "The actual AI models, sources, doctrine guardrails, privacy vault, and connector status powering DefendableOS Proof of Value records.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: [
+          { "@type": "DefinedTerm", name: "Validate the Validator", description: "DefendableOS internal doctrine requiring AI output to pass a 12-check validator chain with typed-contract tool use and server-side downgrade guards." },
+          { "@type": "DefinedTerm", name: "AIOV", description: "AI Opinion of Value · the AI-generated draft narrative produced under typed contracts before validator review." },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "DefendableOS",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        url: "https://defendableos.com",
+        description:
+          "Proof of Value platform · 17 connectors · 3 production AI models (Kimi K2.6 · OpenAI gpt-4o · Brave LLM Context) · 12-check validator chain · 4-bucket privacy vault · open source platform code at github.com/SudoSuOps/defendableos.",
+      },
+    ],
+    title: "Defendable Open Infrastructure · models · connectors · guardrails · DefendableOS",
+    description: "Facts not trust-me-bro. Every AI model, every connector, every doctrine guardrail, every storage bucket · named and statused. The receipts behind the receipts.",
   };
 }
 
