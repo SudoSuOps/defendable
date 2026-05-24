@@ -128,28 +128,34 @@ function Flow() {
 function DeedAnatomy() {
   return (
     <section id="deed" className="border-b border-stone-900/80 bg-stone-950/40 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
-          <Eyebrow>SECTION II · ANATOMY OF A DEED</Eyebrow>
-          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
-            What a Defendable Agent Deed{" "}
-            <span className="font-serif italic font-normal text-amber-300">actually looks like</span>.
-          </h2>
-          <p className="mt-6 text-base text-stone-300 leading-relaxed">
-            This is a real deed · issued on 2026-05-23 against an
-            actual benchmark run on Defendable infrastructure. Every
-            field is load-bearing. Every hash is verifiable. Every
-            limitation is named honestly. <strong className="text-amber-300">No promotional rounding.</strong>
-          </p>
-        </div>
+      <div className="max-w-5xl mx-auto px-6 py-20 lg:py-28">
+        <Eyebrow>SECTION II · ANATOMY OF A DEED</Eyebrow>
+        <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+          What a Defendable Agent Deed{" "}
+          <span className="font-serif italic font-normal text-amber-300">actually looks like</span>.
+        </h2>
+        <p className="mt-6 text-base lg:text-lg text-stone-300 leading-relaxed max-w-3xl">
+          This is a real deed · issued on 2026-05-23 against an
+          actual benchmark run on Defendable infrastructure. Every
+          field is load-bearing. Every hash is verifiable. Every
+          limitation is named honestly. <strong className="text-amber-300">No promotional rounding.</strong>
+        </p>
 
-        <div className="mt-12 grid lg:grid-cols-[1.4fr_1fr] gap-8">
+        {/* Full-width vertical deed · the artifact */}
+        <div className="mt-12">
           <DeedJson />
-          <FieldExplainer />
         </div>
 
-        <p className="mt-8 text-xs text-stone-500 italic leading-relaxed max-w-3xl">
-          Verify the record hash · query the ENS subdomain · pull the bound compute deed · cross-check the bench bundle SHA-256 against the Bakery vault. Every piece is auditable end-to-end.
+        {/* Field-level explainer · 2-col grid below the deed */}
+        <div className="mt-10">
+          <div className="text-[10px] uppercase tracking-[0.22em] text-amber-300/80 font-semibold mb-5">
+            Field-by-field · what each line means
+          </div>
+          <FieldExplainerGrid />
+        </div>
+
+        <p className="mt-10 text-xs text-stone-500 italic leading-relaxed max-w-3xl">
+          Verify the record_hash · query the ENS subdomain · pull the bound compute deed · cross-check the bench bundle SHA-256 against the Bakery vault. Every piece is auditable end-to-end.
         </p>
       </div>
     </section>
@@ -245,26 +251,32 @@ function JB({ children }: { children: React.ReactNode }) {
   return <span className="text-sky-300/90">{children}</span>;
 }
 
-function FieldExplainer() {
+function FieldExplainerGrid() {
   const fields = [
-    { f: "deed_id", note: "Globally unique · semantic · sortable · contains issuer + asset class + sequence + version." },
-    { f: "issued_by", note: "ENS-anchored issuer identity. defendable.eth is the root · auditable on-chain." },
-    { f: "grades_5d", note: "Five-dimension benchmark · ALL FIVE always published. No single composite hides weak dimensions." },
-    { f: "tribunal_breakdown", note: "Per-task Honey/Jelly/Propolis percentages. Propolis is preserved adversarial · never auto-flipped." },
+    { f: "deed_id", note: "Globally unique · semantic · sortable · contains issuer + asset class + sequence + version. Anyone can read it and know what it is." },
+    { f: "deed_type", note: "Discriminator field · DEFENDABLE_AGENT_DEED vs DEFENDABLE_COMPUTE_DEED vs DEFENDABLE_WORK_UNIT_DEED. Downstream systems route on this." },
+    { f: "issued_by", note: "ENS-anchored issuer identity. defendable.eth is the root · auditable on-chain · cross-vendor portable." },
+    { f: "subject_agent", note: "Who's being deeded · agent_id · class · operator subdomain · deployment target. The 'who is this about' block." },
+    { f: "benchmark_run", note: "What test the agent passed · pack_id · pack_version · run_id · task count · adversarial cases resisted. Reproducible." },
+    { f: "grades_5d", note: "Five-dimension benchmark · ALL FIVE always published. No single composite hides weak dimensions. Efficiency=INCOMPLETE is acceptable disclosure." },
+    { f: "composite_score", note: "Convenience shorthand · derived from the 5d. Never published WITHOUT the 5d breakdown that produced it." },
+    { f: "tribunal_breakdown", note: "Per-task Honey/Jelly/Propolis percentages. Propolis is preserved adversarial · never auto-flipped to honey · doctrine absolute." },
+    { f: "deployment_tier", note: "OBSERVED → SCOPED → CONDITIONAL → APPROVED → AUTHORITY. Five-tier ladder · agent can move up or get downgraded based on field performance." },
+    { f: "deployment_status", note: "PASS / PASS_WITH_OBSERVATIONS / CONDITIONAL_PASS / FAIL. Plain English · CFOs read this · auditors stamp it." },
+    { f: "deed_eligibility", note: "Whether the run earns a full deed yet · ELIGIBLE_AFTER_REVIEW means Validator chain still pending. We don't issue prematurely." },
     { f: "pack_status_cap_applied", note: "When pack is alpha/beta · the deed grade is hard-capped at OBSERVED tier regardless of how the agent scored. Honest framing baked in." },
-    { f: "limitations", note: "Every known limitation NAMED in the deed itself. Buyers see them before they decide." },
-    { f: "bound_artifacts", note: "Linked compute deed + bench bundle SHA. The agent deed is bound to the machine it ran on." },
-    { f: "record_hash", note: "SHA-256 of canonical JSON. Verify locally · compare with what's in our Bakery vault · cross-check ENS." },
-    { f: "ens_anchor", note: "Resolvable on ENS · anyone can query the deed identity · cross-vendor portable · regulator-acceptable." },
-    { f: "doctrine_note", note: "Plain-English limitation summary. The buyer reading this knows exactly what the deed means · and what it does NOT mean." },
+    { f: "limitations", note: "Every known limitation NAMED in the deed itself. Buyers see them BEFORE they decide. No hiding behind small print." },
+    { f: "bound_artifacts", note: "Linked compute deed + bench bundle SHA-256. The agent deed is bound to the machine it ran on · provenance traceable end-to-end." },
+    { f: "record_hash", note: "SHA-256 of canonical JSON. Verify locally · compare with our Bakery vault · cross-check ENS. The tamper-evidence seal." },
+    { f: "ens_anchor", note: "Resolvable on ENS · anyone queries the deed identity · cross-vendor portable · regulator-acceptable · forever-resolvable." },
+    { f: "doctrine_note", note: "Plain-English limitation summary. The buyer knows exactly what the deed means · AND what it does NOT mean. Anti-puffery clause." },
   ];
   return (
-    <div className="space-y-3">
-      <div className="text-[10px] uppercase tracking-[0.22em] text-amber-300/80 font-semibold">FIELD-LEVEL NOTES</div>
+    <div className="grid md:grid-cols-2 gap-3">
       {fields.map((x) => (
-        <div key={x.f} className="rounded-lg border border-stone-800 bg-neutral-950/60 px-4 py-3">
-          <div className="text-xs font-mono text-amber-300">{x.f}</div>
-          <div className="mt-1 text-xs text-stone-400 leading-relaxed">{x.note}</div>
+        <div key={x.f} className="rounded-lg border border-stone-800 bg-neutral-950/60 px-4 py-4">
+          <div className="text-xs font-mono font-semibold text-amber-300">{x.f}</div>
+          <div className="mt-1.5 text-xs text-stone-400 leading-relaxed">{x.note}</div>
         </div>
       ))}
     </div>
