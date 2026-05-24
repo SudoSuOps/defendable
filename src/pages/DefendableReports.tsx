@@ -10,7 +10,7 @@
  */
 import { Link } from "react-router-dom";
 
-const SALES_EMAIL = "build@swarmandbee.ai";
+const SALES_EMAIL = "defense@defendableos.com";
 
 type ReportStatus = "LIVE" | "PROPOSED" | "DRAFT";
 

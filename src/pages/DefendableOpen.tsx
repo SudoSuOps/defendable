@@ -14,7 +14,7 @@ const SITE = "https://defendableos.com";
 const PLATFORM_REPO = "https://github.com/SudoSuOps/defendableos";
 const LANDING_REPO = "https://github.com/SudoSuOps/defendable";
 const LEGAL_PLUGIN_REPO = "https://github.com/SudoSuOps/legalsniper-plugin";
-const SALES_EMAIL = "build@swarmandbee.ai";
+const SALES_EMAIL = "defense@defendableos.com";
 
 type ModelCard = {
   provider: string;

@@ -57,6 +57,14 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- ─── How It Works · depth page · deed JSON + math + drift ── -->
+  <url>
+    <loc>https://defendableos.com/how-it-works</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- ─── Defendable Compute · static demo (archived to /showcase) ─ -->
   <url>
     <loc>https://defendableos.com/compute</loc>

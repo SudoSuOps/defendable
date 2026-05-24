@@ -4,11 +4,14 @@
 
 import { useState } from "react";
 
-const SALES_EMAIL = "build@swarmandbee.ai";
+const SALES_EMAIL = "defense@defendableos.com";
+const X_URL = "https://x.com/swarmandbee";
+const LINKEDIN_URL = "https://www.linkedin.com/in/donovan-mackey-89a6063b6/";
 
 const NAV_ITEMS: [string, string][] = [
   ["HoneyBox", "/honeybox"],
   ["Cloud", "/cloud"],
+  ["How It Works", "/how-it-works"],
   ["Pricing", "/pricing"],
   ["Defend The Claw™", "/defend-the-claw"],
 ];
@@ -138,8 +141,37 @@ export function Footer() {
           />
         </div>
 
-        <div className="mt-14 pt-8 border-t border-stone-900 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-stone-500">
-          <div>© 2026 DefendableOS. All rights reserved.</div>
+        <div className="mt-14 pt-8 border-t border-stone-900 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-stone-500">
+          <div className="flex items-center gap-5">
+            <span>© 2026 DefendableOS. All rights reserved.</span>
+            <div className="flex items-center gap-3">
+              <a
+                href={X_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="DefendableOS on X"
+                className="text-stone-500 hover:text-amber-300 transition-colors"
+              >
+                <XIcon />
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="DefendableOS founder Donovan Mackey on LinkedIn"
+                className="text-stone-500 hover:text-amber-300 transition-colors"
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href={`mailto:${SALES_EMAIL}`}
+                aria-label="Email defense@defendableos.com"
+                className="text-stone-500 hover:text-amber-300 transition-colors"
+              >
+                <MailIcon />
+              </a>
+            </div>
+          </div>
           <div className="font-mono">
             A product of Swarm &amp; Bee LLC · DBA Swarm &amp; Bee AI · Florida · D-U-N-S 138652395
           </div>
@@ -174,5 +206,31 @@ function FooterColumn({ heading, links }: { heading: string; links: [string, str
         ))}
       </ul>
     </div>
+  );
+}
+
+// ─── inline social icons (no lucide-react · keep bundle light) ────────────
+function XIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.244 2H21.5l-7.07 8.07L23 22h-6.59l-5.18-6.34L5.27 22H2l7.55-8.62L1.5 2h6.74l4.69 5.84L18.244 2zm-1.16 18h1.87L7.02 4H5.06l12.02 16z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+      <rect x="2.5" y="5" width="19" height="14" rx="1.5" />
+      <path d="M3 6l9 7 9-7" />
+    </svg>
   );
 }

@@ -29,6 +29,7 @@ Tagline: **"Agent does the assignment. We validate the Project."**
   /doctrine     · 12-article canonical doctrine · the Constitution of DefendableOS
   /about        · Operator thesis · "we own the building" · institutional credibility
   /hack         · DefendableHack · builder rail · 4B-671B model ladder · open weights · 4 reference hardware builds
+  /how-it-works · DEPTH PAGE · 8-stage flow · REAL deed JSON · sovereignty · Bayesian math · Drift Alerts (NEW capability)
   /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
 
 ## Brand stack (six surfaces · audience-segmented)
