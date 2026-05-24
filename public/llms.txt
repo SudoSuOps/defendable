@@ -1,7 +1,55 @@
 # DefendableOS · llms.txt
 #
 # Context manifest for AI agents indexing defendableos.com.
-# Last updated: 2026-05-22 (evening · post-ProductRadar + Semrush rail).
+# Last updated: 2026-05-24 (post offense/defense framing · HoneyBox + DefendableCloud).
+
+## ★ Primary positioning (2026-05-24 forward)
+
+DefendableOS is the **third-party defense layer for AI workers in production**.
+
+  - The AI industry today sells nothing but OFFENSE (vendors competing
+    on speed · volume · coverage of what an agent can do).
+  - DefendableOS is the missing DEFENSE layer · receipted · audit-grade ·
+    KPMG-equivalent third-party positioning · we do NOT ship offense agents.
+  - Every task an agent runs is captured · receipted · graded · and
+    reconciled into a daily deed that the CFO · compliance team · and
+    insurance carrier can read.
+  - Defense lives in the SHADOWS of the work day. Agent runs free all
+    day. Nightly reconciliation at 2am. Morning brief by 6am. One email.
+    Compounding progress.
+
+## Primary product surfaces (start here)
+
+  /             · Homepage · the offense/defense framing
+  /honeybox     · Physical edge appliance ($249-2,500 · Jetson family · data never leaves)
+  /cloud        · DefendableCloud · privacy-native hosted inference (128 RTX PRO 6000 · paid in full)
+  /pricing      · Transparent pricing · lease model · MRI center worked example
+  /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
+
+## Brand stack (six surfaces · audience-segmented)
+
+  defendableos.com    · Institutional (Suit)
+  defendtheclaw.com   · Movement (Manifesto)
+  defendablehack.com  · Researcher / bounty (T-shirt)
+  opendefendable.com  · OSS standards body (Hoodie)
+  defendablerouter.com · AI gateway product
+  defendablecloud.com · Hosted compute product
+
+## Doctrinal innovations
+
+  - **Per-task deed ledger** (not a one-time certificate · running ledger)
+  - **Nightly reconciliation** (defense in the shadows · 2am cron · 6am brief)
+  - **Liens-on-deeds** (CRE title metaphor · senior/mezz/junior · workout plans)
+  - **CRE due-diligence vocabulary** (books · title · partners · terms · economic study)
+  - **DefendableFixers** (closer layer · 3 tiers · Fix-or-Refund 90-day guarantee)
+  - **HoneyBox + DefendableCloud** (two deployment modes · same doctrine)
+
+## Pitch line
+
+  "The deed is only as good as the fix it delivers."
+
+## Earlier content below (kept for archival continuity)
+# ────────────────────────────────────────────────────────────────────────
 
 ## What this is
 

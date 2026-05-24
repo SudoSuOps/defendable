@@ -1,43 +1,42 @@
-// defendableos.com (and apex /defendableos · swarmandbee.ai/defendableos)
+// defendableos.com · homepage
 //
-// The umbrella brand surface for DefendableOS™ · Proof of Value™ · Validate the
-// Validator. Sits above LegalSniper · Bakery · Edge · FamilyOffice as the
-// platform-layer brand that ties every Swarm product into one frame.
+// Doctrine: AI agents in production are OFFENSE. The market today sells
+// nothing but offense (vendors competing on speed/volume/coverage).
+// DefendableOS is the missing DEFENSE layer · third-party · receipted ·
+// audit-grade · KPMG-equivalent positioning.
 //
 // Stack · React + Tailwind (no framer-motion, no lucide-react · inline SVG +
-// CSS transitions match the existing page pattern · zero new bundle weight).
+// CSS transitions match the existing pattern · zero new bundle weight).
 //
-// Visual direction · charcoal base · stone/ivory typography · honey-gold (amber)
-// accents sparingly · subtle grid texture · document/deed/ledger motifs ·
-// institutional · founder-grade · never cyberpunk.
+// Visual direction · charcoal base · stone/ivory typography · honey-gold
+// (amber) accents sparingly · subtle grid texture · document/deed/ledger
+// motifs · institutional · founder-grade · never cyberpunk.
 
-import { useState } from "react";
+import { Footer, Header } from "../components/SiteShell";
 
-const SWARM_APEX = "https://swarmandbee.ai";
 const SALES_EMAIL = "build@swarmandbee.ai";
 
 export default function DefendableOS() {
   return (
     <div className="min-h-screen bg-neutral-950 text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-100">
       <BackgroundGrid />
-      <DefendableHeader />
+      <Header />
       <main>
         <Hero />
-        <ProblemSection />
-        <WorkflowSection />
-        <AssetClassesSection />
-        <DefendableDeedSection />
-        <ValidatorDoctrineSection />
-        <ArchitectureSection />
-        <ModulesSection />
-        <EarlyAccessSection />
+        <CategoryShift />
+        <DoctrineSection />
+        <DeploymentModes />
+        <MorningBrief />
+        <MathSection />
+        <TrustSignals />
+        <CTA />
       </main>
-      <DefendableFooter />
+      <Footer />
     </div>
   );
 }
 
-// ─── ambient texture (subtle blueprint grid · zero motion · no perf cost) ───
+// ─── ambient blueprint grid · zero motion ──────────────────────────────────
 function BackgroundGrid() {
   return (
     <div
@@ -47,100 +46,12 @@ function BackgroundGrid() {
         backgroundImage:
           "linear-gradient(rgba(212,170,40,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,170,40,1) 1px, transparent 1px)",
         backgroundSize: "64px 64px",
-        backgroundPosition: "center center",
       }}
     />
   );
 }
 
-// ─── header · sticky translucent · refined wordmark + minimal emblem ───────
-function DefendableHeader() {
-  const [open, setOpen] = useState(false);
-  const items = [
-    { label: "Platform", href: "#platform" },
-    { label: "Proof of Value", href: "#proof-of-value" },
-    { label: "Asset Classes", href: "#asset-classes" },
-    { label: "Deeds", href: "#deeds" },
-    { label: "Compute Demo", href: "/compute" },
-    { label: "CRE Demo", href: "/showcase/cre/palm-grove-marketplace" },
-    { label: "Open Infra", href: "/open" },
-    { label: "Ledger", href: "/ledger" },
-    { label: "Early Access", href: "#early-access" },
-  ];
-
-  return (
-    <header className="sticky top-0 z-40 border-b border-stone-800/60 bg-neutral-950/85 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-6">
-        <a href="#top" className="flex items-center gap-3 group">
-          <EmblemMark />
-          <span className="font-semibold tracking-tight text-stone-100 text-lg">
-            <span className="text-amber-400">Defendable</span>OS
-          </span>
-        </a>
-        <nav className="hidden lg:flex items-center gap-7 ml-6">
-          {items.map((it) => (
-            <a key={it.href} href={it.href} className="text-sm text-stone-400 hover:text-stone-100 transition-colors">
-              {it.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#early-access"
-          className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
-        >
-          Request Access
-        </a>
-        <button
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-          className="ml-auto md:hidden inline-flex items-center justify-center w-9 h-9 rounded border border-stone-800 text-stone-300"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
-            {open ? <path d="M3 3l12 12M15 3L3 15" /> : <><path d="M2 5h14" /><path d="M2 9h14" /><path d="M2 13h14" /></>}
-          </svg>
-        </button>
-      </div>
-      {open && (
-        <div className="lg:hidden border-t border-stone-800/60 bg-neutral-950/95">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
-            {items.map((it) => (
-              <a
-                key={it.href}
-                href={it.href}
-                onClick={() => setOpen(false)}
-                className="text-sm text-stone-300 py-2 border-b border-stone-900 last:border-0"
-              >
-                {it.label}
-              </a>
-            ))}
-            <a
-              href="#early-access"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
-            >
-              Request Access
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function EmblemMark() {
-  // A "D" inside a deed/document frame · monogram emblem · stone + amber
-  return (
-    <span className="relative inline-flex items-center justify-center w-9 h-9 rounded border border-stone-700 bg-neutral-900 group-hover:border-amber-500/60 transition-colors">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-amber-400">
-        <path d="M3 2h7l3 3v11H3z" />
-        <path d="M6 6h4M6 9h5M6 12h3" strokeWidth="1.1" opacity="0.7" />
-      </svg>
-    </span>
-  );
-}
-
-// ─── hero · category + ambition + Proof of Value record preview ────────────
+// ─── HERO ──────────────────────────────────────────────────────────────────
 function Hero() {
   return (
     <section id="top" className="relative border-b border-stone-900/80">
@@ -148,783 +59,235 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-start">
           <div>
-            <Eyebrow>DEFENDABLEOS / PROOF OF VALUE</Eyebrow>
+            <Eyebrow>DEFENDABLEOS / DEFENSE FOR AI WORKERS</Eyebrow>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-              Every asset deserves a{" "}
-              <span className="font-serif italic font-normal text-amber-300">defendable</span>{" "}
-              value.
+              Your AI agents do the work.{" "}
+              <span className="font-serif italic font-normal text-amber-300">We deed the work.</span>
             </h1>
             <p className="mt-8 text-lg text-stone-300 leading-relaxed max-w-xl">
-              DefendableOS turns real-world and digital assets into evidence-backed, market-ready records — with verified inputs, comparable analysis, provenance, valuation receipts, and transferable Defendable Deeds.
+              DefendableOS is the third-party defense layer for AI workers
+              in production. Every task your agent runs is captured ·
+              receipted · graded · and reconciled into a daily deed that
+              your CFO, compliance team, and insurance carrier can read.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="#early-access"
+                href="/honeybox"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-amber-400 text-neutral-950 text-sm font-semibold tracking-tight hover:bg-amber-300 transition-colors"
               >
-                Request Early Access
+                Order a HoneyBox
                 <Arrow />
               </a>
               <a
-                href="#platform"
+                href="/cloud"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
               >
-                Explore the System
+                Try DefendableCloud
               </a>
             </div>
-            <p className="mt-8 text-xs text-stone-500 tracking-tight max-w-md">
-              Powered by <span className="text-amber-300 font-medium">AIOV</span> — AI Opinion of Value.
-              Built on the doctrine: <span className="text-stone-300 font-medium">Validate the Validator</span>.
+            <p className="mt-8 text-xs text-stone-500 tracking-tight max-w-md leading-relaxed">
+              The deed is only as good as the{" "}
+              <span className="text-amber-300 font-medium">fix it delivers</span>.
+              Defense in the shadows. Offense in the daytime.
             </p>
           </div>
 
-          {/* Hero product preview · Proof of Value record card · the deed/appraisal moment */}
-          <ProofRecordPreview />
+          <BriefPreview />
         </div>
       </div>
     </section>
   );
 }
 
-function ProofRecordPreview() {
+// ─── Hero artifact · the Morning Reconciliation Brief preview ──────────────
+function BriefPreview() {
   return (
     <div className="relative">
       <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/[0.03] blur-3xl pointer-events-none" />
       <div className="relative rounded-xl border border-stone-700/70 bg-gradient-to-br from-stone-900/90 to-neutral-950 shadow-2xl overflow-hidden">
-        {/* Header strip · ledger feel */}
+        {/* Strip · ledger feel */}
         <div className="flex items-center justify-between px-6 py-3 border-b border-stone-800 bg-neutral-950/60">
           <div className="flex items-center gap-2.5 text-[10px] uppercase tracking-[0.18em] text-stone-400 font-semibold">
-            <DocumentIcon />
-            Proof of Value · Record
+            <MailIcon />
+            Morning Reconciliation Brief
           </div>
           <span className="text-[10px] uppercase tracking-[0.18em] text-amber-300/90 font-semibold">
-            Evidence Review Ready
+            Acme Inc · 2026-05-25
           </span>
         </div>
 
-        {/* Asset summary */}
+        {/* Fleet summary */}
         <div className="px-6 py-5 border-b border-stone-800/70">
-          <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 mb-2 font-semibold">Asset</div>
-          <div className="text-base font-semibold text-stone-100 leading-snug">
-            NVIDIA RTX PRO 6000 Blackwell Workstation GPU
+          <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 mb-3 font-semibold">
+            Yesterday's results
           </div>
-          <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
-            <Field label="Asset Class" value="Compute Hardware" />
-            <Field label="Evidence Items" value="14" />
-            <Field label="Comparables" value="8" />
+          <ul className="space-y-2 font-mono text-xs">
+            <BriefRow agent="payroll-bot" plays="3 plays" status="FREE AND CLEAR" ok />
+            <BriefRow agent="refund-bot" plays="347 plays" status="3 liens" />
+            <BriefRow agent="support-bot" plays="1,294 plays" status="1 lien" />
+            <BriefRow agent="sdr-bot" plays="812 plays" status="FREE AND CLEAR" ok />
+          </ul>
+          <div className="mt-4 pt-4 border-t border-stone-800/70 flex items-center justify-between text-xs">
+            <span className="text-stone-400">Fleet-wide</span>
+            <span className="font-mono text-stone-200">2,456 plays · 80.4% promoted</span>
           </div>
         </div>
 
-        {/* Modules grid · the 7 elements of a Proof of Value record */}
-        <div className="px-6 py-5 grid grid-cols-2 gap-2.5">
-          {[
-            { label: "Asset Identity", ok: true },
-            { label: "Condition Evidence", ok: true },
-            { label: "Market Comparables", ok: true },
-            { label: "Benchmark Receipt", ok: true },
-            { label: "Valuation Range", ok: true, illustrative: true },
-            { label: "Provenance Trail", ok: true },
-            { label: "Defendable Deed", ok: false },
-            { label: "Validator Review", ok: true },
-          ].map((m) => (
-            <div
-              key={m.label}
-              className={`flex items-center gap-2 px-3 py-2.5 rounded border text-xs ${
-                m.ok
-                  ? "border-amber-500/25 bg-amber-500/[0.04]"
-                  : "border-stone-800 bg-neutral-950/60"
-              }`}
-            >
-              {m.ok ? <CheckMark /> : <PendingMark />}
-              <span className="text-stone-200">{m.label}</span>
-              {m.illustrative && (
-                <span className="ml-auto text-[9px] uppercase tracking-wider text-stone-500">Illustrative</span>
-              )}
+        {/* Action required */}
+        <div className="px-6 py-5 border-b border-stone-800/70 bg-amber-500/[0.03]">
+          <div className="text-[10px] uppercase tracking-[0.18em] text-amber-300/90 font-semibold mb-2">
+            Action required
+          </div>
+          <div className="text-sm text-stone-100 leading-snug">
+            Approve Fixer workout for refund-bot lien L-2026-0381
+          </div>
+          <div className="mt-1 text-xs text-stone-400">
+            Est. 12pp lift · 3 day deploy · $0 to you
+          </div>
+          <div className="mt-3 flex gap-2">
+            <span className="px-3 py-1.5 rounded border border-amber-500/40 bg-amber-500/10 text-xs text-amber-300 font-semibold">
+              Approve
+            </span>
+            <span className="px-3 py-1.5 rounded border border-stone-700 text-xs text-stone-400">
+              Defer 1 week
+            </span>
+            <span className="px-3 py-1.5 rounded border border-stone-700 text-xs text-stone-400">
+              Schedule call
+            </span>
+          </div>
+        </div>
+
+        {/* Compounding footer */}
+        <div className="px-6 py-4 bg-neutral-950/60 text-[11px]">
+          <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-2">
+            Compounding
+          </div>
+          <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+            <div>
+              <span className="text-stone-500">30-day </span>
+              <span className="text-stone-200">77.1 → 80.4%</span>
+              <span className="text-emerald-400 ml-1.5">+3.3pp</span>
             </div>
-          ))}
-        </div>
-
-        {/* Footer · hash + status */}
-        <div className="px-6 py-4 border-t border-stone-800/70 bg-neutral-950/60 flex items-center justify-between text-[11px]">
-          <div className="flex items-center gap-2 text-stone-500">
-            <span className="uppercase tracking-[0.18em] text-[10px] text-stone-500 font-semibold">Record Hash</span>
-            <span className="font-mono text-stone-400">0x8F2D…B91A</span>
+            <div>
+              <span className="text-stone-500">90-day </span>
+              <span className="text-stone-200">71.2 → 80.4%</span>
+              <span className="text-emerald-400 ml-1.5">+9.2pp</span>
+            </div>
           </div>
-          <span className="text-stone-500">
-            Issued by <span className="text-amber-300/90 font-medium">DefendableOS</span>
-          </span>
         </div>
       </div>
       <p className="mt-3 text-[10px] text-stone-500 tracking-tight text-center">
-        Illustrative product preview · sample data · not a certified valuation.
+        Illustrative preview · sample data · this is the daily product surface for 95% of customers.
       </p>
     </div>
   );
 }
 
-// ─── problem · category · "value without evidence is just an opinion" ──────
-function ProblemSection() {
-  const cards = [
-    {
-      n: "01",
-      title: "Unverified Inputs",
-      body:
-        "A valuation is only as reliable as the identity, condition, source documents, and market data behind it.",
-    },
-    {
-      n: "02",
-      title: "Fragmented Evidence",
-      body:
-        "Receipts, photos, benchmarks, comparables, ownership records, and reports rarely travel together with the asset.",
-    },
-    {
-      n: "03",
-      title: "Weak Market Readiness",
-      body:
-        "Owners and buyers lose time and trust when a sale begins before the evidence package is complete.",
-    },
-  ];
+function BriefRow({ agent, plays, status, ok }: { agent: string; plays: string; status: string; ok?: boolean }) {
   return (
-    <section id="platform" className="border-b border-stone-900/80">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>THE PROBLEM</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.1]">
-          Value without <span className="font-serif italic font-normal text-amber-300">evidence</span> is just an opinion.
-        </h2>
-        <p className="mt-6 text-lg text-stone-300 leading-relaxed max-w-3xl">
-          Assets move through markets every day with incomplete records, unverified comps, missing provenance, undocumented condition, and valuation claims that cannot survive scrutiny. DefendableOS is designed to change that.
-        </p>
-
-        <div className="mt-14 grid md:grid-cols-3 gap-5">
-          {cards.map((c) => (
-            <div
-              key={c.n}
-              className="group p-7 rounded-lg border border-stone-800 bg-stone-900/30 hover:border-stone-700 hover:bg-stone-900/50 transition-colors"
-            >
-              <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-amber-400/80 mb-5">{c.n}</div>
-              <div className="text-lg font-semibold text-stone-50 mb-3 tracking-tight">{c.title}</div>
-              <p className="text-sm text-stone-400 leading-relaxed">{c.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 pt-10 border-t border-stone-900">
-          <p className="text-xl md:text-2xl font-semibold tracking-tight text-stone-100 max-w-3xl leading-snug">
-            We do not merely generate opinions of value.{" "}
-            <span className="text-amber-300">We build proof.</span>
-          </p>
-        </div>
-      </div>
-    </section>
+    <li className="flex items-center justify-between gap-3">
+      <span className="text-stone-300">{agent}</span>
+      <span className="flex items-center gap-2.5">
+        <span className="text-stone-500">{plays}</span>
+        <span className={ok ? "text-emerald-400" : "text-amber-300"}>{status}</span>
+        {ok ? <CheckMark /> : <WarnMark />}
+      </span>
+    </li>
   );
 }
 
-// ─── workflow · 5 steps · "from asset to Proof of Value" ───────────────────
-function WorkflowSection() {
-  const steps = [
-    { n: "01", verb: "Capture", title: "Identify the asset.",
-      body: "Collect source documents, images, specifications, condition details, ownership context, and relevant evidence." },
-    { n: "02", verb: "Analyze", title: "Run AIOV.",
-      body: "Generate an AI-assisted opinion of value using asset-specific market intelligence, comparable records, and evidence-aware analysis." },
-    { n: "03", verb: "Challenge", title: "Validate the Validator.",
-      body: "Test assumptions, inspect comparables, grade evidence quality, surface conflicts, and flag unsupported conclusions." },
-    { n: "04", verb: "Package", title: "Produce the record.",
-      body: "Create a market-ready Proof of Value package with analysis, receipts, provenance, evidence references, and disposition-ready materials." },
-    { n: "05", verb: "Deed", title: "Issue the Defendable Deed.",
-      body: "Preserve the evidence-backed asset record as a transferable digital artifact built to accompany the asset over time." },
-  ];
-
+// ─── CATEGORY SHIFT · offense vs defense ───────────────────────────────────
+function CategoryShift() {
   return (
-    <section id="proof-of-value" className="border-b border-stone-900/80">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>HOW IT WORKS</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.1]">
-          From asset to <span className="font-serif italic font-normal text-amber-300">Proof of Value</span>.
-        </h2>
-
-        <div className="mt-16 grid gap-3">
-          {steps.map((s, i) => (
-            <div key={s.n}>
-              <div className="grid grid-cols-[auto_1fr] md:grid-cols-[120px_140px_1fr] gap-x-6 gap-y-2 items-baseline py-5 border-t border-stone-900 hover:bg-stone-900/20 transition-colors px-2 -mx-2 rounded">
-                <div className="font-mono text-xs text-amber-400/90 tracking-[0.18em] uppercase">{s.n}</div>
-                <div className="text-sm font-semibold text-stone-200 uppercase tracking-[0.14em]">{s.verb}</div>
-                <div>
-                  <div className="text-lg md:text-xl font-semibold text-stone-50 tracking-tight mb-1">{s.title}</div>
-                  <p className="text-sm text-stone-400 leading-relaxed">{s.body}</p>
-                </div>
-              </div>
-              {i === 2 && (
-                <div className="my-4 md:my-6 px-6 md:px-10 py-5 md:py-6 rounded-lg border border-amber-500/30 bg-gradient-to-r from-amber-500/[0.04] to-transparent">
-                  <p className="text-base md:text-lg font-semibold tracking-tight text-stone-100 italic">
-                    “An AI opinion is not proof until the evidence survives challenge.”
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── asset classes · 6 cards · "one system, many markets" ──────────────────
-function AssetClassesSection() {
-  const cards = [
-    {
-      title: "Commercial Real Estate",
-      body: "Comps, offering materials, condition evidence, underwriting support, and market-ready ownership packages.",
-      artifacts: "Comparable Booklet · Value Record · Disposition Package",
-      icon: <BuildingIcon />,
-    },
-    {
-      title: "Compute Hardware",
-      body: "GPUs, servers, AI clusters, edge appliances, benchmark receipts, configuration records, and resale analysis.",
-      artifacts: "Benchmark Receipt · Hardware Provenance · Resale Package",
-      icon: <CpuIcon />,
-      badge: "Proof of Compute Compatible",
-    },
-    {
-      title: "Equipment",
-      body: "Condition documentation, replacement analysis, service records, useful-life support, and transfer-ready evidence.",
-      artifacts: "Condition File · Market Analysis · Ownership Record",
-      icon: <WrenchIcon />,
-    },
-    {
-      title: "Luxury Goods",
-      body: "Identity records, provenance evidence, condition media, comparable market support, and resale packaging.",
-      artifacts: "Provenance File · Comparable Report · Transfer Record",
-      icon: <GemIcon />,
-    },
-    {
-      title: "Datasets",
-      body: "Source documentation, curation receipts, integrity checks, version history, hash records, and licensing support.",
-      artifacts: "Dataset Deed · Integrity Receipt · Provenance Ledger",
-      icon: <DatabaseIcon />,
-      badge: "Deeded Digital Assets",
-    },
-    {
-      title: "AI Assets",
-      body: "Model cards, training records, evaluation receipts, benchmark evidence, deployment history, and transfer-ready IP documentation.",
-      artifacts: "Model Record · Eval Receipt · Asset Dossier",
-      icon: <BrainIcon />,
-      badge: "Deeded Digital Assets",
-    },
-  ];
-
-  return (
-    <section id="asset-classes" className="border-b border-stone-900/80 bg-neutral-950/60">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>ONE SYSTEM. MANY MARKETS.</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.1]">
-          Proof of Value across <span className="font-serif italic font-normal text-amber-300">physical and digital</span> assets.
-        </h2>
-
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {cards.map((c) => (
-            <div
-              key={c.title}
-              className="group p-7 rounded-lg border border-stone-800 bg-stone-900/30 hover:border-amber-500/30 hover:bg-stone-900/50 transition-colors flex flex-col"
-            >
-              <div className="w-9 h-9 rounded border border-stone-700 group-hover:border-amber-500/40 flex items-center justify-center text-amber-400/90 mb-5 transition-colors">
-                {c.icon}
-              </div>
-              <div className="text-lg font-semibold text-stone-50 tracking-tight mb-3">{c.title}</div>
-              <p className="text-sm text-stone-400 leading-relaxed flex-1">{c.body}</p>
-              <div className="mt-5 pt-4 border-t border-stone-800/70">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-1.5">Artifacts</div>
-                <div className="text-xs text-stone-400 font-mono leading-relaxed">{c.artifacts}</div>
-              </div>
-              {c.badge && (
-                <div className="mt-4 inline-flex items-center self-start gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/30 bg-amber-500/[0.06] text-[10px] text-amber-300 font-semibold tracking-tight">
-                  <Dot />
-                  {c.badge}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── defendable deed · "the asset record that travels with the value" ──────
-function DefendableDeedSection() {
-  const principles = [
-    "Evidence travels with the asset",
-    "Inputs remain reviewable",
-    "Analysis remains challengeable",
-    "Value becomes market-ready",
-  ];
-  return (
-    <section id="deeds" className="border-b border-stone-900/80">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>THE ARTIFACT</Eyebrow>
-        <div className="mt-6 max-w-3xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-            The asset record that travels with the{" "}
-            <span className="font-serif italic font-normal text-amber-300">value</span>.
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-3xl">
+          <Eyebrow>WHY NOW</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            Everyone is selling{" "}
+            <span className="font-serif italic font-normal text-stone-400">offense</span>.
+            Nobody is selling{" "}
+            <span className="font-serif italic font-normal text-amber-300">defense</span>.
           </h2>
-          <p className="mt-8 text-lg text-stone-300 leading-relaxed">
-            A <span className="font-serif italic text-amber-200">Defendable Deed</span> is an evidence-backed record designed to preserve the identity, provenance, condition, supporting analysis, and Proof of Value package associated with an asset. Each record ships with a structured JSON receipt — inspectable, verifiable, and built to travel.
-          </p>
         </div>
 
-        {/* Two-column centerpiece · deed card (left) · JSON receipt (right) */}
-        <div className="mt-14 grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-          <DeedCard />
-          <DeedJsonReceipt />
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <Card
+            tone="muted"
+            title="Offense Agent"
+            lines={[
+              "Performs the business work",
+              "Sales rep · clerk · processor · CSR",
+              "Competes on speed · volume · coverage",
+              "Sold by every AI vendor on the market",
+            ]}
+          />
+          <Card
+            tone="honey"
+            title="Defense Layer"
+            lines={[
+              "Records every play · grades it · flags the misses · fixes the patterns",
+              "Internal audit · QA · compliance · property manager",
+              "Issues the deed your CFO and insurer can read",
+              "Sold by exactly nobody until now",
+            ]}
+          />
         </div>
 
-        {/* 4 principles · row below the centerpiece */}
-        <div className="mt-14 pt-10 border-t border-stone-900">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {principles.map((p) => (
-              <div key={p} className="flex items-start gap-3">
-                <span className="mt-1 inline-flex w-6 h-6 rounded border border-amber-500/40 items-center justify-center text-amber-300 flex-shrink-0">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M1.5 5l2 2 5-5" />
-                  </svg>
-                </span>
-                <span className="text-sm text-stone-200 leading-relaxed">{p}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-10 text-xs text-stone-500 leading-relaxed max-w-2xl italic">
-          DefendableOS records are evidence and analysis packages. Asset-specific professional, legal, regulatory, or licensed appraisal requirements may still apply. The preview above is illustrative — no certification, authentication, or completed market valuation is represented.
+        <p className="mt-10 text-base text-stone-300 leading-relaxed max-w-3xl">
+          Every functional business in history runs both. The AI agent
+          market today runs only offense. We are the missing defense layer.{" "}
+          <span className="text-amber-300 font-medium">Third-party.</span>{" "}
+          <span className="text-amber-300 font-medium">Receipted.</span>{" "}
+          <span className="text-amber-300 font-medium">KPMG-equivalent.</span>{" "}
+          We do not ship the agent. We deed the agent.
         </p>
       </div>
     </section>
   );
 }
 
-// ── Deed Card · institutional ledger feel ────────────────────────────────────
-function DeedCard() {
-  const rows: Array<[string, string]> = [
-    ["Asset Class", "Compute Hardware"],
-    ["Asset", "RTX PRO 6000 Blackwell"],
-    ["Evidence Items", "14 Indexed"],
-    ["Comparable Records", "8 Reviewed"],
-    ["AIOV Analysis", "Generated for Review"],
-    ["Validator Review", "Passed for Packaging"],
-    ["Record Status", "Illustrative Preview"],
-  ];
-  const chips = [
-    { label: "EVIDENCE ATTACHED", tone: "ok" as const },
-    { label: "VALIDATOR REVIEW", tone: "ok" as const },
-    { label: "MARKET-READY PACKAGE", tone: "pending" as const },
-  ];
-
-  return (
-    <div className="relative">
-      <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-amber-500/[0.08] to-transparent blur-3xl pointer-events-none" />
-      <div className="relative rounded-xl border border-stone-700/70 bg-gradient-to-br from-stone-900/90 to-neutral-950 shadow-2xl overflow-hidden">
-        {/* Header band · brand mark + title */}
-        <div className="px-7 py-5 border-b border-stone-800 bg-neutral-950/70">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="inline-flex w-7 h-7 rounded border border-amber-500/40 items-center justify-center text-amber-400/90">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4">
-                <path d="M3 2h6l3 3v8H3z" />
-                <path d="M5 6h5M5 8h5M5 10h3" strokeWidth="1" opacity="0.7" />
-              </svg>
-            </span>
-            <div>
-              <div className="text-[10px] font-mono uppercase tracking-[0.24em] text-amber-400/80 font-semibold leading-none">
-                Defendable Deed
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-stone-400 font-semibold mt-1.5">
-                Proof of Value Record
-              </div>
-            </div>
-            <span className="ml-auto text-[9px] uppercase tracking-[0.18em] text-stone-500 font-semibold border border-stone-700 rounded-full px-2.5 py-1">
-              Illustrative Product Preview
-            </span>
-          </div>
-        </div>
-
-        {/* Field rows · ledger style */}
-        <div className="px-7 py-4 divide-y divide-stone-800/70">
-          {rows.map(([k, v]) => (
-            <div key={k} className="grid grid-cols-[170px_1fr] gap-4 items-baseline py-3 text-sm">
-              <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{k}</span>
-              <span className="text-stone-100">{v}</span>
-            </div>
-          ))}
-          <div className="grid grid-cols-[170px_1fr] gap-4 items-baseline py-3 text-sm">
-            <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Record Hash</span>
-            <span className="font-mono text-stone-300 text-[12px] tracking-tight break-all">
-              0x8F2D73B8B91A…D04C
-            </span>
-          </div>
-        </div>
-
-        {/* Status chips */}
-        <div className="px-7 py-5 border-t border-stone-800 bg-neutral-950/70 flex flex-wrap gap-2">
-          {chips.map((c) => (
-            <span
-              key={c.label}
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[9px] uppercase tracking-[0.16em] font-semibold ${
-                c.tone === "ok"
-                  ? "border-emerald-500/30 bg-emerald-500/[0.06] text-emerald-300"
-                  : "border-amber-500/30 bg-amber-500/[0.06] text-amber-300"
-              }`}
-            >
-              <span className={`inline-block w-1.5 h-1.5 rounded-full ${
-                c.tone === "ok" ? "bg-emerald-400/80" : "bg-amber-400/80"
-              }`} />
-              {c.label}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── JSON Receipt panel · monospace · syntax-highlighted with subtle line numbers
-function DeedJsonReceipt() {
-  // Each row · (lineNo, jsxContent). Indentation handled by leading spaces in
-  // the content spans. Subtle line numbers in the gutter · honey-gold keys ·
-  // emerald strings · stone punctuation · amber-warning on illustrative tokens.
-  const lines: React.ReactNode[] = [
-    <Punct>{"{"}</Punct>,
-    <Line><K>"deed_type"</K><Punct>: </Punct><S>"DEFENDABLE_DEED"</S><Punct>,</Punct></Line>,
-    <Line><K>"record_status"</K><Punct>: </Punct><W>"ILLUSTRATIVE_PRODUCT_PREVIEW"</W><Punct>,</Punct></Line>,
-    <Line><K>"asset"</K><Punct>: {"{"}</Punct></Line>,
-    <Line indent={2}><K>"asset_class"</K><Punct>: </Punct><S>"COMPUTE_HARDWARE"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"model"</K><Punct>: </Punct><S>"RTX PRO 6000 Blackwell"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"asset_id"</K><Punct>: </Punct><S>"DOV-COMPUTE-000001"</S></Line>,
-    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
-    <Line><K>"proof_of_value"</K><Punct>: {"{"}</Punct></Line>,
-    <Line indent={2}><K>"engine"</K><Punct>: </Punct><S>"AIOV"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"doctrine"</K><Punct>: </Punct><S>"VALIDATE_THE_VALIDATOR"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"evidence_items"</K><Punct>: </Punct><N>14</N><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"comparable_records"</K><Punct>: </Punct><N>8</N></Line>,
-    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
-    <Line><K>"validator_review"</K><Punct>: {"{"}</Punct></Line>,
-    <Line indent={2}><K>"status"</K><Punct>: </Punct><S>"PASSED_FOR_PACKAGING"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><K>"flags"</K><Punct>: [</Punct></Line>,
-    <Line indent={4}><F>"LISTING_PRICE_NOT_CONFIRMED_SALE_PRICE"</F></Line>,
-    <Line indent={2}><Punct>]</Punct></Line>,
-    <Line><Punct>{"}"}</Punct><Punct>,</Punct></Line>,
-    <Line><K>"artifacts"</K><Punct>: [</Punct></Line>,
-    <Line indent={2}><S>"EVIDENCE_MANIFEST"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><S>"BENCHMARK_RECEIPT"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><S>"COMPARABLE_ANALYSIS"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><S>"AIOV_REPORT"</S><Punct>,</Punct></Line>,
-    <Line indent={2}><S>"DEFENDABLE_DEED"</S></Line>,
-    <Line><Punct>]</Punct><Punct>,</Punct></Line>,
-    <Line><K>"record_hash"</K><Punct>: </Punct><H>"0x8F2D…D04C"</H><Punct>,</Punct></Line>,
-    <Line><K>"disclosure"</K><Punct>: </Punct><W>"ILLUSTRATIVE_RECORD_ONLY"</W></Line>,
-    <Punct>{"}"}</Punct>,
-  ];
-
-  return (
-    <div className="relative">
-      <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-amber-500/[0.06] to-transparent blur-3xl pointer-events-none" />
-      <div className="relative rounded-xl border border-stone-700/70 bg-neutral-950 shadow-2xl overflow-hidden">
-        {/* Filename header · IDE-style */}
-        <div className="flex items-center gap-2.5 px-5 py-3 border-b border-stone-800 bg-neutral-950/95">
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-stone-700" />
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-stone-700" />
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-          </div>
-          <div className="ml-2 text-xs font-mono text-stone-300 tracking-tight">deed.record.json</div>
-          <div className="ml-auto flex items-center gap-2 text-[9px] uppercase tracking-[0.18em] text-stone-500 font-semibold font-mono">
-            <span className="inline-flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
-              SHA-256 manifest
-            </span>
-            <span className="text-stone-700">·</span>
-            <span className="inline-flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
-              Validator receipt
-            </span>
-          </div>
-        </div>
-
-        {/* Code body */}
-        <div className="overflow-x-auto">
-          <pre className="m-0 px-5 py-5 text-[12.5px] leading-[1.6] font-mono text-stone-100">
-            {lines.map((node, i) => (
-              <div key={i} className="grid grid-cols-[2.25rem_1fr] gap-3 -mx-2 px-2 hover:bg-stone-900/30 transition-colors">
-                <span className="text-stone-700 text-right select-none tabular-nums">{i + 1}</span>
-                <span className="whitespace-pre">{node}</span>
-              </div>
-            ))}
-          </pre>
-        </div>
-
-        {/* Footer · evidence + status indicators */}
-        <div className="px-5 py-3 border-t border-stone-800 bg-neutral-950/95 flex items-center justify-between text-[10px] font-mono">
-          <div className="flex items-center gap-3 text-stone-500">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
-              <span className="uppercase tracking-[0.16em] font-semibold">Evidence indexed</span>
-            </span>
-            <span className="text-stone-700">·</span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400/80" />
-              <span className="uppercase tracking-[0.16em] font-semibold">Pending market review</span>
-            </span>
-          </div>
-          <a href="#early-access" className="text-amber-300 hover:text-amber-200 font-semibold no-underline">
-            request preview →
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// JSON syntax token components — used inside DeedJsonReceipt for clean color tokens
-function Line({ children, indent = 0 }: { children: React.ReactNode; indent?: number }) {
-  return <span>{"  ".repeat(indent + 1)}{children}</span>;
-}
-function K({ children }: { children: React.ReactNode }) {
-  // key
-  return <span className="text-amber-300/90">{children}</span>;
-}
-function S({ children }: { children: React.ReactNode }) {
-  // string value
-  return <span className="text-emerald-300/90">{children}</span>;
-}
-function N({ children }: { children: React.ReactNode }) {
-  // numeric value
-  return <span className="text-rose-300/90">{children}</span>;
-}
-function H({ children }: { children: React.ReactNode }) {
-  // hash value · stone tint
-  return <span className="text-stone-300">{children}</span>;
-}
-function W({ children }: { children: React.ReactNode }) {
-  // warning · illustrative / preview tokens
-  return <span className="text-amber-200 font-semibold">{children}</span>;
-}
-function F({ children }: { children: React.ReactNode }) {
-  // flagged · validator-surfaced concern
-  return <span className="text-amber-300/80">{children}</span>;
-}
-function Punct({ children }: { children: React.ReactNode }) {
-  return <span className="text-stone-500">{children}</span>;
-}
-
-// ─── validate the validator · doctrine section · darker band ───────────────
-function ValidatorDoctrineSection() {
-  const queue = [
-    { label: "Asset identity confirmed", ok: true },
-    { label: "Source evidence indexed", ok: true },
-    { label: "Comparable relevance reviewed", ok: true },
-    { label: "Unsupported assumption flagged", ok: false, warn: true },
-    { label: "Benchmark receipt verified", ok: true },
-    { label: "Provenance chain assembled", ok: true },
-    { label: "Final package pending approval", ok: false },
-  ];
-  const principles = [
-    { title: "Evidence Before Confidence", body: "No conclusion outranks its source material." },
-    { title: "Receipts Before Claims", body: "Outputs must be supported by inspectable records." },
-    { title: "Challenge Before Transfer", body: "A market-ready asset package should survive scrutiny before it reaches a buyer." },
-  ];
-  return (
-    <section className="border-b border-stone-900/80 bg-gradient-to-b from-neutral-950 via-stone-900/40 to-neutral-950">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>THE DOCTRINE</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.05]">
-          <span className="font-serif italic font-normal text-amber-300">Validate</span> the Validator.
-        </h2>
-        <p className="mt-8 text-lg text-stone-300 leading-relaxed max-w-3xl">
-          Models can generate. Experts can opine. Markets can price. But trust begins when the source data, assumptions, comps, calculations, conflicts, and conclusions can be reviewed and challenged.
-        </p>
-
-        <div className="mt-14 grid lg:grid-cols-[1fr_1fr] gap-10 items-start">
-          <div className="rounded-xl border border-stone-700/70 bg-neutral-950/70 overflow-hidden">
-            <div className="px-6 py-4 border-b border-stone-800 flex items-center justify-between bg-neutral-950">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-stone-400 font-semibold">Validation Queue</div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-amber-300/80 font-semibold">Live review</div>
-            </div>
-            <ul className="divide-y divide-stone-800/70">
-              {queue.map((q) => (
-                <li key={q.label} className="px-6 py-3.5 flex items-center gap-3 text-sm">
-                  {q.ok ? <CheckMark /> : q.warn ? <WarnMark /> : <PendingMark />}
-                  <span className="text-stone-200">{q.label}</span>
-                  <span className={`ml-auto text-[10px] uppercase tracking-[0.18em] font-semibold ${
-                    q.ok ? "text-emerald-400/80" : q.warn ? "text-amber-400" : "text-stone-500"
-                  }`}>
-                    {q.ok ? "Pass" : q.warn ? "Flagged" : "Pending"}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-7">
-            {principles.map((p) => (
-              <div key={p.title} className="border-l-2 border-amber-500/40 pl-5">
-                <div className="text-base font-semibold text-stone-50 tracking-tight mb-1.5">{p.title}</div>
-                <p className="text-sm text-stone-400 leading-relaxed">{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-14 pt-10 border-t border-stone-900">
-          <p className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-100 max-w-3xl leading-snug">
-            AIOV gives the opinion.{" "}
-            <span className="text-amber-300">DefendableOS proves the value.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── architecture · the trust layer around the asset ───────────────────────
-function ArchitectureSection() {
-  const stack = [
+// ─── DOCTRINE · 4 ideas · the operating model ──────────────────────────────
+function DoctrineSection() {
+  const items = [
     {
-      label: "Market-Ready Output",
-      items: ["Sale Package", "Transfer Record", "Buyer Booklet", "Financing / Insurance Support File"],
-      tone: "top",
+      head: "Defense in the shadows",
+      body: "Your agent runs all day · uninterrupted · no latency · no gates. We capture every task in the background. Reconciliation runs at 2am. The brief is in your inbox by 6am.",
     },
     {
-      label: "DefendableOS",
-      items: ["Evidence Vault", "Validator Review", "Receipt Ledger", "Deed Registry", "Workflow Engine"],
-      tone: "main",
+      head: "Per-task deed ledger",
+      body: "Not a certificate · a running ledger. Every single task gets its own deed entry. Daily · weekly · monthly rollup deeds prove the agent's win rate over time.",
     },
     {
-      label: "AIOV",
-      items: ["Comparable Analysis", "Asset-Specific Models", "Valuation Reasoning", "Risk Flagging"],
-      tone: "intel",
+      head: "Liens on deeds",
+      body: "Deeds are free-and-clear or they carry liens. Liens have type · severity · root cause · workout plan. Fixers clear the liens. The next day's deed is cleaner.",
     },
     {
-      label: "Source Evidence",
-      items: ["Documents", "Photos", "Benchmarks", "Provenance", "Ownership Records", "Market Data"],
-      tone: "foundation",
-    },
-  ];
-  return (
-    <section className="border-b border-stone-900/80">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>SYSTEM ARCHITECTURE</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.1]">
-          A trust layer built around the <span className="font-serif italic font-normal text-amber-300">asset</span>.
-        </h2>
-
-        <div className="mt-14 grid lg:grid-cols-[1fr_320px] gap-8 items-start">
-          <div className="space-y-3">
-            {stack.map((layer) => (
-              <div
-                key={layer.label}
-                className={`rounded-lg border p-6 ${
-                  layer.tone === "main"
-                    ? "border-amber-500/40 bg-gradient-to-r from-amber-500/[0.06] to-amber-500/[0.02]"
-                    : "border-stone-800 bg-stone-900/30"
-                }`}
-              >
-                <div className="flex items-center gap-4 flex-wrap">
-                  <div
-                    className={`text-xs font-mono uppercase tracking-[0.18em] font-semibold ${
-                      layer.tone === "main" ? "text-amber-300" : "text-stone-400"
-                    }`}
-                  >
-                    {layer.label}
-                  </div>
-                  <div className="flex flex-wrap gap-2 ml-auto">
-                    {layer.items.map((i) => (
-                      <span
-                        key={i}
-                        className={`text-xs px-2.5 py-1 rounded border ${
-                          layer.tone === "main"
-                            ? "border-amber-500/30 bg-neutral-950/40 text-stone-200"
-                            : "border-stone-700 bg-neutral-950/40 text-stone-300"
-                        }`}
-                      >
-                        {i}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Defendable Box · optional future edge module */}
-          <aside className="rounded-lg border border-stone-700 bg-stone-900/40 p-6 lg:sticky lg:top-24">
-            <div className="text-[10px] uppercase tracking-[0.22em] text-amber-400/80 font-semibold mb-3">
-              Optional · Future Edge Module
-            </div>
-            <div className="text-lg font-semibold tracking-tight text-stone-50 mb-2">Defendable Box</div>
-            <p className="text-sm text-stone-400 leading-relaxed">
-              Local capture. Local inference. Sovereign evidence handling. For institutions and operators that need to keep source material under their roof while still producing a DefendableOS record.
-            </p>
-            <div className="mt-5 pt-5 border-t border-stone-800 text-[11px] uppercase tracking-[0.14em] text-stone-500 font-semibold">
-              Capability preview · not yet for general availability
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── modules · 6 cards · what's inside DefendableOS ────────────────────────
-function ModulesSection() {
-  const modules = [
-    {
-      title: "AIOV Engine",
-      body: "AI-assisted opinions of value built from asset-specific context and comparable evidence.",
-      icon: <BrainIcon />,
-    },
-    {
-      title: "Evidence Vault",
-      body: "Store the records that support identity, provenance, condition, and analysis.",
-      icon: <ArchiveIcon />,
-    },
-    {
-      title: "Validator Review",
-      body: "Challenge assumptions, inputs, comparable relevance, and unsupported claims.",
-      icon: <ShieldIcon />,
-    },
-    {
-      title: "Receipt Ledger",
-      body: "Generate inspectable analysis and evidence receipts for every record.",
-      icon: <ReceiptIcon />,
-    },
-    {
-      title: "Defendable Deed",
-      body: "Package the asset's value-supporting record into a transferable artifact.",
-      icon: <DocumentIcon />,
-    },
-    {
-      title: "Market-Ready Export",
-      body: "Ship buyer-ready booklets, reports, listing support, and diligence packages.",
-      icon: <PackageIcon />,
+      head: "CRE due-diligence vocabulary",
+      body: "Books · title · partners · terms · economic study · functionality · if it goes dark then what. Every business buyer already knows the checklist. We translate AI into the language CFOs already use.",
     },
   ];
 
   return (
-    <section className="border-b border-stone-900/80">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>PLATFORM MODULES</Eyebrow>
-        <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 max-w-3xl leading-[1.1]">
-          Built for evidence, analysis, and <span className="font-serif italic font-normal text-amber-300">transfer</span>.
-        </h2>
+    <section className="border-b border-stone-900/80 bg-stone-950/40">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-3xl">
+          <Eyebrow>DOCTRINE</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            How the defense layer{" "}
+            <span className="font-serif italic font-normal text-amber-300">actually</span>{" "}
+            works.
+          </h2>
+        </div>
 
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {modules.map((m) => (
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {items.map((d) => (
             <div
-              key={m.title}
-              className="group p-7 rounded-lg border border-stone-800 bg-stone-900/30 hover:border-amber-500/30 hover:bg-stone-900/50 transition-colors"
+              key={d.head}
+              className="rounded-xl border border-stone-800 bg-neutral-950/60 px-5 py-6"
             >
-              <div className="w-10 h-10 rounded border border-stone-700 group-hover:border-amber-500/40 flex items-center justify-center text-amber-400/90 mb-5 transition-colors">
-                {m.icon}
-              </div>
-              <div className="text-lg font-semibold text-stone-50 tracking-tight mb-2">{m.title}</div>
-              <p className="text-sm text-stone-400 leading-relaxed">{m.body}</p>
+              <div className="text-sm font-semibold text-amber-300 mb-2.5">{d.head}</div>
+              <p className="text-sm text-stone-400 leading-relaxed">{d.body}</p>
             </div>
           ))}
         </div>
@@ -933,268 +296,269 @@ function ModulesSection() {
   );
 }
 
-// ─── early access · form · routes to Discord via /api/early-access ────────
-function EarlyAccessSection() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [assetClass, setAssetClass] = useState("");
-  const [message, setMessage] = useState("");
-  const [honey, setHoney] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null);
-
-  const valid =
-    name.trim().length >= 2 &&
-    /^\S+@\S+\.\S+/.test(email) &&
-    company.trim().length >= 2 &&
-    assetClass.length > 0;
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!valid) return;
-    setSubmitting(true);
-    setResult(null);
-    try {
-      const r = await fetch("/api/early-access", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: `[DefendableOS Early Access]\nCompany/Project: ${company.trim()}\nAsset Class: ${assetClass}\nAsset/Workflow: ${message.trim() || "(none)"}`,
-          tier: "asking",
-          matter_type: "other",
-          source: "defendableos-early-access",
-          company_url: honey,
-        }),
-      });
-      const d = (await r.json()) as { ok?: boolean; error?: string; message?: string };
-      if (r.ok && d.ok) {
-        setResult({
-          ok: true,
-          message:
-            d.message ||
-            "Early access intake received. We'll reply at the email you provided · usually within 24 hours.",
-        });
-        setName(""); setEmail(""); setCompany(""); setAssetClass(""); setMessage("");
-      } else {
-        // Backend exists but rejected · fall back to graceful messaging
-        setResult({
-          ok: false,
-          message:
-            d.error ||
-            "Early access intake is being prepared. Contact integration coming soon. Email build@swarmandbee.ai directly.",
-        });
-      }
-    } catch {
-      setResult({
-        ok: false,
-        message: "Early access intake is being prepared. Contact integration coming soon. Email build@swarmandbee.ai directly.",
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
+// ─── DEPLOYMENT MODES · HoneyBox + DefendableCloud ─────────────────────────
+function DeploymentModes() {
   return (
-    <section id="early-access" className="border-b border-stone-900/80 bg-gradient-to-b from-neutral-950 to-stone-900/30">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <Eyebrow>EARLY ACCESS</Eyebrow>
-        <div className="mt-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-start">
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-              Bring your asset. Build its{" "}
-              <span className="font-serif italic font-normal text-amber-300">Proof of Value</span>.
-            </h2>
-            <p className="mt-8 text-lg text-stone-300 leading-relaxed">
-              DefendableOS is being built for asset owners, operators, brokers, collectors, compute sellers, dataset builders, AI firms, and institutions that need value supported by evidence.
-            </p>
+    <section id="modes" className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-3xl">
+          <Eyebrow>DEPLOYMENT</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            Two modes.{" "}
+            <span className="font-serif italic font-normal text-amber-300">Same doctrine.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            Run the defense on a physical appliance in your network · or
+            on Defendable's own datacenter compute. Most customers run
+            both — regulated agents on the HoneyBox, low-stakes agents
+            on the cloud.
+          </p>
+        </div>
 
-            <div className="mt-10">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-3">
-                For founding partners
-              </div>
-              <ul className="space-y-3 text-stone-300">
-                {[
-                  "Early Proof of Value workflow design",
-                  "Asset-class pilot onboarding",
-                  "Deed and evidence package prototyping",
-                  "Private platform demonstrations",
-                ].map((i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm">
-                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-amber-400/80 flex-shrink-0" />
-                    <span>{i}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="rounded-xl border border-stone-700/80 bg-neutral-950/70 p-7 lg:p-8"
-            noValidate
-          >
-            {/* Honeypot · invisible to humans · bots fill it */}
-            <input
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              value={honey}
-              onChange={(e) => setHoney(e.target.value)}
-              className="absolute opacity-0 pointer-events-none w-0 h-0"
-              aria-hidden
-            />
-
-            <div className="grid gap-4">
-              <FieldInput label="Full Name" value={name} onChange={setName} required />
-              <FieldInput label="Work Email" type="email" value={email} onChange={setEmail} required />
-              <FieldInput label="Company / Project" value={company} onChange={setCompany} required />
-              <FieldSelect
-                label="Asset Class"
-                value={assetClass}
-                onChange={setAssetClass}
-                required
-                options={[
-                  { value: "", label: "Select an asset class…" },
-                  { value: "Commercial Real Estate", label: "Commercial Real Estate" },
-                  { value: "Compute Hardware", label: "Compute Hardware" },
-                  { value: "Equipment", label: "Equipment" },
-                  { value: "Luxury Goods", label: "Luxury Goods" },
-                  { value: "Dataset", label: "Dataset" },
-                  { value: "AI Asset", label: "AI Asset" },
-                  { value: "Other", label: "Other" },
-                ]}
-              />
-              <FieldTextarea
-                label="What asset or workflow do you want to make defendable?"
-                value={message}
-                onChange={setMessage}
-                rows={4}
-                placeholder="Optional · brief description of your asset, workflow, or pilot intent"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={!valid || submitting}
-              className={`mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded font-semibold tracking-tight text-sm transition-colors ${
-                valid && !submitting
-                  ? "bg-amber-400 text-neutral-950 hover:bg-amber-300"
-                  : "bg-stone-800 text-stone-500 cursor-not-allowed"
-              }`}
-            >
-              {submitting ? "Submitting…" : "Request Early Access"}
-              {!submitting && <Arrow />}
-            </button>
-
-            {result && result.ok && (
-              <div className="mt-5 p-4 rounded border border-emerald-500/40 bg-emerald-500/[0.06] text-sm text-emerald-300">
-                ✓ {result.message}
-              </div>
-            )}
-            {result && !result.ok && (
-              <div className="mt-5 p-4 rounded border border-amber-500/40 bg-amber-500/[0.06] text-sm text-amber-200">
-                {result.message}
-              </div>
-            )}
-
-            <p className="mt-5 text-xs text-stone-500 text-center leading-relaxed">
-              By submitting, you agree to be contacted about DefendableOS early access. No marketing automation. A human responds.
-            </p>
-          </form>
+        <div className="mt-12 grid lg:grid-cols-2 gap-6">
+          <ModeCard
+            href="/honeybox"
+            title="HoneyBox"
+            subtitle="Edge mode · physical appliance"
+            bullets={[
+              "$249-2,500 hardware · NVIDIA Jetson family",
+              "Sits on your network · data NEVER leaves the box",
+              "Local Tribunal · local deed issuance · local storage",
+              "ENS-registered identity per agent",
+              "HIPAA · SOC2 · FedRAMP · CMMC compatible",
+              "Leased · tax-deductible · off balance sheet",
+            ]}
+            footnote="The regulated-industry wedge · imaging centers · law firms · financial services · government."
+            cta="Order a HoneyBox →"
+          />
+          <ModeCard
+            href="/cloud"
+            title="DefendableCloud"
+            subtitle="Cloud mode · our compute · open weights"
+            bullets={[
+              "128 × RTX PRO 6000 Blackwell · 12,288 GB VRAM · paid in full",
+              "Qwen 2.5 32B · Llama 3.3 70B · DeepSeek V3 · Mixtral · Phi-4",
+              "Contractual no-logging · no training on prompts · BAA-ready",
+              "Doctrine pack rules inline · enforced inside inference",
+              "Same deed pipeline as HoneyBox",
+              "$5-10 per million tokens · 90%+ gross margin we share with you",
+            ]}
+            footnote="The privacy-native cloud alternative · no hardware to manage · no Big Tech telemetry."
+            cta="Try DefendableCloud →"
+            tone="honey"
+          />
         </div>
       </div>
     </section>
   );
 }
 
-// ─── footer · multi-column · institutional ──────────────────────────────────
-function DefendableFooter() {
+// ─── MORNING BRIEF · what the owner actually sees ──────────────────────────
+function MorningBrief() {
   return (
-    <footer className="bg-neutral-950">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10">
+    <section className="border-b border-stone-900/80 bg-stone-950/40">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <EmblemMark />
-              <span className="font-semibold tracking-tight text-stone-100 text-lg">
-                <span className="text-amber-400">Defendable</span>OS
-              </span>
-            </div>
-            <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
-              Proof of Value for Everything That Matters.
+            <Eyebrow>WHAT YOU READ EACH MORNING</Eyebrow>
+            <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+              One email.{" "}
+              <span className="font-serif italic font-normal text-amber-300">One click decisions.</span>{" "}
+              Compounding progress.
+            </h2>
+            <p className="mt-6 text-base text-stone-300 leading-relaxed">
+              For 95% of customers the entire product surface is one email
+              every morning. Yesterday's deed per agent. Liens to clear.
+              Workouts to approve. 30 and 90 day trends.
             </p>
-            <p className="mt-3 text-xs text-stone-500 leading-relaxed max-w-sm italic">
-              Proof of Value. Built on evidence. Designed for scrutiny.
+            <p className="mt-4 text-base text-stone-400 leading-relaxed">
+              No real-time dashboard streaming flags all day. No
+              interruption to your agents. Defense in the shadows of the
+              night. Reconciliation at 2am. The deed by 6am. Your
+              decision over coffee.
             </p>
-          </div>
-          <FooterColumn
-            heading="Platform"
-            links={[
-              ["Proof of Value", "#proof-of-value"],
-              ["AIOV", "#proof-of-value"],
-              ["Defendable Deeds", "#deeds"],
-              ["Validator Review", "#proof-of-value"],
-            ]}
-          />
-          <FooterColumn
-            heading="Doctrine"
-            links={[
-              ["Defend The Claw™", "/defend-the-claw"],
-              ["AgentGrade™", "/agent-grade"],
-              ["Pair Factory", "/pair-factory"],
-              ["Open Infrastructure", "/open"],
-              ["Defendable Reports", "/reports"],
-              ["Ledger", "/ledger"],
-            ]}
-          />
-          <FooterColumn
-            heading="Asset Classes"
-            links={[
-              ["Real Estate", "#asset-classes"],
-              ["Compute", "#asset-classes"],
-              ["Equipment", "#asset-classes"],
-              ["Digital Assets", "#asset-classes"],
-            ]}
-          />
-          <FooterColumn
-            heading="Company"
-            links={[
-              ["Early Access", "#early-access"],
-              ["Contact", `mailto:${SALES_EMAIL}`],
-              ["Privacy", `${SWARM_APEX}/legal/privacy`],
-              ["Terms", `${SWARM_APEX}/legal/terms`],
-            ]}
-          />
-        </div>
 
-        <div className="mt-14 pt-8 border-t border-stone-900 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-stone-500">
-          <div>© 2026 DefendableOS. All rights reserved.</div>
-          <div className="font-mono">
-            A product of Swarm &amp; Bee LLC · DBA Swarm &amp; Bee AI · Florida · D-U-N-S 138652395
+            <div className="mt-8 grid grid-cols-2 gap-3 max-w-md">
+              <Stat label="Reconciliation window" value="02:00 ET" />
+              <Stat label="Brief delivered" value="06:00 ET" />
+              <Stat label="Avg owner read time" value="30 sec" />
+              <Stat label="Avg decisions/day" value="0-2" />
+            </div>
           </div>
+
+          <BriefPreview />
         </div>
       </div>
-    </footer>
+    </section>
   );
 }
 
-function FooterColumn({ heading, links }: { heading: string; links: [string, string][] }) {
+// ─── MATH · the 80/20 → 95/5 story ─────────────────────────────────────────
+function MathSection() {
   return (
-    <div>
-      <div className="text-[10px] uppercase tracking-[0.22em] text-stone-500 font-semibold mb-4">{heading}</div>
-      <ul className="space-y-2.5">
-        {links.map(([label, href]) => (
-          <li key={label}>
-            <a href={href} className="text-sm text-stone-300 hover:text-amber-300 transition-colors">
-              {label}
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-3xl">
+          <Eyebrow>THE MATH</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            From{" "}
+            <span className="font-mono text-stone-300">80 / 20</span>{" "}
+            to{" "}
+            <span className="font-mono text-amber-300">95 / 5</span>.
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            CRE brokers measure it as 300 dials → 10 proposals → 2
+            listings won. AI agents measure it the same way: 100 plays
+            performed → 80 promoted → 20 flagged. Defendable doesn't
+            just count the flags — we cluster them into patterns,
+            ship the fix, and prove the lift.
+          </p>
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-3 gap-5">
+          <FlagCard
+            stage="Baseline"
+            rate="80% / 20%"
+            note="Day 30 · first statistically reliable read"
+            tone="muted"
+          />
+          <FlagCard
+            stage="After Pattern A fix"
+            rate="92% / 8%"
+            note="Pack rule R-0042 ships · auto-deploys via Router"
+            tone="mid"
+          />
+          <FlagCard
+            stage="After Pattern B + C fixes"
+            rate="96% / 4%"
+            note="Day 90 · DEFENDABLE-ATTESTED · insurer-readable"
+            tone="honey"
+          />
+        </div>
+
+        <div className="mt-12 rounded-xl border border-amber-500/30 bg-amber-500/[0.04] px-6 py-6 lg:px-8 lg:py-7">
+          <div className="text-[10px] uppercase tracking-[0.22em] text-amber-300 font-semibold">
+            The thesis line
+          </div>
+          <div className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-stone-100 leading-snug">
+            The deed is only as good as the{" "}
+            <span className="font-serif italic font-normal text-amber-300">fix</span>{" "}
+            it delivers.
+          </div>
+          <div className="mt-2 text-sm text-stone-400">
+            Observability shows you the flag. Defense ships the fix and
+            issues a new deed proving the lift. That is the closed loop
+            nobody else delivers.
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── TRUST SIGNALS · 128 RTX 6000s · DC owned · paid in full ───────────────
+function TrustSignals() {
+  return (
+    <section className="border-b border-stone-900/80 bg-stone-950/40">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-3xl">
+          <Eyebrow>WHY THIS WORKS</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            We own the building.{" "}
+            <span className="font-serif italic font-normal text-amber-300">All of it.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            Defense doctrine only works if the rail behind it is
+            credible. Defendable owns the datacenter, the compute, the
+            doctrine, the deed registry, and the brand surfaces. No
+            VC equity given up for the GPUs. No cloud bill exposure.
+            No third-party model dependency for sensitive work.
+          </p>
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <TrustCard
+            value="128"
+            label="RTX PRO 6000 Blackwell"
+            note="Paid in full · zero debt · 12,288 GB aggregate VRAM"
+          />
+          <TrustCard
+            value="$0"
+            label="GPU debt outstanding"
+            note="No leverage on the compute fleet · no margin call risk"
+          />
+          <TrustCard
+            value="6"
+            label="Brand surfaces"
+            note="Institutional · movement · research · OSS · gateway · cloud"
+          />
+          <TrustCard
+            value="0"
+            label="Offense agents we ship"
+            note="Third-party-only · KPMG-equivalent · no conflict of interest"
+          />
+        </div>
+
+        <div className="mt-10 text-xs text-stone-500 tracking-tight">
+          DefendableCloud is served from Defendable-owned hardware on an
+          open-weights model library. Receipts persist on Tigris-backed
+          durable storage. The doctrine pack registry is open source.
+          The Defendable Agent Deed is anchored to ENS. Everything is
+          auditable end-to-end.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── CTA ───────────────────────────────────────────────────────────────────
+function CTA() {
+  return (
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="rounded-2xl border border-stone-800 bg-gradient-to-br from-stone-900/80 to-neutral-950 px-8 py-12 lg:px-14 lg:py-16">
+          <Eyebrow>READY TO DEED YOUR AGENTS</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-tight max-w-3xl">
+            Inspect the agent.{" "}
+            <span className="font-serif italic font-normal text-amber-300">Grade the risk.</span>{" "}
+            Preserve the proof.
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed max-w-2xl">
+            Order a HoneyBox · try DefendableCloud · or run a free
+            ClawCheck on one of your AI agents right now. No procurement
+            cycle. No 6-month enterprise sale. Founder credit-card swipe.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href="/honeybox"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-amber-400 text-neutral-950 text-sm font-semibold tracking-tight hover:bg-amber-300 transition-colors"
+            >
+              Order a HoneyBox
+              <Arrow />
             </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+            <a
+              href="/cloud"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold tracking-tight hover:bg-amber-500/20 hover:border-amber-400 transition-colors"
+            >
+              Try DefendableCloud
+            </a>
+            <a
+              href="/defend-the-claw"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
+            >
+              Free ClawCheck
+            </a>
+            <a
+              href={`mailto:${SALES_EMAIL}?subject=Talk%20to%20Defendable`}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-800 text-sm text-stone-400 font-semibold tracking-tight hover:text-stone-200 transition-colors"
+            >
+              Talk to us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1209,234 +573,171 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Field({ label, value }: { label: string; value: string }) {
+function Card({
+  tone,
+  title,
+  lines,
+}: {
+  tone: "muted" | "honey";
+  title: string;
+  lines: string[];
+}) {
+  const isHoney = tone === "honey";
   return (
-    <div>
-      <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-1">{label}</div>
-      <div className="text-sm text-stone-100 font-medium">{value}</div>
+    <div
+      className={`rounded-xl border px-6 py-7 ${
+        isHoney
+          ? "border-amber-500/40 bg-gradient-to-br from-amber-500/[0.07] to-amber-500/[0.02]"
+          : "border-stone-800 bg-neutral-950/60"
+      }`}
+    >
+      <div className={`text-sm font-semibold mb-4 ${isHoney ? "text-amber-300" : "text-stone-400"}`}>
+        {title}
+      </div>
+      <ul className="space-y-2.5 text-sm text-stone-300 leading-relaxed">
+        {lines.map((l) => (
+          <li key={l} className="flex items-start gap-2.5">
+            <span className={`mt-1.5 inline-block w-1 h-1 rounded-full ${isHoney ? "bg-amber-400" : "bg-stone-600"}`} />
+            <span>{l}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-function FieldInput({
-  label,
-  value,
-  onChange,
-  required,
-  type,
+function ModeCard({
+  href,
+  title,
+  subtitle,
+  bullets,
+  footnote,
+  cta,
+  tone,
 }: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  required?: boolean;
-  type?: string;
+  href: string;
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  footnote: string;
+  cta: string;
+  tone?: "honey";
 }) {
+  const isHoney = tone === "honey";
   return (
-    <label className="block">
-      <span className="block text-[11px] uppercase tracking-[0.14em] text-stone-400 font-semibold mb-1.5">
-        {label}{required && <span className="text-amber-400 ml-1">*</span>}
-      </span>
-      <input
-        type={type || "text"}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 rounded bg-neutral-900/80 border border-stone-800 text-stone-100 placeholder:text-stone-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 outline-none transition-colors text-sm"
-      />
-    </label>
-  );
-}
+    <a
+      href={href}
+      className={`group block rounded-xl border px-8 py-9 transition-colors ${
+        isHoney
+          ? "border-amber-500/40 bg-gradient-to-br from-amber-500/[0.08] to-amber-500/[0.02] hover:border-amber-400/60"
+          : "border-stone-700 bg-gradient-to-br from-stone-900/80 to-neutral-950 hover:border-stone-500"
+      }`}
+    >
+      <div className={`text-[10px] uppercase tracking-[0.22em] font-semibold ${isHoney ? "text-amber-300" : "text-stone-500"}`}>
+        {subtitle}
+      </div>
+      <div className={`mt-3 text-2xl md:text-3xl font-semibold tracking-tight ${isHoney ? "text-stone-50" : "text-stone-100"}`}>
+        {title}
+      </div>
 
-function FieldSelect({
-  label,
-  value,
-  onChange,
-  required,
-  options,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  required?: boolean;
-  options: { value: string; label: string }[];
-}) {
-  return (
-    <label className="block">
-      <span className="block text-[11px] uppercase tracking-[0.14em] text-stone-400 font-semibold mb-1.5">
-        {label}{required && <span className="text-amber-400 ml-1">*</span>}
-      </span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 rounded bg-neutral-900/80 border border-stone-800 text-stone-100 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 outline-none transition-colors text-sm"
-      >
-        {options.map((o) => (
-          <option key={o.value} value={o.value} className="bg-neutral-900">
-            {o.label}
-          </option>
+      <ul className="mt-6 space-y-2.5 text-sm text-stone-300 leading-relaxed">
+        {bullets.map((b) => (
+          <li key={b} className="flex items-start gap-2.5">
+            <span className={`mt-1.5 inline-block w-1 h-1 rounded-full ${isHoney ? "bg-amber-400" : "bg-stone-500"}`} />
+            <span>{b}</span>
+          </li>
         ))}
-      </select>
-    </label>
+      </ul>
+
+      <p className="mt-6 text-xs text-stone-500 italic leading-relaxed">{footnote}</p>
+
+      <div
+        className={`mt-7 inline-flex items-center gap-2 text-sm font-semibold tracking-tight transition-colors ${
+          isHoney ? "text-amber-300 group-hover:text-amber-200" : "text-stone-200 group-hover:text-stone-50"
+        }`}
+      >
+        {cta}
+      </div>
+    </a>
   );
 }
 
-function FieldTextarea({
-  label,
-  value,
-  onChange,
-  rows,
-  placeholder,
+function FlagCard({
+  stage,
+  rate,
+  note,
+  tone,
 }: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  rows?: number;
-  placeholder?: string;
+  stage: string;
+  rate: string;
+  note: string;
+  tone: "muted" | "mid" | "honey";
 }) {
+  const styles = {
+    muted: "border-stone-800 bg-neutral-950/60 text-stone-300",
+    mid: "border-stone-700 bg-stone-900/60 text-stone-100",
+    honey: "border-amber-500/40 bg-amber-500/[0.06] text-stone-50",
+  }[tone];
   return (
-    <label className="block">
-      <span className="block text-[11px] uppercase tracking-[0.14em] text-stone-400 font-semibold mb-1.5">
-        {label}
-      </span>
-      <textarea
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        rows={rows || 4}
-        placeholder={placeholder}
-        className="w-full px-4 py-3 rounded bg-neutral-900/80 border border-stone-800 text-stone-100 placeholder:text-stone-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/40 outline-none transition-colors text-sm leading-relaxed resize-none"
-      />
-    </label>
+    <div className={`rounded-xl border px-6 py-7 ${styles}`}>
+      <div className="text-[10px] uppercase tracking-[0.22em] text-stone-500 font-semibold">{stage}</div>
+      <div className="mt-3 font-mono text-3xl font-semibold tracking-tight">{rate}</div>
+      <div className="mt-3 text-xs text-stone-400 leading-relaxed">{note}</div>
+    </div>
   );
 }
 
+function TrustCard({ value, label, note }: { value: string; label: string; note: string }) {
+  return (
+    <div className="rounded-xl border border-stone-800 bg-neutral-950/60 px-6 py-7">
+      <div className="text-3xl md:text-4xl font-semibold tracking-tight text-amber-300">{value}</div>
+      <div className="mt-2 text-sm text-stone-100 font-medium">{label}</div>
+      <div className="mt-1 text-xs text-stone-500 leading-relaxed">{note}</div>
+    </div>
+  );
+}
 
-// ─── inline icons (no dep · matches existing page pattern) ─────────────────
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded border border-stone-800 bg-neutral-950/60 px-3 py-2.5">
+      <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold">{label}</div>
+      <div className="text-stone-100 font-semibold tracking-tight mt-0.5 text-sm">{value}</div>
+    </div>
+  );
+}
+
+// ─── inline icons (no lucide-react · keep bundle light) ────────────────────
 
 function Arrow() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <path d="M3 8h10M9 4l4 4-4 4" />
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M2 7h10M8 3l4 4-4 4" />
     </svg>
   );
 }
 
 function CheckMark() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-emerald-400 flex-shrink-0">
-      <circle cx="7" cy="7" r="6" strokeOpacity="0.4" />
-      <path d="M4 7l2 2 4-4" />
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" className="text-emerald-400">
+      <path d="M2 6.5l2.5 2.5L10 3.5" />
     </svg>
   );
 }
 
 function WarnMark() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-amber-400 flex-shrink-0">
-      <path d="M7 2l5.5 10H1.5z" />
-      <path d="M7 6v3M7 11v.5" />
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-amber-300">
+      <path d="M6 1.5l5 9H1l5-9z" />
+      <path d="M6 5v3M6 9.2v.1" strokeWidth="1.4" />
     </svg>
   );
 }
 
-function PendingMark() {
+function MailIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-stone-500 flex-shrink-0">
-      <circle cx="7" cy="7" r="6" strokeOpacity="0.4" />
-    </svg>
-  );
-}
-
-function Dot() {
-  return <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400/80 flex-shrink-0" />;
-}
-
-function DocumentIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M3 2h7l3 3v9H3z" />
-      <path d="M6 6h4M6 8h5M6 10h3" strokeWidth="1.1" opacity="0.7" />
-    </svg>
-  );
-}
-function BuildingIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M2 14V4l6-2 6 2v10" />
-      <path d="M5 14v-3h2v3M9 14v-3h2v3" />
-      <path d="M5 6h2M9 6h2M5 8h2M9 8h2" strokeWidth="1" opacity="0.7" />
-    </svg>
-  );
-}
-function CpuIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <rect x="3" y="3" width="10" height="10" rx="1" />
-      <rect x="6" y="6" width="4" height="4" strokeOpacity="0.7" />
-      <path d="M3 6h-1M3 9h-1M14 6h-1M14 9h-1M6 3v-1M9 3v-1M6 14v-1M9 14v-1" strokeWidth="1.1" />
-    </svg>
-  );
-}
-function WrenchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M11 2a3 3 0 11-3 3l-5 5a2 2 0 102 2l5-5a3 3 0 011-5z" />
-    </svg>
-  );
-}
-function GemIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M3 6h10l-5 7z" />
-      <path d="M5 3h6l2 3H3z" />
-      <path d="M5 3l-2 3M11 3l2 3M3 6l5 7M13 6l-5 7M5 6h6" strokeWidth="1" opacity="0.7" />
-    </svg>
-  );
-}
-function DatabaseIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <ellipse cx="8" cy="3.5" rx="5" ry="1.5" />
-      <path d="M3 3.5v9c0 .8 2.2 1.5 5 1.5s5-.7 5-1.5v-9" />
-      <path d="M3 8c0 .8 2.2 1.5 5 1.5s5-.7 5-1.5" />
-    </svg>
-  );
-}
-function BrainIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M6 3a2.5 2.5 0 00-2 4 2.5 2.5 0 000 4 2.5 2.5 0 003 1 2.5 2.5 0 005 0 2.5 2.5 0 003-1 2.5 2.5 0 000-4 2.5 2.5 0 00-2-4 2.5 2.5 0 00-2-1 2.5 2.5 0 00-2 1 2.5 2.5 0 00-3 0z" />
-      <path d="M6 7h1M9 7h1M6 10h4" strokeWidth="1" opacity="0.7" />
-    </svg>
-  );
-}
-function ArchiveIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <rect x="2" y="3" width="12" height="3" />
-      <path d="M3 6v8h10V6M6 9h4" />
-    </svg>
-  );
-}
-function ShieldIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M8 2l5 2v5c0 3-2 5-5 5s-5-2-5-5V4z" />
-      <path d="M5.5 8l2 2 3-3.5" strokeWidth="1.4" />
-    </svg>
-  );
-}
-function ReceiptIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M3 2v12l2-1 2 1 2-1 2 1 2-1V2z" />
-      <path d="M5 5h6M5 7h6M5 9h4" strokeWidth="1" opacity="0.7" />
-    </svg>
-  );
-}
-function PackageIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M2 5l6-3 6 3v6l-6 3-6-3z" />
-      <path d="M2 5l6 3 6-3M8 8v6" strokeWidth="1.2" opacity="0.7" />
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4">
+      <rect x="1.5" y="3" width="11" height="8" rx="1" />
+      <path d="M2 4l5 4 5-4" />
     </svg>
   );
 }
