@@ -23,6 +23,7 @@ export default function DefendableOS() {
       <Header />
       <main>
         <Hero />
+        <SwarmLawsBand />
         <CategoryShift />
         <DoctrineSection />
         <DeploymentModes />
@@ -90,6 +91,10 @@ function Hero() {
               The deed is only as good as the{" "}
               <span className="text-amber-300 font-medium">fix it delivers</span>.
               Defense in the shadows. Offense in the daytime.
+            </p>
+            <p className="mt-4 text-xs text-stone-500 italic font-serif tracking-tight max-w-md leading-relaxed">
+              "What the Hive verifies becomes truth." — The Genesis Law ·
+              the 5th Swarm Law that defines every Defendable Deed.
             </p>
           </div>
 
@@ -194,6 +199,87 @@ function BriefRow({ agent, plays, status, ok }: { agent: string; plays: string; 
         {ok ? <CheckMark /> : <WarnMark />}
       </span>
     </li>
+  );
+}
+
+// ─── THE 5 SWARM LAWS · BRAND DOCTRINE ─────────────────────────────────────
+function SwarmLawsBand() {
+  const laws = [
+    { n: "I",   title: "The Honey Law",   body: "You get more Bees with Honey." },
+    { n: "II",  title: "The Cell Law",    body: "Great intelligence begins with a single Cell." },
+    { n: "III", title: "The Swarm Law",   body: "The Swarm is stronger than the Bee." },
+    { n: "IV",  title: "The Purity Law",  body: "Virgin signal is the seed of great Honey." },
+    { n: "V",   title: "The Genesis Law", body: "What the Hive verifies becomes truth." },
+  ];
+  return (
+    <section className="relative border-b border-stone-900/80 bg-amber-500/[0.025]">
+      <div className="max-w-7xl mx-auto px-6 py-16 lg:py-20">
+        <Eyebrow>THE 5 SWARM LAWS · BRAND DOCTRINE · LOCKED 2026-03-12</Eyebrow>
+        <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight max-w-4xl">
+          What the Hive verifies{" "}
+          <span className="font-serif italic font-normal text-amber-300">becomes truth</span>.
+        </h2>
+        <p className="mt-6 text-base text-stone-400 leading-relaxed max-w-3xl">
+          The Hive is the in-house engine of Swarm &amp; Bee · the backend
+          DefendableOS is the public surface of. Five laws govern it. The
+          fifth — the Genesis Law — is the line that defines every Defendable
+          Deed. A deed is not a claim. It is what the Hive has verified ·
+          receipted · graded · and anchored on Hedera. Once issued, it is
+          truth anyone can pull back to first principles, any time.
+        </p>
+
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-stone-900 border border-stone-800 rounded-xl overflow-hidden">
+          {laws.map((law) => (
+            <div key={law.n} className="bg-neutral-950 p-5">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-amber-400/70 font-semibold font-mono">
+                LAW {law.n}
+              </div>
+              <h3 className="mt-3 text-sm font-semibold tracking-tight text-stone-100">
+                {law.title}
+              </h3>
+              <p className="mt-2 text-xs text-stone-400 leading-relaxed font-serif italic">
+                {law.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3 items-center">
+          <a
+            href="https://swarmandbee.ai/chain"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-[0.18em] rounded border border-amber-500/40 text-amber-300 px-4 py-2 hover:bg-amber-500/10 transition-colors font-mono"
+          >
+            Watch the refinery work ↗ swarmandbee.ai/chain
+          </a>
+          <a
+            href="https://swarmandbee.ai/deed"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-[0.18em] rounded border border-stone-700 text-stone-300 px-4 py-2 hover:border-amber-500/40 hover:text-amber-300 transition-colors"
+          >
+            Inspect any deed ↗ /deed
+          </a>
+          <a
+            href="https://hashscan.io/#/mainnet/topic/0.0.10291838"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-[0.18em] rounded border border-stone-700 text-stone-300 px-4 py-2 hover:border-amber-500/40 hover:text-amber-300 transition-colors"
+          >
+            Verify on Hedera ↗
+          </a>
+        </div>
+
+        <p className="mt-8 text-xs text-stone-500 italic font-serif leading-relaxed max-w-3xl">
+          "Validate the Validator. Prove the Location." Anyone can sell
+          rows. We sell <span className="text-amber-300/90 not-italic font-sans">defendable inventory</span> · backed by 13+
+          trained custom models · 5 already shipped · 1 in flight · all
+          cooked on the locked Gold Standard recipe in the Swarm &amp; Bee
+          in-house refinery.
+        </p>
+      </div>
+    </section>
   );
 }
 
