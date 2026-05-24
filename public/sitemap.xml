@@ -65,6 +65,14 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- ─── OpenDefense · open-source market intelligence OM ────── -->
+  <url>
+    <loc>https://defendableos.com/opendefense</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- ─── Defendable Compute · static demo (archived to /showcase) ─ -->
   <url>
     <loc>https://defendableos.com/compute</loc>
