@@ -59,16 +59,17 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-start">
           <div>
-            <Eyebrow>DEFENDABLEOS / DEFENSE FOR AI WORKERS</Eyebrow>
+            <Eyebrow>DEFENDABLEOS / DEFENSE FOR AI OPERATORS</Eyebrow>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-              Your AI agents do the work.{" "}
-              <span className="font-serif italic font-normal text-amber-300">We deed the work.</span>
+              Agent does the assignment.{" "}
+              <span className="font-serif italic font-normal text-amber-300">We validate the Project.</span>
             </h1>
             <p className="mt-8 text-lg text-stone-300 leading-relaxed max-w-xl">
-              DefendableOS is the third-party defense layer for AI workers
-              in production. Every task your agent runs is captured ·
-              receipted · graded · and reconciled into a daily deed that
-              your CFO, compliance team, and insurance carrier can read.
+              DefendableOS is the third-party defense layer for AI operators
+              and asset owners. Every assignment your agent completes is
+              captured · receipted · graded · and reconciled into a daily
+              Project deed that your CFO, compliance team, and insurance
+              carrier can read.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
