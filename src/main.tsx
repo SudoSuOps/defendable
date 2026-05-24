@@ -9,6 +9,7 @@ import DefendableCloud from "./pages/DefendableCloud";
 import Pricing from "./pages/Pricing";
 import Doctrine from "./pages/Doctrine";
 import About from "./pages/About";
+import Hack from "./pages/Hack";
 import DefendableOpen from "./pages/DefendableOpen";
 import DefendablePairFactory from "./pages/DefendablePairFactory";
 import DefendableReports from "./pages/DefendableReports";
@@ -58,6 +59,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         {/* ── Doctrine + Operator surfaces (secret sauce) ── */}
         <Route path="/doctrine" element={<Doctrine />} />
         <Route path="/about" element={<About />} />
+        {/* ── DefendableHack · builder rail (cracked LLM) ── */}
+        <Route path="/hack" element={<Hack />} />
         {/* ── Existing surfaces (kept · linked from footer or live) ── */}
         <Route path="/open" element={<DefendableOpen />} />
         <Route path="/pair-factory" element={<DefendablePairFactory />} />

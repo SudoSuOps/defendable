@@ -108,6 +108,7 @@ export function Footer() {
             links={[
               ["The Doctrine", "/doctrine"],
               ["About / Operator", "/about"],
+              ["DefendableHack™", "/hack"],
               ["AgentGrade™", "/agent-grade"],
               ["Pair Factory", "/pair-factory"],
               ["Open Infrastructure", "/open"],
