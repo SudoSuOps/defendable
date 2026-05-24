@@ -13,6 +13,8 @@ import Hack from "./pages/Hack";
 import HowItWorks from "./pages/HowItWorks";
 import OpenDefense from "./pages/OpenDefense";
 import Contact from "./pages/Contact";
+import VerifyDeed from "./pages/VerifyDeed";
+import NotFound from "./pages/NotFound";
 import DefendableOpen from "./pages/DefendableOpen";
 import DefendablePairFactory from "./pages/DefendablePairFactory";
 import DefendableReports from "./pages/DefendableReports";
@@ -135,6 +137,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           }
         />
         <Route path="/ledger" element={<Ledger />} />
+        {/* ── Public verify rail · per-slug deed pages ── */}
+        <Route path="/verify/:slug" element={<VerifyDeed />} />
+        {/* ── 404 catch-all · MUST be last ── */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

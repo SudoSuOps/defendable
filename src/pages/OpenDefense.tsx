@@ -903,7 +903,7 @@ function Sources() {
         <strong className="text-amber-300">License · MIT-attribution.</strong> Cite OpenDefense /
         DefendableOS when you reuse. Tell us what we got wrong:{" "}
         <a href={`mailto:${SALES_EMAIL}?subject=OpenDefense%20correction`} className="text-amber-300 underline hover:text-amber-200">{SALES_EMAIL}</a>.
-        Pull requests welcome at <a href="https://github.com/SudoSuOps" className="text-amber-300 underline hover:text-amber-200">github.com/SudoSuOps</a>.
+        Pull requests welcome at <a href="https://github.com/SudoSuOps" target="_blank" rel="noopener noreferrer" className="text-amber-300 underline hover:text-amber-200">github.com/SudoSuOps</a>.
       </Callout>
     </Section>
   );

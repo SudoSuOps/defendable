@@ -12,7 +12,7 @@ export interface RouteContent {
   description: string;
 }
 
-const THESIS_BANNER = `<!-- DefendableOS · the operating system for evidence-backed valuation · build@swarmandbee.ai -->`;
+const THESIS_BANNER = `<!-- DefendableOS · third-party defense rail for AI operators · Agent does the assignment. We validate the Project. · defense@defendableos.com -->`;
 
 export async function getRouteContent(
   _requestUrl: string,
@@ -46,6 +46,16 @@ export async function getRouteContent(
   if (pathname === "/ledger") {
     return buildLedgerContent();
   }
+  // ── Primary product surfaces shipped 2026-05-24 ───────────────
+  if (pathname === "/honeybox")     return buildHoneyBoxContent();
+  if (pathname === "/cloud")        return buildDefendableCloudContent();
+  if (pathname === "/pricing")      return buildPricingContent();
+  if (pathname === "/how-it-works") return buildHowItWorksContent();
+  if (pathname === "/opendefense")  return buildOpenDefenseContent();
+  if (pathname === "/doctrine")     return buildDoctrineContent();
+  if (pathname === "/about")        return buildAboutContent();
+  if (pathname === "/hack")         return buildHackContent();
+  if (pathname === "/contact")      return buildContactContent();
   // Defendable CRE MarketReady · Palm Grove Marketplace · 5 routes.
   // Match BEFORE the generic /showcase/:slug branch so CRE sub-routes
   // don't fall through to generic showcase content.
@@ -756,11 +766,11 @@ function buildDefendableOSContent(): RouteContent {
   const bodyHtml = `
 <main>
   ${THESIS_BANNER}
-  <h1>Every asset deserves a defendable value.</h1>
-  <p><strong>DefendableOS</strong> turns real-world and digital assets into evidence-backed, market-ready records — with verified inputs, comparable analysis, provenance, valuation receipts, and transferable Defendable Deeds. Powered by <strong>AIOV</strong> (AI Opinion of Value). Built on the doctrine: <strong>Validate the Validator</strong>.</p>
+  <h1>Agent does the assignment. We validate the Project.</h1>
+  <p><strong>DefendableOS</strong> is the third-party defense layer for AI operators and asset owners. Every assignment your agent completes is captured · receipted · graded · and reconciled into a daily Project deed that your CFO, compliance team, and insurance carrier can read. Cisco grades the agent. We grade the work. <strong>Validate the Validator. Own the Deed.</strong></p>
 
   <h2>The problem</h2>
-  <p>Value without evidence is just an opinion. Assets move through markets every day with incomplete records, unverified comps, missing provenance, undocumented condition, and valuation claims that cannot survive scrutiny. DefendableOS is designed to change that.</p>
+  <p>AI agents in production touch files, payments, customers, infrastructure · and the agent vendor grades its own homework. 84% of operators (Gravitee 2026) doubt they'd pass an agent-behavior audit today. 74% have already rolled back an agent. 88% of agent pilots never reach production (S&amp;P/McKinsey). The defense gap is the bottleneck.</p>
   <ul>
     <li><strong>Unverified Inputs.</strong> A valuation is only as reliable as the identity, condition, source documents, and market data behind it.</li>
     <li><strong>Fragmented Evidence.</strong> Receipts, photos, benchmarks, comparables, ownership records, and reports rarely travel together with the asset.</li>
@@ -908,8 +918,667 @@ function buildDefendableOSContent(): RouteContent {
   return {
     bodyHtml,
     jsonLdBlocks,
-    title: "DefendableOS · Proof of Value",
+    title: "DefendableOS · Defense for AI Operators",
     description:
-      "DefendableOS is the operating system for evidence-backed valuation, provenance, and market-ready ownership across real estate, compute, equipment, datasets, and AI assets. Validate the Validator · AIOV · Defendable Deeds.",
+      "The third-party defense layer for AI operators and asset owners. Agent does the assignment · we validate the Project. Every assignment receipted · graded · reconciled into a daily Project deed your CFO, compliance team, and insurance carrier can read. Validate the Validator · Own the Deed.",
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// SSR content for the 9 primary product surfaces shipped 2026-05-24.
+// Each function returns rich crawler-visible bodyHtml + per-route JSON-LD
+// so AI crawlers (GPTBot · ClaudeBot · Perplexity etc.) see the full
+// product story even before the React SPA boots.
+// ─────────────────────────────────────────────────────────────────────────
+
+function buildHoneyBoxContent(): RouteContent {
+  const url = "https://defendableos.com/honeybox";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>The defense layer lives on your premises.</h1>
+  <p><strong>HoneyBox</strong> is a physical edge appliance built on the NVIDIA Jetson Orin Nano (8 GB · 40 TOPS · 80× faster than the original Jetson Nano). It sits on your network · receives task pings from every AI agent in your business · stores receipts locally · runs the Tribunal locally · issues Defendable Agent Deeds locally. <strong>Raw data NEVER leaves the box.</strong></p>
+
+  <h2>Hardware tiers</h2>
+  <ul>
+    <li><strong>Jetson Orin Nano 8GB · $399 setup · $10/mo</strong> — default SMB tier · ~10 agents · ~50K plays/month</li>
+    <li><strong>Jetson AGX Orin 64GB · $999 setup · $50/mo</strong> — mid-market / regulated · ~50 agents · imaging centers</li>
+    <li><strong>Workstation · RTX 6000 96GB · $2,500 setup · $200/mo</strong> — high-volume fleets · local frontier-model judge</li>
+    <li><strong>DGX-class · Quote</strong> — government · defense · financial services with strict isolation</li>
+  </ul>
+
+  <h2>What the box does · sub-millisecond rule layer</h2>
+  <ul>
+    <li>Local SQLite ledger per agent (on NVMe SSD)</li>
+    <li>Local rule-layer Tribunal · sub-millisecond per play</li>
+    <li>Optional local LLM judge · Phi-4 · Gemma 3 4B · Qwen 2.5 3B (fits in 40 TOPS)</li>
+    <li>Local Daily Reconciliation Deed issuance</li>
+    <li>ENS-registered identity per agent (compliance.&lt;your-co&gt;.defendable.eth)</li>
+    <li>TPM-backed signing key per agent</li>
+    <li>Air-gap capable · operates without external network if required</li>
+  </ul>
+
+  <h2>Three privacy gradients</h2>
+  <ol>
+    <li><strong>Inside the HoneyBox</strong> — raw task content · per-play receipts · customer data · agent decisions · evidence. Customer only. Defendable NEVER unless per-pull authorization.</li>
+    <li><strong>Outbound ping</strong> — anonymized counts · severity flags · deed SHA-256 · NO content. Defendable cloud (notification rail only).</li>
+    <li><strong>Cloud-side derived</strong> — daily deed · grades · lien types · workout plans · NO PII. Defendable + your compliance subdomain.</li>
+  </ol>
+
+  <h2>Markets that cannot use cloud-only AI tools</h2>
+  <p>Cloud AI observability vendors (Helicone · Langfuse · Portkey · Cloudflare AI Gateway · LangSmith) are categorically barred from these industries because customer data has to leave the buyer's network. HoneyBox solves this entirely · the data never moves.</p>
+  <ul>
+    <li><strong>Healthcare</strong> · HIPAA · BAA · PHI residency</li>
+    <li><strong>Financial services</strong> · SOC2 · GLBA · PCI-DSS</li>
+    <li><strong>Government</strong> · FedRAMP · CJIS · IL2-5</li>
+    <li><strong>Defense</strong> · ITAR · CMMC · DoD impact levels</li>
+    <li><strong>Legal (BigLaw)</strong> · privilege · client confidentiality</li>
+    <li><strong>Insurance carriers</strong> · NAIC · solvency audit trail</li>
+  </ul>
+
+  <h2>Mid-size imaging center · 5-year worked example</h2>
+  <p>8 radiologists · 4 AI agents (preliminary read · prior auth · billing reconciliation · scheduling) · HoneyBox AGX Orin tier · Managed Fixers · HIPAA compliant.</p>
+  <ul>
+    <li>Setup (AGX Orin + HIPAA BAA + radiology pack) · <strong>$4,999</strong></li>
+    <li>Box lease ($50/mo × 60 mo) · <strong>$3,000</strong></li>
+    <li>4 agents Managed Fixers ($99/mo × 60 mo) · <strong>$23,760</strong></li>
+    <li>8 compliance seats ($25/mo × 60 mo) · <strong>$12,000</strong></li>
+    <li>HIPAA quarterly audit export ($100/mo × 60) · <strong>$6,000</strong></li>
+    <li>Insurance carrier feed ($200/mo × 60) · <strong>$12,000</strong></li>
+    <li><strong>5-year revenue: $61,759 · gross margin 86%</strong></li>
+  </ul>
+
+  <h2>Setup · less than 10 minutes</h2>
+  <ol>
+    <li>Receive the HoneyBox · arrives pre-flashed with your ENS subdomain registered</li>
+    <li>Plug into the network · DHCP discovers it · no static config required</li>
+    <li>Scan the QR code · mobile config wizard · 4 questions · 90 seconds</li>
+    <li>Point your agents at the endpoint · one config line per agent</li>
+    <li>Sleep through the first night · reconciliation runs at 2am · brief delivered by 6am</li>
+    <li>Read the deed over coffee · approve any open liens · the rest takes care of itself</li>
+  </ol>
+
+  <p>Order: <a href="mailto:defense@defendableos.com?subject=Order%20a%20HoneyBox">defense@defendableos.com</a> · enterprise/DGX tier: <a href="mailto:defense@defendableos.com?subject=HoneyBox%20Enterprise%20Tier">defense@defendableos.com</a>.</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "HoneyBox · Edge Defense Appliance · DefendableOS",
+    description:
+      "Physical edge defense appliance · NVIDIA Jetson Orin Nano · 40 TOPS · 80× faster than original Jetson Nano · stores per-agent ledger locally · raw data NEVER leaves the box. 4 hardware tiers from $399 setup. Tax-deductible lease structure. Unlocks healthcare · financial services · government · defense · legal · insurance · all the regulated industries that cannot use cloud-only AI tools.",
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "@id": `${url}#product`,
+        name: "DefendableOS HoneyBox",
+        description: "Physical edge defense appliance for AI agents. NVIDIA Jetson Orin Nano · 40 TOPS · 80× faster than original. Stores per-agent ledger locally. Runs Tribunal + deed issuance on-device. Raw data never leaves the box.",
+        brand: { "@type": "Brand", name: "DefendableOS" },
+        manufacturer: { "@type": "Organization", name: "Swarm and Bee LLC", url: "https://defendableos.com/" },
+        category: "Edge AI defense appliance",
+        offers: [
+          { "@type": "Offer", name: "Jetson Orin Nano 8GB · Default SMB", price: "399.00", priceCurrency: "USD", description: "Setup fee. $10/mo lease. Up to ~10 agents." },
+          { "@type": "Offer", name: "Jetson AGX Orin 64GB · Mid-market", price: "999.00", priceCurrency: "USD", description: "Setup fee. $50/mo lease. Up to ~50 agents." },
+          { "@type": "Offer", name: "Workstation · RTX 6000 · Heavy compute", price: "2500.00", priceCurrency: "USD", description: "Setup fee. $200/mo lease. Local frontier-model judge." },
+        ],
+        url,
+      },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "HoneyBox", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildDefendableCloudContent(): RouteContent {
+  const url = "https://defendableos.com/cloud";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>Our datacenter. Our compute. Your defense.</h1>
+  <p><strong>DefendableCloud</strong> is privacy-native hosted inference on Defendable-owned hardware: <strong>128 NVIDIA RTX PRO 6000 Blackwell cards · 12,288 GB aggregate VRAM · paid in full · zero debt</strong>. Open-weights model library. Contractual no-logging. Doctrine pack rules enforced inside inference. The Big-Tech-free cloud alternative.</p>
+
+  <h2>Why our DC · COGS is amortized, not borrowed</h2>
+  <p>Every other AI gateway / cloud-LLM provider runs on Big Tech infrastructure they lease at retail prices. Their inference COGS goes up when AWS/GCP raises GPU rates. DefendableCloud runs on Defendable-owned cards in a Defendable-owned datacenter · COGS is depreciation + electricity. <strong>~$0.50 per million tokens served vs $5-15 for cloud-leased equivalent · ~10× margin advantage · forever</strong>.</p>
+
+  <h2>Open-weights model library</h2>
+  <ul>
+    <li><strong>Qwen 2.5 32B Instruct</strong> · 1 card · default for ClawCheck Tribunal grading</li>
+    <li><strong>Llama 3.3 70B Instruct</strong> · 2 cards FP16 · long context · most balanced</li>
+    <li><strong>DeepSeek V3 671B</strong> · 4 cards 4-bit · frontier-class reasoning</li>
+    <li><strong>Mixtral 8x22B</strong> · 2 cards MoE · cost-efficient with constrained tool calling</li>
+    <li><strong>Phi-4 14B</strong> · 1 card half · edge tribunal · fast · cheap</li>
+    <li><strong>Bring your own checkpoint</strong> · fine-tunes · LoRA · vetted by Defendable</li>
+  </ul>
+
+  <h2>What we contractually commit</h2>
+  <ul>
+    <li><strong>No logging</strong> · prompts and completions not persisted beyond request/response cycle</li>
+    <li><strong>No training</strong> · your data never used to train · fine-tune · evaluate any model</li>
+    <li><strong>No third-party share</strong> · no data exchange with Anthropic · OpenAI · Google · Meta · or any other vendor</li>
+    <li><strong>BAA-ready</strong> · HIPAA Business Associate Agreement available for healthcare deployments</li>
+    <li><strong>SOC2 Type II</strong> · annual audit · published controls</li>
+    <li><strong>Open-weights only</strong> · auditable architecture · forever-runnable</li>
+  </ul>
+
+  <h2>How it flows · doctrine pack rules inside inference</h2>
+  <ol>
+    <li>Agent makes an OpenAI-SDK call · sets <code>base_url</code> to https://api.defendablecloud.com/v1</li>
+    <li>Router applies doctrine pack · system-prompt fragments injected · tool-call schemas validated</li>
+    <li>Inference on Defendable hardware · selected open-weights model on RTX 6000 Blackwell · no provider telemetry</li>
+    <li>Output validated against pack rules · tool-call arguments validated · completion scanned for hard fails</li>
+    <li>Receipt to Bakery vault · SHA-256 hash · pair candidate created · contributes to daily reconciliation deed</li>
+    <li>Customer sees response · same shape as OpenAI · drop-in compatible · zero agent code changes</li>
+  </ol>
+
+  <h2>Pricing · pay per million tokens · no setup</h2>
+  <ul>
+    <li><strong>General tier · $5/M tokens</strong> · Qwen 32B · Mixtral · Phi-4 · Llama 70B · drop-in OpenAI-SDK compatible</li>
+    <li><strong>Frontier tier · $10/M tokens</strong> · DeepSeek V3 671B · long-context Llama 70B · Tribunal judge for ambiguous cases</li>
+    <li><strong>Custom checkpoint · Quote</strong> · BYO fine-tune or LoRA · vetting required</li>
+    <li>Optional per-agent monitoring · $29-99/mo · same Tribunal + deed pipeline</li>
+  </ul>
+
+  <h2>vs Big Tech · side by side</h2>
+  <ul>
+    <li><strong>Logs prompts:</strong> OpenAI/Anthropic/Azure default YES · DefendableCloud NEVER</li>
+    <li><strong>Trains on your data:</strong> Possible/Opt-out · DefendableCloud NEVER</li>
+    <li><strong>BAA available:</strong> Limited/Enterprise · DefendableCloud standard</li>
+    <li><strong>Open weights:</strong> Closed only · DefendableCloud open · pinnable</li>
+    <li><strong>Doctrine pack inline:</strong> No · DefendableCloud YES</li>
+    <li><strong>Issues a deed:</strong> No · DefendableCloud YES</li>
+    <li><strong>COGS per M tokens:</strong> $5-15+ · DefendableCloud ~$0.50</li>
+  </ul>
+
+  <p>Try DefendableCloud: <a href="mailto:defense@defendableos.com?subject=Try%20DefendableCloud">defense@defendableos.com</a>.</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "DefendableCloud · Privacy-Native AI Inference · 128 RTX 6000 · Open Weights",
+    description:
+      "Privacy-native hosted inference on Defendable-owned hardware. 128 NVIDIA RTX PRO 6000 Blackwell cards · 12,288 GB VRAM · paid in full · zero debt. Open-weights library (Qwen 32B · Llama 70B · DeepSeek V3 · Mixtral · Phi-4). Contractual no-logging · no training · BAA-ready. OpenAI-SDK drop-in. ~$0.50/M tokens COGS vs $5-15 for cloud-leased equivalent.",
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org", "@type": "Service", "@id": `${url}#service`,
+        name: "DefendableCloud", url,
+        provider: { "@type": "Organization", name: "Swarm and Bee LLC", url: "https://defendableos.com/" },
+        serviceType: "Privacy-native hosted AI inference",
+        description: "OpenAI-SDK-compatible hosted inference on Defendable-owned 128-RTX-6000 fleet. Open-weights models · contractual no-logging · BAA-ready · doctrine pack rules enforced inside inference path.",
+        areaServed: { "@type": "Place", name: "Worldwide" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "5.00", description: "$5 per million tokens · general tier · Qwen 32B · Mixtral · Phi-4 · Llama 70B" },
+      },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "DefendableCloud", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildPricingContent(): RouteContent {
+  const url = "https://defendableos.com/pricing";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>Founder-friendly. CFO-defensible.</h1>
+  <p>Two deployment modes · same defense doctrine. Both priced for clarity. Both tax-deductible operating expense. Both sellable to procurement without a 9-month cycle.</p>
+
+  <h2>HoneyBox · edge mode</h2>
+  <ul>
+    <li>Setup fee · <strong>$399</strong> (Jetson Orin Nano 8GB default tier · includes ENS subdomain registration + NVMe SSD)</li>
+    <li>Box lease · <strong>$10/mo</strong> (5-year refresh included)</li>
+    <li>Per-agent base monitoring · <strong>$29/mo</strong> (includes per-task deeds + nightly reconciliation)</li>
+    <li>AGX Orin tier · $999 setup · $50/mo</li>
+    <li>RTX 6000 Workstation tier · $2,500 setup · $200/mo</li>
+    <li>DGX-class · Quote</li>
+    <li>HIPAA BAA · onboarding · $1,500 one-time</li>
+    <li>Compliance seat (each) · $25/mo</li>
+    <li>Audit-trail quarterly export · $100/mo</li>
+  </ul>
+  <p><em>Lease structure · 100% operating expense · off balance sheet.</em></p>
+
+  <h2>DefendableCloud · cloud mode</h2>
+  <ul>
+    <li>Setup fee · <strong>$0</strong> (pay-as-you-go · no minimum)</li>
+    <li>General-tier inference · <strong>$5/M tokens</strong> (Qwen 32B · Mixtral · Phi-4 · Llama 70B)</li>
+    <li>Per-agent monitoring · <strong>$29-99/mo</strong> (optional · same Tribunal + deed pipeline)</li>
+    <li>Frontier tier (DeepSeek V3 · 70B long-ctx) · $10/M tokens</li>
+    <li>Custom checkpoint (BYO fine-tune) · Quote</li>
+    <li>Dedicated capacity reservation · Quote</li>
+    <li>BAA standard · included</li>
+    <li>SOC2 attestation · included</li>
+  </ul>
+  <p><em>OpenAI-SDK compatible · drop-in base_url change.</em></p>
+
+  <h2>Fixers · the closer layer · "the deed is only as good as the fix it delivers"</h2>
+  <ul>
+    <li><strong>Self-Serve · $29-99/agent/mo</strong> · continuous · auto pack updates · daily Morning Brief · 1-click workout approval</li>
+    <li><strong>Managed Fixers · $2-10K/agent/mo</strong> · 3-month minimum · engineer-reviewed monthly · custom pack rules · quarterly review</li>
+    <li><strong>Embedded Fixers · $50-250K ARR / fleet</strong> · 12-month anchor · named contact · <strong>Fix-or-Refund 90-day guarantee</strong> on flag-rate lift · insurance carrier integration</li>
+  </ul>
+  <p>Statistical baseline needs 30 days · iteration needs another 60 · durable lift proves at 90 days. We won't sell shorter engagements because the math doesn't support honest expectations.</p>
+
+  <h2>Mid-size imaging center · 5-year ledger</h2>
+  <ul>
+    <li>Setup (AGX Orin + HIPAA BAA + pack customization) · $4,999</li>
+    <li>Box lease · $50/mo × 60 mo · $3,000</li>
+    <li>4 agents Managed Fixers · $99/mo × 60 mo · $23,760</li>
+    <li>8 compliance seats · $25/mo × 60 mo · $12,000</li>
+    <li>HIPAA quarterly audit export · $100/mo × 60 · $6,000</li>
+    <li>Insurance carrier feed · $200/mo × 60 · $12,000</li>
+    <li><strong>5-year revenue · $61,759 · 5-year gross profit · $53,259 · gross margin 86%</strong></li>
+  </ul>
+  <p>At 100 centers · $6.1M ARR. At 1,000 centers · $61M ARR. There are ~7,000 imaging centers in the US.</p>
+
+  <p>Order a HoneyBox: <a href="mailto:defense@defendableos.com?subject=Order%20a%20HoneyBox">defense@defendableos.com</a> · Try DefendableCloud: <a href="mailto:defense@defendableos.com?subject=Try%20DefendableCloud">defense@defendableos.com</a> · Embedded Fixers engagement: <a href="mailto:defense@defendableos.com?subject=Embedded%20Fixers%20engagement">defense@defendableos.com</a>.</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "Pricing · Transparent · DefendableOS",
+    description:
+      "Two deployment modes · same defense doctrine. HoneyBox edge appliance: $399 setup + $10/mo lease + $29-99/agent. DefendableCloud: $5-10 per million tokens · OpenAI-SDK drop-in. 3 Fixer tiers (Self-Serve · Managed · Embedded with Fix-or-Refund 90-day guarantee). 5-year MRI center worked example: $61,759 LTV · 86% gross margin.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "PriceSpecification", "@id": `${url}#honeybox-price`, name: "HoneyBox default tier", price: "399.00", priceCurrency: "USD", valueAddedTaxIncluded: false },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "Pricing", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildHowItWorksContent(): RouteContent {
+  const url = "https://defendableos.com/how-it-works";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>The actual mechanics.</h1>
+  <p>What the Defendable Agent Deed actually is · how the math works · why we are sovereign infrastructure not someone else's rebrand · and the early-warning capability nobody else in the AI observability space is shipping. No buzzwords. Real JSON. Real receipts. Real probabilities.</p>
+
+  <h2>The flow · 8 stages · zero interruptions to your agent</h2>
+  <ol>
+    <li><strong>Agent receives assignment</strong> · Defendable does NOT intercept · no latency tax</li>
+    <li><strong>Agent executes the assignment</strong> · customer's offense workflow at full speed</li>
+    <li><strong>Router captures the play</strong> · signed receipt written to HoneyBox or DefendableCloud · &lt;5ms POST · write-only</li>
+    <li><strong>Reconciliation cron fires at 02:00</strong> · nightly batch grading · cheaper than real-time</li>
+    <li><strong>Tribunal labels every play</strong> · HONEY / JELLY / PROPOLIS · rule layer can only DOWNGRADE</li>
+    <li><strong>Flag patterns clustered into liens</strong> · each lien has severity · root cause · workout plan · expected lift</li>
+    <li><strong>Daily Reconciliation Deed issued</strong> · per-agent · SHA-256 hashed · ENS-anchored</li>
+    <li><strong>Morning Brief delivered by 06:00</strong> · one email · 1-click decisions · compounding trends</li>
+  </ol>
+
+  <h2>Anatomy of a Defendable Agent Deed</h2>
+  <p>Every field is load-bearing. Every hash is verifiable. Every limitation named honestly. No promotional rounding.</p>
+  <ul>
+    <li><strong>deed_id</strong> · DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v1 · globally unique · semantic · sortable</li>
+    <li><strong>deed_type</strong> · DEFENDABLE_AGENT_DEED (discriminator)</li>
+    <li><strong>issued_by</strong> · defendable.eth (ENS-anchored issuer identity)</li>
+    <li><strong>subject_agent</strong> · agent_id · agent_class · operator subdomain · deployment target</li>
+    <li><strong>benchmark_run</strong> · pack_id · pack_version · run_id · tasks_executed · adversarial_cases_resisted</li>
+    <li><strong>grades_5d</strong> · capability · truth · safety · numeric_structural · efficiency · reproducibility · ALL FIVE always published</li>
+    <li><strong>tribunal_breakdown</strong> · honey_percent · jelly_percent · propolis_percent</li>
+    <li><strong>deployment_tier</strong> · OBSERVED → SCOPED → CONDITIONAL → APPROVED → AUTHORITY (5-tier ladder)</li>
+    <li><strong>limitations</strong> · every known limitation NAMED in the deed itself</li>
+    <li><strong>bound_artifacts</strong> · linked compute deed + bench bundle SHA-256</li>
+    <li><strong>record_hash</strong> · sha256:ff7385b0f5319a11ebf7b7e43fb86a80bae5730ab61e29b7d5cb5fd6580a8733 (tamper-evidence seal)</li>
+    <li><strong>ens_anchor</strong> · ddeed-dov-agent-compute-inspector-000001-v1.swarmbee.defendable.eth</li>
+    <li><strong>doctrine_note</strong> · plain-English limitation summary · anti-puffery clause</li>
+  </ul>
+
+  <h2>Sovereignty · we own the rail</h2>
+  <ul>
+    <li><strong>128</strong> · RTX 6000 Blackwell paid in full · 12,288 GB aggregate VRAM</li>
+    <li><strong>1</strong> · Datacenter · owned (not leased rack space)</li>
+    <li><strong>6</strong> · Brand domains · locked · audience-segmented</li>
+    <li><strong>$0</strong> · cloud vendor dependency · no upstream pricing exposure</li>
+    <li><strong>0</strong> · offense agents shipped · permanent brand contract · KPMG-equivalent</li>
+    <li><strong>100%</strong> · doctrine packs MIT-licensed and open source · published on opendefendable.com</li>
+  </ul>
+
+  <h2>The math · real probabilities not vibes</h2>
+  <p>Every flag rate we publish is a posterior estimate with a 95% credible interval · computed via Bayesian inference over the cumulative play count. Pattern lift forecasts come from historical pack-rule effectiveness data · adjusted per agent class. If we can't show the math · we don't publish the number.</p>
+  <p>Sample <strong>refund-bot-acme-001</strong> · 90-day trajectory: Day 30 baseline 80.4% promote rate ± 2.4pp · Day 60 after Pattern A fix · 92.5% ± 1.8pp · Day 90 after Patterns B+C clearance · 96.0% ± 1.1pp · meets DEFENDABLE-ATTESTED grade · unlocks insurance carrier feed.</p>
+  <ul>
+    <li><strong>P(rate ≥ 95%) at day 60</strong> · 62.4%</li>
+    <li><strong>P(rate ≥ 95%) at day 90</strong> · 91.7%</li>
+    <li><strong>P(rate &lt; 80%) at day 90</strong> · 0.3%</li>
+    <li><strong>Expected drift 90→180d</strong> · +0.1 ± 0.4pp</li>
+    <li><strong>Insurance baseline breach probability</strong> · 2.1%</li>
+    <li><strong>Posterior confidence (5,000 plays)</strong> · HIGH</li>
+  </ul>
+  <p>Insurance carriers read THIS · not "this agent feels safe."</p>
+
+  <h2>Drift Alerts · NEW capability · early warning</h2>
+  <p>We don't just grade past performance · we forecast drift. Severity-tiered notifications (INFO / WARNING / CRITICAL) trigger BEFORE the problem shows up in your morning brief. Like credit monitoring for your AI agents.</p>
+  <ul>
+    <li><strong>INFO · Pack version lag</strong> · auto-upgrade scheduled</li>
+    <li><strong>WARNING · Flag rate trending up</strong> · +1.8pp/week increase · Managed Fixer queued</li>
+    <li><strong>WARNING · Tribunal verdict mix shifting</strong> · PROPOLIS ratio rising</li>
+    <li><strong>CRITICAL · Insurance baseline breach imminent</strong> · 14-day forecast · carrier auto-notified · operator decision required within 48h</li>
+    <li><strong>CRITICAL · Pattern regression detected</strong> · previously-cleared lien reappearing · investigation open</li>
+  </ul>
+  <p>Delivery channels · email · Slack · Microsoft Teams · PagerDuty · SMS · custom webhooks · all configurable per severity. Every alert is itself receipted (the alert becomes a deed entry).</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "How It Works · 8-Stage Flow · Real Deed JSON · DefendableOS",
+    description:
+      "The 8-stage flow from agent assignment to morning brief. Real Defendable Agent Deed JSON with field-by-field reference. Sovereign infrastructure (128 RTX 6000 paid in full). Bayesian posterior math with 95% credible intervals. Drift Alerts · early warning capability nobody else ships.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "TechArticle", "@id": `${url}#article`, headline: "How DefendableOS works · 8-stage flow · deed JSON · math · drift alerts", url, datePublished: "2026-05-24", inLanguage: "en-US" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "How It Works", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildOpenDefenseContent(): RouteContent {
+  const url = "https://defendableos.com/opendefense";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>OpenDefense · open-source market intelligence for AI agent defense.</h1>
+  <p>The AI-agent defense category just had the largest 18-month consolidation wave in software security history. Six named competitors got acquired. A regulatory cliff lands in ~10 weeks. 84% of operators admit they would fail an agent-behavior audit today. This page is the public market intelligence we use internally · and we're making it open. Cisco ships closed products. We publish open intelligence.</p>
+
+  <h2>The Demand · pain stack ranked</h2>
+  <ul>
+    <li><strong>88%</strong> of agent pilots never reach production (DigitalApplied · Mar 2026)</li>
+    <li><strong>84%</strong> of operators would fail an agent-behavior audit today (Gravitee)</li>
+    <li><strong>74%</strong> have ALREADY rolled back an agent over governance failures (Gravitee)</li>
+    <li><strong>28.6M</strong> secrets leaked to public GitHub in 2025 · +34% YoY · 24K in MCP configs (GitGuardian)</li>
+    <li><strong>+81% YoY</strong> AI-credential leak growth (GitGuardian)</li>
+    <li><strong>$4,200</strong> weekend on one Cursor refactor (Cursor's public 7/2025 apology)</li>
+    <li><strong>21.9%</strong> of teams have agent OAuth in a PAM (Gravitee)</li>
+  </ul>
+
+  <h2>The Velocity · market sizing</h2>
+  <ul>
+    <li><strong>$6-9B</strong> 2026 TAM · agent defense + observability + governance combined</li>
+    <li><strong>$30-45B</strong> 2030 projected · 25-42% CAGR across segments</li>
+    <li><strong>70-80K</strong> orgs globally with ≥1 production agent today · 31% enterprise penetration</li>
+    <li><strong>$1.5-2B</strong> US AI-driven cyber premium net-new in 2026 alone</li>
+    <li><strong>Snyk benchmark</strong> · $0 → $407M ARR in 6 years via OSS distribution → enterprise upsell</li>
+  </ul>
+
+  <h2>The Regulatory Cliff · dated deadlines</h2>
+  <ul>
+    <li><strong>Colorado AI Act</strong> · enforceable 6/2026 · ~1 week out · first US state AI consumer-protection law with private right of action</li>
+    <li><strong>EU AI Act high-risk obligations</strong> · live 2026-08-02 · ~10 weeks out · penalties up to 7% of global revenue</li>
+    <li><strong>HIPAA NPRM</strong> · expected final mid-2026 · AI assets in annual risk inventory</li>
+    <li><strong>NAIC Model Bulletin on AI</strong> · adopted in 40+ states · agent must be explainable · auditable · free of unfair discrimination</li>
+    <li><strong>CMS-0057-F</strong> · electronic prior auth mandate · Jan 2027 · FHIR-based API</li>
+    <li><strong>CFPB advisory</strong> · agent-initiated card disputes 2.4× human rate · Jan-2026 (live)</li>
+  </ul>
+
+  <h2>Top 5 wedge verticals</h2>
+  <ol>
+    <li><strong>Insurance carriers + InsurTech · 9.5/10</strong> · BUYER IS THE RISK-PRICER · NAIC Model Bulletin in 40+ states · bad-faith punitives</li>
+    <li><strong>Healthcare · PA + scheduling + billing · 9.3/10</strong> · CMS-0057-F cliff Jan 2027 · 82% appeal overturn rate = class-action fuel</li>
+    <li><strong>Financial services · CS + KYC + fraud · 8.8/10</strong> · CFPB Jan-2026 advisory · agent disputes 2.4× human rate</li>
+    <li><strong>Legal AI · doc review · contract · research · 8.5/10</strong> · malpractice carriers repricing · model rule 5.3 supervision</li>
+    <li><strong>Government · FedRAMP-track · 8.0/10</strong> · procurement REQUIRES audit trail</li>
+  </ol>
+
+  <h2>The Acquisition Wave · 7 exits in 24 months</h2>
+  <ul>
+    <li>Aug 2024 · <strong>Cisco</strong> ← Robust Intelligence · 9-figure (reported)</li>
+    <li>Sep 2025 · <strong>F5</strong> ← CalypsoAI · $180M</li>
+    <li>2025 · <strong>Check Point</strong> ← Lakera · ~$300M reported</li>
+    <li>Jan 2026 · <strong>ClickHouse</strong> ← Langfuse (Series D context $400M)</li>
+    <li>Mar 2026 · <strong>Mintlify</strong> ← Helicone</li>
+    <li>Apr 2026 · <strong>Cisco/Splunk</strong> ← Galileo</li>
+    <li>2024 · <strong>Palo Alto Networks</strong> ← Protect AI</li>
+  </ul>
+
+  <h2>The Defendable Bundle · what nobody else ships</h2>
+  <p>Any single piece is contestable. The bundle is not. Owned compute + per-task deed + lien + insurance feed + ENS identity + Fix-or-Refund. Eight defensible claims · we own all eight in assembly. <strong>Cisco grades the agent · we grade the work. Validate the Validator · Own the Deed.</strong></p>
+
+  <h2>Segment filter</h2>
+  <p><strong>DefendableOS is for SMB → mid-market 5cap operators.</strong> Cisco · F5 · Check Point own the Fortune 500 lane. We own the regional MRI center · the AmLaw 200 firm · the Lemonade-class InsurTech · the 30-person fintech with prod agents and no enterprise procurement function. Different buyer · different pricing motion · same defense doctrine.</p>
+
+  <p><em>MIT-attribution licensed · cite OpenDefense / DefendableOS when you reuse · pull requests welcome at <a href="https://github.com/SudoSuOps">github.com/SudoSuOps</a>.</em></p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "OpenDefense · Open-Source Market Intelligence for AI Agent Defense · DefendableOS",
+    description:
+      "Public market intelligence for AI agent defense. 88% pilot-to-prod failure rate · 84% would fail an audit · $6-9B 2026 TAM · 7-exit M&A wave (Cisco · F5 · Check Point · ClickHouse · etc.) · top 5 wedge verticals · regulatory cliffs · the Defendable bundle. 120+ cited sources · MIT-attribution licensed.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "Article", "@id": `${url}#article`, headline: "OpenDefense · the open market intelligence briefing for AI agent defense", url, datePublished: "2026-05-24", dateModified: "2026-05-24", publisher: { "@type": "Organization", name: "DefendableOS" }, inLanguage: "en-US" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "OpenDefense", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildDoctrineContent(): RouteContent {
+  const url = "https://defendableos.com/doctrine";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>The Constitution of DefendableOS · 12 articles.</h1>
+  <p>One page. Twelve articles. Everything DefendableOS is · isn't · how it works · why it exists · who pays for it · and why we built the brand the way we did. Permanent reference. Citable. Crawl-friendly. The thesis no other AI company is writing because no other AI company is built this way.</p>
+
+  <h2>Article I · Offense vs Defense · the category shift</h2>
+  <p>Every AI vendor sells offense. DefendableOS is the missing defense layer for AI operators and asset owners. Third-party. Receipted. KPMG-equivalent. We don't ship the agent. We validate the Project.</p>
+
+  <h2>Article II · The Tribunal · Honey · Jelly · Propolis</h2>
+  <p>Every artifact carries one of three Tribunal labels. HONEY = validated. JELLY = repair candidate. PROPOLIS = adversarial preserved · never auto-flipped. The rule layer can only DOWNGRADE · critical safety doctrine is absolute.</p>
+
+  <h2>Article III · The Deed is a Ledger · not a certificate</h2>
+  <p>A Defendable Agent Deed is a running ledger. Every single task the agent performs gets its own deed entry · synchronously hashed · asynchronously graded · either PROMOTED or FLAGGED.</p>
+
+  <h2>Article IV · Reconciliation lives in the Shadows</h2>
+  <p>Defense lives in the shadows of the night. The agent runs free all day. At 2am · reconciliation runs. By 6am the brief lands. By 9am the operator reads it over coffee.</p>
+
+  <h2>Article V · Deeds carry Liens · Fixers clear them</h2>
+  <p>Like CRE titles. Senior · mezz · junior. Each lien has type · severity · root cause · workout plan · expected lift · cost to clear. DefendableFixers function as the title-clearance shop.</p>
+
+  <h2>Article VI · We speak CRE Due-Diligence vocabulary</h2>
+  <p>Books · title · partners · terms · economic study · functionality · "if it goes dark then what." Business buyers don't buy "AI safety." They buy due diligence.</p>
+
+  <h2>Article VII · Fixers are the Closer Layer</h2>
+  <p>Self-Serve $29-499/mo · Managed $2-10K/mo · Embedded $50-250K ARR with Fix-or-Refund 90-day guarantee. The deed is only as good as the fix it delivers.</p>
+
+  <h2>Article VIII · Six Brand Surfaces · audience-segmented</h2>
+  <p>defendableos.com (Suit · institutional) · defendtheclaw.com (Manifesto · movement) · defendablehack.com (T-shirt · researcher) · opendefendable.com (Hoodie · OSS standards body) · defendablerouter.com (AI gateway product) · defendablecloud.com (hosted compute product).</p>
+
+  <h2>Article IX · Math · 80/20 becomes 95/5 through clearance</h2>
+  <p>Bayesian posterior estimates with 95% credible intervals. Day 30 baseline 80% · Day 60 after Pattern A 92% · Day 90 after Patterns B+C 96%. Each fix is a pack rule shipped by a Fixer · the next morning's deed shows the lift.</p>
+
+  <h2>Article X · We hire Auditors · not Prompt Engineers</h2>
+  <p>Former internal auditors. CPAs. Risk analysts. Compliance officers. Domain experts (payroll specialists · CSR ops · scheduling experts · radiology informaticists). B2B enterprise sellers who've closed 100+ due-diligence deals. Defense wins championships.</p>
+
+  <h2>Article XI · We never ship the Offense Agent</h2>
+  <p>Categorically a third-party defense rail. We will never ship an offense agent of our own. Not under any subsidiary · not in any pricing tier. Permanent brand contract.</p>
+
+  <h2>Article XII · The Pitch Line</h2>
+  <blockquote>The deed is only as good as the fix it delivers.</blockquote>
+  <p>Short form: <strong>Validate the Validator. Own the Deed.</strong></p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "The Doctrine · 12-Article Constitution of DefendableOS",
+    description:
+      "The Constitution of DefendableOS · 12 articles. Offense vs Defense · the Tribunal (Honey/Jelly/Propolis) · the deed as a running ledger · reconciliation in the shadows · liens on deeds · CRE due-diligence vocabulary · Fixers · 6 brand surfaces · the math · who we hire · why we never ship offense · the pitch line. Permanent reference.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "Article", "@id": `${url}#article`, headline: "The Constitution of DefendableOS · 12 articles", url, datePublished: "2026-05-24", inLanguage: "en-US" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "Doctrine", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildAboutContent(): RouteContent {
+  const url = "https://defendableos.com/about";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>We own the building.</h1>
+  <p>DefendableOS is a Florida-incorporated independent AI defense rail operated by <strong>Swarm and Bee LLC</strong> (DBA Swarm &amp; Bee AI · D-U-N-S 138652395). The datacenter is owned. The compute fleet is paid in full. The brand stack is locked. The doctrine is published. The receipts are durable. We started this on purpose.</p>
+
+  <h2>Position · KPMG for AI agents · not Cisco</h2>
+  <p>Cisco sells networking gear AND audits the network. That works for a vendor. It does not work for a trust rail. KPMG audits but does not sell the company. Moody's rates but does not issue the debt. <strong>Defendable will never ship an offense agent</strong> · not a refund bot · not a coding bot · not a sales SDR · not under any subsidiary · not in any pricing tier. Permanent brand contract.</p>
+
+  <h2>We own the building · the infrastructure is already paid for</h2>
+  <ul>
+    <li><strong>128</strong> · RTX 6000 Blackwell GPUs · paid in full · 12,288 GB aggregate VRAM</li>
+    <li><strong>$0</strong> · GPU debt outstanding · no leverage · no margin-call risk</li>
+    <li><strong>1</strong> · Datacenter · owned (not leased rack space)</li>
+    <li><strong>6</strong> · Brand-stack domains · audience-segmented · all coherent</li>
+  </ul>
+  <p>Most AI inference businesses run on borrowed compute. Defendable's compute COGS is amortization plus electricity · ~$0.50/M tokens vs $5-15 for cloud-leased equivalent. ~10× margin advantage · permanent.</p>
+
+  <h2>Foundation stack · everything checked</h2>
+  <ul>
+    <li><strong>Durable storage</strong> · Tigris S3-compatible storage on Fly · receipts survive every redeploy · proven 2026-05-23</li>
+    <li><strong>Open weights</strong> · Qwen 32B · Llama 70B · DeepSeek V3 · Mixtral · Phi-4 · no proprietary lock-in</li>
+    <li><strong>ENS-anchored deeds</strong> · defendable.eth namespace · per-agent verifiable identity · cross-vendor portable</li>
+    <li><strong>Doctrine pack registry</strong> · open source · MIT licensed · contributed to by researchers and customers</li>
+    <li><strong>Public source-of-truth</strong> · 12-article Doctrine page · always linked · always citable</li>
+    <li><strong>Independent third-party</strong> · Florida LLC · zero AI-vendor equity · no conflict-of-interest disclosures needed</li>
+  </ul>
+
+  <h2>Operator thesis · built by an operator · not an AI researcher</h2>
+  <p>DefendableOS is built by an operator with a commercial real estate background. The doctrine reads in CRE due-diligence vocabulary instead of AI safety jargon. Books · title · partners · terms · economic study · functionality · "if it goes dark then what" · liens-on-deeds · free-and-clear closings · workout plans · listing inventory · cap-rate compression. Every business buyer already knows this vocabulary.</p>
+  <p><strong>The cap-rate framing is not metaphor.</strong> DefendableOS is a recurring-receipted-evidence rail with NNN-equivalent cashflow characteristics: per-asset · per-cycle · refresh obligation · insurance-readable · regulator-attestable · asset-attached. The thesis is that this asset class is currently uninsured · uninspected · and self-reported · and that gap is worth ~$5cap NNN on $10M NOI when mature.</p>
+
+  <h2>Who we are NOT for · honest</h2>
+  <ul>
+    <li>Bootstrapped SaaS startups looking for cheap LLM gateway · we are not the cheapest · we are the most defendable</li>
+    <li>Curious individual developers · we are a business defense rail · not a hobbyist toolkit</li>
+    <li>AI vendors who want us to deed THEIR offense agent · third-party trust requires we stay agnostic</li>
+    <li>Companies whose AI is purely chat and never touches files / payments / infra · per-task deed model is overkill</li>
+    <li>Buyers looking for AI to replace their compliance team · we add receipts to support compliance · we don't eliminate it</li>
+  </ul>
+
+  <p>We're built for <strong>imaging centers · law firms · financial services · government contractors · insurance carriers · mid-market regulated businesses</strong> who run multiple production AI agents and need third-party attestation that those agents operate within policy · measurably · auditably · over time.</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "About · Operator Thesis · We Own the Building · DefendableOS",
+    description:
+      "Independent third-party AI defense rail. 128 RTX 6000 paid in full · zero debt · owned datacenter · 6-domain brand stack. KPMG-equivalent positioning · we never ship offense agents. Built by an operator with a CRE background · NNN cap-rate cashflow thesis. For SMB → mid-market 5cap operators · not Cisco-tier enterprise.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "AboutPage", "@id": `${url}#page`, url, name: "About DefendableOS", description: "Operator thesis · we own the building · 128 RTX 6000 paid in full · KPMG-equivalent positioning", inLanguage: "en-US" },
+      { "@context": "https://schema.org", "@type": "Organization", "@id": `${url}#org`, name: "Swarm and Bee LLC", legalName: "Swarm and Bee LLC", alternateName: "Swarm & Bee AI", identifier: "DUNS:138652395", url: "https://defendableos.com/", address: { "@type": "PostalAddress", addressRegion: "Florida", addressCountry: "US" }, sameAs: ["https://x.com/swarmandbee", "https://www.linkedin.com/in/donovan-mackey-89a6063b6/"] },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "About", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildHackContent(): RouteContent {
+  const url = "https://defendableos.com/hack";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>Crack the LLM. Own the rail.</h1>
+  <p><strong>DefendableHack</strong> is the builder rail. From 4B at the edge to 70B in your closet to 671B in a small DC · run frontier intelligence on hardware you actually own. Open weights. Open tools. Open doctrine. No vendor logging. No surprise rate hikes. Forever runnable. If you can't run it · you don't own it.</p>
+
+  <h2>Builder doctrine · six rules · no exceptions</h2>
+  <ol>
+    <li>Open weights forever · no closed checkpoints accepted</li>
+    <li>Runs on hardware you own · not borrowed cloud GPU time</li>
+    <li>No vendor logging · prompts stay in your network</li>
+    <li>Reproducible builds · doctrine pack rules version-pinned</li>
+    <li>MIT-licensed tooling · fork it · improve it · ship it back</li>
+    <li>Receipt every play · same Bakery vault as the institutional rail</li>
+  </ol>
+
+  <h2>The model ladder · 4B at the edge · 671B in your closet</h2>
+  <ul>
+    <li><strong>4B class · Pocket Tribunal</strong> · Phi-4 · Gemma 3 4B · Qwen 2.5 3B/4B · Llama 3.2 3B · runs on Jetson Orin Nano · Raspberry Pi 5 · M-series MacBook · Steam Deck · ~3-9 GB Q4</li>
+    <li><strong>9B class · Workhorse</strong> · Qwen 2.5 9B · Llama 3.1 8B · IBM Granite 3.3 8B · Mistral 7B · runs on RTX 3090 · RTX 4090 · Mac Studio · ~6-12 GB Q4</li>
+    <li><strong>27B class · Heavyweight</strong> · Gemma 2 27B · Qwen 2.5 32B · Mixtral 8x7B · runs on RTX 4090 · RTX 6000 · ~16-22 GB Q4</li>
+    <li><strong>70B class · Frontier-ish</strong> · Llama 3.3 70B · Qwen 2.5 72B · Mixtral 8x22B · runs on 2× RTX 6000 · A100 80GB · ~42-50 GB Q4</li>
+    <li><strong>671B class · Frontier open</strong> · DeepSeek V3 671B MoE 37B active · runs on 4× RTX 6000 · DGX-class · ~340 GB Q4 · what DefendableCloud serves daily</li>
+  </ul>
+
+  <h2>Reference builds · all buyable · not mythical</h2>
+  <ul>
+    <li><strong>$249 · Edge Box</strong> · Jetson Orin Nano · 20W · runs 4B class at usable speed · Tribunal rule layer · embedded agent</li>
+    <li><strong>$1,500 · Workhorse</strong> · RTX 3090 24GB · Ryzen 7 · 64GB RAM · runs 9B-32B comfortably · most personal agent workloads</li>
+    <li><strong>$5,000 · Workstation</strong> · RTX PRO 6000 Blackwell 96GB · runs everything up to 70B · DeepSeek V3 671B if you have 4</li>
+    <li><strong>$20,000 · Mini-DC</strong> · 4× RTX 6000 · server chassis · 512GB RAM · runs DeepSeek V3 · single Defendable rack node · 128 of these in our DC</li>
+  </ul>
+
+  <h2>Toolchain · pick your stack</h2>
+  <p>vLLM · llama.cpp · Ollama · MLX · ExLlamaV2 · TensorRT-LLM · Transformers · text-generation-webui. We use all of them in different contexts. None are wrong. Most speak the OpenAI-SDK protocol natively · swap them under the same agent code with no rewrite.</p>
+
+  <h2>Three doors · build · buy · or use our cloud</h2>
+  <ol>
+    <li><strong>Build it yourself</strong> · buy a Jetson · install Ollama · pull Phi-4 · point your agent at localhost. You own the rail end to end. We publish the doctrine packs so you grade your own agents with the same Tribunal we use.</li>
+    <li><strong>Order a HoneyBox</strong> · $399 setup · $10/mo · pre-flashed Jetson Orin Nano with the full Defendable stack wired. Plug it in · scan QR · point agents · receipts flow. Tax-deductible · off balance sheet.</li>
+    <li><strong>Use DefendableCloud</strong> · no hardware. Change <code>base_url</code> to api.defendablecloud.com · we run inference on our 128-card fleet · contractual no-logging · open weights only.</li>
+  </ol>
+
+  <h2>DefendableHack Bounty · coming · waitlist open</h2>
+  <p>First receipted bug bounty for AI agents. Find an agent that PROPOLIS-fails in the wild · submit the capture · auto-Tribunal validates · failure becomes an adversarial case in the next benchmark pack · you get paid · every active Defendable Agent Deed has to re-test against the new pack or lose grade. Closed loop. Researcher-funded doctrine.</p>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "DefendableHack · Builder Rail · Cracked LLM · DefendableOS",
+    description:
+      "The builder rail for DefendableOS. From 4B at the edge to 671B in your closet · open-weights model ladder · 4 reference hardware builds ($249-$20K) · 8 open-source LLM tools. Three doors: build yourself · order HoneyBox · use DefendableCloud. DefendableHack bounty waitlist open.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "TechArticle", "@id": `${url}#article`, headline: "DefendableHack · the builder rail · cracked LLM · open weights · all hardware tiers", url, datePublished: "2026-05-24", inLanguage: "en-US" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "Hack · Builder Rail", item: url },
+      ]},
+    ],
+  };
+}
+
+function buildContactContent(): RouteContent {
+  const url = "https://defendableos.com/contact";
+  const bodyHtml = `
+<main>
+  ${THESIS_BANNER}
+  <h1>Talk straight.</h1>
+  <p>One form · founder reads it · 24-hour reply. No discovery call. No 6-touchpoint cadence. No CRM auto-nurture. Pick the lane that fits and write what you actually want to ask.</p>
+  <h2>Five lanes</h2>
+  <ul>
+    <li><strong>Build</strong> · founder/dev exploring the rail · pricing · pilot · technical questions</li>
+    <li><strong>Defense</strong> · compliance/audit/risk · evaluating Defendable for a real workload</li>
+    <li><strong>Press / analyst</strong> · category briefing · interview · OpenDefense market intelligence</li>
+    <li><strong>Partner</strong> · insurance carrier · integrator · pack contributor · advisor</li>
+    <li><strong>Other</strong> · whatever else</li>
+  </ul>
+  <h2>Or skip the form</h2>
+  <ul>
+    <li><strong>Build / dev questions</strong> · <a href="mailto:build@defendableos.com">build@defendableos.com</a></li>
+    <li><strong>Defense / institutional</strong> · <a href="mailto:defense@defendableos.com">defense@defendableos.com</a></li>
+  </ul>
+</main>`.trim();
+
+  return {
+    bodyHtml,
+    title: "Contact · DefendableOS",
+    description: "Talk straight. One form · founder reads it · 24-hour reply. Five lanes: build · defense · press · partner · other. Or skip the form: build@defendableos.com or defense@defendableos.com.",
+    jsonLdBlocks: [
+      { "@context": "https://schema.org", "@type": "ContactPage", "@id": `${url}#page`, url, name: "Contact DefendableOS" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DefendableOS", item: "https://defendableos.com/" },
+        { "@type": "ListItem", position: 2, name: "Contact", item: url },
+      ]},
+    ],
   };
 }
