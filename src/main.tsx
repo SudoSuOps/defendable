@@ -11,6 +11,7 @@ import Doctrine from "./pages/Doctrine";
 import About from "./pages/About";
 import Hack from "./pages/Hack";
 import HowItWorks from "./pages/HowItWorks";
+import OpenDefense from "./pages/OpenDefense";
 import DefendableOpen from "./pages/DefendableOpen";
 import DefendablePairFactory from "./pages/DefendablePairFactory";
 import DefendableReports from "./pages/DefendableReports";
@@ -64,6 +65,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/hack" element={<Hack />} />
         {/* ── How It Works · depth page · deed JSON + math + drift ── */}
         <Route path="/how-it-works" element={<HowItWorks />} />
+        {/* ── OpenDefense · open-source market intelligence ── */}
+        <Route path="/opendefense" element={<OpenDefense />} />
         {/* ── Existing surfaces (kept · linked from footer or live) ── */}
         <Route path="/open" element={<DefendableOpen />} />
         <Route path="/pair-factory" element={<DefendablePairFactory />} />

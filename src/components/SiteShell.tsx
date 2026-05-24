@@ -12,6 +12,7 @@ const NAV_ITEMS: [string, string][] = [
   ["HoneyBox", "/honeybox"],
   ["Cloud", "/cloud"],
   ["How It Works", "/how-it-works"],
+  ["OpenDefense", "/opendefense"],
   ["Pricing", "/pricing"],
   ["Defend The Claw™", "/defend-the-claw"],
 ];
