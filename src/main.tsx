@@ -7,6 +7,8 @@ import DefendableOS from "./pages/DefendableOS";
 import HoneyBox from "./pages/HoneyBox";
 import DefendableCloud from "./pages/DefendableCloud";
 import Pricing from "./pages/Pricing";
+import Doctrine from "./pages/Doctrine";
+import About from "./pages/About";
 import DefendableOpen from "./pages/DefendableOpen";
 import DefendablePairFactory from "./pages/DefendablePairFactory";
 import DefendableReports from "./pages/DefendableReports";
@@ -49,10 +51,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DefendableOS />} />
-        {/* ── Primary product surfaces (new · 2026-05-24 cleanup) ── */}
+        {/* ── Primary product surfaces (2026-05-24 cleanup) ── */}
         <Route path="/honeybox" element={<HoneyBox />} />
         <Route path="/cloud" element={<DefendableCloud />} />
         <Route path="/pricing" element={<Pricing />} />
+        {/* ── Doctrine + Operator surfaces (secret sauce) ── */}
+        <Route path="/doctrine" element={<Doctrine />} />
+        <Route path="/about" element={<About />} />
         {/* ── Existing surfaces (kept · linked from footer or live) ── */}
         <Route path="/open" element={<DefendableOpen />} />
         <Route path="/pair-factory" element={<DefendablePairFactory />} />

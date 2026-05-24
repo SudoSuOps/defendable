@@ -33,6 +33,22 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- ─── The Doctrine · 12-article canonical reference ─────────── -->
+  <url>
+    <loc>https://defendableos.com/doctrine</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── About / Operator thesis ──────────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/about</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- ─── Defendable Compute · static demo (archived to /showcase) ─ -->
   <url>
     <loc>https://defendableos.com/compute</loc>

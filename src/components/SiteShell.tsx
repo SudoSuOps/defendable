@@ -106,6 +106,8 @@ export function Footer() {
           <FooterColumn
             heading="Doctrine"
             links={[
+              ["The Doctrine", "/doctrine"],
+              ["About / Operator", "/about"],
               ["AgentGrade™", "/agent-grade"],
               ["Pair Factory", "/pair-factory"],
               ["Open Infrastructure", "/open"],
