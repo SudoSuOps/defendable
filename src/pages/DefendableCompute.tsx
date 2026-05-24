@@ -55,7 +55,7 @@ export default function DefendableCompute() {
             Platform
           </a>
           <a
-            href="mailto:build@swarmandbee.ai"
+            href="mailto:defense@defendableos.com"
             className="text-honey-300 font-semibold hover:text-honey-200"
           >
             Contact

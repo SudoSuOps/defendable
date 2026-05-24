@@ -10,7 +10,7 @@
  */
 import { Link } from "react-router-dom";
 
-const SALES_EMAIL = "build@swarmandbee.ai";
+const SALES_EMAIL = "defense@defendableos.com";
 const SNAPSHOT_DATE = "2026-05-23";
 const SNAPSHOT_SOURCE = "vast.ai market explorer";
 

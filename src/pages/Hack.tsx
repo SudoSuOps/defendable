@@ -11,7 +11,7 @@
 
 import { Footer, Header } from "../components/SiteShell";
 
-const SALES_EMAIL = "build@swarmandbee.ai";
+const SALES_EMAIL = "defense@defendableos.com";
 
 export default function Hack() {
   return (
