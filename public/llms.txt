@@ -24,6 +24,8 @@ DefendableOS is the **third-party defense layer for AI workers in production**.
   /honeybox     · Physical edge appliance ($249-2,500 · Jetson family · data never leaves)
   /cloud        · DefendableCloud · privacy-native hosted inference (128 RTX PRO 6000 · paid in full)
   /pricing      · Transparent pricing · lease model · MRI center worked example
+  /doctrine     · 12-article canonical doctrine · the Constitution of DefendableOS
+  /about        · Operator thesis · "we own the building" · institutional credibility
   /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
 
 ## Brand stack (six surfaces · audience-segmented)
