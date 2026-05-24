@@ -73,6 +73,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- ─── Contact form · Resend-backed ────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/contact</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- ─── Defendable Compute · static demo (archived to /showcase) ─ -->
   <url>
     <loc>https://defendableos.com/compute</loc>

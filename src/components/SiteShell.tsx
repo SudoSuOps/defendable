@@ -36,10 +36,10 @@ export function Header() {
           ))}
         </nav>
         <a
-          href="https://app.defendableos.com/login"
+          href="mailto:defense@defendableos.com?subject=Request%20early%20access%20to%20DefendableOS"
           className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
         >
-          Sign in
+          Request access
         </a>
         <button
           aria-label="Toggle menu"
@@ -66,11 +66,11 @@ export function Header() {
               </a>
             ))}
             <a
-              href="https://app.defendableos.com/login"
+              href="mailto:defense@defendableos.com?subject=Request%20early%20access%20to%20DefendableOS"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
             >
-              Sign in
+              Request access
             </a>
           </div>
         </div>
@@ -134,8 +134,9 @@ export function Footer() {
           <FooterColumn
             heading="Company"
             links={[
-              ["Contact", `mailto:${SALES_EMAIL}`],
-              ["Sign in", "https://app.defendableos.com/login"],
+              ["Contact form", "/contact"],
+              ["defense@defendableos.com", `mailto:${SALES_EMAIL}`],
+              ["build@defendableos.com", "mailto:build@defendableos.com"],
               ["Privacy", "https://swarmandbee.ai/legal/privacy"],
               ["Terms", "https://swarmandbee.ai/legal/terms"],
             ]}

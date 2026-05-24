@@ -202,7 +202,7 @@ function CategoryShift() {
   return (
     <section className="border-b border-stone-900/80">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <Eyebrow>WHY NOW</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
             Everyone is selling{" "}
@@ -235,7 +235,7 @@ function CategoryShift() {
           />
         </div>
 
-        <p className="mt-10 text-base text-stone-300 leading-relaxed max-w-3xl">
+        <p className="mt-10 text-base text-stone-300 leading-relaxed max-w-4xl">
           Every functional business in history runs both. The AI agent
           market today runs only offense. We are the missing defense layer.{" "}
           <span className="text-amber-300 font-medium">Third-party.</span>{" "}
@@ -272,7 +272,7 @@ function DoctrineSection() {
   return (
     <section className="border-b border-stone-900/80 bg-stone-950/40">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <Eyebrow>DOCTRINE</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
             How the defense layer{" "}
@@ -302,7 +302,7 @@ function DeploymentModes() {
   return (
     <section id="modes" className="border-b border-stone-900/80">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <Eyebrow>DEPLOYMENT</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
             Two modes.{" "}
@@ -399,7 +399,7 @@ function MathSection() {
   return (
     <section className="border-b border-stone-900/80">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <Eyebrow>THE MATH</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
             From{" "}
@@ -462,7 +462,7 @@ function TrustSignals() {
   return (
     <section className="border-b border-stone-900/80 bg-stone-950/40">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <Eyebrow>WHY THIS WORKS</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
             We own the building.{" "}
@@ -519,7 +519,7 @@ function CTA() {
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
         <div className="rounded-2xl border border-stone-800 bg-gradient-to-br from-stone-900/80 to-neutral-950 px-8 py-12 lg:px-14 lg:py-16">
           <Eyebrow>READY TO DEED YOUR AGENTS</Eyebrow>
-          <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-tight max-w-3xl">
+          <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-tight max-w-4xl">
             Inspect the agent.{" "}
             <span className="font-serif italic font-normal text-amber-300">Grade the risk.</span>{" "}
             Preserve the proof.
