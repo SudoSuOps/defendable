@@ -99,34 +99,50 @@ function BoxCard() {
         <div className="flex items-center justify-between px-6 py-3 border-b border-stone-800 bg-neutral-950/60">
           <div className="flex items-center gap-2.5 text-[10px] uppercase tracking-[0.18em] text-stone-400 font-semibold">
             <BoxIcon />
-            HoneyBox · Specification
+            HoneyBox · Default Spec
           </div>
           <span className="text-[10px] uppercase tracking-[0.18em] text-amber-300/90 font-semibold">
-            Jetson Orin Nano · Default Tier
+            Jetson Orin Nano 8GB
           </span>
         </div>
 
         <div className="px-6 py-5 border-b border-stone-800/70">
           <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500 mb-2 font-semibold">Hardware</div>
           <div className="text-base font-semibold text-stone-100 leading-snug">
-            NVIDIA Jetson Orin Nano · 8 GB LPDDR5
+            NVIDIA Jetson Orin Nano Developer Kit · 8 GB
           </div>
-          <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
-            <Field label="GPU" value="Ampere · 1024 CUDA" />
+
+          {/* Hero stat · 40 TOPS · the killer number */}
+          <div className="mt-4 rounded-lg border border-amber-500/40 bg-amber-500/[0.08] px-4 py-3 flex items-center justify-between">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.22em] text-amber-300/90 font-semibold">AI Performance</div>
+              <div className="font-mono text-amber-300 text-2xl font-bold mt-0.5">up to 40 TOPS</div>
+            </div>
+            <div className="text-right">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-stone-500">vs original Jetson Nano</div>
+              <div className="font-mono text-stone-200 text-base font-semibold mt-0.5">80× faster</div>
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
+            <Field label="CPU" value="6-core ARM Cortex-A78AE v8.2" />
+            <Field label="GPU" value="Ampere · 1024 CUDA · 32 Tensor" />
+            <Field label="RAM" value="8 GB LPDDR5" />
+            <Field label="Storage" value="Defendable-added NVMe SSD" />
             <Field label="Power" value="~20 W · USB-C PD" />
-            <Field label="Network" value="Ethernet + WiFi" />
-            <Field label="Storage" value="M.2 NVMe slot" />
+            <Field label="Network" value="Gigabit Ethernet + WiFi" />
           </div>
         </div>
 
         <div className="px-6 py-5 grid grid-cols-1 gap-2.5">
           {[
-            "Local SQLite ledger per agent",
-            "Local rule-layer Tribunal (always)",
-            "Local LLM judge (Phi-3 · Qwen 1.5B option)",
-            "Local Daily Reconciliation Deed",
+            "Local SQLite ledger per agent (on NVMe SSD)",
+            "Local rule-layer Tribunal · sub-millisecond per play",
+            "Local LLM judge · Phi-4 · Gemma 3 4B · Qwen 2.5 3B (fits in 40 TOPS)",
+            "Local Daily Reconciliation Deed issuance",
             "ENS-registered identity per agent",
             "TPM-backed signing key per agent",
+            "Air-gap capable · operates without external network",
           ].map((line) => (
             <div
               key={line}
@@ -147,6 +163,17 @@ function BoxCard() {
           </div>
         </div>
       </div>
+
+      {/* NVIDIA positioning · authority callout */}
+      <div className="mt-4 rounded-xl border border-stone-800 bg-neutral-950/60 px-5 py-4">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-stone-500 font-semibold mb-2">
+          NVIDIA's own positioning · Jetson Orin Nano
+        </div>
+        <p className="text-xs text-stone-400 leading-relaxed italic">
+          "Sets a new standard for creating entry-level AI-powered robots, smart drones, and intelligent cameras. Compact design, lots of connectors, and up to 40 TOPS of AI performance. With up to 80× the performance of Jetson Nano, it can run all modern AI models, including transformer and advanced robotics models."
+        </p>
+      </div>
+
       <p className="mt-3 text-[10px] text-stone-500 tracking-tight text-center">
         Larger tiers available · AGX Orin · Workstation w/ RTX 6000 · DGX-class.
       </p>
