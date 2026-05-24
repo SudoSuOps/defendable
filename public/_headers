@@ -120,3 +120,68 @@
   X-Robots-Tag: index, follow
   X-AI-Context: defendableos
   X-Defendable-Doctrine: validate-the-validator
+
+# ─────────────────────────────────────────────────────────────────
+# Primary product surfaces (2026-05-24 framing · offense/defense)
+# ─────────────────────────────────────────────────────────────────
+/honeybox
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+
+/cloud
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+
+/pricing
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+
+/how-it-works
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+
+/opendefense
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+  X-Defendable-Surface: market-intelligence
+
+/doctrine
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Doctrine: validate-the-validator
+  X-Defendable-Surface: constitution
+
+/about
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+
+/hack
+  Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=3600
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Context: defendableos
+  X-Defendable-Surface: builder-rail
+
+/contact
+  Cache-Control: public, max-age=180, s-maxage=180, stale-while-revalidate=600
+  X-Robots-Tag: index, follow
+  X-AI-Context: defendableos
+
+# ─────────────────────────────────────────────────────────────────
+# /api/* · Pages Functions · never cache · CORS for the form
+# ─────────────────────────────────────────────────────────────────
+/api/*
+  Cache-Control: no-store
+  Access-Control-Allow-Origin: https://defendableos.com
+  Access-Control-Allow-Methods: POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type

@@ -77,6 +77,8 @@ function Hero() {
               </a>
               <a
                 href="https://github.com/SudoSuOps"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
               >
                 GitHub · @SudoSuOps
@@ -573,6 +575,8 @@ function CTA() {
             </a>
             <a
               href="https://github.com/SudoSuOps"
+                target="_blank"
+                rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
             >
               GitHub @SudoSuOps
