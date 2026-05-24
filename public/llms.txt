@@ -5,7 +5,9 @@
 
 ## ★ Primary positioning (2026-05-24 forward)
 
-DefendableOS is the **third-party defense layer for AI workers in production**.
+DefendableOS is the **third-party defense layer for AI operators and asset owners**.
+
+Tagline: **"Agent does the assignment. We validate the Project."**
 
   - The AI industry today sells nothing but OFFENSE (vendors competing
     on speed · volume · coverage of what an agent can do).

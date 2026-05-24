@@ -138,9 +138,9 @@ function Article1OffenseDefense() {
         Every functional business in history runs both. Sales reps
         plus internal audit. CSRs plus QA. Developers plus code review.
         Property managers plus asset operators. <strong className="text-amber-300">DefendableOS is the
-        missing defense layer for AI workers.</strong> Third-party.
-        Receipted. KPMG-equivalent. We don't ship the agent. We deed
-        the agent.
+        missing defense layer for AI operators and asset owners.</strong>{" "}
+        Third-party. Receipted. KPMG-equivalent. We don't ship the agent.
+        We validate the Project.
       </P>
     </Article>
   );

@@ -88,10 +88,10 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
-              Defense for AI workers.
+              Defense for AI operators.
             </p>
             <p className="mt-3 text-xs text-stone-500 leading-relaxed max-w-sm italic">
-              Inspect the agent. Grade the risk. Preserve the proof.
+              Agent does the assignment. We validate the Project.
             </p>
           </div>
           <FooterColumn
