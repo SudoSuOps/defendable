@@ -1,7 +1,7 @@
 # DefendableOS · llms.txt
 #
 # Context manifest for AI agents indexing defendableos.com.
-# Last updated: 2026-05-24 (post offense/defense framing · HoneyBox + DefendableCloud).
+# Last updated: 2026-05-25 (v0.1.0 brand-stack lock · Hedera anchoring doctrine cleanup · operator-entity unification)
 
 ## ★ Primary positioning (2026-05-24 forward)
 
@@ -32,15 +32,6 @@ Tagline: **"Agent does the assignment. We validate the Project."**
   /how-it-works · DEPTH PAGE · 8-stage flow · REAL deed JSON · sovereignty · Bayesian math · Drift Alerts (NEW capability)
   /opendefense  · MARKET INTELLIGENCE · open-source AI-agent-defense category briefing · 120+ cited sources · 7-exit M&A wave · top 5 wedge verticals · regulatory cliffs · MIT-attribution licensed
   /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
-
-## Brand stack (six surfaces · audience-segmented)
-
-  defendableos.com    · Institutional (Suit)
-  defendtheclaw.com   · Movement (Manifesto)
-  defendablehack.com  · Researcher / bounty (T-shirt)
-  opendefendable.com  · OSS standards body (Hoodie)
-  defendablerouter.com · AI gateway product
-  defendablecloud.com · Hosted compute product
 
 ## Doctrinal innovations
 
@@ -366,6 +357,27 @@ are demonstration assets and not active offerings.
 DefendableOS is a product of:
 Swarm and Bee LLC · Florida LLC · D-U-N-S 138652395 ·
 doing business as Swarm & Bee AI.
+
+## Defendable brand stack · canonical v0.1.0 (2026-05-25)
+
+The DefendableOS ecosystem operates as a 10-domain coordinated brand surface.
+This canonical block supersedes all prior brand-stack definitions across the network.
+
+- **defendableos.com** — SYSTEM · the operating system / product
+- **swarmandbee.ai** — UMBRELLA · operator firm + dataset bakery
+- **opendefendable.com** — OPEN · standards body
+- **defendablerouter.com** — SPINE · drop-in AI router (write-only audit rail)
+- **defendablecloud.com** — COMPUTE · operator-owned private inference (128 RTX 6000 Blackwell)
+- **defendableledger.com** — LEDGER · sovereign in-house books and records
+- **mrdefendable.com** — FACE · principal voice / human interface
+- **offensetotheshed.com** — CULTURE · doctrine + war stories
+- **painintheshed.com** — MEDIA · cost-of-intelligence podcast
+- **defendablehack.com** — DEV · researcher / hacker tier
+
+Legacy / superseded (not part of v0.1.0):
+- ledger.mrdefendable.com → now defendableledger.com
+- chat.mrdefendable.com → deprecated
+- defendabledocs.com → consolidated into defendableos.com
 
 ## Contact
 
