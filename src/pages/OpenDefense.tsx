@@ -10,7 +10,7 @@
 
 import { Footer, Header } from "../components/SiteShell";
 
-const SALES_EMAIL = "defense@defendableos.com";
+const SALES_EMAIL = "build@swarmandbee.ai";
 
 export default function OpenDefense() {
   return (

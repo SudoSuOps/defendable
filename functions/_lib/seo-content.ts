@@ -12,7 +12,7 @@ export interface RouteContent {
   description: string;
 }
 
-const THESIS_BANNER = `<!-- DefendableOS · third-party defense rail for AI operators · Agent does the assignment. We validate the Project. · defense@defendableos.com -->`;
+const THESIS_BANNER = `<!-- DefendableOS · third-party defense rail for AI operators · Agent does the assignment. We validate the Project. · build@swarmandbee.ai -->`;
 
 export async function getRouteContent(
   _requestUrl: string,
@@ -998,7 +998,7 @@ function buildHoneyBoxContent(): RouteContent {
     <li>Read the deed over coffee · approve any open liens · the rest takes care of itself</li>
   </ol>
 
-  <p>Order: <a href="mailto:defense@defendableos.com?subject=Order%20a%20HoneyBox">defense@defendableos.com</a> · enterprise/DGX tier: <a href="mailto:defense@defendableos.com?subject=HoneyBox%20Enterprise%20Tier">defense@defendableos.com</a>.</p>
+  <p>Order: <a href="mailto:build@swarmandbee.ai?subject=Order%20a%20HoneyBox">build@swarmandbee.ai</a> · enterprise/DGX tier: <a href="mailto:build@swarmandbee.ai?subject=HoneyBox%20Enterprise%20Tier">build@swarmandbee.ai</a>.</p>
 </main>`.trim();
 
   return {
@@ -1091,7 +1091,7 @@ function buildDefendableCloudContent(): RouteContent {
     <li><strong>COGS per M tokens:</strong> $5-15+ · DefendableCloud ~$0.50</li>
   </ul>
 
-  <p>Try DefendableCloud: <a href="mailto:defense@defendableos.com?subject=Try%20DefendableCloud">defense@defendableos.com</a>.</p>
+  <p>Try DefendableCloud: <a href="mailto:build@swarmandbee.ai?subject=Try%20DefendableCloud">build@swarmandbee.ai</a>.</p>
 </main>`.trim();
 
   return {
@@ -1172,7 +1172,7 @@ function buildPricingContent(): RouteContent {
   </ul>
   <p>At 100 centers · $6.1M ARR. At 1,000 centers · $61M ARR. There are ~7,000 imaging centers in the US.</p>
 
-  <p>Order a HoneyBox: <a href="mailto:defense@defendableos.com?subject=Order%20a%20HoneyBox">defense@defendableos.com</a> · Try DefendableCloud: <a href="mailto:defense@defendableos.com?subject=Try%20DefendableCloud">defense@defendableos.com</a> · Embedded Fixers engagement: <a href="mailto:defense@defendableos.com?subject=Embedded%20Fixers%20engagement">defense@defendableos.com</a>.</p>
+  <p>Order a HoneyBox: <a href="mailto:build@swarmandbee.ai?subject=Order%20a%20HoneyBox">build@swarmandbee.ai</a> · Try DefendableCloud: <a href="mailto:build@swarmandbee.ai?subject=Try%20DefendableCloud">build@swarmandbee.ai</a> · Embedded Fixers engagement: <a href="mailto:build@swarmandbee.ai?subject=Embedded%20Fixers%20engagement">build@swarmandbee.ai</a>.</p>
 </main>`.trim();
 
   return {
@@ -1564,15 +1564,15 @@ function buildContactContent(): RouteContent {
   </ul>
   <h2>Or skip the form</h2>
   <ul>
-    <li><strong>Build / dev questions</strong> · <a href="mailto:build@defendableos.com">build@defendableos.com</a></li>
-    <li><strong>Defense / institutional</strong> · <a href="mailto:defense@defendableos.com">defense@defendableos.com</a></li>
+    <li><strong>Build / dev questions</strong> · <a href="mailto:build@swarmandbee.ai">build@swarmandbee.ai</a></li>
+    <li><strong>Defense / institutional</strong> · <a href="mailto:build@swarmandbee.ai">build@swarmandbee.ai</a></li>
   </ul>
 </main>`.trim();
 
   return {
     bodyHtml,
     title: "Contact · DefendableOS",
-    description: "Talk straight. One form · founder reads it · 24-hour reply. Five lanes: build · defense · press · partner · other. Or skip the form: build@defendableos.com or defense@defendableos.com.",
+    description: "Talk straight. One form · founder reads it · 24-hour reply. Five lanes: build · defense · press · partner · other. Or skip the form: build@swarmandbee.ai or build@swarmandbee.ai.",
     jsonLdBlocks: [
       { "@context": "https://schema.org", "@type": "ContactPage", "@id": `${url}#page`, url, name: "Contact DefendableOS" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [

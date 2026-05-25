@@ -53,7 +53,7 @@ export function ProofHeader({
           Explore the record →
         </a>
         <a
-          href={`mailto:defense@defendableos.com?subject=${pilotMailtoSubject}`}
+          href={`mailto:build@swarmandbee.ai?subject=${pilotMailtoSubject}`}
           className="inline-flex items-center gap-2 px-5 py-3 rounded border border-stone-700 text-stone-300 hover:border-stone-600 hover:text-stone-100 text-sm transition-colors"
         >
           Request a pilot

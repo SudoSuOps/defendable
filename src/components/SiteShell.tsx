@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 
-const SALES_EMAIL = "defense@defendableos.com";
+const SALES_EMAIL = "build@swarmandbee.ai";
 const X_URL = "https://x.com/swarmandbee";
 const LINKEDIN_URL = "https://www.linkedin.com/in/donovan-mackey-89a6063b6/";
 
@@ -36,7 +36,7 @@ export function Header() {
           ))}
         </nav>
         <a
-          href="mailto:defense@defendableos.com?subject=Request%20early%20access%20to%20DefendableOS"
+          href="mailto:build@swarmandbee.ai?subject=Request%20early%20access%20to%20DefendableOS"
           className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
         >
           Request access
@@ -66,7 +66,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="mailto:defense@defendableos.com?subject=Request%20early%20access%20to%20DefendableOS"
+              href="mailto:build@swarmandbee.ai?subject=Request%20early%20access%20to%20DefendableOS"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
             >
@@ -135,8 +135,8 @@ export function Footer() {
             heading="Company"
             links={[
               ["Contact form", "/contact"],
-              ["defense@defendableos.com", `mailto:${SALES_EMAIL}`],
-              ["build@defendableos.com", "mailto:build@defendableos.com"],
+              ["build@swarmandbee.ai", `mailto:${SALES_EMAIL}`],
+              ["build@swarmandbee.ai", "mailto:build@swarmandbee.ai"],
               ["Privacy", "https://swarmandbee.ai/legal/privacy"],
               ["Terms", "https://swarmandbee.ai/legal/terms"],
             ]}
@@ -167,7 +167,7 @@ export function Footer() {
               </a>
               <a
                 href={`mailto:${SALES_EMAIL}`}
-                aria-label="Email defense@defendableos.com"
+                aria-label="Email build@swarmandbee.ai"
                 className="text-stone-500 hover:text-amber-300 transition-colors"
               >
                 <MailIcon />

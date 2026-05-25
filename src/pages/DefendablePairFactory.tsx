@@ -14,7 +14,7 @@
  */
 import { Link } from "react-router-dom";
 
-const SALES_EMAIL = "defense@defendableos.com";
+const SALES_EMAIL = "build@swarmandbee.ai";
 const COMPUTE_PROOF_RECORD = "/verify/ddeed-dov-compute-000001-v3";
 
 const LIFECYCLE_BADGES = ["OBSERVE", "CLASSIFY", "CHALLENGE", "CORRECT", "PAIR", "VALIDATE"];

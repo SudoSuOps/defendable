@@ -55,7 +55,7 @@ export default function DefendableCrePalmGrove() {
                 Explore Draft Proof Record
               </Link>
               <a
-                href="mailto:hello@swarmandbee.ai?subject=Defendable%20CRE%20pilot"
+                href="mailto:build@swarmandbee.ai?subject=Defendable%20CRE%20pilot"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded text-stone-400 hover:text-stone-200 text-sm transition-colors"
               >
                 Request a CRE Pilot
@@ -272,7 +272,7 @@ export default function DefendableCrePalmGrove() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href="mailto:hello@swarmandbee.ai?subject=Defendable%20CRE%20pilot"
+              href="mailto:build@swarmandbee.ai?subject=Defendable%20CRE%20pilot"
               className="inline-flex items-center gap-2 px-6 py-3 rounded border border-honey-400/55 bg-honey-400/[0.08] text-honey-200 hover:bg-honey-400/[0.15] text-sm font-semibold transition-colors"
             >
               Request a CRE Pilot

@@ -17,7 +17,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const SALES_EMAIL = "defense@defendableos.com";
+const SALES_EMAIL = "build@swarmandbee.ai";
 
 type WorkerKind =
   | "Personal Assistant"

@@ -9,8 +9,8 @@
 import { useState } from "react";
 import { Footer, Header } from "../components/SiteShell";
 
-const SALES_EMAIL = "defense@defendableos.com";
-const BUILD_EMAIL = "build@defendableos.com";
+const SALES_EMAIL = "build@swarmandbee.ai";
+const BUILD_EMAIL = "build@swarmandbee.ai";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -191,7 +191,7 @@ function ContactSection() {
 
             {status === "error" && (
               <div className="rounded border border-rose-500/40 bg-rose-500/[0.06] px-4 py-3 text-xs text-rose-300">
-                {errorMsg || "Send failed · try again or email defense@defendableos.com directly."}
+                {errorMsg || "Send failed · try again or email build@swarmandbee.ai directly."}
               </div>
             )}
             {status === "ok" && (

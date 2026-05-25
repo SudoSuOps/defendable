@@ -1,7 +1,8 @@
 // Cloudflare Pages Function · POST /api/contact
 //
 // Backs the /contact page form on defendableos.com. Posts the submission
-// via Resend so the founder gets the message at defense@defendableos.com.
+// via Resend so the founder gets the message at build@swarmandbee.ai
+// (the canonical Resend-verified domain across the Defendable ecosystem).
 //
 // REQUIRED ENV VAR (set in Cloudflare Pages → Settings → Environment
 // variables · BOTH Production and Preview):
@@ -10,14 +11,12 @@
 //
 // OPTIONAL ENV VARS (override defaults):
 //
-//   CONTACT_TO_EMAIL    (default: defense@defendableos.com)
-//   CONTACT_FROM_EMAIL  (default: build@defendableos.com once domain
-//                        verified in Resend · otherwise use
-//                        onboarding@resend.dev to test before DNS)
+//   CONTACT_TO_EMAIL    (default: build@swarmandbee.ai)
+//   CONTACT_FROM_EMAIL  (default: build@swarmandbee.ai · Resend-verified)
 //
-// Resend dashboard · add the defendableos.com domain · Resend will give
-// you SPF / DKIM / DMARC records to paste into Cloudflare DNS. After
-// verification, change CONTACT_FROM_EMAIL to build@defendableos.com.
+// swarmandbee.ai is the verified Resend sender domain for the entire
+// 10-domain Defendable brand stack. All ecosystem contact forms route
+// to build@swarmandbee.ai as canonical (v0.1.0 brand-stack lock).
 
 interface Env {
   RESEND_API_KEY: string;
@@ -47,11 +46,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return json({ error: "RESEND_API_KEY not configured" }, 503);
   }
 
-  const TO = env.CONTACT_TO_EMAIL || "defense@defendableos.com";
-  const FROM = env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
-  //   ^^^^^^^^^^^^^^ defaults to Resend's test sender so the function
-  //   works the instant the API key is set · operator can swap to
-  //   build@defendableos.com after Resend domain verification.
+  const TO = env.CONTACT_TO_EMAIL || "build@swarmandbee.ai";
+  const FROM = env.CONTACT_FROM_EMAIL || "build@swarmandbee.ai";
+  //   ^^^^^^^^^^^^^^ swarmandbee.ai is the Resend-verified ecosystem
+  //   sender domain. Override via CONTACT_FROM_EMAIL only if a sub-
+  //   domain sender is needed (e.g. defense.swarmandbee.ai later).
 
   // ── Parse + validate body ────────────────────────────────────────
   let body: ContactPayload;
