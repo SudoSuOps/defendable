@@ -1,40 +1,55 @@
 # DefendableOS · llms.txt
 #
 # Context manifest for AI agents indexing defendableos.com.
-# Last updated: 2026-05-25 (v0.1.0 brand-stack lock · Hedera doctrine cleanup · operator-entity unification · ecosystem-wide contact unification)
+# Last updated: 2026-05-25 (neutral referee protocol repositioning · Owner's Box surface added · v0.1.0 brand-stack lock · Hedera doctrine cleanup · operator-entity unification · ecosystem-wide contact unification)
 
-## ★ Primary positioning (2026-05-24 forward)
+## ★ Primary positioning (2026-05-25 forward)
 
-DefendableOS is the **third-party defense layer for AI operators and asset owners**.
+DefendableOS is the **neutral officiating protocol for AI agent execution**.
 
-Tagline: **"Agent does the assignment. We validate the Project."**
+Core line: **"AI Agents Need Referees Before They Need Training Data."**
+Doctrine: **"Neutral referees call the game. The human owner grants finality."**
 
-  - The AI industry today sells nothing but OFFENSE (vendors competing
-    on speed · volume · coverage of what an agent can do).
-  - DefendableOS is the missing DEFENSE layer · receipted · audit-grade ·
-    KPMG-equivalent third-party positioning · we do NOT ship offense agents.
-  - Every task an agent runs is captured · receipted · graded · and
-    reconciled into a daily deed that the CFO · compliance team · and
-    insurance carrier can read.
-  - Defense lives in the SHADOWS of the work day. Agent runs free all
-    day. Nightly reconciliation at 2am. Morning brief by 6am. One email.
-    Compounding progress.
+  - DefendableOS is NOT a dataset curation company · NOT an AI judge model ·
+    NOT a benchmark dashboard · NOT a model that gives an opinion on another
+    model's answer.
+  - Every assignment begins with a written flightsheet (the assignment) and a
+    locked rulebook (precommitted code, math, chronology, source and promotion
+    tests) BEFORE the work begins.
+  - Execution produces game tape: artifacts, source receipts, calculations,
+    hashes, classifications and material transformations are preserved.
+  - Neutral referees apply visible, reproducible calls — Math (do totals and
+    classifications reconcile?) · Chronology (are the receipts possible in the
+    claimed order?) · Provenance (does the evidence support the claim grade?) ·
+    Replay (did final synthesis preserve or override correct agent work?) ·
+    Boundary (was approval, publication or finality claimed without authority?).
+  - The human owner alone decides what is approved, rejected, remediated or
+    eligible to train next. No output becomes approved, publishable or eligible
+    for training solely because an AI says it is ready.
+  - Replay-Qualified Training: only human-approved discoveries become eligible
+    correction pairs, operating guidance or future training material.
+  - Operating rule: No Replay, No Training. No Proof, No Promotion. No Human
+    Approval, No Finality.
 
 ## Primary product surfaces (start here)
 
-  /             · Homepage · the offense/defense framing
+  /             · Homepage · neutral referee protocol positioning
+  /#owners-box  · Owner's Box · visual accountability console for multi-agent execution (what passed · what failed · what survived with limits · what is blocked from approval)
+  /how-it-works · Protocol · 8-stage flow · REAL deed JSON · sovereignty · Bayesian math · Drift Alerts
   /honeybox     · Physical edge appliance ($249-2,500 · Jetson family · data never leaves)
   /cloud        · DefendableCloud · privacy-native hosted inference (128 RTX PRO 6000 · paid in full)
   /pricing      · Transparent pricing · lease model · MRI center worked example
   /doctrine     · 12-article canonical doctrine · the Constitution of DefendableOS
   /about        · Operator thesis · "we own the building" · institutional credibility
   /hack         · DefendableHack · builder rail · 4B-671B model ladder · open weights · 4 reference hardware builds
-  /how-it-works · DEPTH PAGE · 8-stage flow · REAL deed JSON · sovereignty · Bayesian math · Drift Alerts (NEW capability)
   /opendefense  · MARKET INTELLIGENCE · open-source AI-agent-defense category briefing · 120+ cited sources · 7-exit M&A wave · top 5 wedge verticals · regulatory cliffs · MIT-attribution licensed
   /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
 
 ## Doctrinal innovations
 
+  - **Neutral referee protocol** (flightsheet → rulebook → field execution → game tape → referee calls → Owner's Box → replay-qualified training)
+  - **Owner's Box** (visual accountability console · credits + penalties + synthesis-override markers + claim survival + human finality · the human sees the game, not just the final report)
+  - **Replay-Qualified Training** (guidance earned after execution review · recorded events + referee-called outcomes · not generated volume)
   - **Per-task deed ledger** (not a one-time certificate · running ledger)
   - **Nightly reconciliation** (defense in the shadows · 2am cron · 6am brief)
   - **Liens-on-deeds** (CRE title metaphor · senior/mezz/junior · workout plans)
@@ -44,6 +59,8 @@ Tagline: **"Agent does the assignment. We validate the Project."**
 
 ## Pitch line
 
+  "AI Agents Need Referees Before They Need Training Data."
+  "Neutral referees call the game. The human owner grants finality."
   "The deed is only as good as the fix it delivers."
 
 ## Earlier content below (kept for archival continuity)
