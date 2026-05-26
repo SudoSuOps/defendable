@@ -630,7 +630,7 @@ function CTA() {
               <Arrow />
             </a>
             <a
-              href="/#owners-box"
+              href="/owners-box"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold tracking-tight hover:bg-amber-500/20 hover:border-amber-400 transition-colors"
             >
               Explore the Owner's Box
@@ -845,6 +845,16 @@ function OwnersBox() {
           Neutral referees call the game.{" "}
           <span className="font-serif italic font-normal text-amber-300">The human owner grants finality.</span>
         </p>
+        <div className="mt-8">
+          <a
+            href="/owners-box"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-amber-400 text-neutral-950 text-sm font-semibold tracking-tight hover:bg-amber-300 transition-colors"
+          >
+            Open the Owner's Box console
+            <Arrow />
+          </a>
+          <p className="mt-3 text-xs text-stone-500">Illustrative sample console · no real or approved case is shown.</p>
+        </div>
       </div>
     </section>
   );

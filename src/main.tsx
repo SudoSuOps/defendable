@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import DefendableOS from "./pages/DefendableOS";
+import OwnersBox from "./pages/OwnersBox";
 import HoneyBox from "./pages/HoneyBox";
 import DefendableCloud from "./pages/DefendableCloud";
 import Pricing from "./pages/Pricing";
@@ -57,6 +58,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DefendableOS />} />
+        {/* ── Owner's Box · visual accountability console (illustrative sample) ── */}
+        <Route path="/owners-box" element={<OwnersBox />} />
         {/* ── Primary product surfaces (2026-05-24 cleanup) ── */}
         <Route path="/honeybox" element={<HoneyBox />} />
         <Route path="/cloud" element={<DefendableCloud />} />

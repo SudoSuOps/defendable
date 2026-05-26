@@ -12,7 +12,7 @@ const NAV_ITEMS: [string, string][] = [
   ["HoneyBox", "/honeybox"],
   ["Cloud", "/cloud"],
   ["Protocol", "/how-it-works"],
-  ["Owner's Box", "/#owners-box"],
+  ["Owner's Box", "/owners-box"],
   ["OpenDefense", "/opendefense"],
   ["Pricing", "/pricing"],
   ["Defend The Claw™", "/defend-the-claw"],
@@ -112,7 +112,7 @@ export function Footer() {
             heading="Doctrine"
             links={[
               ["The Doctrine", "/doctrine"],
-              ["Owner's Box", "/#owners-box"],
+              ["Owner's Box", "/owners-box"],
               ["About / Operator", "/about"],
               ["DefendableHack™", "/hack"],
               ["AgentGrade™", "/agent-grade"],

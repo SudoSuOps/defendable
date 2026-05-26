@@ -56,6 +56,7 @@ export async function getRouteContent(
   if (pathname === "/about")        return buildAboutContent();
   if (pathname === "/hack")         return buildHackContent();
   if (pathname === "/contact")      return buildContactContent();
+  if (pathname === "/owners-box")   return buildOwnersBoxContent();
   // Defendable CRE MarketReady · Palm Grove Marketplace · 5 routes.
   // Match BEFORE the generic /showcase/:slug branch so CRE sub-routes
   // don't fall through to generic showcase content.
@@ -73,6 +74,65 @@ export async function getRouteContent(
     if (slug) return buildVerifyContent(slug);
   }
   return null;
+}
+
+function buildOwnersBoxContent(): RouteContent {
+  const url = "https://defendableos.com/owners-box";
+  const bodyHtml = `
+<main>
+  <p><strong>ILLUSTRATIVE SAMPLE CONSOLE · NOT A REAL, AUDITED OR APPROVED CASE · NO INTERNAL OR CUSTOMER WORK IS PUBLISHED HERE.</strong></p>
+  <h1>The Owner's Box · the human should see the game, not just the final report.</h1>
+  <p>The Owner's Box is the visual accountability console for multi-agent execution. AI-generated work should not arrive as a polished deliverable with hidden failures. The console shows what assignment was called, which agents took the field, which positions performed correctly, where execution drifted, whether final synthesis preserved or corrupted good underlying work, which claims survived replay, which failures require remediation, and whether approval or publication remains blocked.</p>
+  <p><em>Neutral referees call the game. The human owner grants finality.</em></p>
+
+  <h2>Formation board</h2>
+  <p>Every agent lane is shown by position with credited execution, penalties, critical failures and a synthesis-override marker when final synthesis overrode correct work. A lane may display both green credit and a red penalty at once.</p>
+
+  <h2>Penalty board · failures grouped by rule type</h2>
+  <ul>
+    <li><strong>Arithmetic</strong> · do totals, percentages and classifications reconcile?</li>
+    <li><strong>Chronology</strong> · are the receipts possible in the claimed order?</li>
+    <li><strong>Source / Provenance</strong> · does the evidence support the claim grade?</li>
+    <li><strong>Synthesis Override</strong> · did final synthesis preserve or corrupt correct lane work?</li>
+    <li><strong>Classification / Promotion</strong> · was weak work promoted past its grade?</li>
+    <li><strong>Accountability / Roster</strong> · does the agent roster reconcile?</li>
+    <li><strong>Receipt / Traceability</strong> · was the boundary covered before clearance?</li>
+  </ul>
+
+  <h2>Credit board · credited execution is visible</h2>
+  <p>The console is not a blanket failure detector. Credited execution is preserved and shown, including credits earned by the same agents that also drew penalties. Credits link to any later synthesis failure that overrode them.</p>
+
+  <h2>Claim survival</h2>
+  <p>Output claims are sorted into Survived With Limitations, Return For Repair, and Rejected Until Rebuilt. The human reads what can be used, what must be repaired, and what is rejected.</p>
+
+  <h2>Human finality gate</h2>
+  <p>The release edge is locked. Current decision is RETURN FOR REMEDIATION · approval token ABSENT · publication NOT ISSUED · repository push BLOCKED BY CONTROL · human decision authority REQUIRED. The console is read-only: no approval action can be executed from it. No output becomes approved, publishable or eligible for training solely because an AI says it is ready.</p>
+
+  <p>This page renders illustrative sample data to demonstrate the product surface. It is not a real, audited, approved or investment-grade case.</p>
+</main>
+  `.trim();
+
+  return {
+    bodyHtml,
+    jsonLdBlocks: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url,
+        name: "Owner's Box · visual accountability console · DefendableOS",
+        description:
+          "The Owner's Box is the visual accountability console for multi-agent execution: formation board, penalty board by rule type, credit board, claim survival and a locked human finality gate. Illustrative sample data only.",
+        isPartOf: { "@type": "WebSite", url: "https://defendableos.com" },
+        about: [
+          { "@type": "DefinedTerm", name: "Owner's Box", description: "DefendableOS visual accountability console for multi-agent execution · shows credits, penalties, synthesis overrides, claim survival and human finality." },
+          { "@type": "DefinedTerm", name: "Human Finality", description: "No output becomes approved, publishable or eligible for training without explicit human authorization." },
+        ],
+      },
+    ],
+    title: "Owner's Box · Visual Accountability Console for AI Agents | DefendableOS",
+    description:
+      "The human should see the game, not just the final report. The Owner's Box shows credits, penalties, synthesis overrides, claim survival and a locked human-finality gate. Illustrative sample console.",
+  };
 }
 
 function buildVerifyContent(slug: string): RouteContent {
