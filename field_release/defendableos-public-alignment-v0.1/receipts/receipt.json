@@ -1,7 +1,7 @@
 {
   "release_name": "defendableos-public-alignment-v0.1",
-  "status": "PENDING_VERIFICATION",
+  "status": "PUSHED_DEPLOYMENT_NOT_YET_OBSERVED",
   "baseline_commit": "75f37b5eb8bc724324c165145e515cac233e61d2",
-  "release_commit": "PENDING",
+  "release_commit": "3eff34bbf1708b53926cc6feec47f6b2048b58bc",
   "statement": "Hashes are content-integrity linkage only."
 }

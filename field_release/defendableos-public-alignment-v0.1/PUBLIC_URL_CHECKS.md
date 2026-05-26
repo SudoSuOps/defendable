@@ -1,8 +1,14 @@
 # Public URL Checks
 
-To be updated after push and deployment verification.
-
-Expected checks:
+Checked after push on 2026-05-26:
 
 - `https://defendableos.com`
-- key CTA links to Cloud, Docs, OpenDefendable, and Tribunal repo
+  - reachable: yes
+  - deployment of rebuilt front door observed: no
+  - observed title still old: `DefendableOS · Defense for AI Operators`
+
+Expected post-deploy checks when propagation completes:
+
+- new title and description present
+- status panel visible
+- OpenDefendable / Docs / Tribunal links visible

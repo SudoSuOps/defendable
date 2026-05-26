@@ -1,7 +1,7 @@
 {
   "release_name": "defendableos-public-alignment-v0.1",
   "baseline_commit": "75f37b5eb8bc724324c165145e515cac233e61d2",
-  "release_commit": "PENDING",
+  "release_commit": "3eff34bbf1708b53926cc6feec47f6b2048b58bc",
   "public_site": "https://defendableos.com",
   "scope": [
     "homepage rebuild",
@@ -12,5 +12,6 @@
     "CTA routing",
     "metadata alignment"
   ],
-  "hash_notice": "SHA-256 hashes in this package provide content-integrity linkage only."
+  "hash_notice": "SHA-256 hashes in this package provide content-integrity linkage only.",
+  "deployment_observation": "push completed; public HTML update not yet observed during this release pass"
 }
