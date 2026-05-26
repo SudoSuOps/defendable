@@ -881,7 +881,7 @@ function buildDefendableOSContent(): RouteContent {
     <li><a href="https://opendefendable.com">Visit OpenDefendable</a></li>
     <li><a href="https://github.com/SudoSuOps/defendableos-tribunal-audit">Review the Tribunal audit tape</a></li>
     <li><a href="https://github.com/SudoSuOps">View public repos</a></li>
-    <li><a href="mailto:build@swarmandbee.ai">Request early-access review</a></li>
+    <li><a href="https://defendableos.com/contact">Request early-access review</a></li>
   </ul>
 
   <h2>Disclaimer</h2>

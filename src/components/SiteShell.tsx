@@ -33,7 +33,7 @@ export function Header() {
           ))}
         </nav>
         <a
-          href={`mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`}
+          href="/contact"
           className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
         >
           Request review
@@ -63,7 +63,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href={`mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`}
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
             >
@@ -116,7 +116,7 @@ export function Footer() {
           <FooterColumn
             heading="Contact"
             links={[
-              ["Request early-access review", `mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`],
+              ["Request early-access review", "/contact"],
               ["build@swarmandbee.ai", `mailto:${SALES_EMAIL}`],
               ["Privacy", "https://swarmandbee.ai/legal/privacy"],
               ["Terms", "https://swarmandbee.ai/legal/terms"],

@@ -5,7 +5,7 @@ const DOCS_URL = "https://defendabledocs.com/field-release/overview/";
 const OPEN_URL = "https://opendefendable.com";
 const AUDIT_URL = "https://github.com/SudoSuOps/defendableos-tribunal-audit";
 const REPOS_URL = "https://github.com/SudoSuOps";
-const CONTACT_URL = "mailto:build@swarmandbee.ai?subject=DefendableOS%20early-access%20review";
+const CONTACT_URL = "/contact";
 
 const statusRows = [
   {
