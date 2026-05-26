@@ -109,6 +109,7 @@ export function Footer() {
             links={[
               ["Tribunal repo", "https://github.com/SudoSuOps/defendableos-tribunal-audit"],
               ["Public module repos", "https://github.com/SudoSuOps"],
+              ["Hugging Face", "https://huggingface.co/SwarmandBee"],
               ["DefendableOS source", "https://github.com/SudoSuOps/defendable"],
             ]}
           />
