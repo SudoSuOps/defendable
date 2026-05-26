@@ -1,0 +1,29 @@
+{
+  "release_id": "machine-readable-truth-repair-v0.1",
+  "builder": "Codex",
+  "date": "2026-05-26",
+  "summary": "Machine-readable truth repair for public metadata and llms.txt contradiction surfaces only.",
+  "repos_changed": [
+    "defendable",
+    "defendable-cloud",
+    "open-defendable"
+  ],
+  "repo_inspected_not_changed": [
+    "defendable-router"
+  ],
+  "claims_replaced": [
+    "DefendableOS llms.txt now distinguishes verified AgentOps surfaces from roadmap AIOV surfaces",
+    "DefendableCloud llms.txt now leads with controlled synthetic demo limitations",
+    "OpenDefendable llms.txt no longer claims live standards-body maturity",
+    "DefendableCloud package.json now matches verified demo scope",
+    "DEFENDABLE_CERTIFIED public status wording replaced with roadmap-only wording"
+  ],
+  "public_urls_to_verify": [
+    "https://defendableos.com/llms.txt",
+    "https://defendablecloud.com/llms.txt",
+    "https://opendefendable.com/llms.txt"
+  ],
+  "hash_method": "canonical JSON with self-referential hash fields excluded; content-integrity only",
+  "hash_integrity_note": "SHA-256 hashes in this receipt establish content-integrity linkage only. They do not independently prove authorship, owner approval, trusted timestamping, immutability, blockchain anchoring, external attestation, certification, insurance coverage, or external platform enforcement.",
+  "receipt_hash": "fec282b2f594dab203e7ad56188a3dc8a6b4286aa987f396f72a50ad618157a1"
+}

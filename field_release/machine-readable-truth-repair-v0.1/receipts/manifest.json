@@ -1,0 +1,66 @@
+{
+  "release_id": "machine-readable-truth-repair-v0.1",
+  "builder": "Codex",
+  "date": "2026-05-26",
+  "repos_changed": [
+    {
+      "repo": "defendable",
+      "baseline_commit": "ea550f956656bcc9833f54d97c670c2a7fbb7525",
+      "source_repair_commit": "6126b3edf974ab6a94ea2dbff7bc8114d4db4239",
+      "files_changed": [
+        "public/llms.txt",
+        "functions/_lib/seo-content.ts",
+        "src/pages/DefendableAgentGrade.tsx"
+      ]
+    },
+    {
+      "repo": "defendable-cloud",
+      "baseline_commit": "63847e011ae80f4304d077294a5318792bf41555",
+      "source_repair_commit": "d2962fec10413aa15f9cacce73456ae59d1794e6",
+      "files_changed": [
+        "public/llms.txt",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "open-defendable",
+      "baseline_commit": "fca71061a30d52613f0db7579cfed6509a9d14ea",
+      "source_repair_commit": "880030dc4b70f0ab982824741b4f414c5ac3d383",
+      "files_changed": [
+        "public/llms.txt",
+        "package.json"
+      ]
+    }
+  ],
+  "repo_inspected_not_changed": [
+    {
+      "repo": "defendable-router",
+      "baseline_commit": "134662a7dc6debf3fb915664dda2a05f4a25a9fe"
+    }
+  ],
+  "claims_removed_or_replaced": [
+    "unqualified live product claims in DefendableOS llms.txt",
+    "false docs consolidation claim in DefendableOS llms.txt",
+    "synthetic-demo understatement in DefendableCloud llms.txt",
+    "open standards body and v0 live overclaim in OpenDefendable llms.txt",
+    "DefendableCloud package description overclaim",
+    "DEFENDABLE_CERTIFIED public status language"
+  ],
+  "public_urls_to_verify": [
+    "https://defendableos.com/llms.txt",
+    "https://defendablecloud.com/llms.txt",
+    "https://opendefendable.com/llms.txt"
+  ],
+  "limitations": [
+    "content-integrity linkage only",
+    "not authorship proof",
+    "not owner approval",
+    "not certification",
+    "not insurance coverage",
+    "not production clearance",
+    "not external SaaS enforcement approval",
+    "not blockchain anchoring"
+  ],
+  "hash_method": "canonical JSON with self-referential hash fields excluded; content-integrity only",
+  "manifest_hash": "8cacf19239445f7e39d4d700e572a05e71d3809ad7c9fc5757834f1d18d01c59"
+}
