@@ -826,83 +826,66 @@ function buildDefendableOSContent(): RouteContent {
   const bodyHtml = `
 <main>
   ${THESIS_BANNER}
-  <h1>Agent does the assignment. We validate the Project.</h1>
-  <p><strong>DefendableOS</strong> is the third-party defense layer for AI operators and asset owners. Every assignment your agent completes is captured · receipted · graded · and reconciled into a daily Project deed that your CFO, compliance team, and insurance carrier can read. Cisco grades the agent. We grade the work. <strong>Validate the Validator. Own the Deed.</strong></p>
+  <h1>DefendableOS · accountable AI rails and proof-of-value workflows.</h1>
+  <p><strong>DefendableOS</strong> is the honest public front door for the Defendable stack. The current field-tested wedge is <strong>AI Agent Operations</strong>, implemented and independently audited with limitations. The broader <strong>Proof of Value / AIOV</strong> direction is an active build track, not fully field-cleared.</p>
 
-  <h2>The problem</h2>
-  <p>AI agents in production touch files, payments, customers, infrastructure · and the agent vendor grades its own homework. 84% of operators (Gravitee 2026) doubt they'd pass an agent-behavior audit today. 74% have already rolled back an agent. 88% of agent pilots never reach production (S&amp;P/McKinsey). The defense gap is the bottleneck.</p>
+  <h2>Current status panel</h2>
   <ul>
-    <li><strong>Unverified Inputs.</strong> A valuation is only as reliable as the identity, condition, source documents, and market data behind it.</li>
-    <li><strong>Fragmented Evidence.</strong> Receipts, photos, benchmarks, comparables, ownership records, and reports rarely travel together with the asset.</li>
-    <li><strong>Weak Market Readiness.</strong> Owners and buyers lose time and trust when a sale begins before the evidence package is complete.</li>
+    <li><strong>AgentOps module chain</strong> — VERIFIED_AS_REPAIRED_WITH_LIMITATIONS</li>
+    <li><strong>DefendableCloud</strong> — REPAIR_REQUIRED · browser demo only READY_WITH_LIMITATIONS</li>
+    <li><strong>DefendableDocs field-release pages</strong> — VERIFIED_AS_DOCUMENTED_WITH_LIMITATIONS</li>
+    <li><strong>DefendableRouter</strong> — FIELD INTEGRATION PENDING</li>
+    <li><strong>Client pilot</strong> — HOLD</li>
+    <li><strong>Production</strong> — NOT CLEARED FOR PRODUCTION</li>
+    <li><strong>External SaaS enforcement</strong> — NOT CLEARED FOR EXTERNAL SAAS ENFORCEMENT</li>
   </ul>
 
-  <h2>From asset to Proof of Value · the 5-step workflow</h2>
-  <ol>
-    <li><strong>Capture.</strong> Collect source documents, images, specifications, condition details, ownership context, and relevant evidence.</li>
-    <li><strong>Analyze (AIOV).</strong> Generate an AI-assisted opinion of value using asset-specific market intelligence, comparable records, and evidence-aware analysis.</li>
-    <li><strong>Challenge (Validate the Validator).</strong> Test assumptions, inspect comparables, grade evidence quality, surface conflicts, and flag unsupported conclusions.</li>
-    <li><strong>Package.</strong> Create a market-ready Proof of Value package with analysis, receipts, provenance, evidence references, and disposition-ready materials.</li>
-    <li><strong>Deed.</strong> Preserve the evidence-backed asset record as a transferable Defendable Deed built to accompany the asset over time.</li>
-  </ol>
-  <p><em>"An AI opinion is not proof until the evidence survives challenge."</em></p>
-
-  <h2>Asset classes · one system, many markets</h2>
+  <h2>What works today</h2>
   <ul>
-    <li><strong>Commercial Real Estate</strong> — comps, offering materials, condition evidence, underwriting support, market-ready ownership packages</li>
-    <li><strong>Compute Hardware</strong> — GPUs, servers, AI clusters, edge appliances, benchmark receipts, configuration records, resale analysis (Proof of Compute compatible)</li>
-    <li><strong>Equipment</strong> — condition documentation, replacement analysis, service records, useful-life support, transfer-ready evidence</li>
-    <li><strong>Luxury Goods</strong> — identity records, provenance evidence, condition media, comparable market support, resale packaging</li>
-    <li><strong>Datasets</strong> — source documentation, curation receipts, integrity checks, version history, hash records, licensing support (Deeded Digital Assets)</li>
-    <li><strong>AI Assets</strong> — model cards, training records, evaluation receipts, benchmark evidence, deployment history, transfer-ready IP documentation (Deeded Digital Assets)</li>
+    <li>Four runtime module repos are public.</li>
+    <li>Codex audit and re-audit are published.</li>
+    <li>The AgentOps module chain is verified as repaired with limitations.</li>
+    <li>DefendableDocs field-release pages are verified with limitations.</li>
+    <li>A DefendableCloud browser demo exists with limitations.</li>
+    <li>Public repos and the Tribunal audit tape are available now.</li>
   </ul>
 
-  <h2>The Defendable Deed · the asset record that travels with the value</h2>
-  <p>A Defendable Deed is an evidence-backed record designed to preserve the identity, provenance, condition, supporting analysis, and Proof of Value package associated with an asset.</p>
+  <h2>What does not work yet</h2>
   <ul>
-    <li>Evidence travels with the asset</li>
-    <li>Inputs remain reviewable</li>
-    <li>Analysis remains challengeable</li>
-    <li>Value becomes market-ready</li>
+    <li>DefendableCloud server-side action POST API repair is required.</li>
+    <li>Broader DefendableDocs claim cleanup is required.</li>
+    <li>DefendableRouter public utility is not verified from public surface evidence.</li>
+    <li>Router-to-Cloud integration is not proven.</li>
+    <li>Production is not cleared.</li>
+    <li>External SaaS enforcement is not cleared.</li>
+    <li>Certification, insurance, and blockchain anchoring are not claimed.</li>
   </ul>
 
-  <h2>Validate the Validator · the doctrine</h2>
-  <p>Models can generate. Experts can opine. Markets can price. But trust begins when the source data, assumptions, comps, calculations, conflicts, and conclusions can be reviewed and challenged.</p>
+  <h2>Public surfaces</h2>
   <ul>
-    <li><strong>Evidence Before Confidence.</strong> No conclusion outranks its source material.</li>
-    <li><strong>Receipts Before Claims.</strong> Outputs must be supported by inspectable records.</li>
-    <li><strong>Challenge Before Transfer.</strong> A market-ready asset package should survive scrutiny before it reaches a buyer.</li>
-  </ul>
-  <p><strong>AIOV gives the opinion. DefendableOS proves the value.</strong></p>
-
-  <h2>System architecture · a trust layer built around the asset</h2>
-  <ul>
-    <li><strong>Market-Ready Output</strong> — sale package · transfer record · buyer booklet · financing / insurance support file</li>
-    <li><strong>DefendableOS</strong> — evidence vault · validator review · receipt ledger · deed registry · workflow engine</li>
-    <li><strong>AIOV</strong> — comparable analysis · asset-specific models · valuation reasoning · risk flagging</li>
-    <li><strong>Source Evidence</strong> — documents · photos · benchmarks · provenance · ownership records · market data</li>
-    <li><strong>Optional · Defendable Box</strong> — local capture, local inference, sovereign evidence handling (capability preview)</li>
+    <li><strong>DefendableCloud</strong> — field utility surface · controlled synthetic demo under repair</li>
+    <li><strong>DefendableDocs</strong> — client-use manual and owner record book · field-release pages aligned</li>
+    <li><strong>DefendableRouter</strong> — router / receipt utility track · field integration pending</li>
+    <li><strong>OpenDefendable</strong> — open-source truth surface for protocols, audits, wins/losses, utilities, and contribution lanes</li>
+    <li><strong>Tribunal audit</strong> — public referee tape · not certification · not production clearance</li>
   </ul>
 
-  <h2>Platform modules</h2>
+  <h2>Promotion protocol</h2>
+  <p>Build → Public Safety Gate → Codex Audit → Repair → Re-audit → Field Release → Docs Update → Owner Promotion.</p>
+  <p><strong>Builder receipt</strong> is submission. <strong>Codex audit</strong> is referee tape. <strong>Owner approval</strong> is promotion control.</p>
+
+  <h2>Where to go next</h2>
   <ul>
-    <li><strong>AIOV Engine</strong> — AI-assisted opinions of value built from asset-specific context and comparable evidence</li>
-    <li><strong>Evidence Vault</strong> — store the records that support identity, provenance, condition, and analysis</li>
-    <li><strong>Validator Review</strong> — challenge assumptions, inputs, comparable relevance, and unsupported claims</li>
-    <li><strong>Receipt Ledger</strong> — generate inspectable analysis and evidence receipts for every record</li>
-    <li><strong>Defendable Deed</strong> — package the asset's value-supporting record into a transferable artifact</li>
-    <li><strong>Market-Ready Export</strong> — ship buyer-ready booklets, reports, listing support, and diligence packages</li>
+    <li><a href="https://defendablecloud.com/agent-operations-demo">View DefendableCloud</a></li>
+    <li><a href="https://defendabledocs.com/field-release/overview/">Read DefendableDocs field-release pages</a></li>
+    <li><a href="https://opendefendable.com">Visit OpenDefendable</a></li>
+    <li><a href="https://github.com/SudoSuOps/defendableos-tribunal-audit">Review the Tribunal audit tape</a></li>
+    <li><a href="https://github.com/SudoSuOps">View public repos</a></li>
+    <li><a href="mailto:build@swarmandbee.ai">Request early-access review</a></li>
   </ul>
-
-  <h2>Early access</h2>
-  <p>DefendableOS is being built for asset owners, operators, brokers, collectors, compute sellers, dataset builders, AI firms, and institutions that need value supported by evidence. Request early access at <a href="https://defendableos.com/#early-access">defendableos.com/#early-access</a> or email <a href="mailto:build@swarmandbee.ai">build@swarmandbee.ai</a>.</p>
-  <p>For founding partners: early Proof of Value workflow design · asset-class pilot onboarding · Deed and evidence package prototyping · private platform demonstrations.</p>
-
-  <h2>The brand line</h2>
-  <blockquote><strong>"Proof of Value for Everything That Matters."</strong> · Proof of Value. Built on evidence. Designed for scrutiny.</blockquote>
 
   <h2>Disclaimer</h2>
-  <p><em>DefendableOS records are evidence and analysis packages. Asset-specific professional, legal, regulatory, or licensed appraisal requirements may still apply. DefendableOS is a product of Swarm and Bee LLC (Florida limited liability company · D-U-N-S 138652395 · doing business as Swarm &amp; Bee AI).</em></p>
+  <p><em>This public surface records audited status and open limitations. It does not claim production clearance, certification, insurance coverage, external SaaS enforcement, or blockchain anchoring. DefendableOS is a product of Swarm and Bee LLC (Florida limited liability company · D-U-N-S 138652395 · doing business as Swarm &amp; Bee AI).</em></p>
 </main>`.trim();
 
   const jsonLdBlocks: object[] = [
@@ -913,10 +896,10 @@ function buildDefendableOSContent(): RouteContent {
       name: "DefendableOS",
       url,
       applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Trust infrastructure · evidence-backed valuation platform",
+      applicationSubCategory: "Accountable AI rails · audited public front door",
       operatingSystem: "Web · API",
       description:
-        "DefendableOS turns real-world and digital assets into evidence-backed, market-ready records with verified inputs, comparable analysis, provenance, valuation receipts, and transferable Defendable Deeds. Powered by AIOV (AI Opinion of Value). Built on the doctrine: Validate the Validator.",
+        "DefendableOS is the honest public front door for accountable AI rails and proof-of-value workflows. Current field-tested wedge: AI Agent Operations, audited with limitations.",
       provider: {
         "@type": "Organization",
         name: "Swarm and Bee LLC",
@@ -924,9 +907,9 @@ function buildDefendableOSContent(): RouteContent {
       },
       offers: {
         "@type": "Offer",
-        name: "Early Access · founding partners",
+        name: "Early access review",
         description:
-          "Early Proof of Value workflow design · asset-class pilot onboarding · Deed and evidence package prototyping · private platform demonstrations.",
+          "Review the current public surfaces, audit tape, and field-release status before requesting access.",
       },
       sameAs: [
         "https://swarmandbee.ai/",
@@ -959,9 +942,9 @@ function buildDefendableOSContent(): RouteContent {
       "@type": "WebPage",
       "@id": `${url}#page`,
       url,
-      name: "DefendableOS · Proof of Value",
+      name: "DefendableOS",
       description:
-        "DefendableOS is the operating system for evidence-backed valuation, provenance, and market-ready ownership across real estate, compute, equipment, datasets, and AI assets.",
+        "DefendableOS is the honest public front door for accountable AI rails and proof-of-value workflows. Current field-tested wedge: AI Agent Operations, audited with limitations.",
       isPartOf: { "@id": `${url}#provider` },
       about: { "@id": `${url}#platform` },
       inLanguage: "en-US",
@@ -978,9 +961,9 @@ function buildDefendableOSContent(): RouteContent {
   return {
     bodyHtml,
     jsonLdBlocks,
-    title: "DefendableOS · Defense for AI Operators",
+    title: "DefendableOS · Accountable AI Rails and Proof-of-Value Workflows",
     description:
-      "The third-party defense layer for AI operators and asset owners. Agent does the assignment · we validate the Project. Every assignment receipted · graded · reconciled into a daily Project deed your CFO, compliance team, and insurance carrier can read. Validate the Validator · Own the Deed.",
+      "Honest public front door for accountable AI rails and proof-of-value workflows. Current field-tested wedge: AI Agent Operations, audited with limitations.",
   };
 }
 

@@ -1,7 +1,3 @@
-// Shared Header + Footer for defendableos.com pages (homepage · HoneyBox ·
-// DefendableCloud · Pricing). Keeps the brand surface coherent without
-// duplicating 200 lines of layout code across every page.
-
 import { useState } from "react";
 
 const SALES_EMAIL = "build@swarmandbee.ai";
@@ -9,19 +5,19 @@ const X_URL = "https://x.com/swarmandbee";
 const LINKEDIN_URL = "https://www.linkedin.com/in/donovan-mackey-89a6063b6/";
 
 const NAV_ITEMS: [string, string][] = [
-  ["HoneyBox", "/honeybox"],
-  ["Cloud", "/cloud"],
-  ["Protocol", "/how-it-works"],
-  ["Owner's Box", "/owners-box"],
-  ["OpenDefense", "/opendefense"],
-  ["Pricing", "/pricing"],
-  ["Defend The Claw™", "/defend-the-claw"],
+  ["Status", "/#status"],
+  ["Products", "/#products"],
+  ["What Works", "/#scoreboard"],
+  ["Protocol", "/#protocol"],
+  ["Docs", "https://defendabledocs.com/field-release/overview/"],
+  ["OpenDefendable", "https://opendefendable.com"],
+  ["Tribunal Tape", "https://github.com/SudoSuOps/defendableos-tribunal-audit"],
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-800/60 bg-neutral-950/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-stone-800/60 bg-neutral-950/88 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-6">
         <a href="/" className="flex items-center gap-3 group">
           <EmblemMark />
@@ -29,7 +25,7 @@ export function Header() {
             <span className="text-amber-400">Defendable</span>OS
           </span>
         </a>
-        <nav className="hidden lg:flex items-center gap-7 ml-6">
+        <nav className="hidden xl:flex items-center gap-6 ml-6">
           {NAV_ITEMS.map(([label, href]) => (
             <a key={href} href={href} className="text-sm text-stone-400 hover:text-stone-100 transition-colors">
               {label}
@@ -37,10 +33,10 @@ export function Header() {
           ))}
         </nav>
         <a
-          href="mailto:build@swarmandbee.ai?subject=Request%20early%20access%20to%20DefendableOS"
-          className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
+          href={`mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`}
+          className="ml-auto hidden md:inline-flex items-center px-5 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 hover:bg-amber-500/20 hover:border-amber-400 transition-colors font-semibold tracking-tight"
         >
-          Request access
+          Request review
         </a>
         <button
           aria-label="Toggle menu"
@@ -54,7 +50,7 @@ export function Header() {
         </button>
       </div>
       {open && (
-        <div className="lg:hidden border-t border-stone-800/60 bg-neutral-950/95">
+        <div className="xl:hidden border-t border-stone-800/60 bg-neutral-950/95">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
             {NAV_ITEMS.map(([label, href]) => (
               <a
@@ -67,11 +63,11 @@ export function Header() {
               </a>
             ))}
             <a
-              href="mailto:build@swarmandbee.ai?subject=Request%20early%20access%20to%20DefendableOS"
+              href={`mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`}
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
+              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold"
             >
-              Request access
+              Request review
             </a>
           </div>
         </div>
@@ -82,9 +78,9 @@ export function Header() {
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-950">
+    <footer className="bg-neutral-950 border-t border-stone-900">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10">
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <EmblemMark />
@@ -93,52 +89,34 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
-              The neutral officiating protocol for AI agent execution.
+              Honest public front door for the DefendableOS stack: what is audited, what is limited, what is held, and where to go next.
             </p>
             <p className="mt-3 text-xs text-stone-500 leading-relaxed max-w-sm italic">
-              Neutral referees call the game. The human owner grants finality.
+              Public audit tape is evidence, not certification or production clearance.
             </p>
           </div>
           <FooterColumn
-            heading="Products"
+            heading="Field surfaces"
             links={[
-              ["HoneyBox", "/honeybox"],
-              ["DefendableCloud", "/cloud"],
-              ["Pricing", "/pricing"],
-              ["Defend The Claw™", "/defend-the-claw"],
+              ["DefendableCloud", "https://defendablecloud.com/agent-operations-demo"],
+              ["DefendableDocs", "https://defendabledocs.com/field-release/overview/"],
+              ["OpenDefendable", "https://opendefendable.com"],
+              ["DefendableRouter", "https://defendablerouter.com"],
             ]}
           />
           <FooterColumn
-            heading="Doctrine"
+            heading="Audit tape"
             links={[
-              ["The Doctrine", "/doctrine"],
-              ["Owner's Box", "/owners-box"],
-              ["About / Operator", "/about"],
-              ["DefendableHack™", "/hack"],
-              ["AgentGrade™", "/agent-grade"],
-              ["Pair Factory", "/pair-factory"],
-              ["Open Infrastructure", "/open"],
-              ["Reports", "/reports"],
-              ["Ledger", "/ledger"],
+              ["Tribunal repo", "https://github.com/SudoSuOps/defendableos-tribunal-audit"],
+              ["Public module repos", "https://github.com/SudoSuOps"],
+              ["DefendableOS source", "https://github.com/SudoSuOps/defendable"],
             ]}
           />
           <FooterColumn
-            heading="Brand stack"
+            heading="Contact"
             links={[
-              ["defendableos.com", "https://defendableos.com"],
-              ["defendtheclaw.com", "https://defendtheclaw.com"],
-              ["defendablehack.com", "https://defendablehack.com"],
-              ["opendefendable.com", "https://opendefendable.com"],
-              ["defendablerouter.com", "https://defendablerouter.com"],
-              ["defendablecloud.com", "https://defendablecloud.com"],
-            ]}
-          />
-          <FooterColumn
-            heading="Company"
-            links={[
-              ["Contact form", "/contact"],
+              ["Request early-access review", `mailto:${SALES_EMAIL}?subject=DefendableOS%20early-access%20review`],
               ["build@swarmandbee.ai", `mailto:${SALES_EMAIL}`],
-              ["build@swarmandbee.ai", "mailto:build@swarmandbee.ai"],
               ["Privacy", "https://swarmandbee.ai/legal/privacy"],
               ["Terms", "https://swarmandbee.ai/legal/terms"],
             ]}
@@ -149,29 +127,13 @@ export function Footer() {
           <div className="flex items-center gap-5">
             <span>© 2026 DefendableOS. All rights reserved.</span>
             <div className="flex items-center gap-3">
-              <a
-                href={X_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="DefendableOS on X"
-                className="text-stone-500 hover:text-amber-300 transition-colors"
-              >
+              <a href={X_URL} target="_blank" rel="noopener noreferrer" aria-label="DefendableOS on X" className="text-stone-500 hover:text-amber-300 transition-colors">
                 <XIcon />
               </a>
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="DefendableOS founder Donovan Mackey on LinkedIn"
-                className="text-stone-500 hover:text-amber-300 transition-colors"
-              >
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="DefendableOS founder Donovan Mackey on LinkedIn" className="text-stone-500 hover:text-amber-300 transition-colors">
                 <LinkedInIcon />
               </a>
-              <a
-                href={`mailto:${SALES_EMAIL}`}
-                aria-label="Email build@swarmandbee.ai"
-                className="text-stone-500 hover:text-amber-300 transition-colors"
-              >
+              <a href={`mailto:${SALES_EMAIL}`} aria-label="Email build@swarmandbee.ai" className="text-stone-500 hover:text-amber-300 transition-colors">
                 <MailIcon />
               </a>
             </div>
@@ -213,7 +175,6 @@ function FooterColumn({ heading, links }: { heading: string; links: [string, str
   );
 }
 
-// ─── inline social icons (no lucide-react · keep bundle light) ────────────
 function XIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

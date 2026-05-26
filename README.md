@@ -1,6 +1,6 @@
 # DefendableOS
 
-**Proof of Value · the operating system for evidence-backed valuation.**
+**Public franchise front door for accountable AI rails and proof-of-value workflows.**
 
 Public landing site for [defendableos.com](https://defendableos.com).
 
@@ -10,20 +10,33 @@ A product of Swarm and Bee LLC · Florida · D-U-N-S 138652395 · doing business
 
 ## What this is
 
-DefendableOS turns real-world and digital assets into evidence-backed,
-market-ready records — with verified inputs, comparable analysis,
-provenance, valuation receipts, and transferable Defendable Deeds.
+DefendableOS is the honest public front door for the Defendable stack.
 
-- **Platform name:** DefendableOS
-- **Market promise:** Proof of Value
-- **Doctrine:** Validate the Validator
-- **Intelligence engine:** AIOV (AI Opinion of Value)
-- **Asset artifact:** Defendable Deed
-- **Future edge module:** Defendable Box
+Current field-tested wedge:
 
-## Asset classes in scope
+- **AI Agent Operations:** implemented and independently audited with limitations
 
-Commercial Real Estate · Compute Hardware · Equipment · Luxury Goods · Datasets · AI Assets.
+Broader active build track:
+
+- **Proof of Value / AIOV:** evidence-backed valuation and deed workflow direction, not fully field-cleared
+
+Public front-door responsibilities:
+
+- show live status labels
+- route users to real public utility
+- expose the Tribunal audit tape
+- keep wins, losses, holds, and limitations visible
+
+## Current status labels carried by this site
+
+- `VERIFIED_AS_REPAIRED_WITH_LIMITATIONS`
+- `VERIFIED_AS_DOCUMENTED_WITH_LIMITATIONS`
+- `READY_WITH_LIMITATIONS`
+- `REPAIR_REQUIRED`
+- `FIELD INTEGRATION PENDING`
+- `NOT CLEARED FOR PRODUCTION`
+- `NOT CLEARED FOR EXTERNAL SAAS ENFORCEMENT`
+- `NOT CLAIMED`
 
 ---
 
@@ -87,12 +100,15 @@ If `DEFENDABLE_DISCORD_WEBHOOK` is not set, the form falls back to `LEGALSNIPER_
 
 ## Brand discipline
 
-The landing page is **early-access**, not a launched marketplace. Every
-illustrative value (asset details, deed records, validation queues) is
-labeled "Illustrative," "Sample Analysis," or "Capability preview."
+This site must not:
 
-No fake stats. No fake testimonials. No fake transaction volumes. No
-unsupported regulatory, legal, appraisal, or certification claims.
+- promote Cloud server-side action enforcement beyond accepted audit evidence
+- imply Router is live in the Cloud path without proof
+- imply production clearance, certification, insurance coverage, or external SaaS enforcement
+- imply hashes prove authorship or approval
+
+The site may describe the broader Proof of Value / AIOV direction, but it
+must label it as active build track or roadmap when not field-cleared.
 
 ## License
 
