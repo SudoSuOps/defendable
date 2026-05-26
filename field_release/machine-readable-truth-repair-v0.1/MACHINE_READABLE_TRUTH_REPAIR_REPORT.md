@@ -43,6 +43,16 @@ Repo inspected but not changed:
 - `DEFENDABLE_CERTIFIED` was removed from public status/SEO surfaces and
   replaced with roadmap-only wording.
 
+## Public verification
+
+- `https://defendableos.com/llms.txt` updated live and now points to
+  DefendableCloud, DefendableDocs, DefendableRouter, and OpenDefendable
+  truthfully.
+- `https://defendablecloud.com/llms.txt` updated live and now leads with
+  `CONTROLLED SYNTHETIC DEMO` and `READY_WITH_LIMITATIONS`.
+- `https://opendefendable.com/llms.txt` updated live and no longer claims
+  `v0 · LIVE` or `open standards body`.
+
 ## Limitations
 
 - This repair does not redesign human-facing product pages.
@@ -50,4 +60,3 @@ Repo inspected but not changed:
 - This repair does not grant production clearance, client-pilot approval,
   certification, insurance coverage, external SaaS enforcement approval, or
   blockchain anchoring.
-
