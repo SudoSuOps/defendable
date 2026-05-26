@@ -24,8 +24,14 @@ export default function DefendableOS() {
       <main>
         <Hero />
         <SwarmLawsBand />
+        <TheProblem />
+        <WhatItIs />
+        <ProtocolFlow />
         <CategoryShift />
         <DoctrineSection />
+        <OwnersBox />
+        <ReplayQualifiedTraining />
+        <UseCases />
         <DeploymentModes />
         <MorningBrief />
         <MathSection />
@@ -60,41 +66,39 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-start">
           <div>
-            <Eyebrow>DEFENDABLEOS / DEFENSE FOR AI OPERATORS</Eyebrow>
+            <Eyebrow>DEFENDABLEOS — NEUTRAL OFFICIATING FOR AI AGENTS</Eyebrow>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-stone-50 leading-[1.05]">
-              Agent does the assignment.{" "}
-              <span className="font-serif italic font-normal text-amber-300">We validate the Project.</span>
+              AI Agents Need Referees{" "}
+              <span className="font-serif italic font-normal text-amber-300">Before They Need Training Data.</span>
             </h1>
             <p className="mt-8 text-lg text-stone-300 leading-relaxed max-w-xl">
-              DefendableOS is the third-party defense layer for AI operators
-              and asset owners. Every assignment your agent completes is
-              captured · receipted · graded · and reconciled into a daily
-              Project deed that your CFO, compliance team, and insurance
-              carrier can read.
+              DefendableOS turns agent execution into visible, replayable
+              evidence. Every assignment starts with a written flightsheet and
+              a locked rulebook. Neutral referees apply code, math and
+              provenance checks while the human owner retains final authority
+              over what is trusted, corrected or trained next.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="/honeybox"
+                href="/defend-the-claw"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-amber-400 text-neutral-950 text-sm font-semibold tracking-tight hover:bg-amber-300 transition-colors"
               >
-                Order a HoneyBox
+                Run the Playbook
                 <Arrow />
               </a>
               <a
-                href="/cloud"
+                href="/how-it-works"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
               >
-                Try DefendableCloud
+                See the Protocol
               </a>
             </div>
-            <p className="mt-8 text-xs text-stone-500 tracking-tight max-w-md leading-relaxed">
-              The deed is only as good as the{" "}
-              <span className="text-amber-300 font-medium">fix it delivers</span>.
-              Defense in the shadows. Offense in the daytime.
+            <p className="mt-8 text-xs text-stone-400 tracking-tight max-w-md leading-relaxed font-mono">
+              No Replay, No Training. No Proof, No Promotion. No Human Approval,
+              No Finality.
             </p>
             <p className="mt-4 text-xs text-stone-500 italic font-serif tracking-tight max-w-md leading-relaxed">
-              "What the Hive verifies becomes truth." — The Genesis Law ·
-              the 5th Swarm Law that defines every Defendable Deed.
+              Neutral referees call the game. The human owner grants finality.
             </p>
           </div>
 
@@ -223,9 +227,11 @@ function SwarmLawsBand() {
           The Hive is the in-house engine of Swarm &amp; Bee · the backend
           DefendableOS is the public surface of. Five laws govern it. The
           fifth — the Genesis Law — is the line that defines every Defendable
-          Deed. A deed is not a claim. It is what the Hive has verified ·
-          receipted · graded · and anchored on Hedera. Once issued, it is
-          truth anyone can pull back to first principles, any time.
+          Deed. A deed is not a claim. It is what neutral referees have
+          verified · receipted · graded · and anchored on Hedera after the
+          execution behind it survived replay and a human granted finality.
+          Once issued, it is truth anyone can pull back to first principles,
+          any time.
         </p>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-stone-900 border border-stone-800 rounded-xl overflow-hidden">
@@ -604,37 +610,36 @@ function CTA() {
     <section className="border-b border-stone-900/80">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
         <div className="rounded-2xl border border-stone-800 bg-gradient-to-br from-stone-900/80 to-neutral-950 px-8 py-12 lg:px-14 lg:py-16">
-          <Eyebrow>READY TO DEED YOUR AGENTS</Eyebrow>
+          <Eyebrow>BEFORE YOU TRAIN THE MODEL</Eyebrow>
           <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-50 leading-tight max-w-4xl">
-            Inspect the agent.{" "}
-            <span className="font-serif italic font-normal text-amber-300">Grade the risk.</span>{" "}
-            Preserve the proof.
+            Before You Train the Model,{" "}
+            <span className="font-serif italic font-normal text-amber-300">Run the Playbook.</span>
           </h2>
           <p className="mt-6 text-base text-stone-300 leading-relaxed max-w-2xl">
-            Order a HoneyBox · try DefendableCloud · or run a free
-            ClawCheck on one of your AI agents right now. No procurement
-            cycle. No 6-month enterprise sale. Founder credit-card swipe.
+            Discover how your agents behave under accountable execution. Record
+            the tape. Let neutral referees call the facts. Decide what deserves
+            to move forward.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
-              href="/honeybox"
+              href="/defend-the-claw"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-amber-400 text-neutral-950 text-sm font-semibold tracking-tight hover:bg-amber-300 transition-colors"
             >
-              Order a HoneyBox
+              Run the Playbook
               <Arrow />
             </a>
             <a
-              href="/cloud"
+              href="/#owners-box"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-amber-500/40 bg-amber-500/10 text-sm text-amber-300 font-semibold tracking-tight hover:bg-amber-500/20 hover:border-amber-400 transition-colors"
             >
-              Try DefendableCloud
+              Explore the Owner's Box
             </a>
             <a
-              href="/defend-the-claw"
+              href="/how-it-works"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-stone-700 text-sm text-stone-200 font-semibold tracking-tight hover:border-stone-500 hover:text-stone-50 transition-colors"
             >
-              Free ClawCheck
+              See the Protocol
             </a>
             <a
               href={`mailto:${SALES_EMAIL}?subject=Talk%20to%20Defendable`}
@@ -643,6 +648,303 @@ function CTA() {
               Talk to us
             </a>
           </div>
+
+          <p className="mt-8 text-xs text-stone-500 italic font-serif tracking-tight max-w-2xl leading-relaxed">
+            DefendableOS is built for human finality. No output becomes
+            approved, publishable or eligible for training solely because an AI
+            says it is ready.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── THE PROBLEM · fine-tuning without replay ──────────────────────────────
+function TheProblem() {
+  return (
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>THE PROBLEM</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            Fine-Tuning Without Replay Is{" "}
+            <span className="font-serif italic font-normal text-amber-300">Training on Air.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            Most AI systems are trained on outputs that were never truly
+            tested. A polished report can hide broken math, impossible dates,
+            unsupported sources, undisclosed substitutions and synthesis drift.
+            Training on those outputs does not create trust. It reinforces
+            unmeasured behavior.
+          </p>
+          <p className="mt-4 text-base text-stone-400 leading-relaxed">
+            DefendableOS begins before fine-tuning. It puts the agent on the
+            field first, records what actually happened and identifies which
+            behavior deserves correction, reinforcement or rejection.
+          </p>
+        </div>
+        <div className="mt-10 rounded-xl border border-amber-500/30 bg-amber-500/[0.04] px-6 py-6 lg:px-8 lg:py-7 max-w-4xl">
+          <p className="text-lg md:text-xl font-semibold tracking-tight text-stone-100 leading-snug">
+            A dataset is not guidance until the execution behind it{" "}
+            <span className="font-serif italic font-normal text-amber-300">survives replay.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── WHAT DEFENDABLEOS IS · the referee protocol ───────────────────────────
+function WhatItIs() {
+  const tests = [
+    "Math tests whether totals reconcile.",
+    "Chronology tests whether receipts are possible.",
+    "Provenance tests whether sources support claim grades.",
+    "Replay tests whether synthesis preserved or corrupted correct work.",
+    "Boundary controls ensure no output becomes final without human approval.",
+  ];
+  const referees: { title: string; body: string; tone?: "honey" }[] = [
+    { title: "Math Referee", body: "Do formulas, totals and classifications reconcile?" },
+    { title: "Chronology Referee", body: "Could the work and its sources exist in the claimed order?" },
+    { title: "Provenance Referee", body: "Does the evidence support the strength of the claim?" },
+    { title: "Replay Referee", body: "Did final synthesis preserve or override correct agent work?" },
+    { title: "Boundary Referee", body: "Was approval, publication or finality claimed without authority?" },
+    { title: "Human Owner", body: "Makes the final, unappealable decision.", tone: "honey" },
+  ];
+  return (
+    <section className="border-b border-stone-900/80 bg-stone-950/40">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>WHAT DEFENDABLEOS IS</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            A Neutral Referee Protocol —{" "}
+            <span className="font-serif italic font-normal text-amber-300">Not Another Judge Model.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            DefendableOS does not rely on one model's opinion about another
+            model's answer. Its referee system applies rules that were defined
+            before the work began.
+          </p>
+          <ul className="mt-6 space-y-2.5 text-sm text-stone-300 leading-relaxed">
+            {tests.map((t) => (
+              <li key={t} className="flex items-start gap-2.5">
+                <span className="mt-1.5 inline-block w-1 h-1 rounded-full bg-amber-400" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-base text-stone-400 leading-relaxed">
+            The referees do not care which model wins. They call what the
+            recorded evidence proves.
+          </p>
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {referees.map((r) => {
+            const isHoney = r.tone === "honey";
+            return (
+              <div
+                key={r.title}
+                className={`rounded-xl border px-6 py-7 ${
+                  isHoney
+                    ? "border-amber-500/40 bg-gradient-to-br from-amber-500/[0.08] to-amber-500/[0.02]"
+                    : "border-stone-800 bg-neutral-950/60"
+                }`}
+              >
+                <div className={`text-sm font-semibold mb-2.5 ${isHoney ? "text-amber-300" : "text-stone-100"}`}>
+                  {r.title}
+                </div>
+                <p className="text-sm text-stone-400 leading-relaxed">{r.body}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── THE PROTOCOL FLOW · assignment to earned guidance ─────────────────────
+function ProtocolFlow() {
+  const steps = [
+    { title: "Flightsheet", body: "A written assignment defines the mission, roles, required outputs, evidence requirements and prohibited actions before execution begins." },
+    { title: "Rulebook", body: "Precommitted code, math, chronology, source and promotion rules establish what will count as compliant execution." },
+    { title: "Field Execution", body: "Agents perform the assigned work by role. Any supplemental agents, substitutions or synthesis layers must be attributable." },
+    { title: "Game Tape", body: "Artifacts, source receipts, calculations, hashes, classifications and material transformations are preserved." },
+    { title: "Referee Calls", body: "Neutral checks identify credits, penalties, drift, unsupported promotion and deterministic failures." },
+    { title: "Owner's Box", body: "The human sees what passed, what failed, what survived with limitations and what must be remediated." },
+    { title: "Replay-Qualified Training", body: "Only human-approved discoveries become eligible correction pairs, operating guidance or future training material." },
+  ];
+  return (
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>THE PROTOCOL</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            From Assignment to{" "}
+            <span className="font-serif italic font-normal text-amber-300">Earned Guidance.</span>
+          </h2>
+        </div>
+        <ol className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {steps.map((s, i) => (
+            <li key={s.title} className="rounded-xl border border-stone-800 bg-neutral-950/60 px-6 py-6">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-2xl font-semibold tracking-tight text-amber-300">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm font-semibold text-stone-100">{s.title}</span>
+              </div>
+              <p className="mt-3 text-sm text-stone-400 leading-relaxed">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+// ─── OWNER'S BOX · human accountability console ────────────────────────────
+function OwnersBox() {
+  const shows = [
+    "what assignment was called",
+    "which agents took the field",
+    "which positions performed correctly",
+    "where execution drifted",
+    "whether synthesis preserved or corrupted good underlying work",
+    "which claims survived replay",
+    "which failures require remediation",
+    "whether approval or publication remains blocked",
+  ];
+  return (
+    <section id="owners-box" className="border-b border-stone-900/80 bg-stone-950/40 scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>OWNER'S BOX</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            The Human Should See the Game —{" "}
+            <span className="font-serif italic font-normal text-amber-300">Not Just the Final Report.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            AI-generated work should not arrive as a polished deliverable with
+            hidden failures. The Owner's Box is the visual accountability
+            console for multi-agent execution.
+          </p>
+        </div>
+
+        <div className="mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-4xl">
+          {shows.map((s) => (
+            <div key={s} className="flex items-start gap-2.5 text-sm text-stone-300 leading-relaxed">
+              <span className="mt-1.5 inline-block w-1 h-1 rounded-full bg-amber-400 shrink-0" />
+              <span>It shows {s}.</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-10 text-xl md:text-2xl font-semibold tracking-tight text-stone-100">
+          Neutral referees call the game.{" "}
+          <span className="font-serif italic font-normal text-amber-300">The human owner grants finality.</span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// ─── REPLAY-QUALIFIED TRAINING · what is worth training ────────────────────
+function ReplayQualifiedTraining() {
+  const conditions = [
+    "the assignment was defined",
+    "the agent executed the work",
+    "the evidence was preserved",
+    "the rule violation or successful behavior was visible",
+    "the referee call was recorded",
+    "the human approved what should happen next",
+  ];
+  return (
+    <section className="border-b border-stone-900/80">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>REPLAY-QUALIFIED TRAINING</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            We Determine{" "}
+            <span className="font-serif italic font-normal text-amber-300">What Is Worth Training.</span>
+          </h2>
+          <p className="mt-6 text-base text-stone-300 leading-relaxed">
+            DefendableOS does not manufacture training volume and call it
+            trust. It discovers valuable guidance through accountable agent
+            execution. A correction becomes worth teaching only after:
+          </p>
+          <ul className="mt-6 space-y-2.5 text-sm text-stone-300 leading-relaxed">
+            {conditions.map((c) => (
+              <li key={c} className="flex items-start gap-2.5">
+                <span className="mt-1.5 inline-block w-1 h-1 rounded-full bg-amber-400" />
+                <span>{c};</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-base text-stone-400 leading-relaxed">
+            This creates replay-qualified guidance: correction pairs and
+            behavioral evidence grounded in what agents actually did, not what
+            another model merely preferred.
+          </p>
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <Card
+            tone="muted"
+            title="Traditional Training Data"
+            lines={[
+              "Generated examples",
+              "Assumed correctness",
+              "Hidden uncertainty",
+              "Flat labels",
+              "More tokens",
+            ]}
+          />
+          <Card
+            tone="honey"
+            title="Replay-Qualified Guidance"
+            lines={[
+              "Recorded execution events",
+              "Referee-called outcomes",
+              "Visible failure attribution",
+              "Evidence-linked limitations",
+              "Better behavioral intelligence",
+            ]}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── USE CASES · protocol across domains ───────────────────────────────────
+function UseCases() {
+  const cases = [
+    { head: "Agent Coding", body: "Test scope, file changes, build results, forbidden actions and deployment boundaries before code is accepted." },
+    { head: "Compute Appraisal", body: "Tie hardware identity, benchmark results, market comps and valuation assumptions to recorded receipts." },
+    { head: "Commercial Real Estate", body: "Recompute underwriting math, trace assumptions and expose unsupported investment conclusions." },
+    { head: "Federal Research", body: "Verify dates, opportunity requirements, source authority and completion-manifest integrity." },
+    { head: "Medical or Regulated Workflows", body: "Separate candidate output from approved guidance through source, safety and finality controls." },
+    { head: "AI Investment Analysis", body: "Test revenue proof, compute cost, performance claims and valuation narratives before trust is extended." },
+  ];
+  return (
+    <section className="border-b border-stone-900/80 bg-stone-950/40">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          <Eyebrow>USE CASES</Eyebrow>
+          <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-stone-100 leading-tight">
+            One protocol.{" "}
+            <span className="font-serif italic font-normal text-amber-300">Every domain where agents act.</span>
+          </h2>
+        </div>
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {cases.map((c) => (
+            <div key={c.head} className="rounded-xl border border-stone-800 bg-neutral-950/60 px-6 py-6">
+              <div className="text-sm font-semibold text-amber-300 mb-2.5">{c.head}</div>
+              <p className="text-sm text-stone-400 leading-relaxed">{c.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

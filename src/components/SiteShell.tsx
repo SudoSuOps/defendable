@@ -11,7 +11,8 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/donovan-mackey-89a6063b6/";
 const NAV_ITEMS: [string, string][] = [
   ["HoneyBox", "/honeybox"],
   ["Cloud", "/cloud"],
-  ["How It Works", "/how-it-works"],
+  ["Protocol", "/how-it-works"],
+  ["Owner's Box", "/#owners-box"],
   ["OpenDefense", "/opendefense"],
   ["Pricing", "/pricing"],
   ["Defend The Claw™", "/defend-the-claw"],
@@ -92,10 +93,10 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
-              Defense for AI operators.
+              The neutral officiating protocol for AI agent execution.
             </p>
             <p className="mt-3 text-xs text-stone-500 leading-relaxed max-w-sm italic">
-              Agent does the assignment. We validate the Project.
+              Neutral referees call the game. The human owner grants finality.
             </p>
           </div>
           <FooterColumn
@@ -111,6 +112,7 @@ export function Footer() {
             heading="Doctrine"
             links={[
               ["The Doctrine", "/doctrine"],
+              ["Owner's Box", "/#owners-box"],
               ["About / Operator", "/about"],
               ["DefendableHack™", "/hack"],
               ["AgentGrade™", "/agent-grade"],
