@@ -13,5 +13,5 @@
     "metadata alignment"
   ],
   "hash_notice": "SHA-256 hashes in this package provide content-integrity linkage only.",
-  "deployment_observation": "push completed; public HTML update not yet observed during this release pass"
+  "deployment_observation": "push completed; public HTML update observed during this release pass"
 }
